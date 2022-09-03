@@ -13,6 +13,7 @@ namespace Restaurant
         public string UserSurname { get; set; }
         public string UserLogin { get; set; }
         public string UserEmail { get; set; }
+        public int UserPhone { get; set; }
         public string UserPassword { get; set; }
         public Role Role { get; set;  }
     }

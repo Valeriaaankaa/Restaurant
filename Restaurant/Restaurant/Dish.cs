@@ -13,5 +13,6 @@ namespace Restaurant
         public decimal DishPrice { get; set; }
         public string DishDescription { get; set; }
         public DishGroup DishGroup { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
     }
 }
