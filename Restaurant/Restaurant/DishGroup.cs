@@ -8,12 +8,13 @@ namespace Restaurant
 {
     public enum DishGroup
     {
-        FirstDish=1,
+        FirstDish = 1,
         SecondDish,
-        Dessert,
+        Desert,
         Sushi,
         Pizza,
         SoftDrink,
-        Alcohol
+        Alcohol,
+        Salat
     }
 }
