@@ -15,6 +15,7 @@ namespace Restaurant
         public string UserEmail { get; set; }
         public int UserPhone { get; set; }
         public string UserPassword { get; set; }
+        public DateTime BirthDay { get; set; }
         public Role Role { get; set;  }
     }
 }
