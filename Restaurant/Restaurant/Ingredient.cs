@@ -12,5 +12,7 @@ namespace Restaurant
         public string IngredientName { get; set; }
         public decimal IngredientPrice { get; set; }
         public decimal IngredientAmount { get; set; }
+        public DateTime ImportDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
     }
 }
