@@ -4,14 +4,12 @@ List<Dish> Dishes = new List<Dish>();
 List<User> Users = new List<User>();
 List<Order> Orders = new List<Order>();
 List<Ingredient> BorschIngredients = new List<Ingredient>();
-List<DishComposition> DishCompositions = new List<DishComposition>();
-List<MenuOrder> MenuOrders = new List<MenuOrder>();
+
 
 
 Seed_Data();
 PrintDishesInfo();
 PrintUsersInfo();
-PrintMenuOrderInfo();
 Console.ReadKey();
 
 
@@ -43,8 +41,6 @@ void Seed_Data()
     BorschIngredients.Add(beet);
     BorschIngredients.Add(water);
 
-    DishComposition BorshchComposition = new() { CompositionId = 1, DishAmount = 300, Ingredients = BorschIngredients };
-    DishCompositions.Add(BorshchComposition);
 
     Dish Olivie = new() { DishId = 1, DishName = "Olivie", DishGroup = DishGroup.Salat, DishPrice = 50, DishDescription = "Olivier salad is a traditional salad dish in Russian cuisine, which is also popular in other post-Soviet countries and around the world." };
     Dish Borshch = new() { DishId = 2, DishName = "Borshch", DishGroup = DishGroup.FirstDish, DishPrice = 70, DishDescription = "Ukrainian borscht is a hearty soup of beef and a variety of vegetables in which root vegetables and cabbage predominate, and the soup takes its characteristic deep red colour from beets" };

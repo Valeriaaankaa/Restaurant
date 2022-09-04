@@ -22,6 +22,7 @@ namespace Restaurant
         public DateTime BirthDay { get; set; }
         public string PhoneNumber { get; set; }
         public Role Role { get; set;  }
+        public List<Order> UserOrders { get; set; }
 
         public override string ToString()
         {
