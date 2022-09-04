@@ -59,10 +59,6 @@ void Seed_Data()
     Orders.Add(order_one);
     Orders.Add(order_two); 
 
-    MenuOrder menuOrder_one = new() { Dishes = Dishes, DishAmount = 500, MenuOrderId = 1, Order = order_one };
-    MenuOrders.Add(menuOrder_one);
-
-
 }
 
 void PrintUsersInfo()
@@ -83,15 +79,4 @@ void PrintDishesInfo()
     }
     Console.WriteLine("*******************************************");
 
-}
-
-
-void PrintMenuOrderInfo()
-{
-    Console.WriteLine("*****************MenuOrder********************");
-    foreach (var mo in MenuOrders)
-    {
-        Console.WriteLine(mo);
-    }
-    Console.WriteLine("*******************************************");
 }
