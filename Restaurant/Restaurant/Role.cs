@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
+    /// <summary>
+    /// User Role; admin or user. Unregistered user - Guest - can't order dish
+    /// </summary>
     public enum Role
     {
-        User=1,
+        User = 1,
         Admin
     }
 }
