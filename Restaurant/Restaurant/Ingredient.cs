@@ -14,5 +14,12 @@ namespace Restaurant
         public decimal IngredientAmount { get; set; }
         public DateTime ImportDate { get; set; }
         public DateTime ExpirationDate { get; set; }
+
+        public override string ToString()
+        {
+            return $"Ingredient ID: {IngredientId}\n" + $"Name: {IngredientName}\n" + $"Cost: {IngredientPrice}\n" + $"IngredientAmount: {IngredientAmount}\n"
+                + $"ImportDate: {ImportDate}\n"
+                + $"ExpirationDate: {ExpirationDate}\n";
+        }
     }
 }

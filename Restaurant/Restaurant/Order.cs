@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
+    
     public class Order
     {
+        /// <summary>
+        /// Information about User, that make order, place and date
+        /// </summary>
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public string Address { get; set; }

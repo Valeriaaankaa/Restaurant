@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
+    /// <summary>
+    /// OrderStatus State
+    /// </summary>
     public enum OrderStatus
     {
         Denied = 1,

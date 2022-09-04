@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
+    /// <summary>
+    /// Information about User that orders dishes
+    /// </summary>
+
     public class User
     {
         public int UserId { get; set; }
