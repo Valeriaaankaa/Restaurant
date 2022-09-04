@@ -18,7 +18,7 @@ namespace Restaurant
         public decimal DishPrice { get; set; }
         public string DishDescription { get; set; }
         public DishGroup DishGroup { get; set; }
-        public DishComposition DishComposition { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
 
         public override string ToString()
         {
