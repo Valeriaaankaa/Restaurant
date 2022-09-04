@@ -17,6 +17,7 @@ namespace Restaurant
         public string Address { get; set; }
         public User User { get; set; }
         public OrderStatus OrderStatus { get; set; }
+        public List<Dish> OrderDishes { get; set; }
 
 
         public override string ToString()
