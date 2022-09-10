@@ -34,9 +34,45 @@ namespace Restaurant
             dishes.RemoveAll(x => x.DishName == dishname);
         }
 
+        //public Dish AddIngredientsToDish(List<Ingredient> ingred)
+        //{
+        //    Console.Write("Add new ingredient? \n1 - Yes\n2 - No\n3 - Stop adding ingredients\n Your choice:");
+        //    int choice = Convert.ToInt32(Console.ReadLine());
+        //    for(int i=0; i<ingred.Count; i++)   
+        //    {
+        //        if (choice == 3)
+        //            break;
+        //        else
+        //        {
+        //            Console.WriteLine($"{i+1}. {}")
+        //        }
+        //    }
+
+        //}
+
         Dish IEditObject<Dish>.CreateObject()
         {
-            throw new NotImplementedException();
+            Dish dish = new Dish();
+            Console.Write("Enter dish Id of the new dish: ");
+            dish.DishId = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the name of the new dish: ");
+            dish.DishName=Console.ReadLine();
+            Console.Write("Enter dish description of the new dish: ");
+            dish.DishDescription = Console.ReadLine();
+            Console.Write("Enter dish price of the new dish: ");
+            dish.DishPrice = Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine("Choose type of the dish:");
+            int i = 1;
+            foreach (string t in Enum.GetNames(typeof(DishGroup)))
+            {
+                Console.WriteLine($"{i}.{t}");
+                i++;
+            }
+            Console.Write("Your choice: ");
+            int choicegroup = Convert.ToInt32(Console.ReadLine());
+            dish.DishGroup = (DishGroup)choicegroup; //TEST THIS
+
+            return dish;
         }
 
         void IEditObject<Dish>.UpdateObject(List<Dish> dishes)
