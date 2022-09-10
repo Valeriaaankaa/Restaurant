@@ -46,12 +46,32 @@ namespace Restaurant
                 case 1:
                     Console.Write("Write new price:");
                     decimal ingredPrice = Convert.ToDecimal(Console.ReadLine());
-                    ingred.FirstOrDefault(x => x.IngredientPrice == ingredPrice);
+                    ingred.FirstOrDefault(x => x.IngredientPrice == ingredPrice && x.IngredientName == ingredname);
                     break;
                 case 2:
                     Console.Write("Write new amount:");
                     decimal ingredamount = Convert.ToDecimal(Console.ReadLine());
-                    ingred.FirstOrDefault(x => x.IngredientAmount == ingredamount && x.IngredientName==ingredname);
+                    ingred.FirstOrDefault(x => x.IngredientAmount == ingredamount && x.IngredientName==ingredname && ingredamount>=0);
+                    break;
+                case 3:
+                    Console.Write("Write day:");
+                    int dayimp = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Write month:");
+                    int monthimp = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Write year:");
+                    int yearimp = Convert.ToInt32(Console.ReadLine());
+                    DateTime NewImportDate = new DateTime(yearimp, monthimp, dayimp);
+                    ingred.FirstOrDefault(x => x.ImportDate == NewImportDate && x.IngredientName == ingredname);
+                    break;
+                case 4:
+                    Console.Write("Write day:");
+                    int dayexp = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Write month:");
+                    int monthexp = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Write year:");
+                    int yearexp = Convert.ToInt32(Console.ReadLine());
+                    DateTime NewExpirationDate = new DateTime(yearexp, monthexp, dayexp);
+                    ingred.FirstOrDefault(x => x.ImportDate == NewExpirationDate && x.IngredientName == ingredname && NewExpirationDate>DateTime.Now);
                     break;
                 default:
                     Console.WriteLine("Your choice is invalid");
