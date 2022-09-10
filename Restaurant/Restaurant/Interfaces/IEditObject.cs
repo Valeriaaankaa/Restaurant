@@ -10,6 +10,6 @@ namespace Restaurant.Interfaces
     {
         T CreateObject();
         void UpdateObject(List<T> obj);
-        void DeleteObject();
+        void DeleteObject(List<T> obj);
     }
 }
