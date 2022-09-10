@@ -53,8 +53,8 @@ namespace Restaurant
         Dish IEditObject<Dish>.CreateObject()
         {
             Dish dish = new Dish();
-            Console.Write("Enter dish Id of the new dish: ");
-            dish.DishId = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Enter dish Id of the new dish: ");
+            //dish.DishId = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter the name of the new dish: ");
             dish.DishName=Console.ReadLine();
             Console.Write("Enter dish description of the new dish: ");

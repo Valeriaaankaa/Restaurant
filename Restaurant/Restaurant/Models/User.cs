@@ -11,7 +11,7 @@ namespace Restaurant
     /// Information about User that orders dishes
     /// </summary>
 
-    public class User:IPrintable
+    public class User:IPrintable,IEditObject<User>
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -22,14 +22,50 @@ namespace Restaurant
         public string UserPassword { get; set; }
         public DateTime BirthDay { get; set; }
         public string PhoneNumber { get; set; }
-        public Role Role { get; set;  }
+        public Role Role { get; set; }
         public List<Order> UserOrders { get; set; }
+
+        public User CreateObject()
+        {
+            //USER REGISTRATION
+            User user = new User(); 
+            Console.Write("Enter User Name of the new User: ");
+            user.UserName = Console.ReadLine();
+            Console.Write("Enter User Surname of the new User: ");
+            user.UserSurname = Console.ReadLine();
+            Console.Write("Enter User Login of the new User: ");
+            user.UserLogin = Console.ReadLine();
+            Console.Write("Enter User Email of the new dish: ");
+            user.UserEmail = Console.ReadLine();
+            Console.Write("Enter User Phone of the new dish: ");
+            user.PhoneNumber = Console.ReadLine();
+            Console.Write("Write your Birthday day:");
+            int dayimp = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Write your Birthday month:");
+            int monthimp = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Write your Birthday year:");
+            int yearimp = Convert.ToInt32(Console.ReadLine());
+            user.BirthDay = new DateTime(yearimp, monthimp, dayimp);
+            return user;
+        }
+
+        public void DeleteObject(List<User> users)
+        {
+            Console.Write("Enter the Login of the User you want to delete:");
+            string userlogin = Console.ReadLine();
+            users.RemoveAll(x => x.UserLogin == userlogin);
+        }
 
         public string Print()
         {
             return $"User ID: {UserId}\n" + $"Name: {UserName}\n" + $"Surname: {UserSurname}\n" 
                 + $"UserLogin: {UserLogin}\n" + $"UserEmail: {UserEmail}\n" + $"UserPassword: {UserPassword}\n"
                 + $"BirthDay: {BirthDay.ToString()}\n" + $"PhoneNumber: {PhoneNumber}\n" + $"Role: {Role.ToString()}\n";
+        }
+
+        public void UpdateObject(List<User> obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

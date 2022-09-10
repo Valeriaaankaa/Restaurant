@@ -19,8 +19,8 @@ namespace Restaurant
         public Ingredient CreateObject()
         {
             Ingredient ingredient = new Ingredient();
-            Console.Write("Enter ingredient Id of the new ingredient: ");
-            ingredient.IngredientId = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Enter ingredient Id of the new ingredient: ");
+            //ingredient.IngredientId = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter the name of the new ingredient: ");
             ingredient.IngredientName = Console.ReadLine();
             Console.Write("Enter ingredient price of the new ingredient: ");
