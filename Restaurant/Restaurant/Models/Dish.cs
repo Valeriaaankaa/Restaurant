@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Xml.Linq;
 namespace Restaurant
 {
     
-    public class Dish
+    public class Dish:IPrintable
     {
         /// <summary>
         /// Information about dish that user orders
@@ -20,7 +21,7 @@ namespace Restaurant
         public DishGroup DishGroup { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
-        public override string ToString()
+        public string Print()
         {
             return $"Dish ID: {DishId}\n" + $"Name: {DishName}\n" +  $"Cost: {DishPrice}\n" + $"DishGroup: {DishGroup}\n" + $"Description: {DishDescription}\n" ;
         }

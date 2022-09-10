@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public class Ingredient
+    public class Ingredient:IPrintable
     {
         public int IngredientId { get; set; }
         public string IngredientName { get; set; }
@@ -15,7 +16,7 @@ namespace Restaurant
         public DateTime ImportDate { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        public override string ToString()
+        public string Print()
         {
             return $"Ingredient ID: {IngredientId}\n" + $"Name: {IngredientName}\n" + $"Cost: {IngredientPrice}\n" + $"IngredientAmount: {IngredientAmount}\n"
                 + $"ImportDate: {ImportDate}\n"

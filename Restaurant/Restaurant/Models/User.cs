@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Restaurant.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace Restaurant
     /// Information about User that orders dishes
     /// </summary>
 
-    public class User
+    public class User:IPrintable
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -24,7 +25,7 @@ namespace Restaurant
         public Role Role { get; set;  }
         public List<Order> UserOrders { get; set; }
 
-        public override string ToString()
+        public string Print()
         {
             return $"User ID: {UserId}\n" + $"Name: {UserName}\n" + $"Surname: {UserSurname}\n" 
                 + $"UserLogin: {UserLogin}\n" + $"UserEmail: {UserEmail}\n" + $"UserPassword: {UserPassword}\n"

@@ -8,6 +8,6 @@ namespace Restaurant.Interfaces
 {
     internal interface IPrintable
     {
-        void Print();
+        string Print();
     }
 }
