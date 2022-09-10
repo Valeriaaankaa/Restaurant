@@ -86,12 +86,12 @@ namespace Restaurant
                 case 1:
                     Console.Write("Write new price:");
                     decimal dishPrice = Convert.ToDecimal(Console.ReadLine());
-                    dishes.FirstOrDefault(x => x.DishPrice == dishPrice);
+                    dishes.FirstOrDefault(x => x.DishPrice == dishPrice && x.DishName==dishname);
                     break;
                 case 2:
                     Console.Write("Write new description:");
                     string dishdesc = Console.ReadLine();
-                    dishes.FirstOrDefault(x => x.DishDescription == dishdesc);
+                    dishes.FirstOrDefault(x => x.DishDescription == dishdesc && x.DishName == dishname);
                     break;
                     default: Console.WriteLine("Your choice is invalid");
                     break;
