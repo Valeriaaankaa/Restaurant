@@ -27,9 +27,11 @@ namespace Restaurant
         }
 
        
-        public void DeleteObject()
+        public void DeleteObject(List<Dish> dishes)
         {
-            throw new NotImplementedException();
+            Console.Write("Enter the name of the dish you want to delete:");
+            string dishname = Console.ReadLine();
+            dishes.RemoveAll(x => x.DishName == dishname);
         }
 
         Dish IEditObject<Dish>.CreateObject()
