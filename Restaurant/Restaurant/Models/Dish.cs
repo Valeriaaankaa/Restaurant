@@ -71,7 +71,7 @@ namespace Restaurant
             Console.Write("Your choice: ");
             int choicegroup = Convert.ToInt32(Console.ReadLine());
             dish.DishGroup = (DishGroup)choicegroup; //TEST THIS
-
+            //ADD INGREDIENTS
             return dish;
         }
 
