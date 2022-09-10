@@ -18,7 +18,31 @@ namespace Restaurant
 
         public Ingredient CreateObject()
         {
-            throw new NotImplementedException();
+            Ingredient ingredient = new Ingredient();
+            Console.Write("Enter ingredient Id of the new ingredient: ");
+            ingredient.IngredientId = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the name of the new ingredient: ");
+            ingredient.IngredientName = Console.ReadLine();
+            Console.Write("Enter ingredient price of the new ingredient: ");
+            ingredient.IngredientPrice = Convert.ToDecimal(Console.ReadLine());
+            Console.Write("Enter ingredient amoubt of the new ingredient: ");
+            ingredient.IngredientAmount = Convert.ToDecimal(Console.ReadLine());
+            Console.Write("Write day of Import:");
+            int dayimp = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Write month of Import:");
+            int monthimp = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Write year of Import:");
+            int yearimp = Convert.ToInt32(Console.ReadLine());
+            ingredient.ImportDate = new DateTime(yearimp, monthimp, dayimp);
+            Console.Write("Write day of Expiration:");
+            int dayexp = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Write month of Expiration:");
+            int monthexp = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Write year of Expiration:");
+            int yearexp = Convert.ToInt32(Console.ReadLine());
+            ingredient.ImportDate = new DateTime(yearexp, monthexp, dayexp);
+
+            return ingredient;
         }
 
         public void DeleteObject(List<Ingredient> ingred)
