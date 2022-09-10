@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Restaurant.Interfaces
 {
-    internal interface IEditObject
+    internal interface IEditObject<T>
     {
-        void CreateObject();
-        void UpdateObject();
+        T CreateObject();
+        void UpdateObject(List<T> obj);
         void DeleteObject();
     }
 }
