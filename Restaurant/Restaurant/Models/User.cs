@@ -46,7 +46,7 @@ namespace Restaurant
             Console.Write("Write your Birthday year:");
             int yearimp = Convert.ToInt32(Console.ReadLine());
             user.BirthDay = new DateTime(yearimp, monthimp, dayimp);
-            string password = "", confirm = "";
+            string password, confirm;
             do
             {
                 Console.Write("Write Password:");
@@ -90,31 +90,34 @@ namespace Restaurant
                 case 2:
                     Console.Write("Write new Surname:");
                     string usersurname = Console.ReadLine();
-                    users.FirstOrDefault(x => x.UserName == usesurname && x.UserLogin == userlogin);
+                    users.FirstOrDefault(x => x.UserName == usersurname && x.UserLogin == userlogin);
                     break;
                 case 3:
                     Console.Write("Write day:");
-                    int dayimp = Convert.ToInt32(Console.ReadLine());
+                    int day = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Write month:");
-                    int monthimp = Convert.ToInt32(Console.ReadLine());
+                    int month = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Write year:");
-                    int yearimp = Convert.ToInt32(Console.ReadLine());
-                    DateTime NewImportDate = new DateTime(yearimp, monthimp, dayimp);
-                    ingred.FirstOrDefault(x => x.ImportDate == NewImportDate && x.IngredientName == ingredname);
+                    int year = Convert.ToInt32(Console.ReadLine());
+                    DateTime NewBirthDay = new DateTime(year, month, day);
+                    users.FirstOrDefault(x => x.BirthDay == NewBirthDay && x.UserLogin == userlogin);
                     break;
                 case 4:
-                    Console.Write("Write day:");
-                    int dayexp = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Write month:");
-                    int monthexp = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Write year:");
-                    int yearexp = Convert.ToInt32(Console.ReadLine());
-                    DateTime NewExpirationDate = new DateTime(yearexp, monthexp, dayexp);
-                    ingred.FirstOrDefault(x => x.ImportDate == NewExpirationDate && x.IngredientName == ingredname && NewExpirationDate > DateTime.Now);
+                    string password, confirm;
+                    do
+                    {
+                        Console.Write("Write Password:");
+                        password = Console.ReadLine();
+                        Console.Write("Confirm Password:");
+                        confirm = Console.ReadLine();
+                    }
+                    while (password != confirm);
+                    users.FirstOrDefault(x => x.UserLogin == userlogin && x.UserPassword != password);
                     break;
                 default:
                     Console.WriteLine("Your choice is invalid");
                     break;
             }
+        }
     }
 }
