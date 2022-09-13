@@ -96,7 +96,7 @@ namespace Restaurant
                     Console.Write("Write year:");
                     int yearexp = Convert.ToInt32(Console.ReadLine());
                     DateTime NewExpirationDate = new DateTime(yearexp, monthexp, dayexp);
-                    ingred.Where(i => i.IngredientName == ingredname).ToList().ForEach(p => p.ImportDate = NewExpirationDate && NewExpirationDate > x.ExpirationDate);
+                    ingred.Where(i => i.IngredientName == ingredname && NewExpirationDate > DateTime.Now).ToList().ForEach(p => p.ImportDate = NewExpirationDate);
                     break;
                 default:
                     Console.WriteLine("Your choice is invalid");
