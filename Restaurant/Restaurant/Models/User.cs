@@ -85,12 +85,12 @@ namespace Restaurant
                 case 1:
                     Console.Write("Write new Name:");
                     string username = Console.ReadLine();
-                    users.FirstOrDefault(x => x.UserName == username && x.UserLogin == userlogin);
+                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.UserName = username);
                     break;
                 case 2:
                     Console.Write("Write new Surname:");
                     string usersurname = Console.ReadLine();
-                    users.FirstOrDefault(x => x.UserName == usersurname && x.UserLogin == userlogin);
+                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.UserSurname = usersurname);
                     break;
                 case 3:
                     Console.Write("Write day:");
@@ -100,7 +100,7 @@ namespace Restaurant
                     Console.Write("Write year:");
                     int year = Convert.ToInt32(Console.ReadLine());
                     DateTime NewBirthDay = new DateTime(year, month, day);
-                    users.FirstOrDefault(x => x.BirthDay == NewBirthDay && x.UserLogin == userlogin);
+                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.BirthDay = NewBirthDay);
                     break;
                 case 4:
                     string password, confirm;
@@ -112,7 +112,7 @@ namespace Restaurant
                         confirm = Console.ReadLine();
                     }
                     while (password != confirm);
-                    users.FirstOrDefault(x => x.UserLogin == userlogin && x.UserPassword != password);
+                    users.Where(i => i.UserLogin == userlogin && i.UserPassword != password).ToList().ForEach(p => p.UserPassword = confirm);
                     break;
                 default:
                     Console.WriteLine("Your choice is invalid");
