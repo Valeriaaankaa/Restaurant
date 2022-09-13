@@ -9,7 +9,7 @@ namespace Restaurant.Interfaces
     internal interface IEditObject<T>
     {
         T CreateObject();
-        void UpdateObject(List<T> obj);
-        void DeleteObject(List<T> obj);
+        List<T> UpdateObject(List<T> obj);
+        List<T> DeleteObject(List<T> obj);
     }
 }

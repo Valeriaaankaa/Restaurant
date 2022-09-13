@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\EWB512\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj": {}
+    "D:\\home\\Desktop\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj": {}
   },
   "projects": {
-    "D:\\EWB512\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj": {
+    "D:\\home\\Desktop\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\EWB512\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj",
+        "projectUniqueName": "D:\\home\\Desktop\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj",
         "projectName": "Restaurant",
-        "projectPath": "D:\\EWB512\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj",
+        "projectPath": "D:\\home\\Desktop\\Restaurant\\Restaurant\\Restaurant\\Restaurant.csproj",
         "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-        "outputPath": "D:\\EWB512\\Restaurant\\Restaurant\\Restaurant\\obj\\",
+        "outputPath": "D:\\home\\Desktop\\Restaurant\\Restaurant\\Restaurant\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
