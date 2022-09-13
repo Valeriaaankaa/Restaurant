@@ -59,11 +59,12 @@ namespace Restaurant
              return user;
         }
 
-        public void DeleteObject(List<User> users)
+        public List<User> DeleteObject(List<User> users)
         {
             Console.Write("Enter the Login of the User you want to delete:");
             string userlogin = Console.ReadLine();
             users.RemoveAll(x => x.UserLogin == userlogin);
+            return users;
         }
 
         public string Print()
@@ -73,7 +74,7 @@ namespace Restaurant
                 + $"BirthDay: {BirthDay.ToString()}\n" + $"PhoneNumber: {PhoneNumber}\n" + $"Role: {Role.ToString()}\n";
         }
 
-        public void UpdateObject(List<User> users)
+        public List<User> UpdateObject(List<User> users)
         {
 
             Console.Write("Enter the Login of the User you want to change: ");
@@ -85,7 +86,7 @@ namespace Restaurant
                 case 1:
                     Console.Write("Write new Name:");
                     string username = Console.ReadLine();
-                    users.FirstOrDefault(x => x.UserName == username && x.UserLogin == userlogin);
+                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.UserName = username);
                     break;
                 case 2:
                     Console.Write("Write new Surname:");
@@ -100,7 +101,7 @@ namespace Restaurant
                     Console.Write("Write year:");
                     int year = Convert.ToInt32(Console.ReadLine());
                     DateTime NewBirthDay = new DateTime(year, month, day);
-                    users.FirstOrDefault(x => x.BirthDay == NewBirthDay && x.UserLogin == userlogin);
+                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.BirthDay = NewBirthDay); 
                     break;
                 case 4:
                     string password, confirm;
@@ -112,12 +113,13 @@ namespace Restaurant
                         confirm = Console.ReadLine();
                     }
                     while (password != confirm);
-                    users.FirstOrDefault(x => x.UserLogin == userlogin && x.UserPassword != password);
+                    users.Where(i => i.UserLogin == userlogin && i.UserPassword != password).ToList().ForEach(p => p.UserPassword = confirm);
                     break;
                 default:
                     Console.WriteLine("Your choice is invalid");
                     break;
             }
+            return users;
         }
     }
 }
