@@ -97,6 +97,20 @@ namespace Restaurant
                     break;
             }
         }
+        public static Dish operator +(Dish dish, Ingredient ingredient)
+        {
+            dish.Ingredients.Add(ingredient);
+            return dish;
+        }
+        public static Dish operator -(Dish dish, Ingredient ingredient)
+        {
+            dish.Ingredients.Remove(ingredient);
+            return dish;
+        }
+        public override bool Equals(object? obj)
+        {
+            return DishName == (obj as Dish)?.DishName;
+        }
 
     }
 }

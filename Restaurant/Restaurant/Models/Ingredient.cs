@@ -102,5 +102,9 @@ namespace Restaurant
                     break;
             }
         }
+        public override bool Equals(Object? obj)
+        {
+            return IngredientName == (obj as Ingredient)?.IngredientName;
+        }
     }
 }
