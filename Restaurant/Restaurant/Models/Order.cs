@@ -25,7 +25,21 @@ namespace Restaurant
             return $"OrderId: {OrderId}\n" + $"OrderDate: {OrderDate.ToString()}\n" + $"Address: {Address}\n"
                + "UserOrder Information:" + $"{User.ToString()}\n" + $"OrderStatus: {OrderStatus.ToString()}\n";
         }
+        public Dish this[int index]
+        {
+            get { return OrderDishes[index]; }
+            set { OrderDishes[index] = value; }
+        }
+        public static Order operator +(Order order, Dish dish)
+        {
+            order.OrderDishes.Add(dish);
+            return order;
+        }
+        public static Order operator -(Order order, Dish dish)
+        {
+            order.OrderDishes.Remove(dish);
+            return order;
+        }
 
-       
     }
 }

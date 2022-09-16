@@ -1,6 +1,7 @@
 ﻿using Restaurant.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace Restaurant
 
     public class User:IPrintable,IEditObject<User>
     {
+        private DateTime birthDay;
+
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string UserSurname { get; set; }
@@ -20,7 +23,7 @@ namespace Restaurant
         public string UserEmail { get; set; }
         public int UserPhone { get; set; }
         public string UserPassword { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime BirthDay { get => birthDay; set => birthDay = value; }
         public string PhoneNumber { get; set; }
         public Role Role { get; set; }
         public List<Order> UserOrders { get; set; }
@@ -39,13 +42,15 @@ namespace Restaurant
             user.UserEmail = Console.ReadLine();
             Console.Write("Enter User Phone of the new dish: ");
             user.PhoneNumber = Console.ReadLine();
-            Console.Write("Write your Birthday day:");
-            int dayimp = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Write your Birthday month:");
-            int monthimp = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Write your Birthday year:");
-            int yearimp = Convert.ToInt32(Console.ReadLine());
-            user.BirthDay = new DateTime(yearimp, monthimp, dayimp);
+            //Console.Write("Write your Birthday day:");
+            //int dayimp = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Write your Birthday month:");
+            //int monthimp = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Write your Birthday year:");
+            //int yearimp = Convert.ToInt32(Console.ReadLine());
+            //user.BirthDay = new DateTime(yearimp, monthimp, dayimp);
+            Console.Write("Enter your birthday: ");
+            DateTime.TryParse(Console.ReadLine(), out birthDay);
             string password, confirm;
             do
             {
