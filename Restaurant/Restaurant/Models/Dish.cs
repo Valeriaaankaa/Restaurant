@@ -14,16 +14,16 @@ namespace Restaurant
         /// <summary>
         /// Information about dish that user orders
         /// </summary>
-        public int DishId { get; set; }
-        public string DishName { get; set; }
-        public decimal DishPrice { get; set; }
-        public string DishDescription { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
         public DishGroup DishGroup { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
         public string Print()
         {
-            return $"Dish ID: {DishId}\n" + $"Name: {DishName}\n" +  $"Cost: {DishPrice}\n" + $"DishGroup: {DishGroup}\n" + $"Description: {DishDescription}\n" ;
+            return $"Dish ID: {Id}\n" + $"Name: {Name}\n" +  $"Cost: {Price}\n" + $"DishGroup: {DishGroup}\n" + $"Description: {Description}\n" ;
         }
 
        
@@ -31,7 +31,7 @@ namespace Restaurant
         {
             Console.Write("Enter the name of the dish you want to delete:");
             string dishname = Console.ReadLine();
-            dishes.RemoveAll(x => x.DishName == dishname);
+            dishes.RemoveAll(x => x.Name == dishname);
         }
 
         //public Dish AddIngredientsToDish(List<Ingredient> ingred)
@@ -56,11 +56,11 @@ namespace Restaurant
             //Console.Write("Enter dish Id of the new dish: ");
             //dish.DishId = Convert.ToInt32(Console.ReadLine());
             Console.Write("Enter the name of the new dish: ");
-            dish.DishName=Console.ReadLine();
+            dish.Name=Console.ReadLine();
             Console.Write("Enter dish description of the new dish: ");
-            dish.DishDescription = Console.ReadLine();
+            dish.Description = Console.ReadLine();
             Console.Write("Enter dish price of the new dish: ");
-            dish.DishPrice = Convert.ToDecimal(Console.ReadLine());
+            dish.Price = Convert.ToDecimal(Console.ReadLine());
             Console.WriteLine("Choose type of the dish:");
             int i = 1;
             foreach (string t in Enum.GetNames(typeof(DishGroup)))
@@ -86,12 +86,12 @@ namespace Restaurant
                 case 1:
                     Console.Write("Write new price:");
                     decimal dishPrice = Convert.ToDecimal(Console.ReadLine());
-                    dishes.Where(dish => dish.DishName == dishname).ToList().ForEach(d => d.DishPrice = dishPrice);
+                    dishes.Where(dish => dish.Name == dishname).ToList().ForEach(d => d.Price = dishPrice);
                     break;
                 case 2:
                     Console.Write("Write new description:");
                     string dishdesc = Console.ReadLine();
-                    dishes.Where(dish => dish.DishName == dishname).ToList().ForEach(d => d.DishDescription = dishdesc);
+                    dishes.Where(dish => dish.Name == dishname).ToList().ForEach(d => d.Description = dishdesc);
                     break;
                     default: Console.WriteLine("Your choice is invalid");
                     break;
