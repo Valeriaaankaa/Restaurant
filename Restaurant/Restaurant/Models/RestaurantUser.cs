@@ -13,13 +13,12 @@ namespace Restaurant
 
     public class RestaurantUser:IPrintable,IEditObject<RestaurantUser>
     {
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string UserSurname { get; set; }
-        public string UserLogin { get; set; }
-        public string UserEmail { get; set; }
-        public int UserPhone { get; set; }
-        public string UserPassword { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Login { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public DateTime BirthDay { get; set; }
         public string PhoneNumber { get; set; }
         public Role Role { get; set; }
@@ -30,13 +29,13 @@ namespace Restaurant
             //USER REGISTRATION
             RestaurantUser user = new RestaurantUser(); 
             Console.Write("Enter User Name of the new User: ");
-            user.UserName = Console.ReadLine();
+            user.Name = Console.ReadLine();
             Console.Write("Enter User Surname of the new User: ");
-            user.UserSurname = Console.ReadLine();
+            user.Surname = Console.ReadLine();
             Console.Write("Enter User Login of the new User: ");
-            user.UserLogin = Console.ReadLine();
+            user.Login = Console.ReadLine();
             Console.Write("Enter User Email of the new dish: ");
-            user.UserEmail = Console.ReadLine();
+            user.Email = Console.ReadLine();
             Console.Write("Enter User Phone of the new dish: ");
             user.PhoneNumber = Console.ReadLine();
             Console.Write("Write your Birthday day:");
@@ -63,13 +62,13 @@ namespace Restaurant
         {
             Console.Write("Enter the Login of the User you want to delete:");
             string userlogin = Console.ReadLine();
-            users.RemoveAll(x => x.UserLogin == userlogin);
+            users.RemoveAll(x => x.Login == userlogin);
         }
 
         public string Print()
         {
-            return $"User ID: {UserId}\n" + $"Name: {UserName}\n" + $"Surname: {UserSurname}\n" 
-                + $"UserLogin: {UserLogin}\n" + $"UserEmail: {UserEmail}\n" + $"UserPassword: {UserPassword}\n"
+            return $"User ID: {Id}\n" + $"Name: {Name}\n" + $"Surname: {Surname}\n" 
+                + $"UserLogin: {Login}\n" + $"UserEmail: {Email}\n" + $"UserPassword: {Password}\n"
                 + $"BirthDay: {BirthDay.ToString()}\n" + $"PhoneNumber: {PhoneNumber}\n" + $"Role: {Role.ToString()}\n";
         }
 
@@ -85,12 +84,12 @@ namespace Restaurant
                 case 1:
                     Console.Write("Write new Name:");
                     string username = Console.ReadLine();
-                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.UserName = username);
+                    users.Where(i => i.Login == userlogin).ToList().ForEach(p => p.Name = username);
                     break;
                 case 2:
                     Console.Write("Write new Surname:");
                     string usersurname = Console.ReadLine();
-                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.UserSurname = usersurname);
+                    users.Where(i => i.Login == userlogin).ToList().ForEach(p => p.Surname = usersurname);
                     break;
                 case 3:
                     Console.Write("Write day:");
@@ -100,7 +99,7 @@ namespace Restaurant
                     Console.Write("Write year:");
                     int year = Convert.ToInt32(Console.ReadLine());
                     DateTime NewBirthDay = new DateTime(year, month, day);
-                    users.Where(i => i.UserLogin == userlogin).ToList().ForEach(p => p.BirthDay = NewBirthDay);
+                    users.Where(i => i.Login == userlogin).ToList().ForEach(p => p.BirthDay = NewBirthDay);
                     break;
                 case 4:
                     string password, confirm;
@@ -112,7 +111,7 @@ namespace Restaurant
                         confirm = Console.ReadLine();
                     }
                     while (password != confirm);
-                    users.Where(i => i.UserLogin == userlogin && i.UserPassword != password).ToList().ForEach(p => p.UserPassword = confirm);
+                    users.Where(i => i.Login == userlogin && i.Password != password).ToList().ForEach(p => p.Password = confirm);
                     break;
                 default:
                     Console.WriteLine("Your choice is invalid");
