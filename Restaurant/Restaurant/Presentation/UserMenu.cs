@@ -9,7 +9,7 @@ namespace Restaurant.Presentation
     public class UserMenu
     {
         readonly DelegateMenu m = new DelegateMenu();
-        private List <User> Users;
+        private List <RestaurantUser> Users;
         private List<Ingredient> Ingredients;
         private List<Dish> Dishes;
         private List<Order> Orders;
@@ -149,26 +149,26 @@ namespace Restaurant.Presentation
 
         private void CreateUser()
         {
-            var user = new User();
+            var user = new RestaurantUser();
             user.CreateObject();
             Users.Add(user);
         }
 
         private void UpdateUser()
         {
-            var user = new User();
+            var user = new RestaurantUser();
             user.UpdateObject(Users);
         }
 
         private void DeleteUser()
         {
-            var user = new User();
+            var user = new RestaurantUser();
             user.DeleteObject(Users);
         }
 
         private void PrintUser()
         {
-            var user = new User();
+            var user = new RestaurantUser();
             user.Print();
         }
 

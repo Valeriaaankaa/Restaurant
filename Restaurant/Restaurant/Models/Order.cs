@@ -16,7 +16,7 @@ namespace Restaurant
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public string Address { get; set; }
-        public User User { get; set; }
+        public RestaurantUser User { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public List<Dish> OrderDishes { get; set; }
 
