@@ -13,17 +13,17 @@ namespace Restaurant
         /// <summary>
         /// Information about User, that make order, place and date
         /// </summary>
-        public int OrderId { get; set; }
+        public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public string Address { get; set; }
-        public User User { get; set; }
+        public RestaurantUser RestaurantUser { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public List<Dish> OrderDishes { get; set; }
+        public List<Dish> DishesOrder { get; set; }
 
         public string Print()
         {
-            return $"OrderId: {OrderId}\n" + $"OrderDate: {OrderDate.ToString()}\n" + $"Address: {Address}\n"
-               + "UserOrder Information:" + $"{User.ToString()}\n" + $"OrderStatus: {OrderStatus.ToString()}\n";
+            return $"OrderId: {Id}\n" + $"OrderDate: {OrderDate.ToString()}\n" + $"Address: {Address}\n"
+               + "UserOrder Information:" + $"{RestaurantUser.ToString()}\n" + $"OrderStatus: {OrderStatus.ToString()}\n";
         }
 
        
