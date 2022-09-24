@@ -19,7 +19,7 @@ namespace Restaurant
         public string Login { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateOnly BirthDay { get; set; }
         public string PhoneNumber { get; set; }
         public Role Role { get; set; }
         public List<Order> UserOrders { get; set; }
@@ -44,7 +44,7 @@ namespace Restaurant
             int monthimp = Convert.ToInt32(Console.ReadLine());
             Console.Write("Write your Birthday year:");
             int yearimp = Convert.ToInt32(Console.ReadLine());
-            user.BirthDay = new DateTime(yearimp, monthimp, dayimp);
+            user.BirthDay = new DateOnly(yearimp, monthimp, dayimp);
             string password, confirm;
             do
             {
@@ -98,7 +98,7 @@ namespace Restaurant
                     int month = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Write year:");
                     int year = Convert.ToInt32(Console.ReadLine());
-                    DateTime NewBirthDay = new DateTime(year, month, day);
+                    DateOnly NewBirthDay = new DateOnly(year, month, day);
                     users.Where(i => i.Login == userlogin).ToList().ForEach(p => p.BirthDay = NewBirthDay);
                     break;
                 case 4:
