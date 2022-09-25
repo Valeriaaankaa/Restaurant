@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace Restaurant
 {
     
-    public class Dish:IPrintable, IEditObject<Dish>
+    public class Dish: IEditObject<Dish>
     {
         /// <summary>
         /// Information about dish that user orders
@@ -20,11 +20,6 @@ namespace Restaurant
         public string Description { get; set; }
         public DishGroup DishGroup { get; set; }
         public List<Ingredient> Ingredients { get; set; }
-
-        public string Print()
-        {
-            return $"Dish ID: {Id}\n" + $"Name: {Name}\n" +  $"Cost: {Price}\n" + $"DishGroup: {DishGroup}\n" + $"Description: {Description}\n" ;
-        }
 
        
         public void DeleteObject(List<Dish> dishes)
