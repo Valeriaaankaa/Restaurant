@@ -6,13 +6,20 @@ using Microsoft.VisualBasic;
 
 namespace Restaurant.Presentation
 {
-    public class UserMenu
+    public class UserMenu : ICollection<Dish>
     {
         readonly DelegateMenu m = new DelegateMenu();
         private List <RestaurantUser> Users;
         private List<Ingredient> Ingredients;
         private List<Dish> Dishes;
         private List<Order> Orders;
+
+        public Dish Current => throw new NotImplementedException();
+
+        public int Count => throw new NotImplementedException();
+
+        public bool IsReadOnly => throw new NotImplementedException();
+
         public UserMenu()
         {
             Users = new();
@@ -20,7 +27,11 @@ namespace Restaurant.Presentation
             Ingredients = new();
             Orders = new();
         }
-
+        public Dish this[int index]
+        {
+            get => Dishes[index];
+            set => Dishes[index] = value;
+        }
         public void Run() => ShowAvailableOperation();
 
         private void ShowAvailableOperation()
@@ -172,7 +183,41 @@ namespace Restaurant.Presentation
             user.Print();
         }
 
-
-
+        public IEnumerator<Dish> GetEnumerator()
+        {
+            return Dishes.GetEnumerator();
+        }
+        public bool MoveNext()
+        {
+            return GetEnumerator().MoveNext();
+        }
+        public void Dispose()
+        {
+            Dishes.GetEnumerator().Dispose();
+        }
+        public void Add(Dish item)
+        {
+            Dishes.Add(item);
+        }
+        public void Clear()
+        {
+            Dishes.Clear();
+        }
+        public bool Contains(Dish item)
+        {
+            return Dishes.Contains(item);
+        }
+        public void CopyTo(Dish[] array, int arrayIndex)
+        {
+            Dishes.CopyTo(array, arrayIndex);
+        }
+        public bool Remove(Dish item)
+        {
+            return Dishes.Remove(item);
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Dishes.GetEnumerator();
+        }
     }
 }
