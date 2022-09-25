@@ -3,22 +3,25 @@ using System.Linq;
 using System.Collections;
 using static Restaurant.Presentation.DelegateModel;
 using Microsoft.VisualBasic;
+using Restaurant.Services;
 
 namespace Restaurant.Presentation
 {
     public class UserMenu
     {
         readonly DelegateMenu m = new DelegateMenu();
-        private List <RestaurantUser> Users;
+        private List <RestaurantUser> RestaurantUsers;
         private List<Ingredient> Ingredients;
         private List<Dish> Dishes;
         private List<Order> Orders;
+        private InfoPrinterService _infoPrinterService;
         public UserMenu()
         {
-            Users = new();
+            RestaurantUsers = new();
             Dishes = new();
             Ingredients = new();
             Orders = new();
+            _infoPrinterService = new();
         }
 
         public void Run() => ShowAvailableOperation();
@@ -50,7 +53,7 @@ namespace Restaurant.Presentation
             m.Add("1: Create Dish", CreateDish);
             m.Add("2: Update Dish", UpdateDish);
             m.Add("3: Delete Dish", DeleteDish);
-            m.Add("4: Print Dish", PrintDish);
+            m.Add("4: Print all Dishes info", PrintDishesInfo);
             m.Show();
             m.GetChoice();
             GoBack();
@@ -75,10 +78,9 @@ namespace Restaurant.Presentation
             dish.DeleteObject(Dishes);
         }
 
-        private void PrintDish()
+        private void PrintDishesInfo()
         {
-            var dish = new Dish();
-            dish.Print();
+            _infoPrinterService.PrintAllDishesInfo(Dishes);
         }
 
         //Ingredient UI functions
@@ -88,7 +90,7 @@ namespace Restaurant.Presentation
             m.Add("1: Create Ingredient", CreateIngredient);
             m.Add("2: Update Ingredient", UpdateIngredient);
             m.Add("3: Delete Ingredient", DeleteIngredient);
-            m.Add("4: Print Ingredient", PrintIngredient);
+            m.Add("4: Print all Ingredients", PrintIngredientsInfo);
             m.Show();
             m.GetChoice();
             GoBack();
@@ -96,8 +98,10 @@ namespace Restaurant.Presentation
         private void CreateIngredient()
         {
             var ingredient = new Ingredient();
-            ingredient.CreateObject();
+            ingredient = ingredient.CreateObject();
             Ingredients.Add(ingredient);
+
+           
         }
 
         private void UpdateIngredient()
@@ -112,26 +116,24 @@ namespace Restaurant.Presentation
             ingredient.DeleteObject(Ingredients);
         }
 
-        private void PrintIngredient()
+        private void PrintIngredientsInfo()
         {
-            var ingredient = new Ingredient();
-            ingredient.Print();
+            _infoPrinterService.PrintAllIngredientsInfo(Ingredients);
         }
 
         //Order UI functions
         private void OrderOptions()
         {
             m.Remove();
-            m.Add("4: Print User", PrintOrder);
+            m.Add("1: Print all Orders info", PrintOrdersInfo);
             m.Show();
             m.GetChoice();
             GoBack();
         }
 
-        private void PrintOrder()
-        {
-            var order = new Order();
-            order.Print();
+        private void PrintOrdersInfo()
+        {;
+            _infoPrinterService.PrintAllOrdersInfo(Orders);
         }
 
         //User UI functions
@@ -141,7 +143,7 @@ namespace Restaurant.Presentation
             m.Add("1: Create User", CreateUser);
             m.Add("2: Update User", UpdateUser);
             m.Add("3: Delete User", DeleteUser);
-            m.Add("4: Print User", PrintUser);
+            m.Add("4: Print all Users info", PrintUsersInfo);
             m.Show();
             m.GetChoice();
             GoBack();
@@ -150,29 +152,25 @@ namespace Restaurant.Presentation
         private void CreateUser()
         {
             var user = new RestaurantUser();
-            user.CreateObject();
-            Users.Add(user);
+            user = user.CreateObject();
+            RestaurantUsers.Add(user);
         }
 
         private void UpdateUser()
         {
             var user = new RestaurantUser();
-            user.UpdateObject(Users);
+            user.UpdateObject(RestaurantUsers);
         }
 
         private void DeleteUser()
         {
             var user = new RestaurantUser();
-            user.DeleteObject(Users);
+            user.DeleteObject(RestaurantUsers);
         }
 
-        private void PrintUser()
-        {
-            var user = new RestaurantUser();
-            user.Print();
+        private void PrintUsersInfo()
+        {           
+            _infoPrinterService.PrintAllUsersInfo(RestaurantUsers);
         }
-
-
-
     }
 }
