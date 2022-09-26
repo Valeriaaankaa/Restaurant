@@ -11,7 +11,7 @@ namespace Restaurant
     /// Information about User that orders dishes
     /// </summary>
 
-    public class RestaurantUser:IPrintable,IEditObject<RestaurantUser>
+    public class RestaurantUser:IEditObject<RestaurantUser>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -63,13 +63,6 @@ namespace Restaurant
             Console.Write("Enter the Login of the User you want to delete:");
             string userlogin = Console.ReadLine();
             users.RemoveAll(x => x.Login == userlogin);
-        }
-
-        public string Print()
-        {
-            return $"User ID: {Id}\n" + $"Name: {Name}\n" + $"Surname: {Surname}\n" 
-                + $"UserLogin: {Login}\n" + $"UserEmail: {Email}\n" + $"UserPassword: {Password}\n"
-                + $"BirthDay: {BirthDay.ToString()}\n" + $"PhoneNumber: {PhoneNumber}\n" + $"Role: {Role.ToString()}\n";
         }
 
         public void UpdateObject(List<RestaurantUser> users)
