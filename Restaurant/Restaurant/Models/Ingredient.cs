@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public class Ingredient:IPrintable, IEditObject<Ingredient>
+    public class Ingredient: IEditObject<Ingredient>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -52,12 +52,6 @@ namespace Restaurant
             ingred.RemoveAll(x => x.Name == ingrname);
         }
 
-        public string Print()
-        {
-            return $"Ingredient ID: {Id}\n" + $"Name: {Name}\n" + $"Cost: {Price}\n" + $"IngredientAmount: {Amount}\n"
-                + $"ImportDate: {ImportDate}\n"
-                + $"ExpirationDate: {ExpirationDate}\n";
-        }
 
         public void UpdateObject(List<Ingredient> ingred)
         {
