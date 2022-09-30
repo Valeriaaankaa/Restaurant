@@ -8,6 +8,9 @@ namespace Restaurant.Interfaces
 {
     internal interface IPrintable
     {
-        string Print();
+        void PrintAllDishesInfo(List<Dish> dishes);
+        void PrintAllIngredientsInfo(List<Ingredient> ingredients);
+        void PrintAllOrdersInfo(List<Order> orders);
+        void PrintAllUsersInfo(List<RestaurantUser> restaurantUser);
     }
 }

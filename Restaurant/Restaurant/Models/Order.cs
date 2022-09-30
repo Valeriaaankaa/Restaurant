@@ -8,24 +8,17 @@ using System.Threading.Tasks;
 namespace Restaurant
 {
     
-    public class Order:IPrintable
+    public class Order
     {
         /// <summary>
         /// Information about User, that make order, place and date
         /// </summary>
-        public int OrderId { get; set; }
+        public int Id { get; set; }
         public DateTime OrderDate { get; set; }
         public string Address { get; set; }
-        public User User { get; set; }
+        public RestaurantUser RestaurantUser { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public List<Dish> OrderDishes { get; set; }
-
-        public string Print()
-        {
-            return $"OrderId: {OrderId}\n" + $"OrderDate: {OrderDate.ToString()}\n" + $"Address: {Address}\n"
-               + "UserOrder Information:" + $"{User.ToString()}\n" + $"OrderStatus: {OrderStatus.ToString()}\n";
-        }
-
+        public List<Dish> DishesOrder { get; set; }
        
     }
 }
