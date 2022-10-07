@@ -13,7 +13,6 @@ namespace Restaurant.Presentation
         private List <RestaurantUser> RestaurantUsers;
         private List<Ingredient> Ingredients;
         private List<Dish> Dishes;
-
         private List<Order> Orders;
 
         public Dish Current => throw new NotImplementedException();
@@ -21,8 +20,6 @@ namespace Restaurant.Presentation
         public int Count => throw new NotImplementedException();
 
         public bool IsReadOnly => throw new NotImplementedException();
-
-        private List<Order> Orders;
         private InfoPrinterService _infoPrinterService;
 
         public UserMenu()

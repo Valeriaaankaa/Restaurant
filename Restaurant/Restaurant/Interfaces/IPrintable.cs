@@ -8,9 +8,9 @@ namespace Restaurant.Interfaces
 {
     internal interface IPrintable
     {
-        void PrintAllDishesInfo(List<Dish> dishes);
-        void PrintAllIngredientsInfo(List<Ingredient> ingredients);
-        void PrintAllOrdersInfo(List<Order> orders);
-        void PrintAllUsersInfo(List<RestaurantUser> restaurantUser);
+        void PrintAllDishesInfo(IEnumerable<Dish> dishes);
+        void PrintAllIngredientsInfo(IEnumerable<Ingredient> ingredients);
+        void PrintAllOrdersInfo(IEnumerable<Order> orders);
+        void PrintAllUsersInfo(IEnumerable<RestaurantUser> restaurantUser);
     }
 }

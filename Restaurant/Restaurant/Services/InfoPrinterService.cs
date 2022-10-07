@@ -10,9 +10,9 @@ namespace Restaurant.Services
 {
     internal class InfoPrinterService : IPrintable
     {
-        public void PrintAllDishesInfo(List<Dish> dishes)
+        public void PrintAllDishesInfo(IEnumerable<Dish> dishes)
         {
-            if (dishes.Count != 0)
+            if (dishes.Count() != 0)
             {
                 foreach (var dish in dishes)
                 {
@@ -27,9 +27,9 @@ namespace Restaurant.Services
             }
         }
 
-        public void PrintAllIngredientsInfo(List<Ingredient> ingredients)
+        public void PrintAllIngredientsInfo(IEnumerable<Ingredient> ingredients)
         {
-            if (ingredients.Count != 0)
+            if (ingredients.Count() != 0)
             {
                 foreach (var ingredient in ingredients)
                 {
@@ -44,9 +44,9 @@ namespace Restaurant.Services
             }
         }
 
-        public void PrintAllOrdersInfo(List<Order> orders)
+        public void PrintAllOrdersInfo(IEnumerable<Order> orders)
         {
-            if (orders.Count != 0)
+            if (orders.Count() != 0)
             {
                 foreach (var order in orders)
                 {
@@ -61,9 +61,9 @@ namespace Restaurant.Services
             }
         }
 
-        public void PrintAllUsersInfo(List<RestaurantUser> restaurantUser)
+        public void PrintAllUsersInfo(IEnumerable<RestaurantUser> restaurantUser)
         {
-            if (restaurantUser.Count != 0)
+            if (restaurantUser.Count() != 0)
             {
                 foreach (var user in restaurantUser)
                 {
