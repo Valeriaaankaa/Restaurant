@@ -12,7 +12,7 @@ namespace Restaurant.Services
     {
         public void PrintAllDishesInfo(IEnumerable<Dish> dishes)
         {
-            if (dishes.Count() != 0)
+            if (dishes.Count ()!= 0)
             {
                 foreach (var dish in dishes)
                 {
@@ -44,22 +44,23 @@ namespace Restaurant.Services
             }
         }
 
-        public void PrintAllOrdersInfo(IEnumerable<Order> orders)
-        {
-            if (orders.Count() != 0)
+
+
+         public void PrintAllOrdersInfo(Dictionary<int, List<Order>> orders)
+         {
+            foreach (var order in orders)
             {
-                foreach (var order in orders)
-                {
-                    Console.WriteLine($"Orders: \n" + $"OrderDate: {order.OrderDate.ToString()}\n" +
-                                    $"Address: {order.Address}\n" + "UserOrder Information:" + $"{order.RestaurantUser.ToString()}\n" +
-                                    $"OrderStatus: {order.OrderStatus.ToString()}\n");
+                Console.WriteLine(order.Key);
+                var lines = order.Value.SelectMany(o=>o.DishesOrder);
+                foreach (var line in lines)
+                {                 
+                    Console.WriteLine(line.Name);
                 }
             }
-            else
-            {
-                Console.WriteLine("There aren't orders in the list");
-            }
-        }
+
+
+
+         }
 
         public void PrintAllUsersInfo(IEnumerable<RestaurantUser> restaurantUser)
         {

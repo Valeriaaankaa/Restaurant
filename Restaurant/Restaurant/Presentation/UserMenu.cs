@@ -13,7 +13,9 @@ namespace Restaurant.Presentation
         private List <RestaurantUser> RestaurantUsers;
         private List<Ingredient> Ingredients;
         private List<Dish> Dishes;
-        private List<Order> Orders;
+
+
+        private Dictionary<int, List<Order>> Orders;
 
         public Dish Current => throw new NotImplementedException();
 
@@ -246,13 +248,33 @@ namespace Restaurant.Presentation
         {
             m.Remove();
             m.Add("1: Print all Orders info", PrintOrdersInfo);
+            m.Add("2: CreateOrders", CreateOrders);
             m.Show();
             m.GetChoice();
             GoBack();
         }
 
+        private void CreateOrders()
+        {
+            Orders.Add(1, 
+                new List<Order>() {
+                    new Order() {Id = 1, Address="Kharkiv", DishesOrder = Dishes }, 
+                    new Order() {Id = 2, Address="Kharkiv", DishesOrder = Dishes },
+                    new Order() {Id = 3, Address="Kharkiv", DishesOrder = Dishes }                 
+                });
+            Orders.Add(2, 
+                new List<Order>() {
+                    new Order() {Id = 5, Address="Kharkiv", DishesOrder = Dishes }, 
+                    new Order() {Id = 6, Address="Kharkiv", DishesOrder = Dishes },
+                    new Order() {Id = 7, Address="Kharkiv", DishesOrder = Dishes }                 
+                });
+
+
+                
+        }
+
         private void PrintOrdersInfo()
-        {;
+        {
             _infoPrinterService.PrintAllOrdersInfo(Orders);
         }
 

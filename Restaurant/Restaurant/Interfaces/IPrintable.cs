@@ -8,9 +8,12 @@ namespace Restaurant.Interfaces
 {
     internal interface IPrintable
     {
-        void PrintAllDishesInfo(IEnumerable<Dish> dishes);
+        void PrintAllOrdersInfo(Dictionary<int, List<Order>> orders);
+
         void PrintAllIngredientsInfo(IEnumerable<Ingredient> ingredients);
-        void PrintAllOrdersInfo(IEnumerable<Order> orders);
+
+        void PrintAllDishesInfo(IEnumerable<Dish> dishes);
+
         void PrintAllUsersInfo(IEnumerable<RestaurantUser> restaurantUser);
     }
 }
