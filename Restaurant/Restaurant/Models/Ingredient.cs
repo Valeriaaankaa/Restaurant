@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Restaurant
 {
-    public class Ingredient: IEditObject<Ingredient>
+    public class Ingredient
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,84 +16,39 @@ namespace Restaurant
         public DateTime ImportDate { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        public Ingredient CreateObject()
-        {
-            Ingredient ingredient = new Ingredient();
-            //Console.Write("Enter ingredient Id of the new ingredient: ");
-            //ingredient.IngredientId = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the name of the new ingredient: ");
-            ingredient.Name = Console.ReadLine();
-            Console.Write("Enter ingredient price of the new ingredient: ");
-            ingredient.Price = Convert.ToDecimal(Console.ReadLine());
-            Console.Write("Enter ingredient amoubt of the new ingredient: ");
-            ingredient.Amount = Convert.ToDecimal(Console.ReadLine());
-            Console.Write("Write day of Import:");
-            int dayimp = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Write month of Import:");
-            int monthimp = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Write year of Import:");
-            int yearimp = Convert.ToInt32(Console.ReadLine());
-            ingredient.ImportDate = new DateTime(yearimp, monthimp, dayimp);
-            Console.Write("Write day of Expiration:");
-            int dayexp = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Write month of Expiration:");
-            int monthexp = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Write year of Expiration:");
-            int yearexp = Convert.ToInt32(Console.ReadLine());
-            ingredient.ImportDate = new DateTime(yearexp, monthexp, dayexp);
+        public Ingredient ()
+	    {
 
-            return ingredient;
+	    }
+
+        public Ingredient (string Name, decimal Price, decimal Amount, DateTime ImportDate, DateTime ExpirationDate)
+        {
+            this.Name =  Name;
+            this.Price = Price;
+            this.Amount = Amount;
+            this.ImportDate = ImportDate;
+            this.ExpirationDate = ExpirationDate;
         }
 
-        public void DeleteObject(List<Ingredient> ingred)
-        {
-            Console.Write("Enter the name of the ingredient you want to delete:");
-            string ingrname = Console.ReadLine();
-            ingred.RemoveAll(x => x.Name == ingrname);
+        public void DeleteObject(List<Ingredient> ingred, string ingrname)
+        {            
+            var ingredname = ingred.FirstOrDefault(u=>u.Name == ingrname);
+            ingred.Remove(ingredname);
         }
 
 
-        public void UpdateObject(List<Ingredient> ingred)
+        public bool UpdateObject(List<Ingredient> Ingredients, Ingredient updateingred)
         {
-            Console.Write("Enter the name of ingredient you want to change: ");
-            string ingredname = Console.ReadLine();
-            Console.WriteLine("What do you want to change?\n 1.Ingredient price\n2.Ingredient amount\n3.Import Date\n4. Expiration Date\nYour choice:");
-            int choise = Convert.ToInt32(Console.ReadLine());
-            switch (choise)
+            var ingredient = Ingredients.FirstOrDefault(u=>u.Name == updateingred.Name);
+             if( ingredient == null)
+            { 
+                return false;               
+            }
+            else
             {
-                case 1:
-                    Console.Write("Write new price:");
-                    decimal ingredPrice = Convert.ToDecimal(Console.ReadLine());
-                    ingred.Where(i => i.Name == ingredname).ToList().ForEach(p => p.Price = ingredPrice);
-                    break;
-                case 2:
-                    Console.Write("Write new amount:");
-                    decimal ingredamount = Convert.ToDecimal(Console.ReadLine());
-                    ingred.Where(i => i.Name == ingredname && ingredamount>=0).ToList().ForEach(p => p.Amount = ingredamount);
-                    break;
-                case 3:
-                    Console.Write("Write day:");
-                    int dayimp = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Write month:");
-                    int monthimp = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Write year:");
-                    int yearimp = Convert.ToInt32(Console.ReadLine());
-                    DateTime NewImportDate = new DateTime(yearimp, monthimp, dayimp);
-                    ingred.Where(i => i.Name == ingredname).ToList().ForEach(p => p.ImportDate = NewImportDate);
-                    break;
-                case 4:
-                    Console.Write("Write day:");
-                    int dayexp = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Write month:");
-                    int monthexp = Convert.ToInt32(Console.ReadLine());
-                    Console.Write("Write year:");
-                    int yearexp = Convert.ToInt32(Console.ReadLine());
-                    DateTime NewExpirationDate = new DateTime(yearexp, monthexp, dayexp);
-                    ingred.Where(i => i.Name == ingredname && NewExpirationDate > DateTime.Now).ToList().ForEach(p => p.ImportDate = NewExpirationDate);
-                    break;
-                default:
-                    Console.WriteLine("Your choice is invalid");
-                    break;
+                Ingredients.Remove(ingredient);
+                Ingredients.Add(updateingred);
+                return true;   
             }
         }
     }
