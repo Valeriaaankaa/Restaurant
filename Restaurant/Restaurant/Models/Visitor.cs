@@ -11,7 +11,7 @@ namespace Restaurant
     /// Information about User that orders dishes
     /// </summary>
 
-    public class RestaurantUser:IPrintable,IEditObject<RestaurantUser>
+    public class Visitor:IPrintable,IEditObject<Visitor>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -21,13 +21,12 @@ namespace Restaurant
         public string Password { get; set; }
         public DateOnly BirthDay { get; set; }
         public string PhoneNumber { get; set; }
-        public Role Role { get; set; }
         public List<Order> UserOrders { get; set; }
 
-        public RestaurantUser CreateObject()
+        public Visitor CreateObject()
         {
             //USER REGISTRATION
-            RestaurantUser user = new RestaurantUser(); 
+            Visitor user = new (); 
             Console.Write("Enter User Name of the new User: ");
             user.Name = Console.ReadLine();
             Console.Write("Enter User Surname of the new User: ");
@@ -58,7 +57,7 @@ namespace Restaurant
              return user;
         }
 
-        public void DeleteObject(List<RestaurantUser> users)
+        public void DeleteObject(List<Visitor> users)
         {
             Console.Write("Enter the Login of the User you want to delete:");
             string userlogin = Console.ReadLine();
@@ -72,7 +71,7 @@ namespace Restaurant
                 + $"BirthDay: {BirthDay.ToString()}\n" + $"PhoneNumber: {PhoneNumber}\n" + $"Role: {Role.ToString()}\n";
         }
 
-        public void UpdateObject(List<RestaurantUser> users)
+        public void UpdateObject(List<Visitor> users)
         {
 
             Console.Write("Enter the Login of the User you want to change: ");
