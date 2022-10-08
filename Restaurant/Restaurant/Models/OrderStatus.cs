@@ -11,7 +11,7 @@ namespace Restaurant
     /// </summary>
     public enum OrderStatus
     {
-        Denied = 1,
+        Denied,
         Confirmed,
         InProgress,
         Done
