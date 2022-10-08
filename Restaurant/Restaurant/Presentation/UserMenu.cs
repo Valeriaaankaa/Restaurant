@@ -16,6 +16,7 @@ namespace Restaurant.Presentation
 
 
         private Dictionary<int, List<Order>> Orders;
+        private Dictionary<string, List<Ingredient>> DishIngredients;
 
         public Dish Current => throw new NotImplementedException();
 

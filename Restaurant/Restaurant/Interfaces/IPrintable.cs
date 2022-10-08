@@ -10,6 +10,8 @@ namespace Restaurant.Interfaces
     {
         void PrintAllOrdersInfo(Dictionary<int, List<Order>> orders);
 
+        void PrintDishesInfo(Dictionary<string, List<Dish>> ingredients);
+
         void PrintAllIngredientsInfo(IEnumerable<Ingredient> ingredients);
 
         void PrintAllDishesInfo(IEnumerable<Dish> dishes);

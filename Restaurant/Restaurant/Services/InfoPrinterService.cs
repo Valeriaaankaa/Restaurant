@@ -79,5 +79,18 @@ namespace Restaurant.Services
                 Console.WriteLine("There aren't restaurant users in the list");
             }
         }
+
+        public void PrintDishesInfo(Dictionary<string, List<Dish>> ingredients)
+        {
+            foreach (var ingred in ingredients)
+            {
+                Console.WriteLine(ingred.Key);
+                var lines = ingred.Value.SelectMany(o => o.Ingredients);
+                foreach (var line in lines)
+                {
+                    Console.WriteLine(line.Name);
+                }
+            }
+        }
     }
 }
