@@ -141,6 +141,15 @@ namespace Restaurant.Presentation
         {
             _infoPrinterService.PrintAllDishesInfo(Dishes);
         }
+        private void PrintCheapDishesInfo()
+        {
+            _infoPrinterService.PrintAllDishesInfo(Dishes.Where(x => x.Price < Dishes.Average(y => y.Price)));
+        }
+        private void PrintExpensiveDishesInfo()
+        {
+            _infoPrinterService.PrintAllDishesInfo(Dishes.Where(x => x.Price > Dishes.Average(y => y.Price)));
+        }
+
 
         private void SortDishesByCategory() => Dishes.Sort((p1, p2) => p1.DishGroup.CompareTo(p2.DishGroup));
 
