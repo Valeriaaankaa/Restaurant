@@ -90,6 +90,7 @@ namespace Restaurant.Presentation
 
             var dish = new Dish(Name, Description, Price, group);
             Dishes.Add(dish);
+            SortDishesByCategory();
         }
 
         private void UpdateDish()
@@ -116,6 +117,7 @@ namespace Restaurant.Presentation
             if(result)
             {
                 Console.Write("Dish Updated");
+                SortDishesByCategory();
             }
             else
             {
@@ -132,12 +134,15 @@ namespace Restaurant.Presentation
 
             var dish = new Dish();
             dish.DeleteObject(Dishes, ingrname);
+            SortDishesByCategory();
         }
 
         private void PrintDishesInfo()
         {
             _infoPrinterService.PrintAllDishesInfo(Dishes);
         }
+
+        private void SortDishesByCategory() => Dishes.Sort((p1, p2) => p1.DishGroup.CompareTo(p2.DishGroup));
 
         //Ingredient UI functions
         private void IngredientOptions()

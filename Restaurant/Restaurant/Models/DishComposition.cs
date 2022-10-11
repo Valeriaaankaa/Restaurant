@@ -11,6 +11,6 @@ namespace Restaurant.Models
         public int Id { get; set; }
         public Dish Dish { get; set; }
         public Ingredient Ingredient { get; set; }
-        public decimal amount { get; set; }
+        public decimal Amount { get; set; }
     }
 }
