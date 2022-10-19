@@ -1,0 +1,13 @@
+.card-columns {
+    column-count: 3;
+}
+
+body{
+  
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+  }
