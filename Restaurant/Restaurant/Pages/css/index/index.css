@@ -167,5 +167,9 @@
 .right_block {
     float: right;
     width: 50%;
-    margin-top: 40px;
+   margin-top: 40px;
+}
+
+.left_block img{
+    margin-left:-25%;
 }
