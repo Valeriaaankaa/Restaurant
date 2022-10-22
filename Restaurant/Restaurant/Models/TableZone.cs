@@ -8,7 +8,7 @@ namespace Restaurant.Models
 {
     public enum TableZone
     {
-        GoldenPalace=1,
+        GoldenPalace,
         Pariz,
         BanquetHall
     }

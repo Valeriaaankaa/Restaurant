@@ -19,6 +19,11 @@ namespace Restaurant
         public RestaurantUser RestaurantUser { get; set; }
         public OrderStatus OrderStatus { get; set; }
         public List<Dish> DishesOrder { get; set; }
+
+        public Order ()
+	    {
+
+	    }
        
     }
 }

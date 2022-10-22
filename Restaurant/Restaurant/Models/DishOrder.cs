@@ -11,6 +11,6 @@ namespace Restaurant.Models
         public int Id { get; set; }
         public Order Order { get; set; }
         public Dish Dish { get; set; }
-        public int amount { get; set; }
+        public int Amount { get; set; }
     }
 }

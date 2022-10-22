@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace Restaurant
 {
     
-    public class Dish: IEditObject<Dish>
+    public class Dish
     {
         /// <summary>
         /// Information about dish that user orders
@@ -21,76 +21,43 @@ namespace Restaurant
         public DishGroup DishGroup { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
+        public Dish ()
+	    {
+
+	    }
        
-        public void DeleteObject(List<Dish> dishes)
-        {
-            Console.Write("Enter the name of the dish you want to delete:");
-            string dishname = Console.ReadLine();
-            dishes.RemoveAll(x => x.Name == dishname);
+        public void DeleteObject(List<Dish> dishes,string dishname)
+        {            
+            var dish = dishes.FirstOrDefault(u=>u.Name == dishname);
+            dishes.Remove(dish);
         }
 
-        //public Dish AddIngredientsToDish(List<Ingredient> ingred)
-        //{
-        //    Console.Write("Add new ingredient? \n1 - Yes\n2 - No\n3 - Stop adding ingredients\n Your choice:");
-        //    int choice = Convert.ToInt32(Console.ReadLine());
-        //    for(int i=0; i<ingred.Count; i++)   
-        //    {
-        //        if (choice == 3)
-        //            break;
-        //        else
-        //        {
-        //            Console.WriteLine($"{i+1}. {}")
-        //        }
-        //    }
+        public Dish (string name, string description, decimal price, int dishGroup)
+	    {
+            Name = name;
+            Price = price;
+            Description = description;
+            DishGroup = (DishGroup) dishGroup;
+	    }
 
-        //}
-
-        Dish IEditObject<Dish>.CreateObject()
+        public bool UpdateObject(List<Dish> dishes, Dish updatedish)
         {
-            Dish dish = new Dish();
-            //Console.Write("Enter dish Id of the new dish: ");
-            //dish.DishId = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Enter the name of the new dish: ");
-            dish.Name=Console.ReadLine();
-            Console.Write("Enter dish description of the new dish: ");
-            dish.Description = Console.ReadLine();
-            Console.Write("Enter dish price of the new dish: ");
-            dish.Price = Convert.ToDecimal(Console.ReadLine());
-            Console.WriteLine("Choose type of the dish:");
-            int i = 1;
-            foreach (string t in Enum.GetNames(typeof(DishGroup)))
-            {
-                Console.WriteLine($"{i}.{t}");
-                i++;
-            }
-            Console.Write("Your choice: ");
-            int choicegroup = Convert.ToInt32(Console.ReadLine());
-            dish.DishGroup = (DishGroup)choicegroup; //TEST THIS
-            //ADD INGREDIENTS
-            return dish;
-        }
+            var dish = dishes.FirstOrDefault(u=>u.Name == updatedish.Name);
 
-        void IEditObject<Dish>.UpdateObject(List<Dish> dishes)
-        {
-            Console.Write("Enter the name of dish you want to change: ");
-            string dishname = Console.ReadLine();
-            Console.WriteLine("What do you want to change?\n 1.Dish price\n2.Dish description\nYour choice:");
-            int choise = Convert.ToInt32(Console.ReadLine());
-            switch (choise)
-            {
-                case 1:
-                    Console.Write("Write new price:");
-                    decimal dishPrice = Convert.ToDecimal(Console.ReadLine());
-                    dishes.Where(dish => dish.Name == dishname).ToList().ForEach(d => d.Price = dishPrice);
-                    break;
-                case 2:
-                    Console.Write("Write new description:");
-                    string dishdesc = Console.ReadLine();
-                    dishes.Where(dish => dish.Name == dishname).ToList().ForEach(d => d.Description = dishdesc);
-                    break;
-                    default: Console.WriteLine("Your choice is invalid");
-                    break;
+            
+             if( dish == null)
+            { 
+                return false;               
             }
+            else
+            { dishes.Remove(dish);
+            dishes.Add(updatedish);
+                return true;   
+            }
+
+
+           
+            
         }
 
     }

@@ -10,9 +10,9 @@ namespace Restaurant.Services
 {
     internal class InfoPrinterService : IPrintable
     {
-        public void PrintAllDishesInfo(List<Dish> dishes)
+        public void PrintAllDishesInfo(IEnumerable<Dish> dishes)
         {
-            if (dishes.Count != 0)
+            if (dishes.Count ()!= 0)
             {
                 foreach (var dish in dishes)
                 {
@@ -27,9 +27,9 @@ namespace Restaurant.Services
             }
         }
 
-        public void PrintAllIngredientsInfo(List<Ingredient> ingredients)
+        public void PrintAllIngredientsInfo(IEnumerable<Ingredient> ingredients)
         {
-            if (ingredients.Count != 0)
+            if (ingredients.Count() != 0)
             {
                 foreach (var ingredient in ingredients)
                 {
@@ -44,26 +44,27 @@ namespace Restaurant.Services
             }
         }
 
-        public void PrintAllOrdersInfo(List<Order> orders)
-        {
-            if (orders.Count != 0)
+
+
+         public void PrintAllOrdersInfo(Dictionary<int, List<Order>> orders)
+         {
+            foreach (var order in orders)
             {
-                foreach (var order in orders)
-                {
-                    Console.WriteLine($"Orders: \n" + $"OrderDate: {order.OrderDate.ToString()}\n" +
-                                    $"Address: {order.Address}\n" + "UserOrder Information:" + $"{order.RestaurantUser.ToString()}\n" +
-                                    $"OrderStatus: {order.OrderStatus.ToString()}\n");
+                Console.WriteLine(order.Key);
+                var lines = order.Value.SelectMany(o=>o.DishesOrder);
+                foreach (var line in lines)
+                {                 
+                    Console.WriteLine(line.Name);
                 }
             }
-            else
-            {
-                Console.WriteLine("There aren't orders in the list");
-            }
-        }
 
-        public void PrintAllUsersInfo(List<RestaurantUser> restaurantUser)
+
+
+         }
+
+        public void PrintAllUsersInfo(IEnumerable<RestaurantUser> restaurantUser)
         {
-            if (restaurantUser.Count != 0)
+            if (restaurantUser.Count() != 0)
             {
                 foreach (var user in restaurantUser)
                 {
@@ -76,6 +77,19 @@ namespace Restaurant.Services
             else
             {
                 Console.WriteLine("There aren't restaurant users in the list");
+            }
+        }
+
+        public void PrintDishesInfo(Dictionary<string, List<Dish>> ingredients)
+        {
+            foreach (var ingred in ingredients)
+            {
+                Console.WriteLine(ingred.Key);
+                var lines = ingred.Value.SelectMany(o => o.Ingredients);
+                foreach (var line in lines)
+                {
+                    Console.WriteLine(line.Name);
+                }
             }
         }
     }
