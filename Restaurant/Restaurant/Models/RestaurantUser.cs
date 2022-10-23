@@ -21,7 +21,6 @@ namespace Restaurant
         public string Password { get; set; }
         public DateOnly BirthDay { get; set; }
         public string PhoneNumber { get; set; }
-        public Role Role { get; set; }
         public List<Order> UserOrders { get; set; }
 
         public RestaurantUser (string Name, string Surname, string Login, string Email, string PhoneNumber, DateOnly BirthDay)

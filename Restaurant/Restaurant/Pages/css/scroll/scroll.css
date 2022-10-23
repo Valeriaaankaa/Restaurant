@@ -65,15 +65,19 @@ section {
     padding: 10px;
 }
 
+.grid-container_info{
+    display:grid;
+    grid-template-columns: auto auto;
+    
+}
+
+
 .grid-item {
     display: flex;
     align-items: center;
 }
 
-footer{
-    background-color:black;
-}
 
-.footer-text{
-    color:white;
+html {
+    scroll-behavior: smooth;
 }

@@ -159,17 +159,64 @@
     }
 }
 
-.left_block {
-    float: left;
-    width: 50%;
+#restphoto{
+    margin-left:-15%;
 }
 
-.right_block {
-    float: right;
-    width: 50%;
-   margin-top: 40px;
+@media (max-width:1250px) {
+    #restphoto {
+        width: 115%;
+        height: 95%;
+    }
+
+    p {
+        padding-left: 10%;
+        font-size:13px;
+    }
+
+
 }
 
-.left_block img{
-    margin-left:-25%;
+
+@media (max-width:1000px) {
+    #restphoto {
+        width: 105%;
+        height: 95%;
+    }
+
+    p {
+        padding-left: 10%;
+        font-size: 12px;
+    }
+
+}
+
+
+
+@media (max-width:767px) {
+    #restphoto {
+        width: 95%;
+        height: 65%;
+    }
+
+    p {
+        padding-left: 10%;
+        font-size: 12px;
+    }
+
+}
+
+
+@media (max-width:500px) {
+    #restphoto {
+        width: 85%;
+        height: 45%;
+    }
+
+
+    p {
+        padding-left: 10%;
+        font-size: 10px;
+    }
+
 }
