@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Interfaces;
+using Data.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
 using System.Diagnostics;
 
@@ -8,14 +10,23 @@ namespace Restaurant.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IIngredientService _ingredientService;
+
+        public HomeController(ILogger<HomeController> logger, IIngredientService ingredientService)
         {
             _logger = logger;
+            _ingredientService = ingredientService;           
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            return View();
+            var res = await _ingredientService.GetAllAsync();
+
+            if (res == null)
+            {
+                return NotFound();
+            }            
+            return Ok(res);
         }
 
         public IActionResult Privacy()
