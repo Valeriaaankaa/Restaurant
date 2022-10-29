@@ -18,7 +18,7 @@ namespace Data.Data
             _context = context;
         }
 
-        public ICustomerRepository CustomerRepository
+        public IIngredientRepository IngredientRepository
         {
             get
             {
