@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    [Migration("20221029180415_seed_data")]
-    partial class seed_data
+    [Migration("20221031220556_add_dish_id")]
+    partial class add_dish_id
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,65 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Data.Entities.Dish", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DishGroup")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImgPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dishes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "The Botanist gin, Campari, Vermouth Di Torino",
+                            DishGroup = 6,
+                            ImgPath = "/img/menu/NEGRONI.jpg",
+                            Name = "NEGRONI",
+                            Price = 1m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Tanqueray London Dry gin, Noilly Prat dry vermouth",
+                            DishGroup = 6,
+                            ImgPath = "/img/menu/martini.jpg",
+                            Name = "MARTINI",
+                            Price = 2m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Sazerac Rye whiskey, Cocchi Vermouth Di Torino",
+                            DishGroup = 6,
+                            ImgPath = "/img/menu/martini.jpg",
+                            Name = "MANHATTAN",
+                            Price = 3m
+                        });
+                });
 
             modelBuilder.Entity("Data.Entities.Ingredient", b =>
                 {
@@ -34,6 +93,9 @@ namespace Data.Migrations
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DishId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ExpirationDate")
                         .HasColumnType("datetime2");
@@ -50,6 +112,8 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DishId");
+
                     b.ToTable("Ingredients");
 
                     b.HasData(
@@ -57,6 +121,7 @@ namespace Data.Migrations
                         {
                             Id = 1,
                             Amount = 1m,
+                            DishId = 1,
                             ExpirationDate = new DateTime(2011, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Water",
@@ -66,6 +131,7 @@ namespace Data.Migrations
                         {
                             Id = 2,
                             Amount = 1m,
+                            DishId = 2,
                             ExpirationDate = new DateTime(2011, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Beer",
@@ -75,11 +141,28 @@ namespace Data.Migrations
                         {
                             Id = 3,
                             Amount = 1m,
+                            DishId = 3,
                             ExpirationDate = new DateTime(2011, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Milk",
                             Price = 5m
                         });
+                });
+
+            modelBuilder.Entity("Data.Entities.Ingredient", b =>
+                {
+                    b.HasOne("Data.Entities.Dish", "Dish")
+                        .WithMany("Ingredients")
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dish");
+                });
+
+            modelBuilder.Entity("Data.Entities.Dish", b =>
+                {
+                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }

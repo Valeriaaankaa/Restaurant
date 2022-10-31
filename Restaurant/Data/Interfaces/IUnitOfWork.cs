@@ -10,6 +10,8 @@ namespace Data.Interfaces
     {
         IIngredientRepository IngredientRepository { get; }
 
+        IDishRepository DishRepository { get; }
+
         Task SaveAsync();
     }
 }

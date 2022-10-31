@@ -11,5 +11,6 @@ namespace Data.Data
     public interface IRestaurantDbContext
     {
         public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
     }
 }

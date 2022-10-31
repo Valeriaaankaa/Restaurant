@@ -4,6 +4,7 @@ using Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221031215629_del_ingredients")]
+    partial class del_ingredients
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,38 +115,6 @@ namespace Data.Migrations
                     b.HasIndex("DishId");
 
                     b.ToTable("Ingredients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Amount = 1m,
-                            DishId = 1,
-                            ExpirationDate = new DateTime(2011, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImportDate = new DateTime(2011, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Water",
-                            Price = 5m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 1m,
-                            DishId = 2,
-                            ExpirationDate = new DateTime(2011, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImportDate = new DateTime(2011, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Beer",
-                            Price = 5m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Amount = 1m,
-                            DishId = 3,
-                            ExpirationDate = new DateTime(2011, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImportDate = new DateTime(2011, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Milk",
-                            Price = 5m
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.Ingredient", b =>
