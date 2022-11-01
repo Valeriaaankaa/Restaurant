@@ -163,7 +163,7 @@ namespace Data.Data
                 {
                     Id = 13,
                     Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
-                    DishGroup = DishGroup.Starters,
+                    DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CALZONES.jpg",
                     Ingredients = new List<Ingredient>(),
                     Name = "CALZONES",
@@ -174,7 +174,7 @@ namespace Data.Data
                 {
                     Id = 14,
                     Description = "Deep Fried Main Dishes. Fried chicken. Fish Tacos. Corn dogs. Finger Steaks. When you're in the mood for crispy fried food, these 5-star recipes do it right",
-                    DishGroup = DishGroup.Starters,
+                    DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
                     Ingredients = new List<Ingredient>(),
                     Name = "Deep Fried Main Dishes",
@@ -185,7 +185,7 @@ namespace Data.Data
                 {
                     Id = 15,
                     Description = "Ground beef or a mix of ground beef, pork and sometimes veal or venison, finely chopped (fried) onions, some broth, often with cream and sometimes with breadcrumbs soaked in milk",
-                    DishGroup = DishGroup.Starters,
+                    DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/MEATBALLS.jpg",
                     Ingredients = new List<Ingredient>(),
                     Name = "MEATBALLS",
@@ -196,7 +196,7 @@ namespace Data.Data
                 {
                     Id = 16,
                     Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
-                    DishGroup = DishGroup.Starters,
+                    DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/QUICHE.jpg",
                     Ingredients = new List<Ingredient>(),
                     Name = "QUICHE",
@@ -207,7 +207,7 @@ namespace Data.Data
                 {
                     Id = 17,
                     Description = "We've rounded up our 60 best chicken breast recipes, all of which are pretty easy, ... An easy, cheesy chicken breast supper that's as basic as they come",
-                    DishGroup = DishGroup.Starters,
+                    DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
                     Ingredients = new List<Ingredient>(),
                     Name = "CHICKEN MAIN DISHES",
@@ -218,7 +218,7 @@ namespace Data.Data
                 {
                     Id = 18,
                     Description = "From seafood pastas and paellas, to creamy chowders and curries, our seafood recipes celebrate prawns, crab, clams, mussels and more.",
-                    DishGroup = DishGroup.Starters,
+                    DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
                     Ingredients = new List<Ingredient>(),
                     Name = "SEAFOOD MAIN DISHES",

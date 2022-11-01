@@ -21,6 +21,7 @@ namespace Restaurant.Controllers
 
         }
 
+
         public async Task<IActionResult> IndexAsync()
         {
             var res = await _ingredientService.GetAllAsync();
@@ -37,16 +38,34 @@ namespace Restaurant.Controllers
             return View();
         }
 
-        public async Task<IActionResult> MenuAsync()
-        {          
+        
+        public async Task<IActionResult> MenuAsync(int page = 0, string category = "All")
+        { 
+            
             var res = await _dishService.GetAllAsync();
+            var list_res = res.ToList();
+            var categories = res.Select(c => c.DishGroup).Distinct();
+            ViewBag.categories = categories;
 
-            if (res == null)
-            {
-                return NotFound();
-            }
-            return View(res);
+
+
+
+
+            const int PageSize = 1; // you can always do something more elegant to set 
+            var count = list_res.Count();
+            var data = list_res.Skip(page * PageSize).Take(PageSize).ToList();
+            this.ViewBag.MaxPage = (count / PageSize) - (count % PageSize == 0 ? 1 : 0);
+            this.ViewBag.Page = page;
+
+            this.ViewBag.Category = category;
+
+            return this.View(data);
         }
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
