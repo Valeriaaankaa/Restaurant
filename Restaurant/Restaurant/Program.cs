@@ -15,6 +15,7 @@ builder.Services.AddDbContext<RestaurantDbContext>(x => x.UseSqlServer(connectio
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
+builder.Services.AddTransient<IDishService, DishService>();
 
 
 

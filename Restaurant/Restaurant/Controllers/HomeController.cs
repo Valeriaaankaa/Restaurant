@@ -11,11 +11,14 @@ namespace Restaurant.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly IIngredientService _ingredientService;
+        private readonly IDishService _dishService;
 
-        public HomeController(ILogger<HomeController> logger, IIngredientService ingredientService)
+        public HomeController(ILogger<HomeController> logger, IIngredientService ingredientService, IDishService dishService)
         {
             _logger = logger;
-            _ingredientService = ingredientService;           
+            _ingredientService = ingredientService;
+            _dishService = dishService;
+
         }
 
         public async Task<IActionResult> IndexAsync()
@@ -34,9 +37,15 @@ namespace Restaurant.Controllers
             return View();
         }
 
-        public IActionResult Menu()
-        {
-            return View();
+        public async Task<IActionResult> MenuAsync()
+        {          
+            var res = await _dishService.GetAllAsync();
+
+            if (res == null)
+            {
+                return NotFound();
+            }
+            return View(res);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -9,6 +9,8 @@
         Pizza,
         SoftDrink,
         Alcohol,
-        Salat
+        Salat,
+        Starters,
+        MainPlates
     }
 }
