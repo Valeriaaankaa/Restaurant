@@ -20,8 +20,7 @@
         <div class="col-12 mt-4">
             <hr class="my-3">
             <nav class="pagination">
-                <ul class="pagination pagination-lg">
-                    <a href="@Url.Action("Menu", new { page = 0 })" class="btn btn-default">All</a>
+                <ul class="pagination pagination-lg">                    
                     @foreach (var categoryname in ViewBag.categories)
                     {
                     <a href="@Url.Action("Menu", new { page = 0, category = categoryname })" class="btn btn-default">@categoryname</a>
@@ -31,19 +30,16 @@
             <hr class="my-3">
         </div>   
 
+        <div class="col-12 mt-4">
+            <hr class="my-3">
+            <h3 class="text-center">@ViewBag.category</h3>
+            <hr class="my-3">
+        </div>
 
 
-        @foreach (var category in ViewBag.categories)
-        {
-                <div class="col-12 mt-4">
-                    <hr class="my-3">
-                    <h3 class="text-center">@category.ToString()</h3>
-                    <hr class="my-3">
-                </div>
-
-                var items = Model.Where(c => c.DishGroup == category);
-                 <div class="card-columns">
-                @foreach (var item in items) 
+        
+                <div class="card-columns">
+                @foreach (var item in Model) 
                 {         
                    
                         <div class="card card-body">
@@ -60,22 +56,27 @@
                     
                 }
             </div>
-            }
-        <div class="col-6 mx-auto">
-            @if (ViewBag.Page > 0)
-            {
-                <a href="@Url.Action("Menu", new { page = ViewBag.Page - 1, category = ViewBag.category })" class="btn btn-default">
-                    &laquo; Prev
-                </a>
-            }
-            @if (ViewBag.Page < ViewBag.MaxPage)
-            {
-                <a href="@Url.Action("Menu", new { page = ViewBag.Page + 1, category = ViewBag.category })" class="btn btn-default">
-                    Next &raquo;
-                </a>
-            }
-        </div>
 
+            <div class="col-12 mt-4">
+                <hr class="my-3">
+                    <nav class="pagination">
+                        <ul class="pagination pagination-lg">
+                            @if (ViewBag.Page > 0)
+                            {
+                                <a href="@Url.Action("Menu", new { page = ViewBag.Page - 1, category = ViewBag.category })" class="btn btn-warning">
+                                    &laquo; Prev
+                                </a>
+                            }
+                            @if (ViewBag.Page < ViewBag.MaxPage)
+                            {
+                        <a href="@Url.Action("Menu", new { page = ViewBag.Page + 1, category = ViewBag.category })" class="btn btn-warning">
+                                    Next &raquo;
+                                </a>
+                            }                        
+                        </ul>
+                    </nav>
+                <hr class="my-3">
+            </div>          
 
             
             <!--1 more content-->

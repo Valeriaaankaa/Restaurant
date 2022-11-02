@@ -39,7 +39,7 @@ namespace Restaurant.Controllers
         }
 
         
-        public async Task<IActionResult> MenuAsync(int page = 0, string category = "All")
+        public async Task<IActionResult> MenuAsync(int page = 0, string category = "Alcohol")
         { 
             
             var res = await _dishService.GetAllAsync();
@@ -49,14 +49,15 @@ namespace Restaurant.Controllers
 
 
 
+            //Sort by category. Sort by Price!!!! Not pagination by category!!!!
 
+            const int PageSize = 6; // you can always do something more elegant to set 
+            var category_list = list_res.Where(c => c.DishGroup.ToString() == category);
+            var count = category_list.Count();
+            var data = category_list.Skip(page * PageSize).Take(PageSize).ToList();
 
-            const int PageSize = 1; // you can always do something more elegant to set 
-            var count = list_res.Count();
-            var data = list_res.Skip(page * PageSize).Take(PageSize).ToList();
             this.ViewBag.MaxPage = (count / PageSize) - (count % PageSize == 0 ? 1 : 0);
             this.ViewBag.Page = page;
-
             this.ViewBag.Category = category;
 
             return this.View(data);
