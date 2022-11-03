@@ -1,6 +1,8 @@
 ﻿using Business.Interfaces;
+using Data.Entities;
 using Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Restaurant.Models;
 using System.Diagnostics;
 
@@ -32,40 +34,44 @@ namespace Restaurant.Controllers
             }            
             return Ok(res);
         }
-
-        public IActionResult Privacy()
+        
+        public IActionResult Privacy(MenuViewModel model)
         {
+            
+                var selectedValue = model.SelectSortType;
+                ViewBag.TeaType = selectedValue.ToString();
+           
             return View();
         }
 
         
-        public async Task<IActionResult> MenuAsync(int page = 0, string category = "Alcohol")
-        { 
-            
-            var res = await _dishService.GetAllAsync();
-            var list_res = res.ToList();
-            var categories = res.Select(c => c.DishGroup).Distinct();
-            ViewBag.categories = categories;
-
-
-
-            //Sort by category. Sort by Price!!!! Not pagination by category!!!!
-
-            const int PageSize = 6; // you can always do something more elegant to set 
-            var category_list = list_res.Where(c => c.DishGroup.ToString() == category);
+        public async Task<IActionResult> MenuAsync(MenuViewModel model)
+        {          
+            IEnumerable<Dish> Dishes = await _dishService.GetAllAsync();
+            IEnumerable<DishGroup> Categories = Dishes.Select(c => c.DishGroup).Distinct();
+            IEnumerable<Dish> category_list;
+            if (model.SelectSortType == SortType.ByName)
+            {
+                category_list = Dishes.Where(c => c.DishGroup.ToString() == model.Category).OrderBy(d => d.Name.ToLower());
+            }
+            else
+            {
+                category_list = Dishes.Where(c => c.DishGroup.ToString() == model.Category).OrderByDescending(d => d.Price);
+            }
             var count = category_list.Count();
-            var data = category_list.Skip(page * PageSize).Take(PageSize).ToList();
+            var data = category_list.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();                       
+                                    
+            model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);
+            model.Dishes = data;            
+            model.Categories = Categories;            
 
-            this.ViewBag.MaxPage = (count / PageSize) - (count % PageSize == 0 ? 1 : 0);
-            this.ViewBag.Page = page;
-            this.ViewBag.Category = category;
-
-            return this.View(data);
+            return this.View(model);
         }
 
 
 
 
+       
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
