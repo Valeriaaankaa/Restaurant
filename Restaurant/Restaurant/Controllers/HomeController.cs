@@ -18,7 +18,7 @@ namespace Restaurant.Controllers
             _ingredientService = ingredientService;           
         }
 
-        public async Task<IActionResult> IndexAsync()
+        /*public async Task<IActionResult> IndexAsync()
         {
             var res = await _ingredientService.GetAllAsync();
 
@@ -27,7 +27,7 @@ namespace Restaurant.Controllers
                 return NotFound();
             }            
             return Ok(res);
-        }
+        }*/
 
         public IActionResult Privacy()
         {
@@ -39,6 +39,10 @@ namespace Restaurant.Controllers
             return View();
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
