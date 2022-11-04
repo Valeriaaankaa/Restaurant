@@ -37,16 +37,13 @@ namespace Restaurant.Controllers
         
         public IActionResult Privacy(MenuViewModel model)
         {
-            
-                var selectedValue = model.SelectSortType;
-                ViewBag.TeaType = selectedValue.ToString();
-           
+                       
             return View();
         }
 
         
         public async Task<IActionResult> MenuAsync(MenuViewModel model)
-        {          
+        {
             IEnumerable<Dish> Dishes = await _dishService.GetAllAsync();
             IEnumerable<DishGroup> Categories = Dishes.Select(c => c.DishGroup).Distinct();
             IEnumerable<Dish> category_list;
@@ -58,6 +55,7 @@ namespace Restaurant.Controllers
             {
                 category_list = Dishes.Where(c => c.DishGroup.ToString() == model.Category).OrderByDescending(d => d.Price);
             }
+
             var count = category_list.Count();
             var data = category_list.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();                       
                                     

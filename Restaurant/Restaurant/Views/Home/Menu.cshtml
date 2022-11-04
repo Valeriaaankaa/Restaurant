@@ -7,8 +7,8 @@
 
 <div class="container py-5">      
             <!--Title-->
-            <div class="row">
-                <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+        <div class="row">
+            <div class="col-lg-10 mx-auto col-12 text-center mb-3">
                     <h4 class="mt-0 text-dark">FROM OUR HEARTS</h4>
                     <h1 class="mt-0 text-dark">Menu SuperPuperRest</h1>
                     <p class="lead">This menu very yummy and delicions. In many you will like desserts, it's are very yummy. You will want to go to this restaruant again and again</p>
@@ -29,44 +29,53 @@
                 <hr class="my-3">
             </div>
 
-            <!--Category Name-->
 
-            <div class="col-6 mx-auto">
-            <h4 class="mt-0 text-dark">@Model.Category</h4>
-                @using (Html.BeginForm("Menu", "Home", FormMethod.Post))
-                    {
-                        <b>Select Sort Type: </b>
+            <div class="container">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <h4 class="mt-0 text-dark">@Model.Category</h4>
+                </div>
 
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <p>Sorting: </p>
+                </div>
+
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    @using (Html.BeginForm("Menu", "Home", FormMethod.Post)){
+                    
                         @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))),"--Select SortType--")
-                        <input type="submit" value="submit" />
-                    }
+                        <input type="submit" value="Sort" />
+                    }                         
+                </div>            
 
-                <h4>You Selected</h4>
-                <b>Tea Type: </b>@Model.SelectSortType.ToString()
-                <hr class="my-3">
+                <hr class="my-3">               
             </div>
 
-
-            <!--Menu Item-->
-            <div class="card-columns">
-                @foreach (var item in Model.Dishes) 
-                {         
-                   
-                        <div class="card card-body">
-                            <div class="text-center">
-                                <img src="@item.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
-                            </div>
-                            <span class="float-right font-weight-bold">@item.Price $</span>
-                            <h6 class="text-truncate">@item.Name</h6>
-                            <p class="small">@item.Description</p>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-outline-warning ">Choose</button>
-                            </div>
-                        </div>                        
-                    
+            <div mx-auto">
+                <!--Menu Item-->
+                @foreach (var someitem in from i in Model.Dishes.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)
+                {
+                    <div >
+                        <div class="row">
+                        @foreach (var item in someitem)
+                        {
+                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                <div class="card card-body">
+                                    <div class="text-center">
+                                        <img src="@item.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
+                                    </div>
+                                    <span class="float-right font-weight-bold">@item.Price $</span>
+                                    <h6 class="text-truncate">@item.Name</h6>
+                                    <p class="small">@item.Description</p>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-outline-warning">Choose</button>
+                                    </div>
+                                </div>
+                            </div>                    
+                            }
+                        </div>
+                    </div>
                 }
             </div>
-
             <!--Pagination-->
             <div class="col-12 mt-4">
                 <hr class="my-3">
@@ -74,13 +83,13 @@
                         <ul class="pagination pagination-lg">
                     @if (Model.Page > 0)
                             {
-                        <a href="@Url.Action("Menu", new { page = Model.Page - 1, category = Model.Category, sort = Model.SelectSortType})" class="btn btn-warning">
+                        <a href="@Url.Action("Menu", new { page = Model.Page - 1, category = Model.Category, selectsorttype = Model.SelectSortType})" class="btn btn-warning">
                                     &laquo; Prev
                                 </a>
                             }
                     @if (Model.Page < Model.MaxPage)
                             {
-                        <a href="@Url.Action("Menu", new { page = Model.Page + 1, category = Model.Category, sort = Model.SelectSortType })" class="btn btn-warning">
+                        <a href="@Url.Action("Menu", new { page = Model.Page + 1, category = Model.Category, selectsorttype = Model.SelectSortType })" class="btn btn-warning">
                                     Next &raquo;
                                 </a>
                             }                        
