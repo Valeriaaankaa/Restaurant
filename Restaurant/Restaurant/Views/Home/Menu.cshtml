@@ -5,9 +5,24 @@
 
 
 
+            <div class="d-flex flex-row bd-highlight mb-3">
+              <div class="p-2 bd-highlight"><h4 class="mt-0 text-dark">@Model.Category</h4> </div>
+              <div class="p-2 bd-highlight"><p>Sorting: </p></div>
+              <div class="p-2 bd-highlight">@using (Html.BeginForm("Menu", "Home", FormMethod.Post)){
+                    
+                        @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))))
+                        <input type="submit" value="Sort" />
+                    }  </div>
+            </div>
+
+
 <div class="container py-5">      
             <!--Title-->
-        <div class="row">
+
+            
+
+
+        <div class="row ">
             <div class="col-lg-10 mx-auto col-12 text-center mb-3">
                     <h4 class="mt-0 text-dark">FROM OUR HEARTS</h4>
                     <h1 class="mt-0 text-dark">Menu SuperPuperRest</h1>
@@ -28,54 +43,50 @@
                 </nav>
                 <hr class="my-3">
             </div>
+        </div>
 
-
-            <div class="container">
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <h4 class="mt-0 text-dark">@Model.Category</h4>
-                </div>
-
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    <p>Sorting: </p>
-                </div>
-
-                <div class="col-xs-3 col-sm-3 col-md-3">
-                    @using (Html.BeginForm("Menu", "Home", FormMethod.Post)){
-                    
-                        @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))),"--Select SortType--")
-                        <input type="submit" value="Sort" />
-                    }                         
-                </div>            
-
-                <hr class="my-3">               
-            </div>
-
-            <div mx-auto">
-                <!--Menu Item-->
-                @foreach (var someitem in from i in Model.Dishes.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)
+        <div class="d-flex justify-content-center">
+            <div class="p-2 bd-highlight"><h4 class="mt-0 text-dark">@Model.Category</h4> </div>
+            <div class="p-2 bd-highlight"><p>Sorting: </p></div>
+            <div class="p-2 bd-highlight">
+                @using (Html.BeginForm("Menu", "Home", FormMethod.Post))
                 {
-                    <div >
-                        <div class="row">
-                        @foreach (var item in someitem)
-                        {
-                            <div class="col-xs-3 col-sm-3 col-md-3">
-                                <div class="card card-body">
-                                    <div class="text-center">
-                                        <img src="@item.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
-                                    </div>
-                                    <span class="float-right font-weight-bold">@item.Price $</span>
-                                    <h6 class="text-truncate">@item.Name</h6>
-                                    <p class="small">@item.Description</p>
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-outline-warning">Choose</button>
-                                    </div>
-                                </div>
-                            </div>                    
-                            }
-                        </div>
-                    </div>
+
+                    @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))))
+                    <input type="submit" value="Sort" />
                 }
             </div>
+        </div>
+
+
+
+
+
+    <div class="row ">
+        <div class="container">
+
+            @foreach (var someitem in from i in Model.Dishes.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)
+            {
+                <div class="row justify-content-md-center">
+                    @foreach (var item in someitem)
+                    {
+                        <div class="col col-sm-3">
+                            <div class="card card-body">
+                                <div class="text-center">
+                                    <img src="@item.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
+                                </div>
+                                <span class="float-right font-weight-bold">@item.Price $</span>
+                                <h6 class="text-truncate">@item.Name</h6>
+                                <p class="small">@item.Description</p>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-outline-warning">Choose</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
             <!--Pagination-->
             <div class="col-12 mt-4">
                 <hr class="my-3">

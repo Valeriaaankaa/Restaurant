@@ -45,8 +45,11 @@ namespace Restaurant.Controllers
         public async Task<IActionResult> MenuAsync(MenuViewModel model)
         {
             IEnumerable<Dish> Dishes = await _dishService.GetAllAsync();
+
             IEnumerable<DishGroup> Categories = Dishes.Select(c => c.DishGroup).Distinct();
+
             IEnumerable<Dish> category_list;
+
             if (model.SelectSortType == SortType.ByName)
             {
                 category_list = Dishes.Where(c => c.DishGroup.ToString() == model.Category).OrderBy(d => d.Name.ToLower());
