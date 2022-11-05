@@ -12,6 +12,7 @@ namespace Data.Data
     {
         private RestaurantDbContext _context;
         private IngredientRepository _ingredients;
+        private DishRepository _dishes;
 
         public UnitOfWork(RestaurantDbContext context)
         {
@@ -23,6 +24,14 @@ namespace Data.Data
             get
             {
                 return _ingredients ??= new IngredientRepository(_context);
+            }
+        }
+
+        public IDishRepository DishRepository
+        {
+            get
+            {
+                return _dishes ??= new DishRepository(_context);
             }
         }
         public async Task SaveAsync()
