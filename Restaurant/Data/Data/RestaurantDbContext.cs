@@ -18,7 +18,7 @@ namespace Data.Data
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<DishComposition> DishCompositions { get; set; }
-        public DbSet<DishOrder> AdminDishOrders { get; set; }
+        public DbSet<DishOrder> DishOrders { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<RestaurantTable> RestaurantTables { get; set; }
         public DbSet<RestaurantUser> RestaurantUsers { get; set; }
