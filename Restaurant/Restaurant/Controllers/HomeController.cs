@@ -23,12 +23,6 @@ namespace Restaurant.Controllers
 
         }
 
-
-        public async Task<IActionResult> IndexAsync()
-        {
-            
-            return View();
-        }
         
         public IActionResult Privacy(MenuViewModel model)
         {
@@ -66,10 +60,10 @@ namespace Restaurant.Controllers
         }
 
 
-
-
-       
-
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
