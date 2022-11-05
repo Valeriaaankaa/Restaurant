@@ -1,27 +1,20 @@
 ﻿@using System.Collections;
 @using Data.Entities;
 
-@model MenuViewModel;
-
-
-       
-        
-
-
+@model MenuViewModel
 
 <div class="container py-5">      
-            <!--Title-->
-
             
-
-
+    
+    
+        
         <div class="row ">
+            <!--Title-->
             <div class="col-lg-10 mx-auto col-12 text-center mb-3">
                     <h4 class="mt-0 text-dark">FROM OUR HEARTS</h4>
                     <h1 class="mt-0 text-dark">Menu SuperPuperRest</h1>
                     <p class="lead">This menu very yummy and delicions. In many you will like desserts, it's are very yummy. You will want to go to this restaruant again and again</p>
-                </div>
-
+            </div>
 
             <!--Pagination-->
             <div class="col-12 mt-4">
@@ -36,8 +29,10 @@
                 </nav>
                 <hr class="my-3">
             </div>
+
         </div>
 
+        <!--Filtering-->
         <div class="row">
             <div class="col-5"></div>
             <div class="col-3">
@@ -62,8 +57,7 @@
 
      <hr class="my-3 mb-3">
 
-    <div class="row ">
-        
+    <div class="row ">        
         <div class="container">
 
             @foreach (var someitem in from i in Model.Dishes.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)

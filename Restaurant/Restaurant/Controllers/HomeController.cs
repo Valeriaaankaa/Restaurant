@@ -26,13 +26,8 @@ namespace Restaurant.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            var res = await _ingredientService.GetAllAsync();
-
-            if (res == null)
-            {
-                return NotFound();
-            }            
-            return Ok(res);
+            
+            return View();
         }
         
         public IActionResult Privacy(MenuViewModel model)
@@ -44,6 +39,7 @@ namespace Restaurant.Controllers
         
         public async Task<IActionResult> MenuAsync(MenuViewModel model)
         {
+            // TO DO  CREATE PAGINATION CLASS!!
             IEnumerable<Dish> Dishes = await _dishService.GetAllAsync();
 
             IEnumerable<DishGroup> Categories = Dishes.Select(c => c.DishGroup).Distinct();
