@@ -17,7 +17,7 @@ namespace Business.Models
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public ICollection<int> CustomerOrders { get; set; }
+        public int OrderId { get; set; }
 
     }
 }
