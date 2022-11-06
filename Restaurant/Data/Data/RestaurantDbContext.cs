@@ -825,36 +825,53 @@ namespace Data.Data
                     Name = "CHOCOLATE FONDUE",
                     Price = 72
                 }
+        );
+
+
+            var dishcomposition = modelBuilder.Entity<DishComposition>();
+            dishcomposition.HasOne(c => c.Ingredient)
+                    .WithOne();
+
+            var dish = modelBuilder.Entity<Dish>();
+            dish.HasMany(c => c.DishCompositions)
+                    .WithOne(d=>d.Dish);
+
+            var dishorder = modelBuilder.Entity<DishOrder>();
+            dishorder.HasOne(c => c.Dish)
+                    .WithOne();
+
+            var order = modelBuilder.Entity<Order>();
+            order.HasOne(c => c.TableOrder)
+                    .WithOne();
+            order.HasMany(c => c.DishesOrder)
+                    .WithOne(d=>d.Order);
+
+            var tableorder = modelBuilder.Entity<TableOrder>();
+            tableorder.HasOne(c => c.RestaurantTable)
+                    .WithOne();
+
+            var customer = modelBuilder.Entity<Customer>();
+            customer.HasOne(c => c.CustomerOrder)
+                    .WithOne();
+            customer.HasOne(c => c.Person)
+                    .WithOne();
+
+            var admin = modelBuilder.Entity<Customer>();
+            admin.HasOne(c => c.Person)
+                    .WithOne();
 
 
 
+            modelBuilder.Entity<Dish>().HasKey(dishes => dishes.Id);
+            modelBuilder.Entity<Dish>().Property(solds => solds.Name).HasMaxLength(30);
+            modelBuilder.Entity<Dish>().Property(solds => solds.Name).IsRequired();            
+            modelBuilder.Entity<Dish>().Property(solds => solds.Description).HasMaxLength(50);
+            modelBuilder.Entity<Dish>().Property(solds => solds.Description).IsRequired();
+            modelBuilder.Entity<Dish>().Property(solds => solds.ImgPath).IsRequired();
+            modelBuilder.Entity<Dish>().Property(solds => solds.Price).IsRequired();
+            modelBuilder.Entity<Dish>(entity => entity.HasIndex(dishes => dishes.Id).IsUnique());
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-               );
-
-
-            var dishIngredients = modelBuilder.Entity<Dish>();
-            dishIngredients.HasMany(c => c.DishCompositions)
-                    .WithOne(r => r.Dish);
 
 
             base.OnModelCreating(modelBuilder);
