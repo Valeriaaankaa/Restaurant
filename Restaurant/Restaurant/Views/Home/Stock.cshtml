@@ -4,3 +4,38 @@
 @{
     ViewData["Title"] = "Stock";
 }
+
+  <!--Pagination-->
+            <div class="col-12 mt-4">
+                <hr class="my-3">
+                <nav class="pagination">
+                    <ul class="pagination pagination-lg">
+                    @foreach (var categoryname in Model.Categories)
+                        {
+                        <a href="@Url.Action("Stock", new { page = 0, category = categoryname, selectsorttype = Model.SelectSortType })" class="btn btn-default">@categoryname</a>
+                        }
+                    </ul>      
+                </nav>
+                <hr class="my-3">
+            </div>
+
+            <!--Filtering-->
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-3">
+                <h4 class="mt-0 text-dark">@Model.Category</h4> 
+            </div>
+            <div class="col-1">                
+                <p>Sorting: </p>  
+            </div>
+            <div class="col-3">   
+                @using (Html.BeginForm("Stock", "Home", FormMethod.Post, new { @class="sort-form" }))
+                 {
+                     @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))), new { @class="dropdown" })
+                      <input type="submit" value="Sort" />
+                 }                   
+            </div>
+            
+        </div>
+
+    
