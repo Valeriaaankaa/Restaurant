@@ -20,14 +20,14 @@ namespace Data.Repositories
         {
             _context = context;
         }
-        public Task AddAsync(RestaurantUser entity)
+        public Task AddAsync(Customer entity)
         {
             var res = _context.RestaurantUsers.AddAsync(entity);
             return res.AsTask();
 
         }
 
-        public void Delete(RestaurantUser entity)
+        public void Delete(Customer entity)
         {
             _context.RestaurantUsers.Remove(entity);
         }
@@ -38,17 +38,17 @@ namespace Data.Repositories
             Delete(res);
         }
 
-        public async Task<IEnumerable<RestaurantUser>> GetAllAsync()
+        public async Task<IEnumerable<Customer>> GetAllAsync()
         {
             return await _context.RestaurantUsers.ToListAsync();
         }
 
-        public async Task<RestaurantUser> GetByIdAsync(int id)
+        public async Task<Customer> GetByIdAsync(int id)
         {
             return await _context.RestaurantUsers.FindAsync(id);
         }
 
-        public void Update(RestaurantUser entity)
+        public void Update(Customer entity)
         {
             _context.RestaurantUsers.Update(entity);
         }

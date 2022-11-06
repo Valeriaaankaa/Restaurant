@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Data.Entities
 {
     public class TableOrder: BaseEntity
-    {
-        public RestaurantTable RestaurantTable { get; set; }
-        public Order Order { get; set; }
+    {   
         public TimeOnly TimeBegin { get; set; }
         public TimeOnly TimeEnd { get; set; }
+        public int RestaurantTableId { get; set; }
+        public RestaurantTable RestaurantTable { get; set; }
     }
 }

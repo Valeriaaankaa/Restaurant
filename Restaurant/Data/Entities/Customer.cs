@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Data.Entities
 {
-    public class RestaurantUser: BaseEntity
-    {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+    public class Customer: BaseEntity
+    {        
         public string Login { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public DateOnly BirthDay { get; set; }
-        public string PhoneNumber { get; set; }
-        public List<Order> UserOrders { get; set; }
+        public int PersonId { get; set; }
+        public int OrderId { get; set; }
+
+        public Order CustomerOrder { get; set; }
+        public Person Person { get; set; }
     }
 }

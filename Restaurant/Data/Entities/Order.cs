@@ -9,9 +9,10 @@ namespace Data.Entities
     public class Order: BaseEntity
     {
         public DateTime OrderDate { get; set; }
-        public string Address { get; set; }
-        public RestaurantUser RestaurantUser { get; set; }
+        public string Address { get; set; }        
         public OrderStatus OrderStatus { get; set; }
-        public List<Dish> DishesOrder { get; set; }
+        public int TableOrderId { get; set; }
+        public ICollection<DishOrder> DishesOrder { get; set; }
+        public ICollection<TableOrder> TableOrder { get; set; }
     }
 }

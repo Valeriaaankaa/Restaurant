@@ -2,7 +2,7 @@
 
 namespace Data.Interfaces
 {
-    public interface IRestaurantUserRepository : IRepository<RestaurantUser>
+    public interface IRestaurantUserRepository : IRepository<Customer>
     {
     }
 }

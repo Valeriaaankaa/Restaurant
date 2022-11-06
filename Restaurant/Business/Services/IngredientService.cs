@@ -24,10 +24,6 @@ namespace Business.Services
             {
                 throw new RestaurantException("Model is null");
             }
-            if (model.Price < 0)
-            {
-                throw new RestaurantException("Price is negative");
-            }
             if (model.Name == null || model.Name == "")
             {
                 throw new RestaurantException("Name is empty");

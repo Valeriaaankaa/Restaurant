@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Data.Interfaces
 {
     public interface IUnitOfWork
-    { 
+    {
+        IPersonRepository PersonRepository { get; }
         IAdminRepository AdminRepository { get; }
         IDishCompositionRepository DishCompositionRepository { get; }
         IDishOrderRepository DishOrderRepository { get; }  

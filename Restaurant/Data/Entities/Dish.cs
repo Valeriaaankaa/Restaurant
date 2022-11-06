@@ -10,7 +10,7 @@
         public decimal Price { get; set; }
         public string? Description { get; set; }
         public DishGroup DishGroup { get; set; }
-        public ICollection<Ingredient> Ingredients { get; set; }
+        public ICollection<DishComposition> DishCompositions { get; set; }
 
     }
 }

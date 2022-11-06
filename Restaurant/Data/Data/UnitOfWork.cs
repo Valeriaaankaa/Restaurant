@@ -21,10 +21,18 @@ namespace Data.Data
         private RestaurantTableRepository _restaurantTables;
         private RestaurantUserRepository _restaurantUsers;
         private TableOrderRepository _tableOrders;
+        private PersonRepository _people;
 
         public UnitOfWork(RestaurantDbContext context)
         {
             _context = context;
+        }
+        public IPersonRepository PersonRepository
+        {
+            get
+            {
+                return _people ??= new PersonRepository(_context);
+            }
         }
 
         public IAdminRepository AdminRepository
