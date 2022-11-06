@@ -2,9 +2,9 @@
 
 namespace Restaurant.Models
 {
-    public class IngredientViewModel
+    public class StockViewModel
     {
-        public SortType SelectSortType { get; set; }
+        public IngredientSort SelectSortType { get; set; }
 
         public IEnumerable<Ingredient> Ingredients { get; set; }
 
