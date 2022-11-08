@@ -28,9 +28,8 @@ namespace Data.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ingredient>().HasData(
-               new Ingredient { Id = 1, Name = "Water", Amount = 100, ExpirationDate = new DateTime(2011, 1, 30), ImportDate = new DateTime(2011, 1, 1) },
-               new Ingredient { Id = 2, Name = "Beer", Amount = 200, ExpirationDate = new DateTime(2011, 1, 30), ImportDate = new DateTime(2011, 1, 1)},
-               new Ingredient { Id = 3, Name = "Milk", Amount = 300, ExpirationDate = new DateTime(2011, 1, 30), ImportDate = new DateTime(2011, 1, 1) }
+               new Ingredient { Id = 1, Name = "Water", Amount = 23, ExpirationDate = new DateTime(2021, 1, 30), ImportDate = new DateTime(2022, 12, 12), Price = 5, IngredientGroup = IngredientGroup.Drinks },
+               new Ingredient { Id = 2, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat }
                );
 
             modelBuilder.Entity<Dish>().HasData(
