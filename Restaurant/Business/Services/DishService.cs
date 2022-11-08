@@ -29,7 +29,7 @@ namespace Business.Services
             {
                 throw new RestaurantException("Price is negative");
             }
-            if (model.Name == null || model.Name == "")
+            if (String.IsNullOrEmpty(model.Name))
             {
                 throw new RestaurantException("Name is empty");
             }
@@ -63,7 +63,7 @@ namespace Business.Services
             {
                 throw new RestaurantException("Model is null");
             }
-            if (model.Name == null || model.Name == "")
+            if (String.IsNullOrEmpty(model.Name))
             {
                 throw new RestaurantException("Name is empty");
             }

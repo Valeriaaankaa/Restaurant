@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces
 {
-    internal interface IAdminService : ICrud<Dish>
+    public interface IOrderService : ICrud<Order>
     {
+        
     }
 }
