@@ -1,9 +1,11 @@
 ﻿using Business.Interfaces;
+using Business.Validation;
 using Data.Entities;
 using Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,14 +19,30 @@ namespace Business.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Task AddAsync(Dish model)
+        public async Task AddAsync(Dish model)
         {
-            throw new NotImplementedException();
+            if (model == null)
+            {
+                throw new RestaurantException("Model is null");
+            }
+            if (model.Price < 0)
+            {
+                throw new RestaurantException("Price is negative");
+            }
+            if (String.IsNullOrEmpty(model.Name))
+            {
+                throw new RestaurantException("Name is empty");
+            }
+
+            await _unitOfWork.DishRepository.AddAsync(model);
+            await _unitOfWork.SaveAsync();
         }
 
-        public Task DeleteAsync(int modelId)
+        public async Task DeleteAsync(int modelId)
         {
-            throw new NotImplementedException();
+            await _unitOfWork.DishRepository.DeleteByIdAsync(modelId);
+
+            await _unitOfWork.SaveAsync();
         }
 
         public async Task<IEnumerable<Dish>> GetAllAsync()
@@ -33,14 +51,28 @@ namespace Business.Services
             return dishes;
         }
 
-        public Task<Dish> GetByIdAsync(int id)
+        public async Task<Dish> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var dish = await _unitOfWork.DishRepository.GetByIdAsync(id);
+            return dish;
         }
 
-        public Task UpdateAsync(Dish model)
+        public async Task UpdateAsync(Dish model)
         {
-            throw new NotImplementedException();
+            if (model == null)
+            {
+                throw new RestaurantException("Model is null");
+            }
+            if (String.IsNullOrEmpty(model.Name))
+            {
+                throw new RestaurantException("Name is empty");
+            }
+
+            var dish = model;
+
+            _unitOfWork.DishRepository.Update(dish);
+
+            await _unitOfWork.SaveAsync();
         }
     }
 }

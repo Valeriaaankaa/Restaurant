@@ -16,26 +16,33 @@ namespace Data.Data
 
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<DishComposition> DishCompositions { get; set; }
+        public DbSet<DishOrder> DishOrders { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<RestaurantTable> RestaurantTables { get; set; }
+        public DbSet<Customer> RestaurantUsers { get; set; }
+        public DbSet<TableOrder> TableOrders { get; set; }
+        public DbSet<Person> People { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ingredient>().HasData(
-               new Ingredient { Id = 1, Name = "Water", Amount = 23, ExpirationDate = new DateTime(2021, 1, 30), ImportDate = new DateTime(2022, 12, 12), Price = 5, IngredientGroup=IngredientGroup.Drinks },
-               new Ingredient { Id = 2, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup=IngredientGroup.Meat }
-
+               new Ingredient { Id = 1, Name = "Water", Amount = 100, ExpirationDate = new DateTime(2011, 1, 30), ImportDate = new DateTime(2011, 1, 1) },
+               new Ingredient { Id = 2, Name = "Beer", Amount = 200, ExpirationDate = new DateTime(2011, 1, 30), ImportDate = new DateTime(2011, 1, 1)},
+               new Ingredient { Id = 3, Name = "Milk", Amount = 300, ExpirationDate = new DateTime(2011, 1, 30), ImportDate = new DateTime(2011, 1, 1) }
                );
 
             modelBuilder.Entity<Dish>().HasData(
                 new Dish
                 {
                     Id = 1,
-                    Description = "The Botanist gin, Campari, Vermouth Di Torino",
-                    DishGroup = DishGroup.Alcohol,
-                    ImgPath = "/img/menu/NEGRONI.jpg",
-                    Ingredients = new List<Ingredient>(),
                     Name = "NEGRONI",
-                    Price = 1
-                    
+                    ImgPath = "/img/menu/NEGRONI.jpg",
+                    Price = 1,
+                    Description = "The Botanist gin, Campari, Vermouth Di Torino",
+                    DishGroup = DishGroup.Alcohol,                    
+                    DishCompositions = new List<DishComposition>()                    
                 },
 
                 new Dish
@@ -44,7 +51,7 @@ namespace Data.Data
                     Description = "Tanqueray London Dry gin, Noilly Prat dry vermouth",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/martini.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MARTINI",
                     Price = 2
                 },
@@ -55,7 +62,7 @@ namespace Data.Data
                     Description = "Sazerac Rye whiskey, Cocchi Vermouth Di Torino",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/manhattan.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MANHATTAN",
                     Price = 3
                 },
@@ -66,7 +73,7 @@ namespace Data.Data
                     Description = "Four Roses Yellow Label bourbon, lemon",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/whiskey_sour.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "WHISKEY SOUR",
                     Price = 4
                 },
@@ -77,7 +84,7 @@ namespace Data.Data
                     Description = "Buffalo Trace bourbon, demerara, Angostura Bitters",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/OLD_FASHIONED.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "OLD FASHIONED",
                     Price = 5
                 },
@@ -88,7 +95,7 @@ namespace Data.Data
                     Description = "Grey Goose vodka, tomato juice, lemon, celery, olives, Fridays® seasoning. Served with the usual accompaniments.",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/BLOODY_MARY.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "BLOODY MARY",
                     Price = 6
                 },
@@ -99,7 +106,7 @@ namespace Data.Data
                     Description = "The microwave is a great way to reheat stuffed mushrooms because it's gentle and it doesn't dry them out. Plus, it's a quick and easy way to heat them up without having to use the oven or the stovetop.",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Roasted stuffed mushrooms",
                     Price = 19.99m
                 },
@@ -110,7 +117,7 @@ namespace Data.Data
                     Description = "Roll each wrapper on the diagonal to enclose filling, folding in sides after first complete turn. Place spring rolls on prepared trays, seam-side down; brush",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Baked spring rolls",
                     Price = 18.50m
                 },
@@ -121,7 +128,7 @@ namespace Data.Data
                     Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Baked spring rolls",
                     Price = 7.05m
                 },
@@ -132,7 +139,7 @@ namespace Data.Data
                     Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Sweet fried saganaki",
                     Price = 29.95m
                 },
@@ -143,7 +150,7 @@ namespace Data.Data
                     Description = "If you fancy making yourself a little treat, try these tasty bacon wrapped onion rings. We replaced the traditional breadcrumbs with streaky bacon",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Bacon_rings.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Bacon rings",
                     Price = 38.51m
                 },
@@ -154,7 +161,7 @@ namespace Data.Data
                     Description = "A blooming onion, also called onion bloom, onion blossom, onion flower, bloomin' onion, or onion mum, is a dish consisting of one large onion",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Blooming_onion.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Blooming onion",
                     Price = 10.30m
                 },
@@ -165,7 +172,7 @@ namespace Data.Data
                     Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CALZONES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CALZONES",
                     Price = 27.95m
                 },
@@ -176,7 +183,7 @@ namespace Data.Data
                     Description = "Deep Fried Main Dishes. Fried chicken. Fish Tacos. Corn dogs. Finger Steaks. When you're in the mood for crispy fried food, these 5-star recipes do it right",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Deep Fried Main Dishes",
                     Price = 35.95m
                 },
@@ -187,7 +194,7 @@ namespace Data.Data
                     Description = "Ground beef or a mix of ground beef, pork and sometimes veal or venison, finely chopped (fried) onions, some broth, often with cream and sometimes with breadcrumbs soaked in milk",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/MEATBALLS.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MEATBALLS",
                     Price = 33.95m
                 },
@@ -198,7 +205,7 @@ namespace Data.Data
                     Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/QUICHE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "QUICHE",
                     Price = 11.95m
                 },
@@ -209,7 +216,7 @@ namespace Data.Data
                     Description = "We've rounded up our 60 best chicken breast recipes, all of which are pretty easy, ... An easy, cheesy chicken breast supper that's as basic as they come",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CHICKEN MAIN DISHES",
                     Price = 22.95m
                 },
@@ -220,7 +227,7 @@ namespace Data.Data
                     Description = "From seafood pastas and paellas, to creamy chowders and curries, our seafood recipes celebrate prawns, crab, clams, mussels and more.",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "SEAFOOD MAIN DISHES",
                     Price = 11.95m
                 },
@@ -231,7 +238,7 @@ namespace Data.Data
                     Description = "Tiramisu cake is made of moist and fluffy vanilla layers soaked with a mixture of brandy, coffee liqueur and espresso",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/TIRAMISU_LAYER_CAKE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "TIRAMISU LAYER CAKE",
                     Price = 18.95m
                 },
@@ -242,7 +249,7 @@ namespace Data.Data
                     Description = "Devil's Food Cake is a variety of chocolate cake that uses cocoa powder instead of melted chocolate which is found in many chocolate cake recipes.",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/DEVIL'S_FOOD_CAKE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "DEVIL'S FOOD CAKE",
                     Price = 15.95m
                 },
@@ -253,7 +260,7 @@ namespace Data.Data
                     Description = "Lemon Soufflés are made with only three ingredients: lemons, sugar, and eggs. They are so simple but so delicous and make a big impact when served in lemon juice",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/LEMON_SOUFFLES.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "LEMON SOUFFLES",
                     Price = 22.95m
                 },
@@ -264,7 +271,7 @@ namespace Data.Data
                     Description = "Baklava is a layered pastry dessert made of filo pastry, filled with chopped nuts, and sweetened with syrup or honey ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/BAKLAVA.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "BAKLAVA",
                     Price = 11.95m
                 },
@@ -275,7 +282,7 @@ namespace Data.Data
                     Description = "Our classic 8'' doberge cakes boast six layers of rich buttermilk cake sandwiching our handmade custard, frosted with our creamy buttercream, ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/LEMON_CAKE_DOBERGE.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "LEMON CAKE DOBERGE",
                     Price = 33.95m
                 },
@@ -286,7 +293,7 @@ namespace Data.Data
                     Description = "In a saucepan, combine the chocolate, milk and cream and heat on low, stirring often, until the chocolate is completely melted and the mixture ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/CHOCOLATE_FONDUE.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CHOCOLATE FONDUE",
                     Price = 44.95m
                 },
@@ -296,7 +303,7 @@ namespace Data.Data
                     Description = "The Botanist gin, Campari, Vermouth Di Torino",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/NEGRONI.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "NEGRONI",
                     Price = 25
 
@@ -308,7 +315,7 @@ namespace Data.Data
                     Description = "Tanqueray London Dry gin, Noilly Prat dry vermouth",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/martini.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MARTINI",
                     Price = 26
                 },
@@ -319,7 +326,7 @@ namespace Data.Data
                     Description = "Sazerac Rye whiskey, Cocchi Vermouth Di Torino",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/manhattan.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MANHATTAN",
                     Price = 27
                 },
@@ -330,7 +337,7 @@ namespace Data.Data
                     Description = "Four Roses Yellow Label bourbon, lemon",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/whiskey_sour.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "WHISKEY SOUR",
                     Price = 28
                 },
@@ -341,7 +348,7 @@ namespace Data.Data
                     Description = "Buffalo Trace bourbon, demerara, Angostura Bitters",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/OLD_FASHIONED.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "OLD FASHIONED",
                     Price = 29
                 },
@@ -352,7 +359,7 @@ namespace Data.Data
                     Description = "Grey Goose vodka, tomato juice, lemon, celery, olives, Fridays® seasoning. Served with the usual accompaniments.",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/BLOODY_MARY.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "BLOODY MARY",
                     Price = 30
                 },
@@ -363,7 +370,7 @@ namespace Data.Data
                     Description = "The microwave is a great way to reheat stuffed mushrooms because it's gentle and it doesn't dry them out. Plus, it's a quick and easy way to heat them up without having to use the oven or the stovetop.",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Roasted stuffed mushrooms",
                     Price = 31
                 },
@@ -374,7 +381,7 @@ namespace Data.Data
                     Description = "Roll each wrapper on the diagonal to enclose filling, folding in sides after first complete turn. Place spring rolls on prepared trays, seam-side down; brush",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Baked spring rolls",
                     Price = 32
                 },
@@ -385,7 +392,7 @@ namespace Data.Data
                     Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Baked spring rolls",
                     Price = 33
                 },
@@ -396,7 +403,7 @@ namespace Data.Data
                     Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Sweet fried saganaki",
                     Price = 34
                 },
@@ -407,7 +414,7 @@ namespace Data.Data
                     Description = "If you fancy making yourself a little treat, try these tasty bacon wrapped onion rings. We replaced the traditional breadcrumbs with streaky bacon",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Bacon_rings.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Bacon rings",
                     Price = 35
                 },
@@ -418,7 +425,7 @@ namespace Data.Data
                     Description = "A blooming onion, also called onion bloom, onion blossom, onion flower, bloomin' onion, or onion mum, is a dish consisting of one large onion",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Blooming_onion.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Blooming onion",
                     Price = 36
                 },
@@ -429,7 +436,7 @@ namespace Data.Data
                     Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CALZONES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CALZONES",
                     Price = 37
                 },
@@ -440,7 +447,7 @@ namespace Data.Data
                     Description = "Deep Fried Main Dishes. Fried chicken. Fish Tacos. Corn dogs. Finger Steaks. When you're in the mood for crispy fried food, these 5-star recipes do it right",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Deep Fried Main Dishes",
                     Price = 38
                 },
@@ -451,7 +458,7 @@ namespace Data.Data
                     Description = "Ground beef or a mix of ground beef, pork and sometimes veal or venison, finely chopped (fried) onions, some broth, often with cream and sometimes with breadcrumbs soaked in milk",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/MEATBALLS.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MEATBALLS",
                     Price = 39
                 },
@@ -462,7 +469,7 @@ namespace Data.Data
                     Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/QUICHE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "QUICHE",
                     Price = 40
                 },
@@ -473,7 +480,7 @@ namespace Data.Data
                     Description = "We've rounded up our 60 best chicken breast recipes, all of which are pretty easy, ... An easy, cheesy chicken breast supper that's as basic as they come",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CHICKEN MAIN DISHES",
                     Price = 41
                 },
@@ -484,7 +491,7 @@ namespace Data.Data
                     Description = "From seafood pastas and paellas, to creamy chowders and curries, our seafood recipes celebrate prawns, crab, clams, mussels and more.",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "SEAFOOD MAIN DISHES",
                     Price = 42
                 },
@@ -495,7 +502,7 @@ namespace Data.Data
                     Description = "Tiramisu cake is made of moist and fluffy vanilla layers soaked with a mixture of brandy, coffee liqueur and espresso",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/TIRAMISU_LAYER_CAKE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "TIRAMISU LAYER CAKE",
                     Price = 43
                 },
@@ -506,7 +513,7 @@ namespace Data.Data
                     Description = "Devil's Food Cake is a variety of chocolate cake that uses cocoa powder instead of melted chocolate which is found in many chocolate cake recipes.",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/DEVIL'S_FOOD_CAKE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "DEVIL'S FOOD CAKE",
                     Price = 44
                 },
@@ -517,7 +524,7 @@ namespace Data.Data
                     Description = "Lemon Soufflés are made with only three ingredients: lemons, sugar, and eggs. They are so simple but so delicous and make a big impact when served in lemon juice",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/LEMON_SOUFFLES.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "LEMON SOUFFLES",
                     Price = 45
                 },
@@ -528,7 +535,7 @@ namespace Data.Data
                     Description = "Baklava is a layered pastry dessert made of filo pastry, filled with chopped nuts, and sweetened with syrup or honey ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/BAKLAVA.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "BAKLAVA",
                     Price = 46
                 },
@@ -539,7 +546,7 @@ namespace Data.Data
                     Description = "Our classic 8'' doberge cakes boast six layers of rich buttermilk cake sandwiching our handmade custard, frosted with our creamy buttercream, ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/LEMON_CAKE_DOBERGE.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "LEMON CAKE DOBERGE",
                     Price = 47
                 },
@@ -550,7 +557,7 @@ namespace Data.Data
                     Description = "In a saucepan, combine the chocolate, milk and cream and heat on low, stirring often, until the chocolate is completely melted and the mixture ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/CHOCOLATE_FONDUE.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CHOCOLATE FONDUE",
                     Price = 48
                 },
@@ -560,7 +567,7 @@ namespace Data.Data
                     Description = "The Botanist gin, Campari, Vermouth Di Torino",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/NEGRONI.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "NEGRONI",
                     Price = 49
 
@@ -572,7 +579,7 @@ namespace Data.Data
                     Description = "Tanqueray London Dry gin, Noilly Prat dry vermouth",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/martini.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MARTINI",
                     Price = 50
                 },
@@ -583,7 +590,7 @@ namespace Data.Data
                     Description = "Sazerac Rye whiskey, Cocchi Vermouth Di Torino",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/manhattan.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MANHATTAN",
                     Price = 51
                 },
@@ -594,7 +601,7 @@ namespace Data.Data
                     Description = "Four Roses Yellow Label bourbon, lemon",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/whiskey_sour.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "WHISKEY SOUR",
                     Price = 52
                 },
@@ -605,7 +612,7 @@ namespace Data.Data
                     Description = "Buffalo Trace bourbon, demerara, Angostura Bitters",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/OLD_FASHIONED.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "OLD FASHIONED",
                     Price = 53
                 },
@@ -616,7 +623,7 @@ namespace Data.Data
                     Description = "Grey Goose vodka, tomato juice, lemon, celery, olives, Fridays® seasoning. Served with the usual accompaniments.",
                     DishGroup = DishGroup.Alcohol,
                     ImgPath = "/img/menu/BLOODY_MARY.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "BLOODY MARY",
                     Price = 54
                 },
@@ -627,7 +634,7 @@ namespace Data.Data
                     Description = "The microwave is a great way to reheat stuffed mushrooms because it's gentle and it doesn't dry them out. Plus, it's a quick and easy way to heat them up without having to use the oven or the stovetop.",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Roasted stuffed mushrooms",
                     Price = 55
                 },
@@ -638,7 +645,7 @@ namespace Data.Data
                     Description = "Roll each wrapper on the diagonal to enclose filling, folding in sides after first complete turn. Place spring rolls on prepared trays, seam-side down; brush",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Baked spring rolls",
                     Price = 56
                 },
@@ -649,7 +656,7 @@ namespace Data.Data
                     Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Baked spring rolls",
                     Price = 57
                 },
@@ -660,7 +667,7 @@ namespace Data.Data
                     Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Sweet fried saganaki",
                     Price = 58
                 },
@@ -671,7 +678,7 @@ namespace Data.Data
                     Description = "If you fancy making yourself a little treat, try these tasty bacon wrapped onion rings. We replaced the traditional breadcrumbs with streaky bacon",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Bacon_rings.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Bacon rings",
                     Price = 59
                 },
@@ -682,7 +689,7 @@ namespace Data.Data
                     Description = "A blooming onion, also called onion bloom, onion blossom, onion flower, bloomin' onion, or onion mum, is a dish consisting of one large onion",
                     DishGroup = DishGroup.Starters,
                     ImgPath = "/img/menu/Blooming_onion.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Blooming onion",
                     Price = 60
                 },
@@ -693,7 +700,7 @@ namespace Data.Data
                     Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CALZONES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CALZONES",
                     Price = 61
                 },
@@ -704,7 +711,7 @@ namespace Data.Data
                     Description = "Deep Fried Main Dishes. Fried chicken. Fish Tacos. Corn dogs. Finger Steaks. When you're in the mood for crispy fried food, these 5-star recipes do it right",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "Deep Fried Main Dishes",
                     Price = 62
                 },
@@ -715,7 +722,7 @@ namespace Data.Data
                     Description = "Ground beef or a mix of ground beef, pork and sometimes veal or venison, finely chopped (fried) onions, some broth, often with cream and sometimes with breadcrumbs soaked in milk",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/MEATBALLS.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "MEATBALLS",
                     Price = 63
                 },
@@ -726,7 +733,7 @@ namespace Data.Data
                     Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/QUICHE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "QUICHE",
                     Price = 64
                 },
@@ -737,7 +744,7 @@ namespace Data.Data
                     Description = "We've rounded up our 60 best chicken breast recipes, all of which are pretty easy, ... An easy, cheesy chicken breast supper that's as basic as they come",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CHICKEN MAIN DISHES",
                     Price = 65
                 },
@@ -748,7 +755,7 @@ namespace Data.Data
                     Description = "From seafood pastas and paellas, to creamy chowders and curries, our seafood recipes celebrate prawns, crab, clams, mussels and more.",
                     DishGroup = DishGroup.MainPlates,
                     ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "SEAFOOD MAIN DISHES",
                     Price = 66
                 },
@@ -759,7 +766,7 @@ namespace Data.Data
                     Description = "Tiramisu cake is made of moist and fluffy vanilla layers soaked with a mixture of brandy, coffee liqueur and espresso",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/TIRAMISU_LAYER_CAKE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "TIRAMISU LAYER CAKE",
                     Price = 67
                 },
@@ -770,7 +777,7 @@ namespace Data.Data
                     Description = "Devil's Food Cake is a variety of chocolate cake that uses cocoa powder instead of melted chocolate which is found in many chocolate cake recipes.",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/DEVIL'S_FOOD_CAKE.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "DEVIL'S FOOD CAKE",
                     Price = 68
                 },
@@ -781,7 +788,7 @@ namespace Data.Data
                     Description = "Lemon Soufflés are made with only three ingredients: lemons, sugar, and eggs. They are so simple but so delicous and make a big impact when served in lemon juice",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/LEMON_SOUFFLES.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "LEMON SOUFFLES",
                     Price = 69
                 },
@@ -792,7 +799,7 @@ namespace Data.Data
                     Description = "Baklava is a layered pastry dessert made of filo pastry, filled with chopped nuts, and sweetened with syrup or honey ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/BAKLAVA.jpg",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "BAKLAVA",
                     Price = 70
                 },
@@ -803,7 +810,7 @@ namespace Data.Data
                     Description = "Our classic 8'' doberge cakes boast six layers of rich buttermilk cake sandwiching our handmade custard, frosted with our creamy buttercream, ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/LEMON_CAKE_DOBERGE.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "LEMON CAKE DOBERGE",
                     Price = 71
                 },
@@ -814,41 +821,55 @@ namespace Data.Data
                     Description = "In a saucepan, combine the chocolate, milk and cream and heat on low, stirring often, until the chocolate is completely melted and the mixture ",
                     DishGroup = DishGroup.Desert,
                     ImgPath = "/img/menu/CHOCOLATE_FONDUE.jpg ",
-                    Ingredients = new List<Ingredient>(),
+                    DishCompositions = new List<DishComposition>(),
                     Name = "CHOCOLATE FONDUE",
                     Price = 72
                 }
+        );
+
+
+            var dishcomposition = modelBuilder.Entity<DishComposition>();
+            dishcomposition.HasOne(c => c.Ingredient)
+                    .WithOne();
+
+            var dish = modelBuilder.Entity<Dish>();
+            dish.HasMany(c => c.DishCompositions)
+                    .WithOne(d=>d.Dish);
+
+            var dishorder = modelBuilder.Entity<DishOrder>();
+            dishorder.HasOne(c => c.Dish)
+                    .WithOne();
+
+            var order = modelBuilder.Entity<Order>();
+            order.HasOne(c => c.TableOrder)
+                    .WithOne();
+            order.HasMany(c => c.DishesOrder)
+                    .WithOne(d=>d.Order);
+
+            var tableorder = modelBuilder.Entity<TableOrder>();
+            tableorder.HasOne(c => c.RestaurantTable)
+                    .WithOne();
+
+            var customer = modelBuilder.Entity<Customer>();
+            customer.HasOne(c => c.CustomerOrder)
+                    .WithOne();
+            customer.HasOne(c => c.Person)
+                    .WithOne();
+
+            var admin = modelBuilder.Entity<Customer>();
+            admin.HasOne(c => c.Person)
+                    .WithOne();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-               );
-
-
-            var dishIngredients = modelBuilder.Entity<Dish>();
-           /* dishIngredients.HasMany(c => c.Ingredients)
-                    .WithOne(r => r.Dish);*/
-
+            modelBuilder.Entity<Dish>().HasKey(dishes => dishes.Id);
+            modelBuilder.Entity<Dish>().Property(solds => solds.Name).HasMaxLength(30);
+            modelBuilder.Entity<Dish>().Property(solds => solds.Name).IsRequired();            
+            modelBuilder.Entity<Dish>().Property(solds => solds.Description).HasMaxLength(50);
+            modelBuilder.Entity<Dish>().Property(solds => solds.Description).IsRequired();
+            modelBuilder.Entity<Dish>().Property(solds => solds.ImgPath).IsRequired();
+            modelBuilder.Entity<Dish>().Property(solds => solds.Price).IsRequired();
+            modelBuilder.Entity<Dish>(entity => entity.HasIndex(dishes => dishes.Id).IsUnique());
 
             base.OnModelCreating(modelBuilder);
         }
