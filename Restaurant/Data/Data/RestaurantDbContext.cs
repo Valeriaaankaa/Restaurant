@@ -871,9 +871,6 @@ namespace Data.Data
             modelBuilder.Entity<Dish>().Property(solds => solds.Price).IsRequired();
             modelBuilder.Entity<Dish>(entity => entity.HasIndex(dishes => dishes.Id).IsUnique());
 
-
-
-
             base.OnModelCreating(modelBuilder);
         }
     }
