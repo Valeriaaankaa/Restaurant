@@ -839,7 +839,9 @@ namespace Data.Data
             dishorder.HasOne(c => c.Dish)
                     .WithOne();
 
-            var order = modelBuilder.Entity<Order>();            
+            var order = modelBuilder.Entity<Order>();
+            order.HasOne(c => c.TableOrder)
+                    .WithOne();
             order.HasMany(c => c.DishesOrder)
                     .WithOne(d=>d.Order);
 

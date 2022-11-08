@@ -13,6 +13,6 @@ namespace Data.Entities
         public OrderStatus OrderStatus { get; set; }
         public int TableOrderId { get; set; }
         public ICollection<DishOrder> DishesOrder { get; set; }
-        public ICollection<TableOrder> TableOrder { get; set; }
+        public TableOrder TableOrder { get; set; }
     }
 }
