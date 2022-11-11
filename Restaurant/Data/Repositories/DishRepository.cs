@@ -34,6 +34,24 @@ namespace Data.Repositories
             return await _context.Dishes.ToListAsync();
         }
 
+        public async Task<IEnumerable<Dish>> GetAllWithDetailsAsync()
+        {
+            var dishes = await _context.Dishes
+                .Include(c => c.DishCompositions) 
+                .ThenInclude(t=>t.Ingredient)
+                .ToListAsync();
+            return dishes;
+        }
+
+        public async Task<Dish> GetByIdWithDetailsAsync(int id)
+        {
+            return await _context.Dishes
+                .Include(c => c.DishCompositions)
+                .ThenInclude(r => r.Ingredient)
+                .FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+
         public async Task<Dish> GetByIdAsync(int id)
         {
             return await _context.Dishes.FindAsync(id);

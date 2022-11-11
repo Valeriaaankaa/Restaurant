@@ -1,4 +1,6 @@
-﻿using Business.Interfaces;
+﻿using AutoMapper;
+using Business.Interfaces;
+using Business.Models;
 using Business.Validation;
 using Data.Entities;
 using Data.Interfaces;
@@ -14,12 +16,15 @@ namespace Business.Services
     public class DishService : IDishService
     {
         private readonly IUnitOfWork _unitOfWork;
-        public DishService(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public DishService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public async Task AddAsync(Dish model)
+
+        public async Task AddAsync(DishModel model)
         {
             if (model == null)
             {
@@ -34,9 +39,10 @@ namespace Business.Services
                 throw new RestaurantException("Name is empty");
             }
 
-            await _unitOfWork.DishRepository.AddAsync(model);
+            await _unitOfWork.DishRepository.AddAsync(_mapper.Map<Dish>(model));
             await _unitOfWork.SaveAsync();
         }
+
 
         public async Task DeleteAsync(int modelId)
         {
@@ -45,19 +51,20 @@ namespace Business.Services
             await _unitOfWork.SaveAsync();
         }
 
-        public async Task<IEnumerable<Dish>> GetAllAsync()
+        public async Task<IEnumerable<DishModel>> GetAllAsync()
         {
-            var dishes = await _unitOfWork.DishRepository.GetAllAsync();
-            return dishes;
+            var dishes = await _unitOfWork.DishRepository.GetAllWithDetailsAsync();
+
+            return _mapper.Map<IEnumerable<DishModel>>(dishes);
         }
 
-        public async Task<Dish> GetByIdAsync(int id)
+        public async Task<DishModel> GetByIdAsync(int id)
         {
             var dish = await _unitOfWork.DishRepository.GetByIdAsync(id);
-            return dish;
+            return _mapper.Map<DishModel>(dish);
         }
 
-        public async Task UpdateAsync(Dish model)
+        public async Task UpdateAsync(DishModel model)
         {
             if (model == null)
             {
@@ -68,7 +75,7 @@ namespace Business.Services
                 throw new RestaurantException("Name is empty");
             }
 
-            var dish = model;
+            var dish = _mapper.Map<Dish>(model);
 
             _unitOfWork.DishRepository.Update(dish);
 
