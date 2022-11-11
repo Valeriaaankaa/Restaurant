@@ -1,0 +1,59 @@
+﻿@using System.Collections;
+@using Data.Entities;
+@using Business.Models;
+
+@model IngredientModel
+
+<div class="container shadow p-5">
+    <div class="form-group d-flex justify-content-center">
+        <h2>Add Ingredient</h2>
+    </div>
+
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name">Ingredient Name</label>
+                <input type="text" class="form-control mb-3" asp-for="Name" placeholder="Enter Name">
+                <span asp-validation-for="Name" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Price">Price</label>
+                <input type="number" class="form-control mb-3" asp-for="Price" placeholder="Enter Price">
+                <span asp-validation-for="Price" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-9 mb-3">
+                <div class="form-row">
+                    <label asp-for="ImportDate">Import Date</label>
+                    <input type="date" class="form-control" asp-for="ImportDate">
+                    <span asp-validation-for="ImportDate" class=" alert-danger"></span>
+                </div>
+                <div class="form-row">
+                    <label asp-for="ExpirationDate">Expiration Date</label>
+                    <input type="date" class="form-control" asp-for="ExpirationDate">
+                    <span asp-validation-for="ExpirationDate" class=" alert-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="IngredientGroup" class="control-label"></label>
+                    <select asp-for="IngredientGroup"
+                            class="form-control"
+                            asp-items="Html.GetEnumSelectList<IngredientGroup>()">
+                        <option>Select type ...</option>
+                    </select>
+                    <span asp-validation-for="IngredientGroup" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group d-flex justify-content-center">            
+            <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Save</button>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <a asp-controller="Dish" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
+        </div>         
+        
+    </form>
+</div>
