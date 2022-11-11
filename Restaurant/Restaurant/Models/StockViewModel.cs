@@ -12,7 +12,7 @@ namespace Restaurant.Models
 
         public int Page { get; set; } = 0;
         public int MaxPage { get; set; }
-        public string Category { get; set; } = "Meat";
+        public string Category { get; set; }
         public int PageSize { get; } = 6;
 
     }
