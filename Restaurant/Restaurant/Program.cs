@@ -1,3 +1,5 @@
+using AutoMapper;
+using Business;
 using Business.Interfaces;
 using Business.Services;
 using Data.Data;
@@ -12,6 +14,16 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("Restaurant");
 builder.Services.AddDbContext<RestaurantDbContext>(x => x.UseSqlServer(connectionString));
+
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new AutomapperProfile());
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 
 builder.Services.AddHttpContextAccessor();
 
