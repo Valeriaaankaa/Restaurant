@@ -1,4 +1,5 @@
-﻿using Data.Entities;
+﻿using Business.Models;
+using Data.Entities;
 
 namespace Restaurant.Models
 {
@@ -6,7 +7,7 @@ namespace Restaurant.Models
     {
         public SortType SelectSortType { get; set; }
 
-        public IEnumerable<Dish> Dishes { get; set;}
+        public IEnumerable<DishModel> Dishes { get; set;}
 
         public IEnumerable<DishGroup> Categories { get; set; }
 
