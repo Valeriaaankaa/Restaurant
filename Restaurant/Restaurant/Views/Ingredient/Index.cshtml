@@ -29,6 +29,14 @@
                 <td>@ingred.ExpirationDate</td>
                 <td>@ingred.Price</td>
                 <td>@ingred.Amount</td>
+                 <td>
+                        <div role="group" class="w-60 btn-group">
+                            <a asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ingred.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            
+                            @Html.ActionLink("Delete",
+                                "Delete", new { id = ingred.Id },
+                                    new { onclick = "return confirm('Do you really want to delete the tag " + @ingred.Name + "?')" , @class ="btn btn-sm btn-danger"})
+                        </div>
+                    </td>
             </tr>
         }
     </tbody>

@@ -38,6 +38,31 @@ namespace Restaurant.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<ActionResult> EditAsync(int id)
+        {
+            var dish = await _ingredientService.GetByIdAsync(id);
+
+            return View(dish);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EditAsync(Ingredient ingredient)
+        {
+            await _ingredientService.UpdateAsync(ingredient);
+            return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            await _ingredientService.DeleteAsync(id);
+            ViewBag.Messsage = "Record Delete Successfully";
+            return RedirectToAction("Index");
+        }
+
+
+
 
         /*[HttpPost]
         public async Task<IActionResult> Add(AddIngredientViewModel addIngredientRequest)
