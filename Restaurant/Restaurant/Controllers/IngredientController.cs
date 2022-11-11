@@ -1,6 +1,7 @@
 ﻿using Data.Data;
 using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Restaurant.Models;
 
 namespace Restaurant.Controllers
@@ -13,9 +14,10 @@ namespace Restaurant.Controllers
             this.restaurantDb = restaurantDbContext;
         }
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var ingredients = await restaurantDb.Ingredients.ToListAsync(); 
+            return View(ingredients);
         }
 
         [HttpPost]
@@ -26,7 +28,7 @@ namespace Restaurant.Controllers
                 Name = addIngredientRequest.Name,
                 Amount = addIngredientRequest.Amount,
                 ImportDate = addIngredientRequest.ImportDate,
-                ExpirationDate = addIngredientRequest.ExpirationDare,
+                ExpirationDate = addIngredientRequest.ExpirationDate,
                 Price = addIngredientRequest.Price
             };
 
