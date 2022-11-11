@@ -30,20 +30,21 @@ namespace Restaurant.Controllers
             return View(dishes);
         }
 
-        public ActionResult Create()
-        {
-            return View();
-        }
         [HttpPost]
         public async Task<IActionResult> CreateAsync(DishModel dish)
         {
             //if (ModelState.IsValid)
             //{
-                await _dishService.AddAsync(dish);
-                return RedirectToAction("Details");
+            await _dishService.AddAsync(dish);
+            return RedirectToAction("Details");
             //}
             //return View(dish);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        
          
 
         [HttpGet]
