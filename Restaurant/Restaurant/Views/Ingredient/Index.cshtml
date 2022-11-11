@@ -1,5 +1,8 @@
 ﻿@model List<Data.Entities.Ingredient>
 
+@{
+    ViewData["Title"] = "Stock";
+}
 
 
 <h1>Ingredients</h1>
@@ -8,9 +11,11 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Ingredient group</th>
             <th>Import Date</th>
             <th>Expiration Date</th>
             <th>Price</th>
+            <th>Amount</th>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +24,11 @@
             <tr>
                 <td>@ingred.Id</td>
                 <td>@ingred.Name</td>
+                <td>@ingred.IngredientGroup</td>
                 <td>@ingred.ImportDate</td>
                 <td>@ingred.ExpirationDate</td>
                 <td>@ingred.Price</td>
+                <td>@ingred.Amount</td>
             </tr>
         }
     </tbody>
