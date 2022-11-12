@@ -17,14 +17,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.Dishes.Take(4))
+                            @foreach (var item in Model.Dishes?.Take(4) ?? throw new Exception("Dishes is empty"))
                             {
                                  <tr>
                                     <td>
                                         <figure class="itemside align-items-center">
-                                            <div class="aside"><img width="390" height="325" src="@item.ImgPath.ToString()" class="img-sm"></div>
-                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">@item.Name</a>
-                                            </figcaption>
+                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">@item.Name</a></figcaption>
+                                            <div class="aside"><img width="100" height="100" src="@item.ImgPath.ToString()" class="rounded float-left"></div>
                                         </figure>
                                     </td>
                                     <td> <select class="form-control">
@@ -71,7 +70,7 @@
                             <dd class="text-right text-dark b ml-3"><strong>@((Model.Dishes.Take(4).Sum(c => c.Price) * 0.9m).ToString("C2"))</strong></dd>
                         </dl>
                          <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
-                        <a href="@Url.Action("Menu")" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                        <a href="@Url.Action("Index", "Dish")" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a>
                     </div>
                 </div>
             </aside>
