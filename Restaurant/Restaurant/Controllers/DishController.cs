@@ -71,44 +71,32 @@ namespace Restaurant.Controllers
         }
 
 
-
-
+        [HttpPost]
+        public ActionResult ChosenCategory(MenuViewModel model)
+        {
+            
+            return RedirectToAction("Index", "Dish", model);
+        }
 
         public async Task<IActionResult> IndexAsync(MenuViewModel model)
         {
-
-            int iid = Convert.ToInt32(6);
-            int iminPrice = Convert.ToInt32(20);
-            int imaxPrice = Convert.ToInt32(50);
-            FilterSearchModel fsm = new FilterSearchModel();
-            fsm.DishGroup = (DishGroup)iid;
-            fsm.MaxPrice = imaxPrice;
-            fsm.MinPrice = iminPrice;
-
-
-
-            // TO DO  CREATE PAGINATION CLASS!!
-            IEnumerable<DishModel> Dishes = await _dishService.GetByFilterAsync(fsm);
-
-            IEnumerable<DishGroup> Categories = Dishes.Select(c => c.DishGroup).Distinct();
-
-            IEnumerable<DishModel> category_list;
-
-            if (model.SelectSortType == SortType.ByName)
+            if (model.FilterSearchModel == null)
             {
-                category_list = Dishes.Where(c => c.DishGroup.ToString() == model.Category).OrderBy(d => d.Name.ToLower());
+                model.Dishes = await _dishService.GetAllAsync();
             }
             else
             {
-                category_list = Dishes.Where(c => c.DishGroup.ToString() == model.Category).OrderByDescending(d => d.Price);
+                model.Dishes = await _dishService.GetByFilterAsync(model.FilterSearchModel);
             }
 
-            var count = category_list.Count();
-            var data = category_list.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
+            model.Categories = (await _dishService.GetDishCategoriesAsync()).ToList();
+             
 
-            model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);
-            model.Dishes = data;
-            model.Categories = Categories;
+            model.Dishes = _dishService.Sort(model.Dishes, model.Category, model.SelectSortType);
+
+            var count = model.Dishes.Count();
+            model.Dishes = model.Dishes.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
+            model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);         
 
             return this.View(model);
         }
@@ -117,7 +105,10 @@ namespace Restaurant.Controllers
 
 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
+
+
+            [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

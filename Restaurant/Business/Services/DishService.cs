@@ -80,6 +80,34 @@ namespace Business.Services
         }
 
 
+        public async Task<IEnumerable<DishGroup>> GetDishCategoriesAsync()
+        {
+            var dishes = await _unitOfWork.DishRepository.GetAllWithDetailsAsync();
+            var dishescategories = dishes.Select(c => c.DishGroup).Distinct();
+
+            return dishescategories;
+        }
+
+
+        public IEnumerable<DishModel> Sort(IEnumerable<DishModel> dm, string Category, SortType st)
+        {
+            IEnumerable<DishModel> category_list;
+
+            if (st == SortType.ByName)
+            {
+                category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Name.ToLower());
+            }
+            else
+            {
+                category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Price);
+            }
+
+            return category_list;
+        }
+
+
+
+
         public async Task<DishModel> GetByIdAsync(int id)
         {
             var dish = await _unitOfWork.DishRepository.GetByIdAsync(id);
