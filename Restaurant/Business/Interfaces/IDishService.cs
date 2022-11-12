@@ -10,6 +10,6 @@ namespace Business.Interfaces
 {
     public interface IDishService : ICrud<DishModel>
     {
-       
+        Task<IEnumerable<DishModel>> GetByFilterAsync(FilterSearchModel filterSearch);
     }
 }

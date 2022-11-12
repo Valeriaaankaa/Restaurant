@@ -24,6 +24,27 @@ namespace Business.Services
         }
 
 
+        public async Task<IEnumerable<DishModel>> GetByFilterAsync(FilterSearchModel filterSearch)
+        {
+
+            var dishes = await _unitOfWork.DishRepository.GetAllWithDetailsAsync();
+            var filtred = dishes
+                .Where(p => p.Price >= (filterSearch.MinPrice ?? decimal.MinValue) && p.Price <= (filterSearch.MaxPrice ?? decimal.MaxValue));
+            if (filterSearch.DishGroup != null)
+            {
+                filtred = filtred.Where(p => p.DishGroup == filterSearch.DishGroup);
+            }
+
+            List<DishModel> pml = new List<DishModel>();
+            foreach (Dish p in filtred)
+            {
+                pml.Add(_mapper.Map<Dish, DishModel>(p));
+            }
+            return pml;
+
+        }
+
+
         public async Task AddAsync(DishModel model)
         {
             if (model == null)
@@ -57,6 +78,7 @@ namespace Business.Services
 
             return _mapper.Map<IEnumerable<DishModel>>(dishes);
         }
+
 
         public async Task<DishModel> GetByIdAsync(int id)
         {

@@ -76,8 +76,19 @@ namespace Restaurant.Controllers
 
         public async Task<IActionResult> IndexAsync(MenuViewModel model)
         {
+
+            int iid = Convert.ToInt32(6);
+            int iminPrice = Convert.ToInt32(20);
+            int imaxPrice = Convert.ToInt32(50);
+            FilterSearchModel fsm = new FilterSearchModel();
+            fsm.DishGroup = (DishGroup)iid;
+            fsm.MaxPrice = imaxPrice;
+            fsm.MinPrice = iminPrice;
+
+
+
             // TO DO  CREATE PAGINATION CLASS!!
-            IEnumerable<DishModel> Dishes = await _dishService.GetAllAsync();
+            IEnumerable<DishModel> Dishes = await _dishService.GetByFilterAsync(fsm);
 
             IEnumerable<DishGroup> Categories = Dishes.Select(c => c.DishGroup).Distinct();
 
