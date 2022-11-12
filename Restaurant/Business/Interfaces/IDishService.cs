@@ -13,5 +13,7 @@ namespace Business.Interfaces
         Task<IEnumerable<DishModel>> GetByFilterAsync(FilterSearchModel filterSearch);
         Task<IEnumerable<DishGroup>> GetDishCategoriesAsync();
         IEnumerable<DishModel> Sort(IEnumerable<DishModel> dm, string Category, SortType st);
+
+
     }
 }

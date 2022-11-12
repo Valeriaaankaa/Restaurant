@@ -1,0 +1,54 @@
+﻿@using System.Collections;
+@using Data.Entities;
+@using Business.Models;
+
+@model IEnumerable<DishCompositionModel>
+
+@{
+    ViewData["Title"] = "DishComposition";
+}
+
+
+<div class="container shadow p-5">
+
+    <h1 class="text-center mb-3">DishComposition </h1>
+
+    <div class="col mb-3">
+        <a asp-controller="DishComposition" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add DishComposition</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Amount</th>
+                <th scope="col">IngredientId</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="3%">
+                        @item.Id
+                    </td>
+                    <td width="17%">
+                        @item.Amount
+                    </td>
+                    <td width="20%">
+                        @item.IngredientId
+                    </td>         
+                    <td>
+                        <div role="group" class="w-60 btn-group">
+                            <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            
+                            @Html.ActionLink("Delete",
+                                "Delete", new { id = item.Id },
+                                    new { onclick = "return confirm('Do you really want to delete the tag " + @item.Id + "?')" , @class ="btn btn-sm btn-danger"})
+                        </div>
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

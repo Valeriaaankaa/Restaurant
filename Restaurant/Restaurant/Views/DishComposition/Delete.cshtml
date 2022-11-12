@@ -1,0 +1,37 @@
+﻿@using System.Collections;
+@using Business.Models
+@using Data.Entities;
+
+@model DishCompositionModel
+
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Delete DishComposition</h2>
+    </div>
+
+    <form method="post">
+        <input asp-for="Id" hidden />
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Amount">Amount</label>
+                <input type="text" class="form-control mb-3" asp-for="Amount" placeholder="Amount">
+                <span asp-validation-for="Amount" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="IngredientId">IngredientId</label>
+                <input type="text" class="form-control mb-3" asp-for="IngredientId" placeholder="IngredientId">
+                <span asp-validation-for="IngredientId" class=" alert-danger"></span>
+            </div>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-lg btn-danger p-2"><i class="bi bi-trash-fill"></i>Delete</button>        
+        <a asp-controller="DishComposition" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
+    </form>
+
+} 
+
+</div>

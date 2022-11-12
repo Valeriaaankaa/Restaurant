@@ -10,7 +10,6 @@ namespace Restaurant.Controllers
     public class DishController : Controller
     {
         private readonly ILogger<DishController> _logger;
-
         private readonly IIngredientService _ingredientService;
         private readonly IDishService _dishService;
 
@@ -24,9 +23,7 @@ namespace Restaurant.Controllers
 
         public async Task<IActionResult> DetailsAsync(int id)
         {
-            var dishes = await _dishService.GetAllAsync();          
-            
-
+            var dishes = await _dishService.GetAllAsync();       
             return View(dishes);
         }
 

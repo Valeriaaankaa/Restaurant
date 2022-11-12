@@ -48,6 +48,24 @@ namespace Data.Repositories
             return await _context.DishCompositions.FindAsync(id);
         }
 
+
+        public async Task<IEnumerable<DishComposition>> GetAllWithDetailsAsync()
+        {
+            var compositions = await _context.DishCompositions
+                .Include(c => c.Ingredient)
+                .ToListAsync();
+            return compositions;
+        }
+
+        public async Task<DishComposition> GetByIdWithDetailsAsync(int id)
+        {
+            return await _context.DishCompositions
+                .Include(r => r.Ingredient)
+                .FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+
+
         public void Update(DishComposition entity)
         {
             _context.DishCompositions.Update(entity);

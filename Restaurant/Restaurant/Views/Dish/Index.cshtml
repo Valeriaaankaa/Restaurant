@@ -121,14 +121,12 @@
                         <ul class="pagination pagination-lg">
                     @if (Model.Page > 0)
                             {
-                                        <input type="submit" value="&laquo; Prev" formaction=@Url.Action("Index", "Dish", new { page = Model.Page - 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />
-                                @*<input type="submit" name="response" value="&laquo; Prev" formaction=@Url.Action("DishListPrev") formmethod="post" class="btn btn-warning" />*@
+                                <input type="submit" value="&laquo; Prev" formaction=@Url.Action("Index", "Dish", new { page = Model.Page - 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />                                
                                 <div>&nbsp;</div>
                     }
                     @if (Model.Page < Model.MaxPage)
                             {
-                                       <input type="submit" value="Next &raquo;" formaction=@Url.Action("Index", "Dish", new { page = Model.Page + 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />
-                               @*<input type="submit" name="response" value="Next &raquo;" formaction=@Url.Action("DishListNext") formmethod="post" class="btn btn-warning" />*@
+                                <input type="submit" value="Next &raquo;" formaction=@Url.Action("Index", "Dish", new { page = Model.Page + 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />                               
                             }        
                         </ul>
                     </nav>
