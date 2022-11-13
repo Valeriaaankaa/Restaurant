@@ -60,12 +60,6 @@ namespace Restaurant.Controllers
         {
             return View();
         }
-        public IActionResult Cart()
-        {
-            CartViewModel cartViewModel = new() { Dishes = _dishService.GetAllAsync().Result };
-            return View(cartViewModel);
-        }
-
         
         public IActionResult Error()
         {

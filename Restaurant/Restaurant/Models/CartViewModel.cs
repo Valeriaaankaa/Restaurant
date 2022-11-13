@@ -4,6 +4,6 @@ namespace Restaurant.Models
 {
     public class CartViewModel
     {
-        public IEnumerable<DishModel> Dishes { get; set; }
+        public IEnumerable<DishModel>? Dishes { get; set; }
     }
 }
