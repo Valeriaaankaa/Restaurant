@@ -1,15 +1,15 @@
 @using System.Collections;
 @using Data.Entities;
+@using Business.Models;
 @model MenuViewModel
 @{
     ViewData["Title"] = "Menu";
 }
+
+@using (Html.BeginForm("Index", "Dish", FormMethod.Post, new { @class = "sort-form" }))
+{
     <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
-<div class="container py-5">      
-            
-    
-    
-        
+    <div class="container py-5">                  
         <div class="row ">
             <!--Title-->
             <div class="col-lg-10 mx-auto col-12 text-center mb-3">
@@ -21,11 +21,17 @@
             <!--Pagination-->
             <div class="col-12 mt-4">
                 <hr class="my-3">
+
+                
+
+
                 <nav class="pagination">
                     <ul class="pagination pagination-lg">
                     @foreach (var categoryname in Model.Categories)
                         {
-                        <a href="@Url.Action("", new { page = 0, category = categoryname, selectsorttype = Model.SelectSortType })" class="btn btn-default">@categoryname</a>
+                                    <input type="submit" name=pagination value=@categoryname formaction=@Url.Action("ChosenCategory", new { Category = categoryname }) formmethod="post" class="btn btn-secondary" />
+                                    <div>&nbsp;</div>
+
                         }
                     </ul>      
                 </nav>
@@ -36,28 +42,40 @@
 
         <!--Filtering-->
         <div class="row">
-            <div class="col-5">
-                <a asp-controller="Dish" asp-action="Details" class="btn btn-lg btn-warning p-2">Go to all Dishes</a>
+            <div class="col-5">                    
             </div>
-           <div class="col-3">
-                <h4 class="mt-0 text-dark">@Model.Category</h4> 
-            </div>
-            <div class="col-1">                
-                <p>Sorting: </p>  
-            </div>
-            <div class="col-3">
-
-
-            @using (Html.BeginForm("Index", "Dish", FormMethod.Post, new { @class = "sort-form" }))
-                     {
-                         @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))), new { @class="dropdown" })
-                                <input type="submit" value="submit" />
-                     }                   
-            </div>
-            
+           <div class="col-4">
+                <h3 class="mt-0 text-dark">@Model.Category</h3> 
+            </div>            
+            <div class="col-3">                
+            </div>            
         </div>
 
+        <div class="row">
+            <div class="col-5">
+                    <a asp-controller="Dish" asp-action="Details" class="btn btn-warning">Go to all Dishes</a>
+            </div>
+           <div class="col-3">                
+           </div>
+            
+            <div class="form-group col-1">    
+                @Html.TextBoxFor(model => model.FilterSearchModel.MinPrice,  new { placeholder = "Min", @class="form-control" })
+             </div> 
+             <div class="form-group col-1">  
+                 @Html.TextBoxFor(model => model.FilterSearchModel.MaxPrice, new { placeholder = "Max", @class="form-control" })
+             </div>       
+                 <div class="col-2">
+                        @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))), new { @class="dropdown" })
+                 </div>
+        </div>
 
+            <div class="row">
+                <div class="col-8">                        
+                </div>                
+                <div class="col-2">
+                    <input type="submit" value="Apply" formaction=@Url.Action("Index", "Dish", new { page = 0, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-outline-dark" />                                        
+                </div>            
+            </div>
 
 
 
@@ -85,17 +103,13 @@
                         <ul class="pagination pagination-lg">
                     @if (Model.Page > 0)
                             {
-                        <a href="@Url.Action("", new { page = Model.Page - 1, category = Model.Category, selectsorttype = Model.SelectSortType})" class="btn btn-warning">
-                                    &laquo; Prev
-                        </a>
-                        <div>&nbsp;</div>
+                                <input type="submit" value="&laquo; Prev" formaction=@Url.Action("Index", "Dish", new { page = Model.Page - 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />                                
+                                <div>&nbsp;</div>
                     }
                     @if (Model.Page < Model.MaxPage)
                             {
-                        <a href="@Url.Action("", new { page = Model.Page + 1, category = Model.Category, selectsorttype = Model.SelectSortType })" class="btn btn-warning">
-                                    Next &raquo;
-                                </a>
-                            }                        
+                                <input type="submit" value="Next &raquo;" formaction=@Url.Action("Index", "Dish", new { page = Model.Page + 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />                               
+                            }        
                         </ul>
                     </nav>
                 <hr class="my-3">
@@ -118,3 +132,5 @@
             </div>
         </div>
     </div>
+
+}

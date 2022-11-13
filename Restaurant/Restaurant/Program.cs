@@ -37,6 +37,7 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
+builder.Services.AddTransient<IDishCompositionService, DishCompositionService>();
 builder.Services.AddTransient<IDishService, DishService>();
 
 
@@ -56,7 +57,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseSession();
-
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}")
 app.UseRouting();
 
 app.UseAuthentication();

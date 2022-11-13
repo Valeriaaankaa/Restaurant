@@ -1,8 +1,11 @@
 ﻿using Business.Interfaces;
 using Data.Entities;
 using Data.Interfaces;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.WebUtilities;
 using Restaurant.Models;
 using System.Diagnostics;
 
@@ -57,11 +60,20 @@ namespace Restaurant.Controllers
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var statusCode = HttpContext.Response.StatusCode;
+            ViewData["statusCode"] = statusCode;
+            var feauter = Request.HttpContext.Features.Get<IStatusCodeReExecuteFeature>();//=null
+            var path = feauter?.OriginalPath;
+            return View("ErrorPage", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                RequestedUrl = path,
+                RedirectUrl = HttpContext.Request.GetDisplayUrl(),
+                ExceptionMessage = ReasonPhrases.GetReasonPhrase(statusCode)
+            });
         }
     }
 }
