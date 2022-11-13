@@ -3,7 +3,9 @@ using Business;
 using Business.Interfaces;
 using Business.Services;
 using Data.Data;
+using Data.Entities;
 using Data.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,10 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("Restaurant");
 builder.Services.AddDbContext<RestaurantDbContext>(x => x.UseSqlServer(connectionString));
+
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AccountDbContext>();
+builder.Services.AddDbContext<AccountDbContext>(x => x.UseSqlServer(connectionString));
+
 
 
 var mapperConfig = new MapperConfiguration(mc =>
@@ -49,6 +55,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
