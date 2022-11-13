@@ -9,16 +9,18 @@
   <div class="form-group d-flex justify-content-center">
             <a asp-controller="Ingredient" asp-action="Create" class="btn btn-lg btn-warning p-2">Create Ingredient</a>
         </div>
-<table class=table>
+<div class="table-margin">
+    <table class="table table-hover" id="table-size">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Ingredient group</th>
-            <th>Import Date</th>
-            <th>Expiration Date</th>
-            <th>Price</th>
-            <th>Amount</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Ingredient group</th>
+            <th scope="col">Import Date</th>
+            <th scope="col">Expiration Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+             <th scope="col">Option</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +33,7 @@
                 <td>@ingred.ImportDate</td>
                 <td>@ingred.ExpirationDate</td>
                 <td>@ingred.Price</td>
-                <td>@ingred.Amount</td>
+                 <td class="@(ingred.Amount<=5 ? "table-danger" : "table-active")">@ingred.Amount</td>
                  <td>
                         <div role="group" class="w-60 btn-group">
                             <a asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ingred.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            
@@ -43,4 +45,5 @@
             </tr>
         }
     </tbody>
-</table>
+	</table>
+</div>
