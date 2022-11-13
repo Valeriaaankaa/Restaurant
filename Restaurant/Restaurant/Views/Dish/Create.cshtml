@@ -10,7 +10,8 @@
     </div>
 
     <form method="post">
-        <div asp-validation-summary="All"></div>
+        <div asp-validation-summary="All"></div>       
+
 
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -28,6 +29,11 @@
 
         <div class="form-row">
             <div class="form-group col-md-9 mb-3">
+                <div class="form-row">
+                    <label asp-for="DishCompositions" hidden>DishComposition</label>
+                    <input type="text" class="form-control" asp-for="DishCompositions" hidden>
+                    <span asp-validation-for="DishCompositions" class=" alert-danger" CausesValidation="False"></span>
+                </div> 
                 <div class="form-row">
                     <label asp-for="ImgPath">ImgPath</label>
                     <input type="text" class="form-control" asp-for="ImgPath">
@@ -57,6 +63,7 @@
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <a asp-controller="Dish" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
+            @*<a asp-controller="DishComposition" asp-action="Details" class="btn btn-lg btn-warning p-2">DishComposition</a>*@
         </div>         
         
     </form>

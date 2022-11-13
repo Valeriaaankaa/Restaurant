@@ -1,9 +1,9 @@
-﻿using Data.Entities;
+﻿using Business.Models;
 
 namespace Restaurant.Models
 {
     public class CartViewModel
     {
-        public IEnumerable<Dish> Dishes { get; set; }
+        public IEnumerable<DishModel> Dishes { get; set; }
     }
 }
