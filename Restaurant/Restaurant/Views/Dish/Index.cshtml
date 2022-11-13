@@ -72,25 +72,7 @@
                 <div class="row justify-content-md-center">
                     @foreach (var item in someitem)
                     {
-                        <div class="col col-sm-3">
-                            
-                                <div class="card card-body">
-                                    <a asp-controller="Dish" asp-action="Edit" asp-route-id="@item.Id" class="a_dish_menu">
-                                        <div class="text-center">
-                                            <img src="@item.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
-                                        </div>
-                                        <span class="float-right font-weight-bold">@item.Price $</span>
-                                        <h6 class="text-truncate">@item.Name</h6>
-                                        <p class="small">@item.Description</p>
-                                    </a>                                    
-
-
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-outline-warning">Choose</button>
-                                    </div>
-                                </div>
-                            
-                        </div>
+                        @Html.Partial("DishSummary", item);
                     }
                 </div>
 
