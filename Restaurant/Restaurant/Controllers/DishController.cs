@@ -30,12 +30,12 @@ namespace Restaurant.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(DishModel dish)
         {
-            //if (ModelState.IsValid)
-            //{
-            await _dishService.AddAsync(dish);
-            return RedirectToAction("Details");
-            //}
-            //return View(dish);
+            if (ModelState.IsValid)
+            {
+                await _dishService.AddAsync(dish);
+                 RedirectToAction("Details");
+            }
+            return View(dish);
         }
         public ActionResult Create()
         {
@@ -55,8 +55,12 @@ namespace Restaurant.Controllers
         [HttpPost]
         public async Task<ActionResult> EditAsync(DishModel model)
         {
-            await _dishService.UpdateAsync(model);           
-            return RedirectToAction("Details");
+            if (ModelState.IsValid)
+            {
+                await _dishService.UpdateAsync(model);           
+                return RedirectToAction("Details");
+            }
+            return View(model);
         }
 
 
