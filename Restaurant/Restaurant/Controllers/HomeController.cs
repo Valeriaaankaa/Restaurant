@@ -1,4 +1,4 @@
-﻿using Business.Interfaces;
+using Business.Interfaces;
 using Data.Entities;
 using Data.Interfaces;
 using Microsoft.AspNetCore.Diagnostics;
@@ -76,4 +76,3 @@ namespace Restaurant.Controllers
             });
         }
     }
-}
