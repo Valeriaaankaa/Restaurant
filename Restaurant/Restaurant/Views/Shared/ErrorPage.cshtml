@@ -1,0 +1,12 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "ErrorPage";
+}
+
+<div><h2 class="text-danger">An error occurred while processing your request.</h2></div>
+
+<div>
+    <img src = "https://www.kibrispdr.org/data/993/500-error-page-html-template-45.gif"   style="max-width:100%"  />
+</div>
+
+<div>RequestedUrl :@Model.RequestedUrl is @Model.ExceptionMessage = @ViewData["statusCode"]</div>

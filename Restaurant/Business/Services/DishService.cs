@@ -24,6 +24,27 @@ namespace Business.Services
         }
 
 
+        public async Task<IEnumerable<DishModel>> GetByFilterAsync(FilterSearchModel filterSearch)
+        {
+
+            var dishes = await _unitOfWork.DishRepository.GetAllWithDetailsAsync();
+            var filtred = dishes
+                .Where(p => p.Price >= (filterSearch.MinPrice ?? decimal.MinValue) && p.Price <= (filterSearch.MaxPrice ?? decimal.MaxValue));
+            if (filterSearch.DishGroup != null)
+            {
+                filtred = filtred.Where(p => p.DishGroup == filterSearch.DishGroup);
+            }
+
+            List<DishModel> pml = new List<DishModel>();
+            foreach (Dish p in filtred)
+            {
+                pml.Add(_mapper.Map<Dish, DishModel>(p));
+            }
+            return pml;
+
+        }
+
+
         public async Task AddAsync(DishModel model)
         {
             if (model == null)
@@ -57,6 +78,35 @@ namespace Business.Services
 
             return _mapper.Map<IEnumerable<DishModel>>(dishes);
         }
+
+
+        public async Task<IEnumerable<DishGroup>> GetDishCategoriesAsync()
+        {
+            var dishes = await _unitOfWork.DishRepository.GetAllWithDetailsAsync();
+            var dishescategories = dishes.Select(c => c.DishGroup).Distinct();
+
+            return dishescategories;
+        }
+
+
+        public IEnumerable<DishModel> Sort(IEnumerable<DishModel> dm, string Category, SortType st)
+        {
+            IEnumerable<DishModel> category_list;
+
+            if (st == SortType.ByName)
+            {
+                category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Name.ToLower());
+            }
+            else
+            {
+                category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Price);
+            }
+
+            return category_list;
+        }
+
+
+
 
         public async Task<DishModel> GetByIdAsync(int id)
         {
