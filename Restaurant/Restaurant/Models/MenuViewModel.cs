@@ -11,15 +11,13 @@ namespace Restaurant.Models
 
         public IEnumerable<DishGroup> Categories { get; set; }
 
-        public int Page { get; set; } = 0;
+        public int Page { get; set; } = 0 ;
         public int MaxPage { get; set; }
         public string Category { get; set; } = "Alcohol";
         public int PageSize { get; } = 6;
 
-    }
+        public FilterSearchModel FilterSearchModel { get; set; }
+}
 
-    public enum SortType
-    {
-        ByName, ByCost
-    }
+    
 }

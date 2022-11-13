@@ -1,0 +1,24 @@
+﻿@using Business.Models
+@using Business.Infrastructure
+@model DishModel
+<div class="col col-sm-3">
+                            
+        <div class="card card-body">
+            <a asp-controller="Dish" asp-action="Edit" asp-route-id="@Model.Id" class="a_dish_menu">
+                <div class="text-center">
+                    <img src="@Model.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
+                </div>
+                <span class="float-right font-weight-bold">@Model.Price.ToString("c")</span>
+                <h6 class="text-truncate">@Model.Name</h6>
+                <p class="small">@Model.Description</p>
+            </a>                                    
+
+           <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-warning">Choose</button>
+        </div>
+        </form>
+        </div>
+</div>

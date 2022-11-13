@@ -32,9 +32,12 @@ builder.Services.AddSingleton(mapper);
 
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
+builder.Services.AddTransient<IDishCompositionService, DishCompositionService>();
 builder.Services.AddTransient<IDishService, DishService>();
 
 
@@ -53,6 +56,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession();
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}")
 app.UseRouting();
 
 app.UseAuthentication();
