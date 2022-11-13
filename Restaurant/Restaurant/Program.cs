@@ -32,6 +32,8 @@ builder.Services.AddSingleton(mapper);
 
 
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
