@@ -10,11 +10,10 @@ namespace Business.Models
 {
     public class SessionCart : Cart
     {
-
         public static Cart GetCart(IServiceProvider services)
         {
             ISession? session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            SessionCart cart = session.GetJson<SessionCart>("cart") ?? new SessionCart();
+            SessionCart cart = session?.GetJson<SessionCart>("cart") ?? new SessionCart();
             cart.Session = session;
             return cart;
         }
@@ -23,17 +22,17 @@ namespace Business.Models
         public override void AddItem(DishModel dish, int quantity)
         {
             base.AddItem(dish, quantity);
-            Session.SetJson("cart", this);
+            Session?.SetJson("cart", this);
         }
         public override void RemoveLine(DishModel dishModel)
         {
             base.RemoveLine(dishModel);
-            Session.SetJson("cart", this);
+            Session?.SetJson("cart", this);
         }
         public override void Clear()
         {
             base.Clear();
-            Session.Remove("Cart");
+            Session?.Remove("Cart");
         }
     }
 }
