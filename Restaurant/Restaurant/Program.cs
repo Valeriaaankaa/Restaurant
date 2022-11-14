@@ -37,9 +37,6 @@ AddAuthorizationPolicies();
 #endregion
 
 
-
-
-
 var mapperConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new AutomapperProfile());
