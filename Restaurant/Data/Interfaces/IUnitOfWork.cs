@@ -18,6 +18,9 @@ namespace Data.Interfaces
         ITableOrderRepository TableOrderRepository { get; }
         IIngredientRepository IngredientRepository { get; }
         IDishRepository DishRepository { get; }
+        IUserRepository UserRepository { get; }
+        IRoleRepository RoleRepository { get; }
+
         Task SaveAsync();
     }
 }

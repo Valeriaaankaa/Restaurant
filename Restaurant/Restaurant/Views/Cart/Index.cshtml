@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Cart";
 }
-@model CartViewModel
+@model CartIndexViewModel
 <link rel="stylesheet" href="./css/base.css"/>
 <div class="container-fluid">
         <div class="row">
@@ -17,13 +17,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model.Dishes?.Take(4) ?? throw new Exception("Dishes is empty"))
+                            @foreach (var item in Model.Cart.Lines ?? throw new Exception("Dishes is empty"))
                             {
                                  <tr>
                                     <td>
                                         <figure class="itemside align-items-center">
-                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">@item.Name</a></figcaption>
-                                            <div class="aside"><img width="100" height="100" src="@item.ImgPath.ToString()" class="rounded float-left"></div>
+                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">@item.Dish.Name</a></figcaption>
+                                            <div class="aside"><img width="100" height="100" src="@item.Dish.ImgPath.ToString()" class="rounded float-left"></div>
                                         </figure>
                                     </td>
                                     <td> <select class="form-control">
@@ -33,7 +33,7 @@
                                             <option>4</option>
                                         </select> </td>
                                     <td>
-                                        <div class="price-wrap"> <var class="price">$@item.Price</var></div>
+                                        <div class="price-wrap"> <var class="price">$@item.Dish.Price</var></div>
                                     </td>
                                     <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a href="" class="btn btn-light" data-abc="true"> Remove</a> </td>
                                 </tr>
@@ -59,18 +59,18 @@
                     <div class="card-body">
                         <dl class="dlist-align">
                             <dt>Total price:</dt>
-                            <dd class="text-right ml-3">$@Model.Dishes.Take(4).Sum(c => c.Price)</dd>
+                            <dd class="text-right ml-3">$@Model.Cart.ComputeTotalValue()</dd>
                         </dl>
-                        <dl class="dlist-align">
+@*                        <dl class="dlist-align">
                             <dt>Discount:</dt>
                             <dd class="text-right text-danger ml-3">-@((Model.Dishes.Take(4).Sum(c => c.Price)*0.1m).ToString("C2"))</dd>
                         </dl>
                         <dl class="dlist-align">
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>@((Model.Dishes.Take(4).Sum(c => c.Price) * 0.9m).ToString("C2"))</strong></dd>
-                        </dl>
+                        </dl>*@
                          <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
-                        <a href="@Url.Action("Index", "Dish")" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a>
+                        <a href="@Model.ReturnUrl" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a>
                     </div>
                 </div>
             </aside>
