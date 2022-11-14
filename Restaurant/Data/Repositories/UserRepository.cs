@@ -14,7 +14,7 @@ namespace Data.Repositories
             _context = context;
         }
 
-        public ICollection<ApplicationUser> GetUsers()
+        public IEnumerable<ApplicationUser> GetUsers()
         {
             return _context.Users.ToList();
         }

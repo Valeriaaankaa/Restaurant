@@ -4,6 +4,6 @@ namespace Data.Interfaces
 {
     public interface IRoleRepository
     {
-        ICollection<IdentityRole> GetRoles();
+        IEnumerable<IdentityRole> GetRoles();
     }
 }

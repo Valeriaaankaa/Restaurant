@@ -1,4 +1,6 @@
-﻿using Data.Entities;
+﻿using Business.Interfaces;
+using Business.Services;
+using Data.Entities;
 using Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,25 +11,25 @@ namespace Restaurant.ControllersControllers
 {
     public class UserController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IIndentityService _identityservice;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserController(IUnitOfWork unitOfWork, SignInManager<ApplicationUser> signInManager)
+        public UserController(IndentityService identityservice, SignInManager<ApplicationUser> signInManager)
         {
-            _unitOfWork = unitOfWork;
+            _identityservice = identityservice;
             _signInManager = signInManager;
         }
 
         public IActionResult Index()
         {
-            var users = _unitOfWork.UserRepository.GetUsers();
+            var users = _identityservice.GetAll();
             return View(users);
         }
 
         public async Task<IActionResult> Edit(string id)
         {
-            var user = _unitOfWork.UserRepository.GetUser(id);
-            var roles = _unitOfWork.RoleRepository.GetRoles();
+            var user = _identityservice.GetById(id);
+            var roles = _identityservice.GetRoles();
 
             var userRoles = await _signInManager.UserManager.GetRolesAsync(user);
 
@@ -49,7 +51,7 @@ namespace Restaurant.ControllersControllers
         [HttpPost]
         public async Task<IActionResult> OnPostAsync(EditUserViewModel data)
         {
-            var user = _unitOfWork.UserRepository.GetUser(data.User.Id);
+            var user = _identityservice.GetById(data.User.Id);
             if (user == null)
             {
                 return NotFound();
@@ -98,7 +100,7 @@ namespace Restaurant.ControllersControllers
             user.LastName = data.User.LastName;
             user.Email = data.User.Email;
 
-            _unitOfWork.UserRepository.UpdateUser(user);
+            _identityservice.Update(user);
 
             return RedirectToAction("Edit", new { id = user.Id });
         }

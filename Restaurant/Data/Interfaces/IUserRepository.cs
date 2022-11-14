@@ -4,7 +4,7 @@ namespace Data.Interfaces
 {
     public interface IUserRepository
     {
-        ICollection<ApplicationUser> GetUsers();
+        IEnumerable<ApplicationUser> GetUsers();
 
         ApplicationUser GetUser(string id);
 

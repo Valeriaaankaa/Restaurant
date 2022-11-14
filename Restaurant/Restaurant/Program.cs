@@ -54,10 +54,10 @@ builder.Services.AddSession();
 builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+//builder.Services.AddScoped<IUserRepository, UserRepository>();
+//builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
-
+builder.Services.AddTransient<IIndentityService, IndentityService>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
 builder.Services.AddTransient<IDishCompositionService, DishCompositionService>();
 builder.Services.AddTransient<IDishService, DishService>();

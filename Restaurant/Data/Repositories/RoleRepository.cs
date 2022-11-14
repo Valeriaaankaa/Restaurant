@@ -13,7 +13,7 @@ namespace Data.Repositories
             _context = context;
         }
          
-        public ICollection<IdentityRole> GetRoles()
+        public IEnumerable<IdentityRole> GetRoles()
         {
             return _context.Roles.ToList();
         }
