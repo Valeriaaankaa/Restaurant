@@ -1,3 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@using Data.Entities
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +31,30 @@
                     <a class="nav-item nav-link" href="@Url.Action("Register", "Account")">Register</a>
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")">Basket</a>
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
+
+                    @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Role Access Demo
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" asp-area="" asp-controller="RoleViews" asp-action="Index">Roles</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="RoleViews" asp-action="Manager">Manager</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="RoleViews" asp-action="Admin">Admin</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                 </div>
             </div>
         </nav>
+        <partial name="_LoginPartial"/>
     </header>
     <div>
         <main role="main" class="pb-3">

@@ -39,10 +39,6 @@ AddAuthorizationPolicies();
 
 
 
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AccountDbContext>();
-builder.Services.AddDbContext<AccountDbContext>(x => x.UseSqlServer(connectionString));
-
-
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
@@ -85,6 +81,8 @@ app.UseStaticFiles();
 app.UseSession();
 app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
 app.UseRouting();
+
+app.MapRazorPages(); // to solve /?area=Identity&page=2FAccount%2FRegister problem
 
 app.UseAuthentication();
 app.UseAuthorization();
