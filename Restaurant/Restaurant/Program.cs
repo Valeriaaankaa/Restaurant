@@ -2,6 +2,7 @@ using AutoMapper;
 using Business;
 using Business.Interfaces;
 using Business.Services;
+using Business.Models;
 using Data.Data;
 using Data.Entities;
 using Data.Interfaces;
@@ -44,7 +45,7 @@ var mapperConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
-
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
@@ -53,6 +54,7 @@ builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<IUserRepository, UserRepository>();
 //builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped(sp => SessionCart.GetCart(sp));
 
 builder.Services.AddTransient<IIndentityService, IndentityService>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
