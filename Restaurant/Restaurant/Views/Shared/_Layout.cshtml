@@ -1,3 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@using Data.Entities
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,13 +27,32 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>
-                    <a class="nav-item nav-link" href="@Url.Action("Register", "Account")">Register</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>                    
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")">Basket</a>
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
+                    <partial name="_LoginPartial"/>
+                    @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown text-secondary">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Role Access 
+                                </a>
+                                <ul class="dropdown-menu text-secondary" aria-labelledby="navbarDropdown">
+                                    <li class="nav-item text-secondary">
+                                        <a class="dropdown-item text-secondary" asp-area="" asp-controller="RoleViews" asp-action="Index">Roles</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-secondary" asp-area="" asp-controller="RoleViews" asp-action="Manager">Manager</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-secondary" asp-area="" asp-controller="RoleViews" asp-action="Admin">Admin</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                 </div>
             </div>
-        </nav>
+        </nav>        
     </header>
     <div>
         <main role="main" class="pb-3">

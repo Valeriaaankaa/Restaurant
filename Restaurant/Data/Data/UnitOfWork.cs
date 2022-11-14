@@ -1,4 +1,5 @@
-﻿using Data.Interfaces;
+﻿
+using Data.Interfaces;
 using Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Data.Data
     public class UnitOfWork : IUnitOfWork
     {
         private RestaurantDbContext _context;
+        private UserDbContext _identitycontext;
 
         private AdminRepository _admins;
         private DishCompositionRepository _dishCompositions;
@@ -22,11 +24,37 @@ namespace Data.Data
         private RestaurantUserRepository _restaurantUsers;
         private TableOrderRepository _tableOrders;
         private PersonRepository _people;
+        private UserRepository _users;
+        private RoleRepository _roles;
 
-        public UnitOfWork(RestaurantDbContext context)
+
+        public UnitOfWork(RestaurantDbContext context, UserDbContext identitycontext)
         {
             _context = context;
+            _identitycontext = identitycontext;
         }
+
+
+        public IUserRepository UserRepository
+        {
+            get
+            {
+                return _users ??= new UserRepository(_identitycontext);
+            }
+        }
+
+        public IRoleRepository RoleRepository
+        {
+            get
+            {
+                return _roles ??= new RoleRepository(_identitycontext);
+            }
+        }
+
+
+
+
+
         public IPersonRepository PersonRepository
         {
             get
