@@ -4,9 +4,17 @@
 
 @model DishModel
 
+@{
+var message = TempData["successmessage"] ?? string.Empty;
+}
+
+
 <div class="container shadow p-5">
     <div class="form-group d-flex justify-content-center">
-        <h2>Add Dish</h2>
+        <h2>Add Dish</h2>    
+    </div>
+    <div class="form-group d-flex justify-content-center">                
+         <h2 class="text-success" >@message</h2>      
     </div>
 
     <form method="post">

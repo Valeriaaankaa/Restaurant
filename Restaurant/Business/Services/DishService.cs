@@ -110,7 +110,7 @@ namespace Business.Services
 
         public async Task<DishModel> GetByIdAsync(int id)
         {
-            var dish = await _unitOfWork.DishRepository.GetByIdAsync(id);
+            var dish = await _unitOfWork.DishRepository.GetByIdWithDetailsAsync(id);
             return _mapper.Map<DishModel>(dish);
         }
 
