@@ -73,7 +73,11 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
-      <h2 class="active"> Register </h2>
+     <!-- <h2 class="active"> Register </h2>-->
+           <div class="parent">
+          <h2 class="active">Register</h2>
+          <h2 class="active"><a class="active" href="Login" style="color: #0d0d0d;text-decoration:none;font-weight: 600;">Login</a></h2>
+      </div>
   
       <!-- Register Form -->
       <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
@@ -96,7 +100,6 @@
 
         <input id="registerSubmit" type="submit" class="fadeIn fourth" value="Register"/>
       </form>
-  
   
     </div>
   </div>

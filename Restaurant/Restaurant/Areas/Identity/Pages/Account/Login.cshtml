@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Login";
 }
 <link rel="stylesheet" href="~/css/register.css">      
 <!--
@@ -84,7 +84,11 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
       <!-- Tabs Titles -->
-      <h2 class="active"> Login </h2>
+      <div class="parent">
+          <h2 class="active">Login</h2>
+          <h2 class="active"><a class="active" href="Register" style="color: #0d0d0d;text-decoration:none;font-weight: 600;">Register</a></h2>
+      </div>
+    <!-- <div class="active"> Login <a class="active" style="color:black; text-decoration: none;" href="Register">Register</a></div>-->
   
       <!-- Login Form -->
       <form id="account" method="post">
