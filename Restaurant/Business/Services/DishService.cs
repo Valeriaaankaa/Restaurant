@@ -59,6 +59,8 @@ namespace Business.Services
             {
                 throw new RestaurantException("Name is empty");
             }
+                     
+
 
             await _unitOfWork.DishRepository.AddAsync(_mapper.Map<Dish>(model));
             await _unitOfWork.SaveAsync();
@@ -125,11 +127,13 @@ namespace Business.Services
                 throw new RestaurantException("Name is empty");
             }
 
-            var dish = _mapper.Map<Dish>(model);
+            var dish = _mapper.Map<Dish>(model);            
 
             _unitOfWork.DishRepository.Update(dish);
 
             await _unitOfWork.SaveAsync();
+
+
         }
     }
 }

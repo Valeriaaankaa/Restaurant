@@ -27,40 +27,59 @@ namespace Restaurant.Controllers
 
         public async Task<IActionResult> DetailsAsync(int id)
         {
-            var dishes = await _dishService.GetAllAsync();       
+            var dishes = await _dishService.GetAllAsync();   
+                      
             return View(dishes);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(DishModel dish)
+        public async Task<IActionResult> CreateAsync(DishViewModel dvm)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 TempData["successmessage"] = "DISH WAS ADDED SUCCESSFULLY";
-                await _dishService.AddAsync(dish);                
-            }
-            return View(dish);
-        }
-        public ActionResult Create()
-        {
-            return View();
-        }
-        
-         
+                var dc = await _dishCompositionService.GetAllAsync();           
 
+                var res = dc.Where(t => dvm.IngredientsIds.Contains(t.Id));               
+
+                dvm.DishModel.DishCompositions = res.Select(dcm => 
+                    new DishComposition
+                    {
+                        Amount = dcm.Amount,
+                        Ingredient = dcm.Ingredient                        
+                    }).ToList();
+
+                await _dishService.AddAsync(dvm.DishModel);
+            // }
+            dvm.dishCompositionModels = dc;
+
+            return View(dvm);
+        }
+
+        public async Task<ActionResult> CreateAsync()
+        {
+            var dishcomp = await _dishCompositionService.GetAllAsync();
+                        
+
+            DishViewModel dvm = new DishViewModel()
+            {
+                dishCompositionModels = dishcomp,
+            };
+            return View(dvm);
+        }
+               
         [HttpGet]
         public async Task<ActionResult> EditAsync(int id)
         {
-            var dish = await _dishService.GetByIdAsync(id);
             var dishcomp = await _dishCompositionService.GetAllAsync();
+            var dish = await _dishService.GetByIdAsync(id);            
 
-            List <string> Ids = dishcomp.Select(dc => dc.IngredientId.ToString()).ToList();
+            List <string> Ids = dishcomp.Select(dc => dc.Ingredient.Id.ToString()).ToList();
 
             DishViewModel dvm = new DishViewModel()
             {
                 dishCompositionModels = dishcomp,
                 DishModel = dish
-                //IngredientsIds = Ids
             };
 
 
@@ -68,29 +87,31 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditAsync(DishViewModel model)
+        public async Task<ActionResult> EditAsync(DishViewModel dvm)
         {
+            TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
+
+            var dc = await _dishCompositionService.GetAllAsync();
+            var res = dc.Where(t => dvm.IngredientsIds.Contains(t.Id));
+
+            dvm.DishModel.DishCompositions = res.Select(dcm =>
+                                new DishComposition
+                                {
+                                    Amount = dcm.Amount,
+                                    Ingredient = dcm.Ingredient
+                                }).ToList();
+                       
+
+            await _dishService.UpdateAsync(dvm.DishModel);
 
 
-            if (ModelState.IsValid)
-            {
-                await _dishService.UpdateAsync(model.DishModel);           
-                return RedirectToAction("Details");
-            }
+            var dishes = await _dishService.GetAllAsync();
 
+            /* dvm.dishCompositionModels = dc;
+             return View(dvm);*/
 
-            var dishcomp = await _dishCompositionService.GetAllAsync();
+            return RedirectToAction("Index");
 
-            List<string> Ids = dishcomp.Select(dc => dc.IngredientId.ToString()).ToList();
-
-            DishViewModel dvm = new DishViewModel()
-            {
-                dishCompositionModels = dishcomp,
-                DishModel = model.DishModel
-                //IngredientsIds = Ids
-            };
-
-            return View(dvm);
         }
 
 

@@ -4,6 +4,13 @@
 
 @model DishViewModel
 
+
+@{
+var message = TempData["successmessage"] ?? string.Empty;
+}
+
+
+
 @if(@Model.DishModel != null)
 {
     <div class="container shadow p-5">
@@ -12,6 +19,10 @@
                     <div class="form-group d-flex justify-content-center">        
                             <h2>Edit @Model.DishModel.Name</h2>
                     </div>
+
+                    <div class="form-group d-flex justify-content-center">                
+                         <h2 class="text-success" >@message</h2>      
+                    </div>
                 }
 
         <form method="post">
@@ -19,64 +30,68 @@
         
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label asp-for="@Model.DishModel.Name">Dish Name</label>
-                    <input type="text" class="form-control mb-3" asp-for="@Model.DishModel.Name" placeholder="Enter Name">
-                    <span asp-validation-for="@Model.DishModel.Name" class=" alert-danger"></span>
+                    <label asp-for="DishModel.Name">Dish Name</label>
+                    <input type="text" class="form-control mb-3" asp-for="DishModel.Name" placeholder="Enter Name">
+                    <span asp-validation-for="DishModel.Name" class=" alert-danger"></span>
                 </div>      
                 <div class="form-group col-md-6">
-                    <label asp-for="@Model.DishModel.Price">Price</label>
-                    <input type="text" class="form-control mb-3" asp-for="@Model.DishModel.Price" placeholder="Enter Price">
-                    <span asp-validation-for="@Model.DishModel.Price" class=" alert-danger"></span>
+                    <label asp-for="DishModel.Price">Price</label>
+                    <input type="text" class="form-control mb-3" asp-for="DishModel.Price" placeholder="Enter Price">
+                    <span asp-validation-for="DishModel.Price" class=" alert-danger"></span>
                 </div>
             </div>
 
              <div class="form-row"> 
                     @if(@Model.DishModel.ImgPath != null)
                       {                               
-                        <div class="form-group col-md-9 mb-3">
-                            <div class="form-row">
-                                <label asp-for="@Model.DishModel.DishCompositions" hidden>DishComposition</label>
-                                <input type="text" class="form-control" asp-for="@Model.DishModel.DishCompositions" hidden>                                
-                            </div>
+                        <div class="form-group col-md-9 mb-3">                            
 
                         <div class="form-row">
-                            <label asp-for="@Model.dishCompositionModels" hidden>dishCompositionModels</label>
-                            <input type="text" class="form-control" asp-for="@Model.dishCompositionModels" hidden>
-                            
-                        </div>
-
-                        <div class="form-row">
-                                <label asp-for="@Model.DishModel.ImgPath">ImgPath</label>
-                                <input type="text" class="form-control" asp-for="@Model.DishModel.ImgPath">
-                                <span asp-validation-for="@Model.DishModel.ImgPath" class=" alert-danger"></span>
+                                <label asp-for="DishModel.ImgPath">ImgPath</label>
+                                <input type="text" class="form-control" asp-for="DishModel.ImgPath">
+                                <span asp-validation-for="DishModel.ImgPath" class=" alert-danger"></span>
                             </div> 
                             <div class="form-row">                   
-                                <label asp-for="@Model.DishModel.Description">Description</label>
-                                <textarea class="form-control mb-3" rows="3" placeholder="Enter Description">@Model.DishModel.Description</textarea>                    
-                                <span asp-validation-for="@Model.DishModel.Description" class=" alert-danger"></span>
+                                <label asp-for="DishModel.Description">Description</label>
+                                <textarea class="form-control mb-3" rows="3" placeholder="Enter Description">DishModel.Description</textarea>                    
+                                <span asp-validation-for="DishModel.Description" class=" alert-danger"></span>
                             </div>  
                             <div class="form-group">
-                                <label asp-for="@Model.DishModel.DishGroup" class="control-label"></label>
-                                <select asp-for="@Model.DishModel.DishGroup" 
+                                <label asp-for="DishModel.DishGroup" class="control-label"></label>
+                                <select asp-for="DishModel.DishGroup" 
                                         class="form-control" 
                                         asp-items="Html.GetEnumSelectList<DishGroup>()">
                                     <option>Select type ...</option>
                                 </select>
-                                <span asp-validation-for="@Model.DishModel.DishGroup" class="text-danger"></span>
+                                <span asp-validation-for="DishModel.DishGroup" class="text-danger"></span>
                             </div>
+
+
+
+                            <div class="form-group">
+                                <label asp-for="IngredientsIds" class="control-label">Current ingredients</label>
+
+                                    @foreach (var dishcomp in Model.DishModel.DishCompositions)
+                                    {
+                                        <p>@dishcomp.Ingredient.Name, @dishcomp.Ingredient.Amount</p>
+                                    }
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="IngredientsIds" class="control-label"></label>
+                                <select name="IngredientsIds" id="Ingredients" class ="form-control" multiple>
+
+                                    @foreach (var dishcomp in Model.dishCompositionModels)
+                                    {
+                                        <option value = "@dishcomp.Id">@dishcomp.Ingredient.Name, @dishcomp.Ingredient.Amount</option>
+                                    }
+                              </select>
+                            </div>
+
                 </div>
                 }
-               @*
-                  <select name="IngredientsIds" id="Ingredients" class ="form-control" multiple>
-                      @if(@Model.dishCompositionModels != null)
-                      {
-                        @foreach (var dishcomp in Model.IngredientsIds)
-                        {
-                            <option value = "@dishcomp">@dishcomp</option>
-                        }
-                      }
-                  </select>
-                  <br><br>*@
+               
                   
                 
                 @if(@Model.DishModel.ImgPath != null)
