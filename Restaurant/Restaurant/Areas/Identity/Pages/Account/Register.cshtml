@@ -78,20 +78,20 @@
       <!-- Register Form -->
       <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
 
-      <input asp-for="Input.FirstName" class="fadeIn second" autocomplete="firstname" aria-required="true" placeholder="First name" />
+      <input type="text" asp-for="Input.FirstName" class="fadeIn second" autocomplete="firstname" aria-required="true" placeholder="First name" />
       <br><span asp-validation-for="Input.FirstName" class="text-danger"></span>
 
-       <input asp-for="Input.LastName" class="fadeIn second" autocomplete="lastname" aria-required="true"  placeholder="Last name"/>
+       <input type="text" asp-for="Input.LastName" class="fadeIn second" autocomplete="lastname" aria-required="true"  placeholder="Last name"/>
        <br><span asp-validation-for="Input.LastName" class="text-danger"></span>
                                   
 
-        <input type="email" asp-for="Input.Email" class="fadeIn second" autocomplete="email" aria-required="true"  placeholder="Email"/>
+        <input type="text" asp-for="Input.Email" class="fadeIn second" autocomplete="email" aria-required="true"  placeholder="Email"/>
         <br><span asp-validation-for="Input.Email" class="text-danger"></span>
 
-        <input asp-for="Input.Password" class="fadeIn second" autocomplete="new-password" aria-required="true" placeholder="Password"/>
+        <input type="password" asp-for="Input.Password" class="fadeIn second" autocomplete="new-password" aria-required="true" placeholder="Password"/>
         <br><span asp-validation-for="Input.Password" class="text-danger"></span>
         
-        <input asp-for="Input.ConfirmPassword" class="fadeIn second" autocomplete="new-password" aria-required="true" placeholder="Confirm password"/>
+        <input type="password" asp-for="Input.ConfirmPassword" class="fadeIn second" autocomplete="new-password" aria-required="true" placeholder="Confirm password"/>
         <br><span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
 
         <input id="registerSubmit" type="submit" class="fadeIn fourth" value="Register"/>

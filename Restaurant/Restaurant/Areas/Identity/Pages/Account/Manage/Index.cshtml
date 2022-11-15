@@ -4,10 +4,27 @@
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
-
-<h3>@ViewData["Title"]</h3>
+<link rel="stylesheet" href="~/css/change-info.css">      
 <partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
+
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2 class="active"> Add Phone number </h2>
+        <form id="profile-form" method="post" >
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       <input asp-for="Username" class="form-control" disabled placeholder="User name"/>
+
+        <input type="text" asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone number"/>
+        <br/><span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
+        <input id="update-profile-button" type="submit" class="fadeIn fourth" value="Save"/>
+         </form>
+    </div>
+</div>
+<br/>
+<!--<div class="row">
     <div class="col-md-6">
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,7 +40,7 @@
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
         </form>
     </div>
-</div>
+</div>-->
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

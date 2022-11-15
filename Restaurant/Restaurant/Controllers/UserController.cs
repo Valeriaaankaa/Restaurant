@@ -26,6 +26,11 @@ namespace Restaurant.ControllersControllers
             return View(users);
         }
 
+        public IActionResult ChangeInfo()
+        {
+            return View();
+        }
+
         public async Task<IActionResult> Edit(string id)
         {
             var user = _identityservice.GetById(id);

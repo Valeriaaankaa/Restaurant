@@ -89,7 +89,7 @@
       <!-- Login Form -->
       <form id="account" method="post">
 
-     <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"  placeholder="Email"/>
+     <input type="text" asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"  placeholder="Email"/>
      <br /><span asp-validation-for="Input.Email" class="text-danger"></span>
 
      <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true"  placeholder="Password"/>
