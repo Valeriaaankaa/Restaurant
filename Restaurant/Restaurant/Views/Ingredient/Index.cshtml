@@ -1,0 +1,49 @@
+﻿@model List<Data.Entities.Ingredient>
+
+@{
+    ViewData["Title"] = "Stock";
+}
+
+
+<h1 align="center">Ingredients</h1>
+  <div class="form-group d-flex justify-content-center">
+            <a asp-controller="Ingredient" asp-action="Create" class="btn btn-lg btn-warning p-2">Create Ingredient</a>
+        </div>
+<div class="table-margin">
+    <table class="table table-hover" id="table-size">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Ingredient group</th>
+            <th scope="col">Import Date</th>
+            <th scope="col">Expiration Date</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+             <th scope="col">Option</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var ingred in Model)
+        {
+            <tr>
+                <td>@ingred.Id</td>
+                <td>@ingred.Name</td>
+                <td>@ingred.IngredientGroup</td>
+                <td>@ingred.ImportDate</td>
+                <td>@ingred.ExpirationDate</td>
+                <td>@ingred.Price</td>
+                 <td class="@(ingred.Amount<=5 ? "table-danger" : "table-active")">@ingred.Amount</td>
+                 <td>
+                        <div role="group" class="w-60 btn-group">
+                            <a asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ingred.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            
+                            @Html.ActionLink("Delete",
+                                "Delete", new { id = ingred.Id },
+                                    new { onclick = "return confirm('Do you really want to delete the tag " + @ingred.Name + "?')" , @class ="btn btn-sm btn-danger"})
+                        </div>
+                    </td>
+            </tr>
+        }
+    </tbody>
+	</table>
+</div>

@@ -1,0 +1,136 @@
+@using System.Collections;
+@using Data.Entities;
+@using Business.Models;
+@model MenuViewModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+@using (Html.BeginForm("Index", "Dish", FormMethod.Post, new { @class = "sort-form" }))
+{
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <div class="container py-5">                  
+        <div class="row ">
+            <!--Title-->
+            <div class="col-lg-10 mx-auto col-12 text-center mb-3">
+                    <h4 class="mt-0 text-dark">FROM OUR HEARTS</h4>
+                    <h1 class="mt-0 text-dark">Menu SuperPuperRest</h1>
+                    <p class="lead">This menu very yummy and delicions. In many you will like desserts, it's are very yummy. You will want to go to this restaruant again and again</p>
+            </div>
+
+            <!--Pagination-->
+            <div class="col-12 mt-4">
+                <hr class="my-3">
+
+                
+
+
+                <nav class="pagination">
+                    <ul class="pagination pagination-lg">
+                    @foreach (var categoryname in Model.Categories)
+                        {
+                                    <input type="submit" name=pagination value=@categoryname formaction=@Url.Action("ChosenCategory", new { Category = categoryname }) formmethod="post" class="btn btn-secondary" />
+                                    <div>&nbsp;</div>
+
+                        }
+                    </ul>      
+                </nav>
+                <hr class="my-3">
+            </div>
+
+        </div>
+
+        <!--Filtering-->
+        <div class="row">
+            <div class="col-5">                    
+            </div>
+           <div class="col-4">
+                <h3 class="mt-0 text-dark">@Model.Category</h3> 
+            </div>            
+            <div class="col-3">                
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-5">
+                    <a asp-controller="Dish" asp-action="Details" class="btn btn-warning">Go to all Dishes</a>
+            </div>
+           <div class="col-3">                
+           </div>
+            
+            <div class="form-group col-1">    
+                @Html.TextBoxFor(model => model.FilterSearchModel.MinPrice,  new { placeholder = "Min", @class="form-control" })
+             </div> 
+             <div class="form-group col-1">  
+                 @Html.TextBoxFor(model => model.FilterSearchModel.MaxPrice, new { placeholder = "Max", @class="form-control" })
+             </div>       
+                 <div class="col-2">
+                        @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))), new { @class="dropdown" })
+                 </div>
+        </div>
+
+            <div class="row">
+                <div class="col-8">                        
+                </div>                
+                <div class="col-2">
+                    <input type="submit" value="Apply" formaction=@Url.Action("Index", "Dish", new { page = 0, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-outline-dark" />                                        
+                </div>            
+            </div>
+
+
+
+     <hr class="my-3 mb-3">
+
+    <div class="row ">        
+        <div class="container">
+
+            @foreach (var someitem in from i in Model.Dishes.Select((value, index) => new { value, index }) group i.value by i.index / 3 into g select g)
+            {
+
+                <div class="row justify-content-md-center">
+                    @foreach (var item in someitem)
+                    {
+                        @Html.Partial("DishSummary", item);
+                    }
+                </div>
+
+            }
+        </div>
+            <!--Pagination-->
+            <div class="col-12 mt-4">
+                <hr class="my-3">
+                    <nav class="pagination">
+                        <ul class="pagination pagination-lg">
+                    @if (Model.Page > 0)
+                            {
+                                <input type="submit" value="&laquo; Prev" formaction=@Url.Action("Index", "Dish", new { page = Model.Page - 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />                                
+                                <div>&nbsp;</div>
+                    }
+                    @if (Model.Page < Model.MaxPage)
+                            {
+                                <input type="submit" value="Next &raquo;" formaction=@Url.Action("Index", "Dish", new { page = Model.Page + 1, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-warning" />                               
+                            }        
+                        </ul>
+                    </nav>
+                <hr class="my-3">
+            </div>          
+
+            
+            <!--1 more content-->
+            <div class="col-6 mx-auto">
+                <div class="card card-body text-center">
+                    <h5 class="text-uppercase">EVERY Friday</h5>
+                    <h6>The third pint of beer for free</h6>
+                    <p class="small"> Corona (brand value up 21% to US$7.0 billion) retains its top position as the world's most valuable beer brand, according to a new report from the world's leading brand valuation consultancy, Brand Finance.</p>
+                    <span class="float-right font-weight-bold">$9.99</span>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="col-12 mt-5 ">
+                <hr class="my-3">
+                <div class="h6 text-center">NIX camp - Rudoi, Yevseienko, Zhukov</div>
+            </div>
+        </div>
+    </div>
+
+}

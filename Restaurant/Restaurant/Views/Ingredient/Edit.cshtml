@@ -1,0 +1,67 @@
+﻿@using System.Collections;
+@using Data.Entities;
+@using Business.Models
+
+@model Ingredient
+
+@{
+    ViewData["Title"] = "Update Ingredient";
+}
+<div class="container shadow p-5">
+    <div class="form-group d-flex justify-content-center">
+        <h2>Edit @Model.Name</h2>
+    </div>
+
+    <form method="post">
+        <div asp-validation-summary="All"></div>      
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name">Ingredient Name</label>
+                <input type="text" class="form-control mb-3" asp-for="Name" placeholder="Enter Name">
+                <span asp-validation-for="Name" class=" alert-danger"></span>
+            </div>      
+            <div class="form-group col-md-6">
+                <label asp-for="Price">Price</label>
+                <input type="number" class="form-control mb-3" asp-for="Price" placeholder="Enter Price">
+                <span asp-validation-for="Price" class=" alert-danger"></span>
+            </div>
+
+             <div class="form-group col-md-6">
+                    <label asp-for="ImportDate">Import Date</label>
+                    <input type="date" class="form-control" asp-for="ImportDate">
+                    <span asp-validation-for="ImportDate" class=" alert-danger"></span>
+                </div> 
+                <div class="form-group col-md-6">
+                    <label asp-for="ExpirationDate">Expiration Date</label>
+                    <input type="date" class="form-control" asp-for="ExpirationDate">
+                    <span asp-validation-for="ExpirationDate" class=" alert-danger"></span>
+                </div>  
+                            <div class="form-group col-md-6">
+                <label asp-for="Amount">Amount</label>
+                <input type="number" class="form-control mb-3" asp-for="Amount" placeholder="Enter Amount">
+                <span asp-validation-for="Amount" class=" alert-danger"></span>
+            </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="IngredientGroup" class="control-label"></label>
+                    <select asp-for="IngredientGroup" 
+                            class="form-control" 
+                            asp-items="Html.GetEnumSelectList<IngredientGroup>()">
+                        <option>Select type ...</option>
+                    </select>
+                    <span asp-validation-for="IngredientGroup" class="text-danger"></span>
+                </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-center">
+            <button type="submit" class="btn btn-lg btn-primary p-2">
+                <i class="bi bi-file-plus-fill"></i>Update
+            </button>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <a asp-controller="Ingredient" asp-action="Index" class="btn btn-lg btn-warning p-2">Back To List</a>
+        </div>
+    </form>
+
+</div>

@@ -1,9 +1,52 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\img\menu\Bacon_rings.jpg" />
+    <None Include="wwwroot\img\menu\Baked_spring_rolls.jpg" />
+    <None Include="wwwroot\img\menu\BAKLAVA.jpg" />
+    <None Include="wwwroot\img\menu\Beef_Wellington_tart.jpg" />
+    <None Include="wwwroot\img\menu\BLOODY_MARY.jpg" />
+    <None Include="wwwroot\img\menu\Blooming_onion.jpg" />
+    <None Include="wwwroot\img\menu\CALZONES.jpg" />
+    <None Include="wwwroot\img\menu\CHICKEN_MAIN_DISHES.jpg" />
+    <None Include="wwwroot\img\menu\CHOCOLATE_FONDUE.jpg" />
+    <None Include="wwwroot\img\menu\DEEP_FRIED_MAIN_DISHES.jpg" />
+    <None Include="wwwroot\img\menu\DEVIL%27S_FOOD_CAKE.jpg" />
+    <None Include="wwwroot\img\menu\LEMON_CAKE_DOBERGE.jpg" />
+    <None Include="wwwroot\img\menu\LEMON_SOUFFLES.jpg" />
+    <None Include="wwwroot\img\menu\MANHATTAN.jpg" />
+    <None Include="wwwroot\img\menu\martini.jpg" />
+    <None Include="wwwroot\img\menu\MEATBALLS.jpg" />
+    <None Include="wwwroot\img\menu\negroni.jpg" />
+    <None Include="wwwroot\img\menu\OLD_FASHIONED.jpg" />
+    <None Include="wwwroot\img\menu\QUICHE.jpg" />
+    <None Include="wwwroot\img\menu\Roasted_stuffed_mushrooms.jpg" />
+    <None Include="wwwroot\img\menu\SEAFOOD_MAIN_DISHES.jpg" />
+    <None Include="wwwroot\img\menu\Sweet_fried_saganaki.jpg" />
+    <None Include="wwwroot\img\menu\TIRAMISU_LAYER_CAKE.jpg" />
+    <None Include="wwwroot\img\menu\whiskey_sour.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
 
 </Project>
