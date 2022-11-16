@@ -1,9 +1,10 @@
-﻿html {
+﻿/*html {
     background-color: #56baed;
-}
+}*/
 
 body {
     height: 100vh;
+    overflow-y: hidden; 
 }
 
 a {
@@ -50,17 +51,6 @@ h2 {
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
 }
-
-#formFooter {
-    background-color: #f6f6f6;
-    border-top: 1px solid #dce8f1;
-    padding: 25px;
-    text-align: center;
-    -webkit-border-radius: 0 0 10px 10px;
-    border-radius: 0 0 10px 10px;
-}
-
-
 
 /* TABS */
 
@@ -254,7 +244,7 @@ input[type=text], input[type=password] {
     bottom: -10px;
     width: 0;
     height: 2px;
-    background-color: #56baed;
+  /*  background-color: #56baed;*/
     content: "";
     transition: width 0.2s;
 }
