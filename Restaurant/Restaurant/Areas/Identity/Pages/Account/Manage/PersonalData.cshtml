@@ -4,10 +4,9 @@
     ViewData["Title"] = "Personal Data";
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
+<link rel="stylesheet" href="~/css/register.css">   
 
-<h3>@ViewData["Title"]</h3>
-
-<div class="row">
+<!--<div class="row">
     <div class="col-md-6">
         <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
         <p>
@@ -20,7 +19,18 @@
             <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
         </p>
     </div>
-</div>
+</div>-->
+<div class="wrapper">
+    <div align="center">
+     <h2 color="black">Your account contains personal data that you have given us. This page allows you to download or delete that data.</h2>
+     <br /><strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong><br/>
+        <form id="download-data" asp-page="DownloadPersonalData" method="post">
+            <input  class="fadeIn second" type="submit" value="Download" />
+        </form>
+        <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger fadeIn fourth">Delete</a>
+  
+    </div>
+  </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -55,7 +55,7 @@ h2 {
 /* TABS */
 
 h2.inactive {
-    color: #cccccc;
+    color: black;
 }
 
 h2.active {
@@ -275,7 +275,7 @@ input[type=text], input[type=password] {
 
 a {
     text-decoration: none;
-    color: #666;
+    color: black;
 }
 
 .parent {
