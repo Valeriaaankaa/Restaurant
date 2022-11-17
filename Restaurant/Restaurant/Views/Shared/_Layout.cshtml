@@ -29,6 +29,7 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>                    
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "RestaurantTable")">Reservation</a>
                     <partial name="_LoginPartial"/>
                     @if (SignInManager.IsSignedIn(User))
                         {
