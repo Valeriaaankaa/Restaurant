@@ -56,9 +56,12 @@ namespace Restaurant.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(List<string> IngredientsIds)
         {
-            return View();
+
+
+
+            return View(IngredientsIds);
         }
         
         public IActionResult Error()

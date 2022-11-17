@@ -59,6 +59,8 @@ namespace Business.Services
             {
                 throw new RestaurantException("Name is empty");
             }
+                     
+
 
             await _unitOfWork.DishRepository.AddAsync(_mapper.Map<Dish>(model));
             await _unitOfWork.SaveAsync();
@@ -110,7 +112,7 @@ namespace Business.Services
 
         public async Task<DishModel> GetByIdAsync(int id)
         {
-            var dish = await _unitOfWork.DishRepository.GetByIdAsync(id);
+            var dish = await _unitOfWork.DishRepository.GetByIdWithDetailsAsync(id);
             return _mapper.Map<DishModel>(dish);
         }
 
@@ -127,9 +129,16 @@ namespace Business.Services
 
             var dish = _mapper.Map<Dish>(model);
 
+            List <DishComposition> dc = new();            
+            var dishcomp = await _unitOfWork.DishCompositionRepository.GetByIdWithDetailsAsync(1);
+            dc.Add(dishcomp);
+            dish.DishCompositions = dc;
+
             _unitOfWork.DishRepository.Update(dish);
 
             await _unitOfWork.SaveAsync();
+
+
         }
     }
 }

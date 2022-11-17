@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Data.Migrations.UserDb
+namespace Restaurant.Migrations
 {
-    public partial class adduserdbcontext : Migration
+    public partial class InitApplicationUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

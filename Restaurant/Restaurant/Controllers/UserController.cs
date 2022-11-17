@@ -14,7 +14,7 @@ namespace Restaurant.ControllersControllers
         private readonly IIndentityService _identityservice;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public UserController(IndentityService identityservice, SignInManager<ApplicationUser> signInManager)
+        public UserController(IIndentityService identityservice, SignInManager<ApplicationUser> signInManager)
         {
             _identityservice = identityservice;
             _signInManager = signInManager;

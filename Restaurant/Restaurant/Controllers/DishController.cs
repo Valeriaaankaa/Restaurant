@@ -4,6 +4,7 @@ using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Restaurant.Controllers
 {
@@ -12,55 +13,106 @@ namespace Restaurant.Controllers
         private readonly ILogger<DishController> _logger;
         private readonly IIngredientService _ingredientService;
         private readonly IDishService _dishService;
+        private readonly IDishCompositionService _dishCompositionService;
 
-        public DishController(ILogger<DishController> logger, IIngredientService ingredientService, IDishService dishService)
+        public DishController(ILogger<DishController> logger, 
+                            IIngredientService ingredientService, 
+                            IDishService dishService,
+                            IDishCompositionService dishCompositionService)
         {
             _logger = logger;
             _ingredientService = ingredientService;
             _dishService = dishService;
-
+            _dishCompositionService = dishCompositionService;
         }
 
         public async Task<IActionResult> DetailsAsync(int id)
         {
-            var dishes = await _dishService.GetAllAsync();       
+            var dishes = await _dishService.GetAllAsync();   
+                      
             return View(dishes);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(DishModel dish)
+        public async Task<IActionResult> CreateAsync(DishViewModel dvm)
         {
+
+            var dc = await _dishCompositionService.GetAllAsync();
+
             if (ModelState.IsValid)
             {
-                await _dishService.AddAsync(dish);
-                 RedirectToAction("Details");
-            }
-            return View(dish);
-        }
-        public ActionResult Create()
-        {
-            return View();
-        }
-        
-         
+                TempData["successmessage"] = "DISH WAS ADDED SUCCESSFULLY";
+                          
 
+                var res = dc.Where(t => dvm.IngredientsIds.Contains((int)t.Id));
+
+                dvm.DishModel.DishCompositionIds = dvm.IngredientsIds;
+
+                await _dishService.AddAsync(dvm.DishModel);
+            }
+
+
+            dvm.dishCompositionModels = dc;
+
+            return View(dvm);
+        }
+
+        public async Task<ActionResult> CreateAsync()
+        {
+            var dishcomp = await _dishCompositionService.GetAllAsync();
+                        
+
+            DishViewModel dvm = new DishViewModel()
+            {
+                dishCompositionModels = dishcomp,
+            };
+            return View(dvm);
+        }
+               
         [HttpGet]
         public async Task<ActionResult> EditAsync(int id)
         {
-            var dish = await _dishService.GetByIdAsync(id);
+            var dishcomp = await _dishCompositionService.GetAllAsync();
+            var dish = await _dishService.GetByIdAsync(id);            
 
-            return View(dish);
+            List <string> Ids = dishcomp.Select(dc => dc.Ingredient.Id.ToString()).ToList();
+
+            DishViewModel dvm = new DishViewModel()
+            {
+                dishCompositionModels = dishcomp,
+                DishModel = dish
+            };
+
+
+            return View(dvm);
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditAsync(DishModel model)
+        public async Task<ActionResult> EditAsync(DishViewModel dvm)
         {
+
+            var dishcomp = await _dishCompositionService.GetAllAsync();
+
+            var res = dishcomp.Where(t => dvm.IngredientsIds.Contains((int)t.Id));
+
+            var dish = await _dishService.GetByIdAsync((int)dvm.DishModel.Id);
+
+            dvm.DishModel.DishCompositionIds = dish.DishCompositionIds;
+
             if (ModelState.IsValid)
             {
-                await _dishService.UpdateAsync(model);           
-                return RedirectToAction("Details");
+                TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
+                
+                await _dishService.UpdateAsync(dvm.DishModel);
+
+                var dishes = await _dishService.GetAllAsync();
             }
-            return View(model);
+
+            dvm.dishCompositionModels = dishcomp;
+
+
+            return View(dvm);
+
         }
 
 
