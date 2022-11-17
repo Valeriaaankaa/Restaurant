@@ -2,10 +2,10 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Login";
 }
-
-<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/register.css">      
+<!--
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -78,7 +78,33 @@
             }
         </section>
     </div>
-</div>
+</div>-->
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <div class="parent">
+          <h2 class="active">Login</h2>
+          <h2 class="active"><a class="active" href="Register" style="color: #0d0d0d;text-decoration:none;font-weight: 600;">Register</a></h2>
+      </div>
+    <!-- <div class="active"> Login <a class="active" style="color:black; text-decoration: none;" href="Register">Register</a></div>-->
+  
+      <!-- Login Form -->
+      <form id="account" method="post">
+
+     <input type="text" asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"  placeholder="Email"/>
+     <br /><span asp-validation-for="Input.Email" class="text-danger"></span>
+
+     <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true"  placeholder="Password"/>
+     <br /><span asp-validation-for="Input.Password" class="text-danger"></span>
+
+        <input id="login-submit" type="submit" class="fadeIn fourth" value="Login"/>
+      </form>
+  
+  
+    </div>
+  </div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

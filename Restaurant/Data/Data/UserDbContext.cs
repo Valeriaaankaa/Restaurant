@@ -18,6 +18,8 @@ public class UserDbContext : IdentityDbContext<ApplicationUser, IdentityRole, st
         base.OnModelCreating(builder);
 
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
+
+
     }
 }
 

@@ -28,7 +28,6 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>                    
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")">Basket</a>
                     <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
                     <partial name="_LoginPartial"/>
                     @if (SignInManager.IsSignedIn(User))
@@ -58,6 +57,7 @@
                         }
                 </div>
             </div>
+            <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")"><img src="~/img/basket.png" alt="Basket"/></a>
         </nav>        
     </header>
     <div>
