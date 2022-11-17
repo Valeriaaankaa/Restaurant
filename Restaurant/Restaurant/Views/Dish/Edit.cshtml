@@ -29,6 +29,7 @@ var message = TempData["successmessage"] ?? string.Empty;
             <div asp-validation-summary="All"></div>      
         
             <div class="form-row">
+                <input type="hidden" asp-for="DishModel.Id" />
                 <div class="form-group col-md-6">
                     <label asp-for="DishModel.Name">Dish Name</label>
                     <input type="text" class="form-control mb-3" asp-for="DishModel.Name" placeholder="Enter Name">
@@ -53,7 +54,8 @@ var message = TempData["successmessage"] ?? string.Empty;
                             </div> 
                             <div class="form-row">                   
                                 <label asp-for="DishModel.Description">Description</label>
-                                <textarea class="form-control mb-3" rows="3" placeholder="Enter Description">DishModel.Description</textarea>                    
+                                <input type="text" class="form-control" asp-for="DishModel.Description">
+                                @*<textarea class="form-control mb-3" rows="3" placeholder="Enter Description"></textarea>               *@     
                                 <span asp-validation-for="DishModel.Description" class=" alert-danger"></span>
                             </div>  
                             <div class="form-group">
@@ -71,9 +73,10 @@ var message = TempData["successmessage"] ?? string.Empty;
                             <div class="form-group">
                                 <label asp-for="IngredientsIds" class="control-label">Current ingredients</label>
 
-                                    @foreach (var dishcomp in Model.DishModel.DishCompositions)
+                                    @foreach (var dishcomp in Model.DishModel.DishCompositionIds)
                                     {
-                                        <p>@dishcomp.Ingredient.Name, @dishcomp.Ingredient.Amount</p>
+                                        @*<p>@dishcomp.Ingredient.Name, @dishcomp.Ingredient.Amount</p>*@
+                                        <p>@dishcomp</p>
                                     }
                             </div>
 

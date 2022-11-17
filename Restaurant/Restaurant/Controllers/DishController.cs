@@ -4,6 +4,7 @@ using Data.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Restaurant.Controllers
 {
@@ -35,22 +36,22 @@ namespace Restaurant.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateAsync(DishViewModel dvm)
         {
-            //if (ModelState.IsValid)
-            //{
+
+            var dc = await _dishCompositionService.GetAllAsync();
+
+            if (ModelState.IsValid)
+            {
                 TempData["successmessage"] = "DISH WAS ADDED SUCCESSFULLY";
-                var dc = await _dishCompositionService.GetAllAsync();           
+                          
 
-                var res = dc.Where(t => dvm.IngredientsIds.Contains(t.Id));               
+                var res = dc.Where(t => dvm.IngredientsIds.Contains((int)t.Id));
 
-                dvm.DishModel.DishCompositions = res.Select(dcm => 
-                    new DishComposition
-                    {
-                        Amount = dcm.Amount,
-                        Ingredient = dcm.Ingredient                        
-                    }).ToList();
+                dvm.DishModel.DishCompositionIds = dvm.IngredientsIds;
 
                 await _dishService.AddAsync(dvm.DishModel);
-            // }
+            }
+
+
             dvm.dishCompositionModels = dc;
 
             return View(dvm);
@@ -89,28 +90,28 @@ namespace Restaurant.Controllers
         [HttpPost]
         public async Task<ActionResult> EditAsync(DishViewModel dvm)
         {
-            TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
 
-            var dc = await _dishCompositionService.GetAllAsync();
-            var res = dc.Where(t => dvm.IngredientsIds.Contains(t.Id));
+            var dishcomp = await _dishCompositionService.GetAllAsync();
 
-            dvm.DishModel.DishCompositions = res.Select(dcm =>
-                                new DishComposition
-                                {
-                                    Amount = dcm.Amount,
-                                    Ingredient = dcm.Ingredient
-                                }).ToList();
-                       
+            var res = dishcomp.Where(t => dvm.IngredientsIds.Contains((int)t.Id));
 
-            await _dishService.UpdateAsync(dvm.DishModel);
+            var dish = await _dishService.GetByIdAsync((int)dvm.DishModel.Id);
+
+            dvm.DishModel.DishCompositionIds = dish.DishCompositionIds;
+
+            if (ModelState.IsValid)
+            {
+                TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
+                
+                await _dishService.UpdateAsync(dvm.DishModel);
+
+                var dishes = await _dishService.GetAllAsync();
+            }
+
+            dvm.dishCompositionModels = dishcomp;
 
 
-            var dishes = await _dishService.GetAllAsync();
-
-            /* dvm.dishCompositionModels = dc;
-             return View(dvm);*/
-
-            return RedirectToAction("Index");
+            return View(dvm);
 
         }
 

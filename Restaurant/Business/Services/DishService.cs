@@ -127,7 +127,12 @@ namespace Business.Services
                 throw new RestaurantException("Name is empty");
             }
 
-            var dish = _mapper.Map<Dish>(model);            
+            var dish = _mapper.Map<Dish>(model);
+
+            List <DishComposition> dc = new();            
+            var dishcomp = await _unitOfWork.DishCompositionRepository.GetByIdWithDetailsAsync(1);
+            dc.Add(dishcomp);
+            dish.DishCompositions = dc;
 
             _unitOfWork.DishRepository.Update(dish);
 

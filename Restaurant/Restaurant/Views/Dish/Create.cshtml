@@ -10,7 +10,7 @@ var message = TempData["successmessage"] ?? string.Empty;
 
 
 <div class="container shadow p-5">
-    <div class="form-group d-flex justify-content-center">p>
+    <div class="form-group d-flex justify-content-center">
         <h2>Add Dish</h2>    
     </div>
     <div class="form-group d-flex justify-content-center">                
@@ -25,23 +25,19 @@ var message = TempData["successmessage"] ?? string.Empty;
             <div class="form-group col-md-6">
                 <label asp-for="DishModel.Name">Dish Name</label>
                 <input type="text" class="form-control mb-3" asp-for="DishModel.Name" placeholder="Enter Name">
-                <span asp-validation-for="DishModel.Name" class=" alert-danger" CausesValidation="False"></span>
+                <span asp-validation-for="DishModel.Name" class=" alert-danger" ></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="DishModel.Price">Price</label>
                 <input type="text" class="form-control mb-3" asp-for="DishModel.Price" placeholder="Enter Price">
-                <span asp-validation-for="DishModel.Price" class=" alert-danger" CausesValidation="False"></span>
+                <span asp-validation-for="DishModel.Price" class=" alert-danger" ></span>
             </div>
         </div>
 
 
         <div class="form-row">
             <div class="form-group col-md-9 mb-3">
-                <div class="form-row">
-                    <label asp-for="DishModel.DishCompositions" hidden>DishComposition</label>
-                    <input type="text" class="form-control" asp-for="DishModel.DishCompositions" hidden>
-                    <span asp-validation-for="DishModel.DishCompositions" class=" alert-danger" CausesValidation="False"></span>
-                </div> 
+                               
                 <div class="form-row">
                     <label asp-for="DishModel.ImgPath">ImgPath</label>
                     <input type="text" class="form-control" asp-for="DishModel.ImgPath">
@@ -71,6 +67,7 @@ var message = TempData["successmessage"] ?? string.Empty;
                             <option value = "@dishcomp.Id">@dishcomp.Ingredient.Name, @dishcomp.Ingredient.Amount</option>
                         }
                   </select>
+                    <span asp-validation-for="IngredientsIds" class="text-danger"></span>
                 </div>
             </div>
         </div>

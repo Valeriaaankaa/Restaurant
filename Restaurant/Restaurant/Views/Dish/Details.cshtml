@@ -49,9 +49,10 @@
                         @item.Price
                     </td>
                     <td width="25%">
-                        @foreach (var item_ingr in item.DishCompositions)
+                        @foreach (var item_ingr in item.DishCompositionIds)
                         {
-                            <p>@item_ingr.Ingredient.Name @item_ingr.Ingredient.Amount g</p>
+                            @*<p>@item_ingr.Ingredient.Name @item_ingr.Ingredient.Amount g</p>*@
+                            <p>@item_ingr</p>
                         }
                     </td>
                     <td width="30%">
