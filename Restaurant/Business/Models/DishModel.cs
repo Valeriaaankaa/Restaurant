@@ -9,12 +9,12 @@ namespace Business.Models
 {
     public class DishModel
     {
-        public int  Id { get; set; }
+        public int?  Id { get; set; }
         public string Name { get; set; }
         public string ImgPath { get; set; }
         public decimal Price { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
         public DishGroup DishGroup { get; set; }
-        public ICollection<DishComposition> DishCompositions { get; set; }
+        public IEnumerable<int>? DishCompositionIds { get; set; }
     }
 }
