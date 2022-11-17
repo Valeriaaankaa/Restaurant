@@ -24,6 +24,9 @@ h2 {
     color: #cccccc;
 }
 
+h6 {
+    margin: 40px 8px 10px 8px;
+}
 
 
 /* STRUCTURE */
@@ -59,7 +62,7 @@ h2.inactive {
 }
 
 h2.active {
-    color: #0d0d0d;
+    color: #cccccc;
     border-bottom: 2px solid #5fbae9;
     display: inline-block;
 }
@@ -275,7 +278,6 @@ input[type=text], input[type=password] {
 
 a {
     text-decoration: none;
-    color: black;
 }
 
 .parent {
