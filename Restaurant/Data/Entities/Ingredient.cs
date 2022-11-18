@@ -9,5 +9,6 @@
         public decimal Price { get; set; }
         public ICollection<DishComposition> DishCompositions { get; set; }
         public IngredientGroup IngredientGroup { get; set; }
+        public IngredientMeasurement IngredientMeasurement { get; set; }
     }
 }

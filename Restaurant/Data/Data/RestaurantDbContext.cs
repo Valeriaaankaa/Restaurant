@@ -101,13 +101,33 @@ namespace Data.Data
                new Ingredient { Id = 70, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
                new Ingredient { Id = 71, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
                new Ingredient { Id = 72, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat }
-               );          
+               );
 
 
 
-            
+            modelBuilder.Entity<RestaurantTable>().HasData(
+                new RestaurantTable { Id=1, Name="Table 1", Zone=TableZone.BanquetHall},
+                new RestaurantTable { Id = 2, Name = "Table 2", Zone = TableZone.BanquetHall },
+                new RestaurantTable { Id = 3, Name = "Table 3", Zone = TableZone.BanquetHall },
+                new RestaurantTable { Id = 4, Name = "Table 4", Zone = TableZone.BanquetHall },
+                new RestaurantTable { Id = 5, Name = "Table 5", Zone = TableZone.BanquetHall },
+                new RestaurantTable { Id = 6, Name = "Table 6", Zone = TableZone.BanquetHall },
+                new RestaurantTable { Id = 7, Name = "Table 7", Zone = TableZone.Pariz },
+                new RestaurantTable { Id = 8, Name = "Table 8", Zone = TableZone.Pariz },
+                new RestaurantTable { Id = 9, Name = "Table 9", Zone = TableZone.Pariz },
+                new RestaurantTable { Id = 10, Name = "Table 10", Zone = TableZone.Pariz },
+                new RestaurantTable { Id = 11, Name = "Table 11", Zone = TableZone.Pariz },
+                new RestaurantTable { Id = 12, Name = "Table 12", Zone = TableZone.Pariz },
+                new RestaurantTable { Id = 13, Name = "Table 13", Zone = TableZone.GoldenPalace },
+                new RestaurantTable { Id = 14, Name = "Table 14", Zone = TableZone.GoldenPalace },
+                new RestaurantTable { Id = 15, Name = "Table 15", Zone = TableZone.GoldenPalace },
+                new RestaurantTable { Id = 16, Name = "Table 16", Zone = TableZone.GoldenPalace },
+                new RestaurantTable { Id = 17, Name = "Table 17", Zone = TableZone.GoldenPalace },
+                new RestaurantTable { Id = 18, Name = "Table 18", Zone = TableZone.GoldenPalace }
 
-            modelBuilder.Entity<Dish>().HasData(
+                );
+
+           modelBuilder.Entity<Dish>().HasData(
                new Dish
                {
                    Id = 1,

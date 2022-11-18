@@ -20,6 +20,7 @@
             <th scope="col">Expiration Date</th>
             <th scope="col">Price</th>
             <th scope="col">Amount</th>
+            <th scope="col">Measurement</th>
              <th scope="col">Option</th>
         </tr>
     </thead>
@@ -33,8 +34,29 @@
                 <td>@ingred.ImportDate</td>
                 <td>@ingred.ExpirationDate</td>
                 <td>@ingred.Price</td>
-                 <td class="@(ingred.Amount<=5 ? "table-danger" : "table-active")">@ingred.Amount</td>
-                 <td>
+                @if(@ingred.IngredientMeasurement.ToString()=="Liter" && @ingred.Amount<3)
+                {
+                        <td class="table-danger">@ingred.Amount</td>
+                    }
+                    else if (@ingred.IngredientMeasurement.ToString()=="Kilogram" && @ingred.Amount<5)
+                    {
+                        <td class="table-danger">@ingred.Amount</td>
+                    }
+                    else if (@ingred.IngredientMeasurement.ToString()=="Package" && @ingred.Amount<10)
+                    {
+                        <td class="table-danger">@ingred.Amount</td>
+                    }
+                    else if (@ingred.IngredientMeasurement.ToString()=="Piece" && @ingred.Amount<7)
+                    {
+                        <td class="table-danger">@ingred.Amount</td>
+                    }
+
+                    else
+                    {
+                         <td>@ingred.Amount</td>
+                    }
+                    <td>@ingred.IngredientMeasurement</td>
+                    <td>
                         <div role="group" class="w-60 btn-group">
                             <a asp-controller="Ingredient" asp-action="Edit" asp-route-id="@ingred.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            
                             @Html.ActionLink("Delete",

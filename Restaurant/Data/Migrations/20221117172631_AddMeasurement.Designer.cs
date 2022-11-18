@@ -4,6 +4,7 @@ using Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221117172631_AddMeasurement")]
+    partial class AddMeasurement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2232,116 +2234,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RestaurantTables");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Table 1",
-                            Zone = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Table 2",
-                            Zone = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Table 3",
-                            Zone = 2
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Table 4",
-                            Zone = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Table 5",
-                            Zone = 2
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Table 6",
-                            Zone = 2
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Table 7",
-                            Zone = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Table 8",
-                            Zone = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Table 9",
-                            Zone = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Table 10",
-                            Zone = 1
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Table 11",
-                            Zone = 1
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Table 12",
-                            Zone = 1
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Table 13",
-                            Zone = 0
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "Table 14",
-                            Zone = 0
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "Table 15",
-                            Zone = 0
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "Table 16",
-                            Zone = 0
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "Table 17",
-                            Zone = 0
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Name = "Table 18",
-                            Zone = 0
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.TableOrder", b =>
