@@ -14,7 +14,6 @@ namespace Restaurant.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         private readonly IIngredientService _ingredientService;
         private readonly IDishService _dishService;
 
@@ -25,9 +24,7 @@ namespace Restaurant.Controllers
             _dishService = dishService;
 
         }
-
         
-
        public async Task<IActionResult> StockAsync(StockViewModel model)
         {
             IEnumerable<Ingredient> Ingredients = await _ingredientService.GetAllAsync();
@@ -58,9 +55,6 @@ namespace Restaurant.Controllers
 
         public IActionResult Index(List<string> IngredientsIds)
         {
-
-
-
             return View(IngredientsIds);
         }
         
@@ -68,7 +62,7 @@ namespace Restaurant.Controllers
         {
             var statusCode = HttpContext.Response.StatusCode;
             ViewData["statusCode"] = statusCode;
-            var feauter = Request.HttpContext.Features.Get<IStatusCodeReExecuteFeature>();//=null
+            var feauter = Request.HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
             var path = feauter?.OriginalPath;
             return View("ErrorPage", new ErrorViewModel
             {

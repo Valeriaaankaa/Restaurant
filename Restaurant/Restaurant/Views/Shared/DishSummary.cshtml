@@ -1,17 +1,39 @@
 ﻿@using Business.Models
 @using Business.Infrastructure
 @model DishModel
+@using Microsoft.AspNetCore.Identity
+@using Data.Entities
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
 <div class="col col-sm-3">
                             
         <div class="card card-body">
+
+
+
+            @if (User.IsInRole("Administrator"))
+            {
             <a asp-controller="Dish" asp-action="Edit" asp-route-id="@Model.Id" class="a_dish_menu">
                 <div class="text-center">
-                    <img src="@Model.ImgPath.ToString()" class="img-fluid mb-3" alt="NEGRONI">
+                    <img src="@Model.ImgPath.ToString()" class="img-fluid mb-3" alt="@Model.Name">
                 </div>
                 <span class="float-right font-weight-bold">@Model.Price.ToString("c")</span>
                 <h6 class="text-truncate">@Model.Name</h6>
                 <p class="small">@Model.Description</p>
-            </a>                                    
+            </a>   
+            }
+            else
+            {
+                <div class="text-center">
+                    <img src="@Model.ImgPath.ToString()" class="img-fluid mb-3" alt="@Model.Name">
+                </div>
+                <span class="float-right font-weight-bold">@Model.Price.ToString("c")</span>
+                <h6 class="text-truncate">@Model.Name</h6>
+                <p class="small">@Model.Description</p>
+            }
 
            <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
             <input type="hidden" asp-for="Id" />

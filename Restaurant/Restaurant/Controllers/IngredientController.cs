@@ -2,9 +2,11 @@
 using Business.Models;
 using Data.Data;
 using Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restaurant.Models;
+using static Restaurant.Constants;
 
 namespace Restaurant.Controllers
 {
@@ -16,14 +18,16 @@ namespace Restaurant.Controllers
             _ingredientService= ingredientService;
         }
 
-
+        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<IActionResult> Index()
         {
             var ingredients = await _ingredientService.GetAllAsync();
             return View(ingredients);
         }
 
+
         [HttpPost]
+        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<IActionResult> CreateAsync(Ingredient ingredient)
         {
             //if (ModelState.IsValid)
@@ -33,12 +37,15 @@ namespace Restaurant.Controllers
             //}
             //return View(dish);
         }
+
+        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public ActionResult Create()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<ActionResult> EditAsync(int id)
         {
             var dish = await _ingredientService.GetByIdAsync(id);
@@ -47,13 +54,14 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<ActionResult> EditAsync(Ingredient ingredient)
         {
             await _ingredientService.UpdateAsync(ingredient);
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             await _ingredientService.DeleteAsync(id);

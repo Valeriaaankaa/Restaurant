@@ -2,6 +2,7 @@
 using Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Business.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Restaurant.Controllers
 {
@@ -16,7 +17,8 @@ namespace Restaurant.Controllers
             _logger = logger;
             _dishCompositionService = dishCompositionService;           
         }
-        
+
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> DetailsAsync(int id)
         {
             var dishes = await _dishCompositionService.GetAllAsync();
@@ -24,6 +26,7 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> CreateAsync(DishCompositionModel model)
         {
             //if (ModelState.IsValid)
@@ -33,6 +36,8 @@ namespace Restaurant.Controllers
             //}
             //return View(dish);
         }
+
+        [Authorize(Policy = "RequireAdmin")]
         public ActionResult Create()
         {
             return View();
@@ -41,6 +46,7 @@ namespace Restaurant.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(int id)
         {
             var dish = await _dishCompositionService.GetByIdAsync(id);
@@ -49,13 +55,14 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(DishCompositionModel model)
         {
             await _dishCompositionService.UpdateAsync(model);
             return RedirectToAction("Details");
         }
 
-
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             await _dishCompositionService.DeleteAsync(id);
