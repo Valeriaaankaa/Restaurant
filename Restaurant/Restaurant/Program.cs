@@ -19,7 +19,7 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("Restaurant");
 
-var userDBconnectionString = builder.Configuration.GetConnectionString("UserDb");
+var userDBconnectionString = builder.Configuration.GetConnectionString("UserDB");
 
 builder.Services.AddDbContext<RestaurantDbContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddDbContext<UserDbContext>(options => options.UseSqlServer(userDBconnectionString));

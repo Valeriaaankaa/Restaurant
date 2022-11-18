@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Restaurant.Migrations
+namespace Restaurant.Migrations.UserDb
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20220216152352_SeedRoles")]
+    [Migration("20221115152352_SeedRoles")]
     partial class SeedRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,6 +1,7 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
 using System.Diagnostics;
@@ -26,6 +27,7 @@ namespace Restaurant.Controllers
             _dishCompositionService = dishCompositionService;
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> DetailsAsync(int id)
         {
             var dishes = await _dishService.GetAllAsync();   
@@ -34,6 +36,7 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> CreateAsync(DishViewModel dvm)
         {
 
@@ -57,6 +60,7 @@ namespace Restaurant.Controllers
             return View(dvm);
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> CreateAsync()
         {
             var dishcomp = await _dishCompositionService.GetAllAsync();
@@ -70,6 +74,7 @@ namespace Restaurant.Controllers
         }
                
         [HttpGet]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(int id)
         {
             var dishcomp = await _dishCompositionService.GetAllAsync();
@@ -88,6 +93,7 @@ namespace Restaurant.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(DishViewModel dvm)
         {
 
@@ -115,7 +121,7 @@ namespace Restaurant.Controllers
 
         }
 
-
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             await _dishService.DeleteAsync(id);
