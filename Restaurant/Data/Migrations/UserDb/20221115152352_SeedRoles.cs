@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Restaurant.Migrations
+namespace Restaurant.Migrations.UserDb
 {
     public partial class SeedRoles : Migration
     {
@@ -45,14 +45,14 @@ N'AQAAAAEAACcQAAAAEDGQ5wwj6Iz0lXHIZ5IwuvgSO88jrSBT1etWcDYjJN5CBNDKvddZcEeixYBYmc
 N'YUPAFWNGZI2UC5FOITC7PX5J7XZTAZAA', N'8e150555-a20d-4610-93ff-49c5af44f749', NULL, 0, 0, NULL, 1, 0)");
 
             migrationBuilder.Sql(
-                @$"INSERT [dbo].[AspNetUsers] ([Id], [FirstName], [LastName], [UserName], [NormalizedUserName], 
-[Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], 
-[PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount]) 
-VALUES 
-(N'{User2Id}', N'Test 3', N'Lastname', N'test3@test.ca', N'TEST3@TEST.CA', 
-N'test3@test.ca', N'TEST3@TEST.CA', 0, 
-N'AQAAAAEAACcQAAAAEDGQ5wwj6Iz0lXHIZ5IwuvgSO88jrSBT1etWcDYjJN5CBNDKvddZcEeixYBYmcdFag==', 
-N'YUPAFWNGZI2UC5FOITC7PX5J7XZTAZAA', N'8e150555-a20d-4610-93ff-49c5af44f749', NULL, 0, 0, NULL, 1, 0)");
+                                @$"INSERT [dbo].[AspNetUsers] ([Id], [FirstName], [LastName], [UserName], [NormalizedUserName], 
+                [Email], [NormalizedEmail], [EmailConfirmed], [PasswordHash], [SecurityStamp], [ConcurrencyStamp], 
+                [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnd], [LockoutEnabled], [AccessFailedCount]) 
+                VALUES 
+                (N'{User2Id}', N'Test 3', N'Lastname', N'test3@test.ca', N'TEST3@TEST.CA', 
+                N'test3@test.ca', N'TEST3@TEST.CA', 0, 
+                N'AQAAAAEAACcQAAAAEKDRJH3yZ3cPtjHNF44Gz9tkEvmAGTa8iz8i0Ve04BA84Db8olmV/XkiKPhVI4JRog==', 
+                N'PIGGXVUAORIF2KIWNPIYAKDMDOK2BLSY', N'5b8559ba-64f6-4f94-a860-f6e844d4a2fa', NULL, 0, 0, NULL, 1, 0)");
         }
 
         private void SeedUserRoles(MigrationBuilder migrationBuilder)

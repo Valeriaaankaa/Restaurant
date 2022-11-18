@@ -27,16 +27,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>                    
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
-                    <partial name="_LoginPartial"/>
-                    @if (SignInManager.IsSignedIn(User))
-                        {
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>   
+                    
 
-                            
+                    @if (User.IsInRole("Administrator"))
+                        {
+                        <a class="nav-item nav-link" href="@Url.Action("Details", "Dish")">Dish Details</a>
+                        }
+
+                    @if (User.IsInRole("Administrator") || (User.IsInRole("Manager")))
+                        {
+                            <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
                         }
                 </div>
             </div>
+            <partial name="_LoginPartial" />
             <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")"><img src="~/img/basket.png" alt="Basket"/></a>
         </nav>        
     </header>
