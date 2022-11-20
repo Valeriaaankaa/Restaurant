@@ -32,6 +32,9 @@ namespace Restaurant.Controllers
         {
             var dishes = await _dishService.GetAllAsync();   
                       
+
+
+
             return View(dishes);
         }
 
@@ -44,81 +47,38 @@ namespace Restaurant.Controllers
 
             if (ModelState.IsValid)
             {
-                TempData["successmessage"] = "DISH WAS ADDED SUCCESSFULLY";
-                          
-
-                var res = dc.Where(t => dvm.IngredientsIds.Contains((int)t.Id));
-
-                dvm.DishModel.DishCompositionIds = dvm.IngredientsIds;
-
+                TempData["successmessage"] = "DISH WAS ADDED SUCCESSFULLY";     
                 await _dishService.AddAsync(dvm.DishModel);
             }
-
-
-            dvm.dishCompositionModels = dc;
 
             return View(dvm);
         }
 
         [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> CreateAsync()
-        {
-            var dishcomp = await _dishCompositionService.GetAllAsync();
-                        
-
-            DishViewModel dvm = new DishViewModel()
-            {
-                dishCompositionModels = dishcomp,
-            };
-            return View(dvm);
+        {           
+            return View();
         }
                
         [HttpGet]
         [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(int id)
-        {
-            var dishcomp = await _dishCompositionService.GetAllAsync();
-            var dish = await _dishService.GetByIdAsync(id);            
-
-            List <string> Ids = dishcomp.Select(dc => dc.Ingredient.Id.ToString()).ToList();
-
-            DishViewModel dvm = new DishViewModel()
-            {
-                dishCompositionModels = dishcomp,
-                DishModel = dish
-            };
-
-
-            return View(dvm);
+        {           
+            var dish = await _dishService.GetByIdAsync(id);      
+            return View(dish);
         }
 
         [HttpPost]
         [Authorize(Policy = "RequireAdmin")]
-        public async Task<ActionResult> EditAsync(DishViewModel dvm)
-        {
-
-            var dishcomp = await _dishCompositionService.GetAllAsync();
-
-            var res = dishcomp.Where(t => dvm.IngredientsIds.Contains((int)t.Id));
-
-            var dish = await _dishService.GetByIdAsync((int)dvm.DishModel.Id);
-
-            dvm.DishModel.DishCompositionIds = dish.DishCompositionIds;
-
+        public async Task<ActionResult> EditAsync(DishModel dvm)
+        {            
             if (ModelState.IsValid)
             {
                 TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
-                
-                await _dishService.UpdateAsync(dvm.DishModel);
-
-                var dishes = await _dishService.GetAllAsync();
+                await _dishService.UpdateAsync(dvm);           
             }
 
-            dvm.dishCompositionModels = dishcomp;
-
-
             return View(dvm);
-
         }
 
         [Authorize(Policy = "RequireAdmin")]

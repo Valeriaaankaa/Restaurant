@@ -8,7 +8,9 @@ namespace Business.Models
 {
     public enum SortType
     {
-        ByName, 
-        ByCost
+        ByNameASC,
+        ByNameDESC,
+        ByCostASC,
+        ByCostDESC
     }
 }

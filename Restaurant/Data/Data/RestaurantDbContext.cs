@@ -1365,7 +1365,8 @@ namespace Data.Data
 
             var dish = modelBuilder.Entity<Dish>();
             dish.HasMany(c => c.DishCompositions)
-                    .WithOne(d => d.Dish);
+                    .WithOne(d => d.Dish)
+                    .HasForeignKey(c => c.DishId);
 
             var dishorder = modelBuilder.Entity<DishOrder>();
             dishorder.HasOne(c => c.Dish)
@@ -1375,7 +1376,8 @@ namespace Data.Data
             order.HasOne(c => c.TableOrder)
                     .WithOne();
             order.HasMany(c => c.DishesOrder)
-                    .WithOne(d => d.Order);
+                    .WithOne(d => d.Order)
+                    .HasForeignKey(c => c.OrderId);
 
             var tableorder = modelBuilder.Entity<TableOrder>();
             tableorder.HasOne(c => c.RestaurantTable)

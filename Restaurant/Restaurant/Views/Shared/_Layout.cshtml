@@ -32,6 +32,8 @@
                     @if (User.IsInRole("Administrator"))
                         {
                         <a class="nav-item nav-link" href="@Url.Action("Details", "Dish")">Dish Details</a>
+                        <a class="nav-item nav-link" href="@Url.Action("Details", "DishComposition")">Dish Composition</a>
+                        <a class="nav-item nav-link" href="@Url.Action("", "User")">Users</a>
                         }
 
                     @if (User.IsInRole("Administrator") || (User.IsInRole("Manager")))

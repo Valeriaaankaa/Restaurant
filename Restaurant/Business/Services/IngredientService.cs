@@ -20,7 +20,7 @@ namespace Business.Services
 
         public async Task AddAsync(Ingredient model)
         {
-            if (model == null)
+           /* if (model == null)
             {
                 throw new RestaurantException("Model is null");
             }
@@ -28,7 +28,7 @@ namespace Business.Services
             {
                 throw new RestaurantException("Name is empty");
             }
-
+           */
             await _unitOfWork.IngredientRepository.AddAsync(model);
             await _unitOfWork.SaveAsync();
         }
