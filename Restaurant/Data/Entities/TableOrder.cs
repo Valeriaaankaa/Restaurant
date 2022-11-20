@@ -8,8 +8,8 @@ namespace Data.Entities
 {
     public class TableOrder: BaseEntity
     {   
-        public DateTime TimeBegin { get; set; }
-        public DateTime TimeEnd { get; set; }
+        public TimeOnly TimeBegin { get; set; }
+        public TimeOnly TimeEnd { get; set; }
         public int RestaurantTableId { get; set; }
         public RestaurantTable RestaurantTable { get; set; }
     }
