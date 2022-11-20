@@ -19,10 +19,14 @@ namespace Restaurant.Controllers
         }
 
         [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var ingredients = await _ingredientService.GetAllAsync();
-            return View(ingredients);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ingredients = ingredients.Where(s => s.Name!.Contains(searchString));
+            }
+            return View(ingredients.ToList());
         }
 
 
