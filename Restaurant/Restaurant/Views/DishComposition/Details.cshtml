@@ -1,12 +1,29 @@
 ﻿@using System.Collections;
 @using Data.Entities;
 @using Business.Models;
+@using Business.Interfaces;
+@using System.Linq;
+
+
 
 @model IEnumerable<DishCompositionModel>
+    
+@inject IIngredientService ingredientService
+@inject IDishService dishService
 
 @{
-    ViewData["Title"] = "DishComposition";
+    var ingredients = (await ingredientService.GetAllAsync()).ToList().Select(ingr => new
+    {
+        Name = ingr.Name,
+        Id = ingr.Id
+    }); 
+        
+    var dishes = (await dishService.GetAllAsync()).ToList().Select(o => o.Name);
+
+
+
 }
+
 
 
 <div class="container shadow p-5">
@@ -20,8 +37,10 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
+                <th scope="col">Dish Id</th>
+                <th scope="col">Ingredient Id</th>
                 <th scope="col">Amount</th>
-                <th scope="col">IngredientId</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,9 +51,15 @@
                     <td width="3%">
                         @item.Id
                     </td>
-                    <td width="17%">
+                    <td width="25%">
+                        @item.DishId
+                    </td>  
+                    <td width="25%">
+                        @item.IngredientId
+                    </td> 
+                    <td width="22%">
                         @item.Amount
-                    </td>         
+                    </td>   
                     <td>
                         <div role="group" class="w-60 btn-group">
                             <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            

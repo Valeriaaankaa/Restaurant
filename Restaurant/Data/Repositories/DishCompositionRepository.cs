@@ -53,6 +53,7 @@ namespace Data.Repositories
         {
             var compositions = await _context.DishCompositions
                 .Include(c => c.Ingredient)
+                .AsNoTracking()
                 .ToListAsync();
             return compositions;
         }
@@ -61,6 +62,7 @@ namespace Data.Repositories
         {
             return await _context.DishCompositions
                 .Include(r => r.Ingredient)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 
