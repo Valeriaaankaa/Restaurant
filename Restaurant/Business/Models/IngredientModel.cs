@@ -1,6 +1,7 @@
 ﻿using Data.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace Business.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        [RegularExpression(@"^[1-1000]{1,4}$", ErrorMessage = "RangeAllowed")]
         public decimal Amount { get; set; }
         public DateTime ImportDate { get; set; }
         public DateTime ExpirationDate { get; set; }
