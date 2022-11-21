@@ -47,7 +47,7 @@ namespace Business.Services
 
         public async Task AddAsync(DishModel model)
         {
-           /* if (model == null)
+            if (model == null)
             {
                 throw new RestaurantException("Model is null");
             }
@@ -58,7 +58,7 @@ namespace Business.Services
             if (String.IsNullOrEmpty(model.Name))
             {
                 throw new RestaurantException("Name is empty");
-            }*/
+            }
                      
 
 
