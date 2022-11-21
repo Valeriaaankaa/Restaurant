@@ -62,6 +62,8 @@ namespace Business.Services
                      
 
 
+
+
             await _unitOfWork.DishRepository.AddAsync(_mapper.Map<Dish>(model));
             await _unitOfWork.SaveAsync();
         }
@@ -93,16 +95,16 @@ namespace Business.Services
 
         public IEnumerable<DishModel> Sort(IEnumerable<DishModel> dm, string Category, SortType st)
         {
-            IEnumerable<DishModel> category_list;
+            IEnumerable<DishModel> category_list = null;
 
-            if (st == SortType.ByName)
+            switch(st)
             {
-                category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Name.ToLower());
+                case SortType.ByNameASC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Name.ToLower()); break;
+                case SortType.ByNameDESC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Name.ToLower()); break;
+                case SortType.ByCostASC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Price); break;
+                case SortType.ByCostDESC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Price); break;
             }
-            else
-            {
-                category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Price);
-            }
+                        
 
             return category_list;
         }
@@ -127,12 +129,7 @@ namespace Business.Services
                 throw new RestaurantException("Name is empty");
             }
 
-            var dish = _mapper.Map<Dish>(model);
-
-            List <DishComposition> dc = new();            
-            var dishcomp = await _unitOfWork.DishCompositionRepository.GetByIdWithDetailsAsync(1);
-            dc.Add(dishcomp);
-            dish.DishCompositions = dc;
+            var dish = _mapper.Map<Dish>(model);           
 
             _unitOfWork.DishRepository.Update(dish);
 

@@ -24,16 +24,28 @@ namespace Business.Services
 
         public async Task AddAsync(DishCompositionModel model)
         {
-            if (model == null)
-            {
-                throw new RestaurantException("Model is null");
-            }
-            if (model.Amount < 1)
-            {
-                throw new RestaurantException("You cannot add Amount < 0");
-            }
+             if (model == null)
+             {
+                 throw new RestaurantException("Model is null");
+             }
+             if (model.Amount < 1)
+             {
+                 throw new RestaurantException("You cannot add Amount < 0");
+             }
 
-            await _unitOfWork.DishCompositionRepository.AddAsync(_mapper.Map<DishComposition>(model));
+            var ingredient = await _unitOfWork.IngredientRepository.GetByIdAsync(model.IngredientId);
+            var dish = await _unitOfWork.DishRepository.GetByIdAsync(model.DishId);
+
+            DishComposition ddc = new()
+            {
+                Amount = model.Amount,
+                Dish = dish,
+                Ingredient = ingredient,
+                DishId = model.DishId,
+                IngredientId = model.IngredientId
+            };
+
+            await _unitOfWork.DishCompositionRepository.AddAsync(ddc);            
             await _unitOfWork.SaveAsync();
         }
 
@@ -67,7 +79,15 @@ namespace Business.Services
                 throw new RestaurantException("You cannot set Amount < 0");
             }
 
+
+
             var dc = _mapper.Map<DishComposition>(model);
+
+            var dish = await _unitOfWork.DishRepository.GetByIdAsync(model.DishId);
+            var ingredient = await _unitOfWork.IngredientRepository.GetByIdAsync(model.IngredientId);
+
+            dc.Dish = dish;
+            dc.Ingredient = ingredient;
 
             _unitOfWork.DishCompositionRepository.Update(dc);
 

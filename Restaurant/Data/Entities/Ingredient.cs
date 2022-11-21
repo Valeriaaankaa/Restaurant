@@ -1,8 +1,11 @@
-﻿namespace Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+namespace Data.Entities
 {
     public class Ingredient : BaseEntity
-    {        
+    {
+        [Required]
         public string Name { get; set; }
+        [Required]
         public decimal Amount { get; set; }
         public DateTime ImportDate { get; set; }
         public DateTime ExpirationDate { get; set; }

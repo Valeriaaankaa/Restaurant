@@ -39,6 +39,7 @@ namespace Data.Repositories
             var dishes = await _context.Dishes
                 .Include(c => c.DishCompositions) 
                 .ThenInclude(t=>t.Ingredient)
+                .AsNoTracking()
                 .ToListAsync();
             return dishes;
         }
@@ -48,6 +49,7 @@ namespace Data.Repositories
             return await _context.Dishes
                 .Include(c => c.DishCompositions)
                 .ThenInclude(r => r.Ingredient)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
 

@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Business.Models
 {
-    public class DishCompositionModel
+    public class RestaurantTableModel
     {
         public int Id { get; set; }
-        public decimal Amount { get; set; }
-        public int DishId { get; set; }
-        public int IngredientId { get; set; }
+        public string Name { get; set; }
+        public TableZone Zone { get; set; }
     }
 }
