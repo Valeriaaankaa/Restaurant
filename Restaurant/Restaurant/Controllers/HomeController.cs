@@ -24,34 +24,11 @@ namespace Restaurant.Controllers
             _dishService = dishService;
 
         }
-        
-       public async Task<IActionResult> StockAsync(StockViewModel model)
+
+        public IActionResult Privacy()
         {
-            IEnumerable<Ingredient> Ingredients = await _ingredientService.GetAllAsync();
-
-            IEnumerable<IngredientGroup> Categories = Ingredients.Select(c => c.IngredientGroup).Distinct();
-
-            IEnumerable<Ingredient> category_list;
-
-            if (model.SelectSortType == IngredientSort.ByName)
-            {
-                category_list = Ingredients.Where(c => c.IngredientGroup.ToString() == model.Category).OrderBy(d => d.Name.ToLower());
-            }
-            else
-            {
-                category_list = Ingredients.Where(c => c.IngredientGroup.ToString() == model.Category).OrderBy(d => d.Amount);
-            }
-
-            var count = category_list.Count();
-            var data = category_list.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
-
-            model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);
-            model.Ingredients = data;
-            model.Categories = Categories;
-
-            return this.View(model);
+            return View();
         }
-
 
         public IActionResult Index(List<string> IngredientsIds)
         {

@@ -384,7 +384,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/NEGRONI.jpg",
                    
-                   Name = "NEGRONI",
+                   Name = "Vodka",
                    Price = 25
 
                },
@@ -396,7 +396,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/martini.jpg",
                    
-                   Name = "MARTINI",
+                   Name = "Gin",
                    Price = 26
                },
 
@@ -407,7 +407,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/manhattan.jpg",
                    
-                   Name = "MANHATTAN",
+                   Name = "Baijiu",
                    Price = 27
                },
 
@@ -418,7 +418,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/whiskey_sour.jpg",
                    
-                   Name = "WHISKEY SOUR",
+                   Name = "Soju",
                    Price = 28
                },
 
@@ -429,7 +429,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/OLD_FASHIONED.jpg",
                    
-                   Name = "OLD FASHIONED",
+                   Name = "Tequila",
                    Price = 29
                },
 
@@ -440,7 +440,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/BLOODY_MARY.jpg",
                    
-                   Name = "BLOODY MARY",
+                   Name = "Rum",
                    Price = 30
                },
 
@@ -451,7 +451,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
                    
-                   Name = "Roasted stuffed mushrooms",
+                   Name = "Beetroot with herby tzatziki",
                    Price = 31
                },
 
@@ -462,7 +462,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Baked_spring_rolls.jpg",
                    
-                   Name = "Baked spring rolls",
+                   Name = "Prawn cocktail",
                    Price = 32
                },
 
@@ -471,9 +471,8 @@ namespace Data.Data
                    Id = 33,
                    Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                   
-                   Name = "Baked spring rolls",
+                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",                   
+                   Name = "Charred leek and goat's cheese tartlets",
                    Price = 33
                },
 
@@ -482,9 +481,8 @@ namespace Data.Data
                    Id = 34,
                    Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                   
-                   Name = "Sweet fried saganaki",
+                   ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",                   
+                   Name = "Prawn tom yum soup",
                    Price = 34
                },
 
@@ -495,7 +493,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Bacon_rings.jpg",
                    
-                   Name = "Bacon rings",
+                   Name = "Chilli and lime whitebait",
                    Price = 35
                },
 
@@ -506,7 +504,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Blooming_onion.jpg",
                    
-                   Name = "Blooming onion",
+                   Name = "Pint of prawns",
                    Price = 36
                },
 
@@ -515,9 +513,8 @@ namespace Data.Data
                    Id = 37,
                    Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                    DishGroup = DishGroup.MainPlates,
-                   ImgPath = "/img/menu/CALZONES.jpg",
-                   
-                   Name = "CALZONES",
+                   ImgPath = "/img/menu/CALZONES.jpg",                   
+                   Name = "Deep-Fried turley",
                    Price = 37
                },
 
@@ -528,7 +525,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
                    
-                   Name = "Deep Fried Main Dishes",
+                   Name = "Easy rib eye roast",
                    Price = 38
                },
 
@@ -539,7 +536,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/MEATBALLS.jpg",
                    
-                   Name = "MEATBALLS",
+                   Name = "Pesto pasta with chicken",
                    Price = 39
                },
 
@@ -548,9 +545,8 @@ namespace Data.Data
                    Id = 40,
                    Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
                    DishGroup = DishGroup.MainPlates,
-                   ImgPath = "/img/menu/QUICHE.jpg",
-                   
-                   Name = "QUICHE",
+                   ImgPath = "/img/menu/QUICHE.jpg",                   
+                   Name = "Oxtails with Gravy",
                    Price = 40
                },
 
@@ -561,7 +557,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
                    
-                   Name = "CHICKEN MAIN DISHES",
+                   Name = "Stuffed green peppers",
                    Price = 41
                },
 
@@ -572,7 +568,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
                    
-                   Name = "SEAFOOD MAIN DISHES",
+                   Name = "Down Home Chitterlings",
                    Price = 42
                },
 
@@ -715,7 +711,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
                    
-                   Name = "Roasted stuffed mushrooms",
+                   Name = "Bacon wrapped turkey",
                    Price = 55
                },
 
@@ -726,7 +722,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Baked_spring_rolls.jpg",
                    
-                   Name = "Baked spring rolls",
+                   Name = "Stuffing meatloaf",
                    Price = 56
                },
 
@@ -737,7 +733,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Baked_spring_rolls.jpg",
                    
-                   Name = "Baked spring rolls",
+                   Name = "Baked lemon butter chicken thighs",
                    Price = 57
                },
 
@@ -748,7 +744,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
                    
-                   Name = "Sweet fried saganaki",
+                   Name = "Easter ham",
                    Price = 58
                },
 
@@ -759,7 +755,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Bacon_rings.jpg",
                    
-                   Name = "Bacon rings",
+                   Name = "pork L",
                    Price = 59
                },
 
@@ -847,7 +843,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/TIRAMISU_LAYER_CAKE.jpg",
                    
-                   Name = "TIRAMISU LAYER CAKE",
+                   Name = "Coconut Kheer",
                    Price = 67
                },
 
@@ -858,7 +854,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/DEVIL'S_FOOD_CAKE.jpg",
                    
-                   Name = "DEVIL'S FOOD CAKE",
+                   Name = "Low Fat Tiramisu",
                    Price = 68
                },
 
@@ -869,7 +865,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/LEMON_SOUFFLES.jpg ",
                    
-                   Name = "LEMON SOUFFLES",
+                   Name = "Fudgy Chewy Brownies",
                    Price = 69
                },
 
@@ -891,7 +887,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/LEMON_CAKE_DOBERGE.jpg ",
                    
-                   Name = "LEMON CAKE DOBERGE",
+                   Name = "Pistachio Phirni",
                    Price = 71
                },
 
@@ -902,7 +898,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/CHOCOLATE_FONDUE.jpg ",
                    
-                   Name = "CHOCOLATE FONDUE",
+                   Name = "Almond Malai Kulfi",
                    Price = 72
                }
        );
