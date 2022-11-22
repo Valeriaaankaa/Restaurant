@@ -29,78 +29,78 @@ namespace Data.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Ingredient>().HasData(
-               new Ingredient { Id = 1, Name = "Water", Amount = 23, ExpirationDate = new DateTime(2021, 1, 30), ImportDate = new DateTime(2022, 12, 12), Price = 5, IngredientGroup = IngredientGroup.Drinks },
-               new Ingredient { Id = 2, Name = "Pork", Amount = 7, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 3, Name = "Pork", Amount = 4, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 4, Name = "Pork", Amount = 4, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 5, Name = "Pork", Amount = 30, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 6, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 7, Name = "Pork", Amount = 3, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 8, Name = "Pork", Amount = 1, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 9, Name = "Pork", Amount = 4, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 10, Name = "Pork", Amount = 13, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 11, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 12, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 13, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 14, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 15, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 16, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 17, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 18, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 19, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 20, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 21, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 22, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 23, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 24, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 25, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 26, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 27, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 28, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 29, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 30, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 31, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 32, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 33, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 34, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 35, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 36, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 37, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 38, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 39, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 40, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 41, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 42, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 43, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 44, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 45, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 46, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 47, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 48, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 49, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 50, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 51, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 52, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 53, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 54, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 55, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 56, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 57, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 58, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },               
-               new Ingredient { Id = 59, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 60, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 61, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 62, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 63, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 64, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 65, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 66, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 67, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 68, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 69, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 70, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 71, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat },
-               new Ingredient { Id = 72, Name = "Pork", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat }
+               new Ingredient { Id = 1, Name = "Water",     Amount = 100, ExpirationDate = new DateTime(2021, 1, 30), ImportDate = new DateTime(2022, 12, 12), Price = 5, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Liter  },
+               new Ingredient { Id = 2, Name = "Milk",      Amount = 7, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Liter },
+               new Ingredient { Id = 3, Name = "Yoghurt",   Amount = 4, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Liter },
+               new Ingredient { Id = 4, Name = "Cream",     Amount = 4, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Dessert, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 5, Name = "Egg",       Amount = 30, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 6, Name = "Orange",    Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 7, Name = "Lemon",     Amount = 3, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 8, Name = "Mango",     Amount = 1, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 9, Name = "Blueberry", Amount = 4, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 10, Name = "Raspberry", Amount = 13, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Liter },
+               new Ingredient { Id = 11, Name = "Strawberry", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 12, Name = "Oil",      Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 13, Name = "Chicken breast", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 14, Name = "Beef",     Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 15, Name = "Minced meat", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 16, Name = "Salmon", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 17, Name = "Cacao", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 18, Name = "Sugar", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 19, Name = "Almonds", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 20, Name = "Cashew nuts", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Flavor, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 21, Name = "Kidney beans", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 22, Name = "White beans", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 23, Name = "Lentils", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 24, Name = "Pasta", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Groats, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 25, Name = "Rice", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Groats, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 26, Name = "Chili", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Flavor, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 27, Name = "Ginger", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Groats, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 28, Name = "Mushroom", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 29, Name = "Potato", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 30, Name = "Peas", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 31, Name = "Root celery", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 32, Name = "Carrot", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 33, Name = "Zucchini", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 34, Name = "Tomato", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 35, Name = "Bell Pepper", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Vegetable, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 36, Name = "Cucumber", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 37, Name = "Eggplant", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 38, Name = "Garlic", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 39, Name = "Onion", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 40, Name = "Leek", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 41, Name = "Cabbage", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 42, Name = "Kohlrabi", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 43, Name = "Celery", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 44, Name = "Spinach", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 45, Name = "Avocado", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 46, Name = "Flour", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 47, Name = "Dough", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 48, Name = "Rice paper", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 49, Name = "Plant milk", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 50, Name = "Joney", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Meat, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 51, Name = "Chocolate", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Dessert, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 52, Name = "Bread", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Dessert, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 53, Name = "Candy", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Dessert, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 54, Name = "Cookie", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Dessert, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 55, Name = "Juice", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Liter },
+               new Ingredient { Id = 56, Name = "Tuna fish", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 57, Name = "Shark", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 58, Name = "Sardines", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },               
+               new Ingredient { Id = 59, Name = "Salmon", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 60, Name = "Prawn", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 61, Name = "Perch", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 62, Name = "Mussels", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 63, Name = "Squid", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 64, Name = "Kiwi", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 65, Name = "Cranberry", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 66, Name = "Tomato", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 67, Name = "Papaya", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 68, Name = "Olives", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 69, Name = "Pear", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fruits, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 70, Name = "Sultana", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Fish, IngredientMeasurement = IngredientMeasurement.Kilogram },
+               new Ingredient { Id = 71, Name = "Lemon Juice", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Liter },
+               new Ingredient { Id = 72, Name = "Lemon rind", Amount = 10, ExpirationDate = new DateTime(2022, 4, 30), ImportDate = new DateTime(2011, 12, 30), Price = 150, IngredientGroup = IngredientGroup.Drinks, IngredientMeasurement = IngredientMeasurement.Liter }
                );
 
 
@@ -143,8 +143,7 @@ namespace Data.Data
                    Id = 2,
                    Description = "Tanqueray London Dry gin, Noilly Prat dry vermouth",
                    DishGroup = DishGroup.Alcohol,
-                   ImgPath = "/img/menu/martini.jpg",
-                   
+                   ImgPath = "/img/menu/martini.jpg",                   
                    Name = "MARTINI",
                    Price = 2
                },
@@ -154,8 +153,7 @@ namespace Data.Data
                    Id = 3,
                    Description = "Sazerac Rye whiskey, Cocchi Vermouth Di Torino",
                    DishGroup = DishGroup.Alcohol,
-                   ImgPath = "/img/menu/manhattan.jpg",
-                   
+                   ImgPath = "/img/menu/manhattan.jpg",                   
                    Name = "MANHATTAN",
                    Price = 3
                },
@@ -165,8 +163,7 @@ namespace Data.Data
                    Id = 4,
                    Description = "Four Roses Yellow Label bourbon, lemon",
                    DishGroup = DishGroup.Alcohol,
-                   ImgPath = "/img/menu/whiskey_sour.jpg",
-                   
+                   ImgPath = "/img/menu/whiskey_sour.jpg",                   
                    Name = "WHISKEY SOUR",
                    Price = 4
                },
@@ -176,8 +173,7 @@ namespace Data.Data
                    Id = 5,
                    Description = "Buffalo Trace bourbon, demerara, Angostura Bitters",
                    DishGroup = DishGroup.Alcohol,
-                   ImgPath = "/img/menu/OLD_FASHIONED.jpg",
-                   
+                   ImgPath = "/img/menu/OLD_FASHIONED.jpg",                   
                    Name = "OLD FASHIONED",
                    Price = 5
                },
@@ -187,8 +183,7 @@ namespace Data.Data
                    Id = 6,
                    Description = "Grey Goose vodka, tomato juice, lemon, celery, olives, Fridays® seasoning. Served with the usual accompaniments.",
                    DishGroup = DishGroup.Alcohol,
-                   ImgPath = "/img/menu/BLOODY_MARY.jpg",
-                   
+                   ImgPath = "/img/menu/BLOODY_MARY.jpg",                   
                    Name = "BLOODY MARY",
                    Price = 6
                },
@@ -198,8 +193,7 @@ namespace Data.Data
                    Id = 7,
                    Description = "The microwave is a great way to reheat stuffed mushrooms because it's gentle and it doesn't dry them out. Plus, it's a quick and easy way to heat them up without having to use the oven or the stovetop.",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
-                   
+                   ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",                   
                    Name = "Roasted stuffed mushrooms",
                    Price = 19.99m
                },
@@ -209,8 +203,7 @@ namespace Data.Data
                    Id = 8,
                    Description = "Roll each wrapper on the diagonal to enclose filling, folding in sides after first complete turn. Place spring rolls on prepared trays, seam-side down; brush",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                   
+                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",                   
                    Name = "Baked spring rolls",
                    Price = 18.50m
                },
@@ -220,8 +213,7 @@ namespace Data.Data
                    Id = 9,
                    Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                   
+                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",                   
                    Name = "Baked spring rolls",
                    Price = 7.05m
                },
@@ -231,8 +223,7 @@ namespace Data.Data
                    Id = 10,
                    Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                   
+                   ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",                   
                    Name = "Sweet fried saganaki",
                    Price = 29.95m
                },
@@ -242,8 +233,7 @@ namespace Data.Data
                    Id = 11,
                    Description = "If you fancy making yourself a little treat, try these tasty bacon wrapped onion rings. We replaced the traditional breadcrumbs with streaky bacon",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Bacon_rings.jpg",
-                   
+                   ImgPath = "/img/menu/Bacon_rings.jpg",                   
                    Name = "Bacon rings",
                    Price = 38.51m
                },
@@ -253,8 +243,7 @@ namespace Data.Data
                    Id = 12,
                    Description = "A blooming onion, also called onion bloom, onion blossom, onion flower, bloomin' onion, or onion mum, is a dish consisting of one large onion",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Blooming_onion.jpg",
-                   
+                   ImgPath = "/img/menu/Blooming_onion.jpg",                   
                    Name = "Blooming onion",
                    Price = 10.30m
                },
@@ -264,8 +253,7 @@ namespace Data.Data
                    Id = 13,
                    Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                    DishGroup = DishGroup.MainPlates,
-                   ImgPath = "/img/menu/CALZONES.jpg",
-                   
+                   ImgPath = "/img/menu/CALZONES.jpg",                   
                    Name = "CALZONES",
                    Price = 27.95m
                },
@@ -275,8 +263,7 @@ namespace Data.Data
                    Id = 14,
                    Description = "Deep Fried Main Dishes. Fried chicken. Fish Tacos. Corn dogs. Finger Steaks. When you're in the mood for crispy fried food, these 5-star recipes do it right",
                    DishGroup = DishGroup.MainPlates,
-                   ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
-                   
+                   ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",                   
                    Name = "Deep Fried Main Dishes",
                    Price = 35.95m
                },
@@ -397,7 +384,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/NEGRONI.jpg",
                    
-                   Name = "NEGRONI",
+                   Name = "Vodka",
                    Price = 25
 
                },
@@ -409,7 +396,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/martini.jpg",
                    
-                   Name = "MARTINI",
+                   Name = "Gin",
                    Price = 26
                },
 
@@ -420,7 +407,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/manhattan.jpg",
                    
-                   Name = "MANHATTAN",
+                   Name = "Baijiu",
                    Price = 27
                },
 
@@ -431,7 +418,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/whiskey_sour.jpg",
                    
-                   Name = "WHISKEY SOUR",
+                   Name = "Soju",
                    Price = 28
                },
 
@@ -442,7 +429,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/OLD_FASHIONED.jpg",
                    
-                   Name = "OLD FASHIONED",
+                   Name = "Tequila",
                    Price = 29
                },
 
@@ -453,7 +440,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Alcohol,
                    ImgPath = "/img/menu/BLOODY_MARY.jpg",
                    
-                   Name = "BLOODY MARY",
+                   Name = "Rum",
                    Price = 30
                },
 
@@ -464,7 +451,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
                    
-                   Name = "Roasted stuffed mushrooms",
+                   Name = "Beetroot with herby tzatziki",
                    Price = 31
                },
 
@@ -475,7 +462,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Baked_spring_rolls.jpg",
                    
-                   Name = "Baked spring rolls",
+                   Name = "Prawn cocktail",
                    Price = 32
                },
 
@@ -484,9 +471,8 @@ namespace Data.Data
                    Id = 33,
                    Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                   
-                   Name = "Baked spring rolls",
+                   ImgPath = "/img/menu/Baked_spring_rolls.jpg",                   
+                   Name = "Charred leek and goat's cheese tartlets",
                    Price = 33
                },
 
@@ -495,9 +481,8 @@ namespace Data.Data
                    Id = 34,
                    Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                    DishGroup = DishGroup.Starters,
-                   ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                   
-                   Name = "Sweet fried saganaki",
+                   ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",                   
+                   Name = "Prawn tom yum soup",
                    Price = 34
                },
 
@@ -508,7 +493,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Bacon_rings.jpg",
                    
-                   Name = "Bacon rings",
+                   Name = "Chilli and lime whitebait",
                    Price = 35
                },
 
@@ -519,7 +504,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Blooming_onion.jpg",
                    
-                   Name = "Blooming onion",
+                   Name = "Pint of prawns",
                    Price = 36
                },
 
@@ -528,9 +513,8 @@ namespace Data.Data
                    Id = 37,
                    Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                    DishGroup = DishGroup.MainPlates,
-                   ImgPath = "/img/menu/CALZONES.jpg",
-                   
-                   Name = "CALZONES",
+                   ImgPath = "/img/menu/CALZONES.jpg",                   
+                   Name = "Deep-Fried turley",
                    Price = 37
                },
 
@@ -541,7 +525,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
                    
-                   Name = "Deep Fried Main Dishes",
+                   Name = "Easy rib eye roast",
                    Price = 38
                },
 
@@ -552,7 +536,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/MEATBALLS.jpg",
                    
-                   Name = "MEATBALLS",
+                   Name = "Pesto pasta with chicken",
                    Price = 39
                },
 
@@ -561,9 +545,8 @@ namespace Data.Data
                    Id = 40,
                    Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
                    DishGroup = DishGroup.MainPlates,
-                   ImgPath = "/img/menu/QUICHE.jpg",
-                   
-                   Name = "QUICHE",
+                   ImgPath = "/img/menu/QUICHE.jpg",                   
+                   Name = "Oxtails with Gravy",
                    Price = 40
                },
 
@@ -574,7 +557,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
                    
-                   Name = "CHICKEN MAIN DISHES",
+                   Name = "Stuffed green peppers",
                    Price = 41
                },
 
@@ -585,7 +568,7 @@ namespace Data.Data
                    DishGroup = DishGroup.MainPlates,
                    ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
                    
-                   Name = "SEAFOOD MAIN DISHES",
+                   Name = "Down Home Chitterlings",
                    Price = 42
                },
 
@@ -728,7 +711,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
                    
-                   Name = "Roasted stuffed mushrooms",
+                   Name = "Bacon wrapped turkey",
                    Price = 55
                },
 
@@ -739,7 +722,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Baked_spring_rolls.jpg",
                    
-                   Name = "Baked spring rolls",
+                   Name = "Stuffing meatloaf",
                    Price = 56
                },
 
@@ -750,7 +733,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Baked_spring_rolls.jpg",
                    
-                   Name = "Baked spring rolls",
+                   Name = "Baked lemon butter chicken thighs",
                    Price = 57
                },
 
@@ -761,7 +744,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
                    
-                   Name = "Sweet fried saganaki",
+                   Name = "Easter ham",
                    Price = 58
                },
 
@@ -772,7 +755,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Starters,
                    ImgPath = "/img/menu/Bacon_rings.jpg",
                    
-                   Name = "Bacon rings",
+                   Name = "pork L",
                    Price = 59
                },
 
@@ -860,7 +843,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/TIRAMISU_LAYER_CAKE.jpg",
                    
-                   Name = "TIRAMISU LAYER CAKE",
+                   Name = "Coconut Kheer",
                    Price = 67
                },
 
@@ -871,7 +854,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/DEVIL'S_FOOD_CAKE.jpg",
                    
-                   Name = "DEVIL'S FOOD CAKE",
+                   Name = "Low Fat Tiramisu",
                    Price = 68
                },
 
@@ -882,7 +865,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/LEMON_SOUFFLES.jpg ",
                    
-                   Name = "LEMON SOUFFLES",
+                   Name = "Fudgy Chewy Brownies",
                    Price = 69
                },
 
@@ -904,7 +887,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/LEMON_CAKE_DOBERGE.jpg ",
                    
-                   Name = "LEMON CAKE DOBERGE",
+                   Name = "Pistachio Phirni",
                    Price = 71
                },
 
@@ -915,7 +898,7 @@ namespace Data.Data
                    DishGroup = DishGroup.Desert,
                    ImgPath = "/img/menu/CHOCOLATE_FONDUE.jpg ",
                    
-                   Name = "CHOCOLATE FONDUE",
+                   Name = "Almond Malai Kulfi",
                    Price = 72
                }
        );
