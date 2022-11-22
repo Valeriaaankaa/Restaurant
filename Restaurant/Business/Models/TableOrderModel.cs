@@ -10,6 +10,7 @@ namespace Business.Models
     public class TableOrderModel
     {
         private List<TableLine> lineCollection = new List<TableLine>();
+        public IEnumerable<TableLine> Lines { get { return lineCollection; } }
         public virtual void AddItem(RestaurantTableModel tableModel, TimeOnly timeBegin, TimeOnly timeEnd)
         {
             TableLine? line = lineCollection.Where(d => d.TableOrder.Id == tableModel.Id).FirstOrDefault();
@@ -25,7 +26,7 @@ namespace Business.Models
         public virtual void RemoveLine(RestaurantTable tableModel) => lineCollection.RemoveAll(l => l.TableOrder.Id == tableModel.Id);
      //   public virtual decimal ComputeTotalValue() => lineCollection.Sum(e => e.Dish.Price * e.Quantity);
         public virtual void Clear() => lineCollection.Clear();
-        public virtual IEnumerable<TableLine> Lines => lineCollection;
+        //public virtual IEnumerable<TableLine> Lines => lineCollection;
 
     }
 

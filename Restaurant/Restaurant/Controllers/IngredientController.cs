@@ -34,12 +34,13 @@ namespace Restaurant.Controllers
         [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<IActionResult> CreateAsync(Ingredient ingredient)
         {
-            //if (ModelState.IsValid)
-            //{
+            ValidateIngredient(ingredient);
+            if (ModelState.IsValid)
+            {
             await _ingredientService.AddAsync(ingredient);
             return RedirectToAction("Index");
-            //}
-            //return View(dish);
+            }
+            return View(ingredient);
         }
 
         [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
@@ -52,17 +53,22 @@ namespace Restaurant.Controllers
         [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<ActionResult> EditAsync(int id)
         {
-            var dish = await _ingredientService.GetByIdAsync(id);
+            var ingred = await _ingredientService.GetByIdAsync(id);
 
-            return View(dish);
+            return View(ingred);
         }
 
         [HttpPost]
         [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
         public async Task<ActionResult> EditAsync(Ingredient ingredient)
         {
-            await _ingredientService.UpdateAsync(ingredient);
-            return RedirectToAction("Index");
+            ValidateIngredient(ingredient);
+            if (ModelState.IsValid)
+            {
+                await _ingredientService.UpdateAsync(ingredient);
+                return RedirectToAction("Index");
+            }
+            return View(ingredient);
         }
 
         [Authorize(Roles = $"{Constants.Roles.Administrator},{Constants.Roles.Manager}")]
@@ -75,7 +81,25 @@ namespace Restaurant.Controllers
 
 
 
-
+        public void ValidateIngredient(Ingredient ingredient)
+        {
+            if (ingredient.Name is null)
+            {
+                ModelState.AddModelError("Name", "Cannot be null");
+            }
+            if (ingredient.Price <= 0)
+            {
+                ModelState.AddModelError("Price", "Must be bigger than zero");
+            }
+            if (ingredient.ImportDate >= ingredient.ExpirationDate)
+            {
+                ModelState.AddModelError("ImportDate", "Import date cannot be later than Expiration date");
+            }
+            if (ingredient.Amount < 0)
+            {
+                ModelState.AddModelError("Amount", "Amount cannot be negative");
+            }
+        }
         /*[HttpPost]
         public async Task<IActionResult> Add(AddIngredientViewModel addIngredientRequest)
         {

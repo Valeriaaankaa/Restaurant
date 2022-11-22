@@ -11,6 +11,10 @@ namespace Business.Models
     public class IngredientModel
     {
         public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "Enter ingredient name")]
+        [RegularExpression(@"^[a-zA-Z]*$", ErrorMessage = "Numbers not allowed")]
         public string Name { get; set; }
 
         [RegularExpression(@"^[1-1000]{1,4}$", ErrorMessage = "RangeAllowed")]
