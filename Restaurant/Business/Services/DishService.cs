@@ -129,6 +129,11 @@ namespace Business.Services
                 throw new RestaurantException("Name is empty");
             }
 
+            if (model.Price < 0)
+            {
+                throw new RestaurantException("Price is negative");
+            }
+
             var dish = _mapper.Map<Dish>(model);           
 
             _unitOfWork.DishRepository.Update(dish);
