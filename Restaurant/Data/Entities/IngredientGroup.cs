@@ -8,6 +8,11 @@
         Vegetables,
         Fruits,
         Cereals,
-        DairyProducts
+        DairyProducts,
+        Dessert,
+        Vegetable,
+        Groats,
+        Flavor
+
     }
 }

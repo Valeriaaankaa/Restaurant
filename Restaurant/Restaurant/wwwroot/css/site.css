@@ -1,6 +1,7 @@
 html {
     font-size: 16px;
     margin-bottom: 60px;
+    
 }
 
 body {
@@ -19,4 +20,16 @@ body {
 table {
     border: 3px solid grey;
     text-align:center;
+}
+
+.p-intro {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    text-align: center;
+}
+
+.p-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: justify;
 }
