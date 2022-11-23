@@ -40,9 +40,14 @@ namespace Business.Services
 
         public async Task DeleteAsync(int modelId)
         {
-            await _unitOfWork.OrderRepository.DeleteByIdAsync(modelId);
+            var order = await _unitOfWork.OrderRepository.GetByIdAsync(modelId);
 
-            await _unitOfWork.SaveAsync();
+            if (order != null)
+            {
+                await _unitOfWork.OrderRepository.DeleteByIdAsync(modelId);
+
+                await _unitOfWork.SaveAsync();
+            }
         }
 
         public async Task<IEnumerable<Order>> GetAllAsync()

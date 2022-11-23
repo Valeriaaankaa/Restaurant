@@ -71,9 +71,16 @@ namespace Business.Services
 
         public async Task DeleteAsync(int modelId)
         {
-            await _unitOfWork.DishRepository.DeleteByIdAsync(modelId);
+            var dish = await _unitOfWork.DishRepository.GetByIdWithDetailsAsync(modelId);
 
-            await _unitOfWork.SaveAsync();
+            if (dish != null)
+            {
+                await _unitOfWork.DishRepository.DeleteByIdAsync(modelId);
+
+                await _unitOfWork.SaveAsync();
+            }
+
+
         }
 
         public async Task<IEnumerable<DishModel>> GetAllAsync()
@@ -120,6 +127,8 @@ namespace Business.Services
 
         public async Task UpdateAsync(DishModel model)
         {
+            throw new RestaurantException("Model is null");
+
             if (model == null)
             {
                 throw new RestaurantException("Model is null");

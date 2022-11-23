@@ -1,7 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     ViewData["Title"] = "Users";
 }
 @model  ICollection<Data.Entities.ApplicationUser>
@@ -10,34 +7,30 @@
     <h1 class="display-4">Users</h1>
     @if ( @Model != null && @Model.Any())
     {
-        <table class="table">
+
+        <table class="table table-bordered table-hover">
             <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Email</th>
-                <th scope="col">Edit</th>
-            </tr>
+                <tr>                
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Edit</th>
+                </tr>
             </thead>
             <tbody>
             @foreach (var user in Model)
             {
-            <tr>
-                <th scope="row">@user.Id</th>
-                <td>@user.FirstName</td>
-                <td>@user.LastName</td>
-                <td>@user.Email</td>
-                <td>
+            <tr>                
+                <td width="25%">@user.FirstName</td>
+                <td width="25%">@user.LastName</td>
+                <td width="25%">@user.Email</td>
+                <td width="25%">
                     <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
                 </td>
             </tr>
             }
             </tbody>
-        </table>
+        </table>        
     }
 </div>
 
-<div class="text-center">
-
-</div>

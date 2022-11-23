@@ -51,9 +51,16 @@ namespace Business.Services
 
         public async Task DeleteAsync(int modelId)
         {
-            await _unitOfWork.DishCompositionRepository.DeleteByIdAsync(modelId);
+            var composition = await _unitOfWork.DishCompositionRepository.GetByIdAsync(modelId);
 
-            await _unitOfWork.SaveAsync();
+            if (composition != null)
+            {
+                await _unitOfWork.DishCompositionRepository.DeleteByIdAsync(modelId);
+
+                await _unitOfWork.SaveAsync();
+            }
+
+
         }
 
         public async Task<IEnumerable<DishCompositionModel>> GetAllAsync()
