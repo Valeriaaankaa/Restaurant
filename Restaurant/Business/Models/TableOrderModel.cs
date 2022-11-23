@@ -24,7 +24,6 @@ namespace Business.Models
 
         }
         public virtual void RemoveLine(RestaurantTable tableModel) => lineCollection.RemoveAll(l => l.TableOrder.Id == tableModel.Id);
-     //   public virtual decimal ComputeTotalValue() => lineCollection.Sum(e => e.Dish.Price * e.Quantity);
         public virtual void Clear() => lineCollection.Clear();
         //public virtual IEnumerable<TableLine> Lines => lineCollection;
 
