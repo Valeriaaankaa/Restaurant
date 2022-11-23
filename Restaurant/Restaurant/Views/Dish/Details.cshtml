@@ -55,7 +55,7 @@
                            
 
                             <div  class="d-flex justify-content-between">
-                                         <p>@item_ingr.Ingredient.Name @item_ingr.Ingredient.Amount g</p>
+                                         <p>@item_ingr.Ingredient.Name @item_ingr.Ingredient.Amount @item_ingr.Ingredient.IngredientMeasurement</p>
                                 <div role="group" class="w-60 btn-group">
                                     <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item_ingr.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
                                     <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item_ingr.Id" class=" btn btn-sm btn-danger"><i class="bi bi-pencil-square"></i>Delete</a>&nbsp;
