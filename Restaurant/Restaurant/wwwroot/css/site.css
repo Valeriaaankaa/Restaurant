@@ -33,3 +33,16 @@ table {
     font-size: 18px;
     text-align: justify;
 }
+
+.apply-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 5px 40px;
+    background: white;
+}
+.apply-button:hover{
+    background: #FFB107;
+
+
+}
