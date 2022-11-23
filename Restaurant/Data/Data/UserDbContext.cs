@@ -16,9 +16,7 @@ public class UserDbContext : IdentityDbContext<ApplicationUser, IdentityRole, st
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
-
 
     }
 }

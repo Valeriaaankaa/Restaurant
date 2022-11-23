@@ -26,12 +26,10 @@
                                             <div class="aside"><img width="100" height="100" src="@item.Dish.ImgPath.ToString()" class="rounded float-left"></div>
                                         </figure>
                                     </td>
-                                    <td> <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select> </td>
+                                    
+                                    <td> 
+                                        <div class="text-right">@item.Quantity</div>
+                                    </td>
                                     <td>
                                         <div class="price-wrap"> <var class="price">$@item.Dish.Price</var></div>
                                     </td>
@@ -74,8 +72,8 @@
                         <dl class="dlist-align">
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>@((Model.Dishes.Take(4).Sum(c => c.Price) * 0.9m).ToString("C2"))</strong></dd>
-                        </dl>*@
-                         <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
+                        </dl>*@ 
+                         <a class="btn btn-out btn-primary btn-square btn-main" data-abc="true" asp-action="Checkout" asp-controller="Order">Checkout</a>
                         <a href="@Model.ReturnUrl" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a>
                     </div>
                 </div>
