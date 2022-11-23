@@ -99,10 +99,10 @@ namespace Business.Services
 
             switch(st)
             {
-                case SortType.ByNameASC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Name.ToLower()); break;
-                case SortType.ByNameDESC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Name.ToLower()); break;
-                case SortType.ByCostASC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Price); break;
-                case SortType.ByCostDESC: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Price); break;
+                case SortType.Alphabetic: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Name.ToLower()); break;
+                case SortType.NonAlphabetic: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Name.ToLower()); break;
+                case SortType.LowestPrice: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderBy(d => d.Price); break;
+                case SortType.HighestPrice: category_list = dm.Where(c => c.DishGroup.ToString() == Category).OrderByDescending(d => d.Price); break;
             }
                         
 

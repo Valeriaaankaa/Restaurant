@@ -22,9 +22,6 @@
             <div class="col-12 mt-4">
                 <hr class="my-3">
 
-                
-
-
                 <nav class="pagination">
                     <ul class="pagination pagination-lg">
                     @foreach (var categoryname in Model.Categories)
@@ -41,21 +38,18 @@
         </div>
 
         <!--Filtering-->
-        <div class="row">
-            <div class="col-5">                    
-            </div>
-           <div class="col-4">
-                <h3 class="mt-0 text-dark">@Model.Category</h3> 
-            </div>            
-            <div class="col-3">                
-            </div>            
+        <div class="text-center">
+            <h3 class="mt-0 text-dark ">@Model.Category</h3>
         </div>
 
+        <hr class="my-3 mb-3">
+
         <div class="row">
-            <div class="col-5">                    
+            <div class="col-3">
             </div>
-           <div class="col-3">                
-           </div>
+            <div class="col-2">
+                <h4>Ordering: </h4>
+            </div>
             
             <div class="form-group col-1">    
                 @Html.TextBoxFor(model => model.FilterSearchModel.MinPrice,  new { placeholder = "Min", @class="form-control" })
@@ -63,16 +57,13 @@
              <div class="form-group col-1">  
                  @Html.TextBoxFor(model => model.FilterSearchModel.MaxPrice, new { placeholder = "Max", @class="form-control" })
              </div>       
-                 <div class="col-2">
+             
+             <div class="col-2">
                         @Html.DropDownList("SelectSortType", new SelectList(Enum.GetValues(typeof(SortType))), new { @class="dropdown" })
                  </div>
-        </div>
-
-            <div class="row">
-                <div class="col-8">                        
-                </div>                
+                 
                 <div class="col-2">
-                    <input type="submit" value="Apply" formaction=@Url.Action("Index", "Dish", new { page = 0, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="btn btn-outline-dark" />                                        
+                    <input type="submit" value="Apply" formaction=@Url.Action("Index", "Dish", new { page = 0, category = Model.Category, selectsorttype = Model.SelectSortType }) formmethod="post" class="apply-button" />                                        
                 </div>            
             </div>
 
@@ -96,8 +87,8 @@
             }
         </div>
             <!--Pagination-->
-            <div class="col-12 mt-4">
-                <hr class="my-3">
+            <div class="col-12">
+                <hr class="my-3 mb-3">
                     <nav class="pagination">
                         <ul class="pagination pagination-lg">
                     @if (Model.Page > 0)
