@@ -16,6 +16,7 @@
 @{
     var ingr_names = (await ingredientService.GetAllAsync()).ToList().Select(o => o.Name);
     var dish_names = (await dishService.GetAllAsync()).ToList().Select(o => o.Name);
+            ViewData["Title"] = "Create Dish Composition";
 }
 
 
