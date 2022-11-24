@@ -20,25 +20,29 @@
         
     var dishes = (await dishService.GetAllAsync()).ToList().Select(o => o.Name);
 
+        ViewData["Title"] = "Dish Composition";
+
 
 
 }
 
-
+<link rel="stylesheet" href="~/css/ingredient.css">      
+<h1 align="center">Dish Composition</h1>
 
 <div class="container shadow p-5">
-
-    <h1 class="text-center mb-3">DishComposition </h1>
-
-    <div class="col mb-3">
-        <a asp-controller="DishComposition" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add DishComposition</a>
-    </div>
+<div class="wrapper">
+    <div id="formContent">
+        <form asp-controller="DishComposition" asp-action="Create">
+        <input type="submit" class="fadeIn" value="Add Dish Composition" />
+</form>
+</div>
+</div>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Dish Id</th>
-                <th scope="col">Ingredient Id</th>
+                <th scope="col">Dish Name</th>
+                <th scope="col">Ingredient Name</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Actions</th>
             </tr>
