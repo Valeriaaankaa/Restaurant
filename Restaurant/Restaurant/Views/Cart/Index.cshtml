@@ -73,7 +73,15 @@
                             <dt>Total:</dt>
                             <dd class="text-right text-dark b ml-3"><strong>@((Model.Dishes.Take(4).Sum(c => c.Price) * 0.9m).ToString("C2"))</strong></dd>
                         </dl>*@ 
-                         <a class="btn btn-out btn-primary btn-square btn-main" data-abc="true" asp-action="Checkout" asp-controller="Order">Checkout</a>
+                        @if(User.IsInRole("User") || User.IsInRole("Manager") || User.IsInRole("Administrator"))
+                        {
+                        <a class="btn btn-out btn-primary btn-square btn-main" data-abc="true" asp-action="Checkout" asp-controller="Order">Checkout</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-out btn-primary btn-square btn-main" data-abc="true" asp-area="Identity" asp-page="/Account/Register">Checkout</a>    
+                    }
+
                         <a href="@Model.ReturnUrl" class="btn btn-out btn-success btn-square btn-main" data-abc="true">Continue Shopping</a>
                     </div>
                 </div>
