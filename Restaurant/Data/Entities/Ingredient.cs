@@ -16,7 +16,7 @@ namespace Data.Entities
         [Required]
         [Range(1, 999, ErrorMessage = "Value for price must be bigger than zero and less than 999.")]
         public decimal Price { get; set; }
-        public ICollection<DishComposition> DishCompositions { get; set; }
+        public ICollection<DishComposition>? DishCompositions { get; set; }
         public IngredientGroup IngredientGroup { get; set; }
         public IngredientMeasurement IngredientMeasurement { get; set; }
     }
