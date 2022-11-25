@@ -6,7 +6,6 @@ namespace Data.Entities
     {
         [Required]
         public int Amount { get; set; }
-        [Required]
         public int OrderId { get; set; }
         [Required]
         public int DishId { get; set; }

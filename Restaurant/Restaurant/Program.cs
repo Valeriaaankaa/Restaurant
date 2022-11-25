@@ -61,6 +61,7 @@ builder.Services.AddTransient<IIngredientService, IngredientService>();
 builder.Services.AddTransient<IDishCompositionService, DishCompositionService>();
 builder.Services.AddTransient<IDishService, DishService>();
 builder.Services.AddTransient<IRestaurantTableService, RestaurantTableService>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 
 
 

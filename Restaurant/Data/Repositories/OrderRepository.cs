@@ -1,12 +1,9 @@
-﻿using Data.Data;
+using Data.Data;
 using Data.Entities;
 using Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Data.Repositories
 {
@@ -14,9 +11,11 @@ namespace Data.Repositories
     {
         public IRestaurantDbContext _context { get; set; }
 
+        public IQueryable<Order> Orders => _context.Orders
+            .Include(o => o.DishesOrder ?? new List<DishOrder>())
+            .ThenInclude(l => l.Dish);
 
-
-        public OrderRepository(IRestaurantDbContext context)
+        public OrderRepository(RestaurantDbContext context)
         {
             _context = context;
         }
@@ -51,6 +50,14 @@ namespace Data.Repositories
         public void Update(Order entity)
         {
             _context.Orders.Update(entity);
+        }
+        public void SaveOrder(Order order)
+        {
+            (_context as RestaurantDbContext)?.AttachRange(order.DishesOrder.Select(d => d.Dish));
+            if (order.Id == 0)
+                _context.Orders.Add(order);
+            (_context as RestaurantDbContext)?.SaveChangesAsync();
+
         }
     }
 }
