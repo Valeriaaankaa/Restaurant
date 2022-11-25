@@ -23,23 +23,26 @@ namespace Restaurant.Controllers
         }
         public IActionResult Checkout() => View(new OrderViewModel());
         [HttpPost]
-        public IActionResult Checkout(OrderViewModel order)
+        public IActionResult Checkout(OrderViewModel orderViewModel)
         {
+            Order order = new();
             if (cart.Lines.Count() == 0)
                 ModelState.AddModelError("", "Your cart is empty");
-            //if (ModelState.IsValid)
-            //{
-                
-
-            //    foreach (var item in cart.Lines)
-            //    {
-            //        order.DishesOrder?.Add(_mapper.Map<DishOrder>(item));
-            //    }
-            //    repository.SaveOrder(order);
-            //    return RedirectToAction(nameof(Completed));
-            //}
+            if (ModelState.IsValid)
+            {
+                foreach (var item in cart.Lines)
+                {
+                    order.DishesOrder?.Add(_mapper.Map<DishOrder>(item));
+                }
+                order.Address = orderViewModel.Address;
+                order.OrderDate = DateTime.Now;
+                order.OrderStatus = OrderStatus.Confirmed;
+                //ApplicationUser user = userManager.FindByNameAsync(User.Identity?.Name).Result;
+                orderRepository.SaveOrder(order);
+                return RedirectToAction(nameof(Completed));
+            }
             //else
-                return View(order);
+            return View(order);
         }
         public ViewResult Completed()
         {
