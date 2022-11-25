@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Cart";
 }
+
 @model CartIndexViewModel
 <link rel="stylesheet" href="./css/base.css"/>
 <div class="container-fluid">
@@ -26,7 +27,6 @@
                                             <div class="aside"><img width="100" height="100" src="@item.Dish.ImgPath.ToString()" class="rounded float-left"></div>
                                         </figure>
                                     </td>
-                                    
                                     <td> 
                                         <div class="text-right">@item.Quantity</div>
                                     </td>
