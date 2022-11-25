@@ -14,7 +14,7 @@ namespace Restaurant.Controllers
         private UserManager<ApplicationUser> userManager;
         private Cart cart;
         private IMapper _mapper;
-        public OrderController(IOrderRepository orderRepository, IUserRepository userRepository, Cart cartService, IMapper mapper, UserManager<ApplicationUser> userManager)
+        public OrderController(IOrderRepository orderRepository, Cart cartService, IMapper mapper, UserManager<ApplicationUser> userManager)
         {
             this.orderRepository = orderRepository;
             this.cart = cartService;
@@ -25,14 +25,15 @@ namespace Restaurant.Controllers
         [HttpPost]
         public IActionResult Checkout(OrderViewModel orderViewModel)
         {
-            Order order = new();
+            Order order = new() { DishesOrder = new List<DishOrder>()};
             if (cart.Lines.Count() == 0)
                 ModelState.AddModelError("", "Your cart is empty");
             if (ModelState.IsValid)
             {
                 foreach (var item in cart.Lines)
                 {
-                    order.DishesOrder?.Add(_mapper.Map<DishOrder>(item));
+                    //order.DishesOrder?.Add(_mapper.Map<DishOrder>(item));
+                    order.DishesOrder.Add(new DishOrder() { Id = item.CartLineID, Amount = item.Quantity, Dish = _mapper.Map<Dish>(item.Dish), DishId = item.Dish.Id, Order = order, OrderId = order.Id });
                 }
                 order.Address = orderViewModel.Address;
                 order.OrderDate = DateTime.Now;
@@ -42,7 +43,7 @@ namespace Restaurant.Controllers
                 return RedirectToAction(nameof(Completed));
             }
             //else
-            return View(order);
+            return View(orderViewModel);
         }
         public ViewResult Completed()
         {
