@@ -49,15 +49,15 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Dish model is null");
             }
-            if (model.Price < 0)
-            {
-                throw new RestaurantException("Price is negative");
+            if (model.Price <= 0)
+            { 
+                throw new RestaurantException("Dish price is <= 0");
             }
             if (String.IsNullOrEmpty(model.Name))
             {
-                throw new RestaurantException("Name is empty");
+                throw new RestaurantException("Dish name is empty");
             }
                      
 
@@ -126,21 +126,20 @@ namespace Business.Services
         }
 
         public async Task UpdateAsync(DishModel model)
-        {
-            throw new RestaurantException("Model is null");
+        {            
 
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Dish Model is null");
             }
             if (String.IsNullOrEmpty(model.Name))
             {
-                throw new RestaurantException("Name is empty");
+                throw new RestaurantException("Dish Name is empty");
             }
 
-            if (model.Price < 0)
+            if (model.Price <= 0)
             {
-                throw new RestaurantException("Price is negative");
+                throw new RestaurantException("Dish Price is <=0 ");
             }
 
             var dish = _mapper.Map<Dish>(model);           

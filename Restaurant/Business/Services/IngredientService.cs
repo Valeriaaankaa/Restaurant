@@ -22,11 +22,11 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Ingredient model is null");
             }
             if (String.IsNullOrEmpty(model.Name))
             {
-                throw new RestaurantException("Name is empty");
+                throw new RestaurantException("Ingredient Name is empty");
             }
           
             await _unitOfWork.IngredientRepository.AddAsync(model);
@@ -61,11 +61,11 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Ingredient Model is null");
             }
             if (String.IsNullOrEmpty(model.Name))
             {
-                throw new RestaurantException("Name is empty");
+                throw new RestaurantException("Ingredient Name is empty");
             }
 
             var ingredient = model;

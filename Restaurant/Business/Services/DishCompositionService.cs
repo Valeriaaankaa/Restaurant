@@ -26,11 +26,11 @@ namespace Business.Services
         {
              if (model == null)
              {
-                 throw new RestaurantException("Model is null");
+                 throw new RestaurantException("DishCompositionModel is null");
              }
              if (model.Amount < 1)
              {
-                 throw new RestaurantException("You cannot add Amount < 0");
+                 throw new RestaurantException("You cannot add Amount <= 0");
              }
 
             var ingredient = await _unitOfWork.IngredientRepository.GetByIdAsync(model.IngredientId);
@@ -79,11 +79,11 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("DishCompositionModel is null");
             }
             if (model.Amount < 1)
             {
-                throw new RestaurantException("You cannot set Amount < 0");
+                throw new RestaurantException("You cannot set Amount <= 0");
             }
 
 

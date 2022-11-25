@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Business.Validation
 {
     public class RestaurantException : Exception
     {
-        public RestaurantException()
-        {
+        public RestaurantException() : base() { }        
 
-        }
+        public RestaurantException(string message) : base(message)  {}
 
-        public RestaurantException(string message) : base(message)
-        {
-
-        }
+        public RestaurantException(string message, params object[] args ) : base(String.Format(CultureInfo.CurrentCulture,message, args)) { }
 
     }
 }
