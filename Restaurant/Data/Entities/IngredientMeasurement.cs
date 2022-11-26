@@ -8,6 +8,7 @@ namespace Data.Entities
 {
     public enum IngredientMeasurement
     {
+        Gram,
         Liter,
         Kilogram,
         Package,
