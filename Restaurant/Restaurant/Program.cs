@@ -10,6 +10,7 @@ using Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Restaurant;
+using Business.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,8 +53,6 @@ builder.Services.AddSession();
 builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IUserRepository, UserRepository>();
-//builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped(sp => SessionCart.GetCart(sp));
 
 builder.Services.AddTransient<IIndentityService, IndentityService>();
@@ -87,6 +86,10 @@ app.MapRazorPages(); // to solve /?area=Identity&page=2FAccount%2FRegister probl
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// global error handler
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 
 app.MapControllerRoute(
     name: "default",

@@ -14,5 +14,6 @@ public class ApplicationUser : IdentityUser
 
 public class ApplicationRole : IdentityRole
 {
+    
 
 }

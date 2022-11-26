@@ -908,433 +908,505 @@ namespace Data.Data
                     {
                         Id = 1, 
                         DishId = 1, 
-                        IngredientId = 1
+                        IngredientId = 1,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 2,
                         DishId = 1,
-                        IngredientId = 2
+                        IngredientId = 2,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 3,
                         DishId = 3,
-                        IngredientId = 3
+                        IngredientId = 3,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 4,
                         DishId = 4,
-                        IngredientId = 4
+                        IngredientId = 4,
+                        Amount = 2
                     },
                     new DishComposition
                     {
                         Id = 5,
                         DishId = 5,
-                        IngredientId = 5
+                        IngredientId = 5,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 6,
                         DishId = 6,
-                        IngredientId = 6
+                        IngredientId = 6,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 7,
                         DishId = 7,
-                        IngredientId = 7
+                        IngredientId = 7,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 8,
                         DishId = 8,
-                        IngredientId = 8
+                        IngredientId = 8,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 9,
                         DishId = 9,
-                        IngredientId = 9
+                        IngredientId = 9,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 10,
                         DishId = 10,
-                        IngredientId = 10
+                        IngredientId = 10,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 11,
                         DishId = 11,
-                        IngredientId = 11
+                        IngredientId = 11,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 12,
                         DishId = 12,
-                        IngredientId = 12
+                        IngredientId = 12,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 13,
                         DishId = 13,
-                        IngredientId = 13
+                        IngredientId = 13,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 14,
                         DishId = 14,
-                        IngredientId = 14
+                        IngredientId = 14,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 15,
                         DishId = 15,
-                        IngredientId = 15
+                        IngredientId = 15,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 16,
                         DishId = 16,
-                        IngredientId = 16
+                        IngredientId = 16,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 17,
                         DishId = 17,
-                        IngredientId = 17
+                        IngredientId = 17,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 18,
                         DishId = 18,
-                        IngredientId = 18
+                        IngredientId = 18,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 19,
                         DishId = 19,
-                        IngredientId = 19
+                        IngredientId = 19,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 20,
                         DishId = 20,
-                        IngredientId = 20
+                        IngredientId = 20,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 21,
                         DishId = 21,
-                        IngredientId = 21
+                        IngredientId = 21,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 22,
                         DishId = 22,
-                        IngredientId = 22
+                        IngredientId = 22,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 23,
                         DishId = 23,
-                        IngredientId = 23
+                        IngredientId = 23,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 24,
                         DishId = 24,
-                        IngredientId = 24
+                        IngredientId = 24,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 25,
                         DishId = 25,
-                        IngredientId = 25
+                        IngredientId = 25,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 26,
                         DishId = 26,
-                        IngredientId = 26
+                        IngredientId = 26,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 27,
                         DishId = 27,
-                        IngredientId = 27
+                        IngredientId = 27,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 28,
                         DishId = 28,
-                        IngredientId = 28
+                        IngredientId = 28,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 29,
                         DishId = 29,
-                        IngredientId = 29
+                        IngredientId = 29,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 30,
                         DishId = 30,
-                        IngredientId = 30
+                        IngredientId = 30,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 31,
                         DishId = 31,
-                        IngredientId = 31
+                        IngredientId = 31,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 32,
                         DishId = 32,
-                        IngredientId = 32
+                        IngredientId = 32,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 33,
                         DishId = 33,
-                        IngredientId = 33
+                        IngredientId = 33,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 34,
                         DishId = 34,
-                        IngredientId = 34
+                        IngredientId = 34,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 35,
                         DishId = 35,
-                        IngredientId = 35
+                        IngredientId = 35,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 36,
                         DishId = 36,
-                        IngredientId = 36
+                        IngredientId = 36,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 37,
                         DishId = 37,
-                        IngredientId = 37
+                        IngredientId = 37,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 38,
                         DishId = 38,
-                        IngredientId = 38
+                        IngredientId = 38,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 39,
                         DishId = 39,
-                        IngredientId = 39
+                        IngredientId = 39,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 40,
                         DishId = 40,
-                        IngredientId = 40
+                        IngredientId = 40,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 41,
                         DishId = 41,
-                        IngredientId = 41
+                        IngredientId = 41,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 42,
                         DishId = 42,
-                        IngredientId = 42
+                        IngredientId = 42,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 43,
                         DishId = 43,
-                        IngredientId = 43
+                        IngredientId = 43,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 44,
                         DishId = 44,
-                        IngredientId = 44
+                        IngredientId = 44,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 45,
                         DishId = 45,
-                        IngredientId = 45
+                        IngredientId = 45,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 46,
                         DishId = 46,
-                        IngredientId = 46
+                        IngredientId = 46,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 47,
                         DishId = 47,
-                        IngredientId = 47
+                        IngredientId = 47,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 48,
                         DishId = 48,
-                        IngredientId = 48
+                        IngredientId = 48,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 49,
                         DishId = 49,
-                        IngredientId = 49
+                        IngredientId = 49,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 50,
                         DishId = 50,
-                        IngredientId = 50
+                        IngredientId = 50,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 51,
                         DishId = 51,
-                        IngredientId = 51
+                        IngredientId = 51,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 52,
                         DishId = 52,
-                        IngredientId = 52
+                        IngredientId = 52,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 53,
                         DishId = 53,
-                        IngredientId = 53
+                        IngredientId = 53,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 54,
                         DishId = 54,
-                        IngredientId = 54
+                        IngredientId = 54,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 55,
                         DishId = 55,
-                        IngredientId = 55
+                        IngredientId = 55,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 56,
                         DishId = 56,
-                        IngredientId = 56
+                        IngredientId = 56,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 57,
                         DishId = 57,
-                        IngredientId = 57
+                        IngredientId = 57,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 58,
                         DishId = 58,
-                        IngredientId = 58
+                        IngredientId = 58,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 59,
                         DishId = 59,
-                        IngredientId = 59
+                        IngredientId = 59,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 60,
                         DishId = 60,
-                        IngredientId = 60
+                        IngredientId = 60,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 61,
                         DishId = 61,
-                        IngredientId = 61
+                        IngredientId = 61,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 62,
                         DishId = 62,
-                        IngredientId = 62
+                        IngredientId = 62,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 63,
                         DishId = 63,
-                        IngredientId = 63
+                        IngredientId = 63,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 64,
                         DishId = 64,
-                        IngredientId = 64
+                        IngredientId = 64,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 65,
                         DishId = 65,
-                        IngredientId = 65
+                        IngredientId = 65,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 66,
                         DishId = 66,
-                        IngredientId = 66
+                        IngredientId = 66,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 67,
                         DishId = 67,
-                        IngredientId = 67
+                        IngredientId = 67,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 68,
                         DishId = 68,
-                        IngredientId = 68
+                        IngredientId = 68,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 69,
                         DishId = 69,
-                        IngredientId = 69
+                        IngredientId = 69,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 70,
                         DishId = 70,
-                        IngredientId = 70
+                        IngredientId = 70,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 71,
                         DishId = 71,
-                        IngredientId = 71
+                        IngredientId = 71,
+                        Amount = 1
                     },
                     new DishComposition
                     {
                         Id = 72,
                         DishId =72,
-                        IngredientId = 72
+                        IngredientId = 72,
+                        Amount = 1
                     }
                 );
 ;
