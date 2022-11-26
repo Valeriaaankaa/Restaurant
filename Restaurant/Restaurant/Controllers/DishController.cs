@@ -75,6 +75,7 @@ namespace Restaurant.Controllers
             if (ModelState.IsValid)
             {
                 TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
+
                 await _dishService.UpdateAsync(dvm);           
             }
 
@@ -99,6 +100,8 @@ namespace Restaurant.Controllers
 
         public async Task<IActionResult> IndexAsync(MenuViewModel model)
         {
+            
+
             if (model.FilterSearchModel == null)
             {
                 model.Dishes = await _dishService.GetAllAsync();
@@ -108,14 +111,21 @@ namespace Restaurant.Controllers
                 model.Dishes = await _dishService.GetByFilterAsync(model.FilterSearchModel);
             }
 
-            model.Categories = (await _dishService.GetDishCategoriesAsync()).ToList();
-             
+            if (model.Dishes != null)
+            {
+                model.Categories = (await _dishService.GetDishCategoriesAsync()).ToList();
 
-            model.Dishes = _dishService.Sort(model.Dishes, model.Category, model.SelectSortType);
+                model.Dishes = _dishService.Sort(model.Dishes, model.Category, model.SelectSortType);
 
-            var count = model.Dishes.Count();
-            model.Dishes = model.Dishes.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
-            model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);         
+                var count = model.Dishes.Count();
+                model.Dishes = model.Dishes.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
+                model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);
+            }
+            else
+            {
+                model.MaxPage = 0;
+            }
+
 
             return this.View(model);
         }

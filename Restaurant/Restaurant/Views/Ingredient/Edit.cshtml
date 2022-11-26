@@ -7,6 +7,10 @@
 @{
     ViewData["Title"] = "Update Ingredient";
 }
+
+
+@if (@Model != null)
+{
 <div class="container shadow p-5">
     <div class="form-group d-flex justify-content-center">
         <h2>Edit @Model.Name</h2>
@@ -74,3 +78,10 @@
     </form>
 
 </div>
+}
+else
+{
+    <div>
+        <h4 class="text-center">Oops, ingredient was not found :'(</h4>
+    </div>
+}

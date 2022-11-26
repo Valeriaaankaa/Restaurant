@@ -10,6 +10,8 @@
         <h1>Edit User</h1>
     </div>-->
 
+@if (@Model != null)
+{
 <div class="wrapper fadeInDown">
     <div id="formContent">
                 <h2 class="inactive">Edit User</h2>
@@ -55,6 +57,12 @@
             }
         </div>
     </div>
-
+    }
+    else
+    {
+        <div>
+            <h4 class="text-center">Oops, user was not found :'(</h4>
+        </div>
+    }
 
 
