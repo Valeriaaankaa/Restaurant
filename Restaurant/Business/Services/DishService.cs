@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Business.Interfaces;
 using Business.Models;
 using Business.Validation;

@@ -13,14 +13,19 @@
     <h1 class="alert-success">@TempData["ResultOk"]</h1>
 
 }
-
+<link rel="stylesheet" href="~/css/ingredient.css">      
+<h1 align="center">Dishes info</h1>
 <div class="container shadow p-5">
 
-    <h1 class="text-center mb-3">DISHES </h1>
-
-    <div class="col mb-3">
-        <a asp-controller="Dish" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add Dish</a>
-    </div>
+<div class="wrapper">
+    <div id="formContent">
+        <form asp-controller="Dish" asp-action="Details">
+        Name: <input type="text" name="SearchString" />
+        <input type="submit" class="fadeIn" value="Filter" />
+</form>
+ <a asp-controller="Dish" asp-action="Create" class="btn btn-outline-info">Create Dish</a>
+</div>
+</div>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>

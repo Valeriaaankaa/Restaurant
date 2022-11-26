@@ -28,14 +28,14 @@ namespace Restaurant.Controllers
         }
 
         [Authorize(Policy = "RequireAdmin")]
-        public async Task<IActionResult> DetailsAsync(int id)
+        public async Task<IActionResult> DetailsAsync(string searchString)
         {
-            var dishes = await _dishService.GetAllAsync();   
-                      
-
-
-
-            return View(dishes);
+            var ingredients = await _dishService.GetAllAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ingredients = ingredients.Where(s => s.Name!.Contains(searchString));
+            }
+            return View(ingredients.ToList());
         }
 
         [HttpPost]

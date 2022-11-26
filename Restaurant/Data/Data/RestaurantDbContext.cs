@@ -1448,7 +1448,7 @@ namespace Data.Data
             admin.HasOne(c => c.Person)
                     .WithOne();
 
-
+            //modelBuilder.Entity<Order>().HasOne<ApplicationUser>().WithOne().HasForeignKey<Order>(x => x.Id);
 
 
             base.OnModelCreating(modelBuilder);
