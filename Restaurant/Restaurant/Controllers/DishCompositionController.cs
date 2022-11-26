@@ -74,18 +74,35 @@ namespace Restaurant.Controllers
         [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(int id)
         {
-            var dishcomposition = await _dishCompositionService.GetByIdAsync(id);            
-            return View(dishcomposition);
+            var dishcomposition = await _dishCompositionService.GetByIdAsync(id);
+
+            DishCompositionEditViewModel dcmodel = new()
+            {
+                Id = dishcomposition.Id,
+                Amount = dishcomposition.Amount,
+                IngredientId = dishcomposition.Id,
+                DishId = dishcomposition.DishId
+            };
+
+            return View(dcmodel);
         }
 
         [HttpPost]
         [Authorize(Policy = "RequireAdmin")]
-        public async Task<ActionResult> EditAsync(DishCompositionModel model)
+        public async Task<ActionResult> EditAsync(DishCompositionEditViewModel model)
         {
 
             if (ModelState.IsValid)
             {
-                await _dishCompositionService.UpdateAsync(model);
+                DishCompositionModel dcmodel = new()
+                {
+                    Id = model.Id,
+                    Amount = model.Amount,
+                    IngredientId = model.Id,
+                    DishId = model.DishId
+                };
+
+                await _dishCompositionService.UpdateAsync(dcmodel);
                 return RedirectToAction("Details");
             }
 

@@ -6,7 +6,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
-@model DishCompositionModel
+@model DishCompositionEditViewModel
 
 
 @inject IIngredientService ingredientService
@@ -16,7 +16,8 @@
     var ingredient = (await ingredientService.GetAllAsync()).ToList().Select(ingr => new
     {
         Name = ingr.Name,
-        Id = ingr.Id
+        Id = ingr.Id,
+        Measur = ingr.IngredientMeasurement
     }).Where(i => i.Id == Model.IngredientId).FirstOrDefault();
 
     var dish = (await dishService.GetAllAsync()).ToList().Select(dish => new
@@ -42,7 +43,6 @@
                 <input type="hidden" asp-for="DishId" />
                 <input type="hidden" asp-for="IngredientId" />
 
-
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -50,6 +50,7 @@
                             <th scope="col">DishId</th>
                             <th scope="col">IngredientId</th>
                             <th scope="col">Current Amount</th>
+                            <th scope="col">Measurement</th>
                             <th scope="col">New Amount</th>
                             <th scope="col">Actions</th>
                         </tr>
@@ -68,9 +69,12 @@
                             <td width="5%">
                                 @Model.Amount
                             </td>
+                            <td width="20%">
+                                @ingredient.Measur
+                            </td>
                             <td width="15%">
                                 <div class="form-group">
-                                    <input type="text" class="form-control mb-3" asp-for="Amount">
+                                    <input type="number" class="form-control mb-3" asp-for="Amount" placeholder="Enter Amount">
                                     <span asp-validation-for="Amount" class=" alert-danger"></span>
                                 </div>
                             </td>
