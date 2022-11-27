@@ -7,6 +7,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <None Remove="Views\Dish\Details.cshtml~RF77b0a0.TMP" />
+  </ItemGroup>
+
   <ItemGroup>
     <None Include="wwwroot\img\menu\Bacon_rings.jpg" />
     <None Include="wwwroot\img\menu\Baked_spring_rolls.jpg" />

@@ -25,6 +25,7 @@ namespace Business
 
             CreateMap<DishComposition, DishCompositionModel>()
                 .ReverseMap();
+
             CreateMap<DishOrder, CartLine>()
                 .ForMember(r => r.Dish, r => r.MapFrom(x => x.Dish))
                 .ForMember(r => r.Quantity, r => r.MapFrom(x => x.Amount))

@@ -6,7 +6,7 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 
-@model DishCompositionModel
+@model DishCompositionEditViewModel
 
 
 @inject IIngredientService ingredientService
@@ -16,7 +16,8 @@
     var ingredient = (await ingredientService.GetAllAsync()).ToList().Select(ingr => new
     {
         Name = ingr.Name,
-        Id = ingr.Id
+        Id = ingr.Id,
+        Measur = ingr.IngredientMeasurement
     }).Where(i => i.Id == Model.IngredientId).FirstOrDefault();
 
     var dish = (await dishService.GetAllAsync()).ToList().Select(dish => new
@@ -27,76 +28,87 @@
 
 }
 
-<div class="container shadow p-5">
-    <div class="form-group d-flex justify-content-center">
-        <h2>Edit</h2>
-    </div>
 
-    <form method="post">
-        <div asp-validation-summary="All"></div>    
-        
-        <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="DishId" />
-        <input type="hidden" asp-for="IngredientId" />
-        
-        
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">DishId</th>
-                    <th scope="col">IngredientId</th>
-                    <th scope="col">Current Amount</th>
-                    <th scope="col">New Amount</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                        <td width="3%">
-                            @Model.Id
-                        </td>
-                        <td width="17%">
-                            @dish.Name
-                        </td>
-                        <td width="20%">
-                        @ingredient.Name
-                        </td>
-                        <td width="5%">
-                            @Model.Amount
-                        </td>
-                        <td width="15%">
-                            <div class="form-group">
-                                    <input type="text" class="form-control mb-3" asp-for="Amount">
+@if (@Model != null)
+{
+        <div class="container shadow p-5">
+            <div class="form-group d-flex justify-content-center">
+                <h2>Edit</h2>
+            </div>
+
+            <form method="post">
+                <div asp-validation-summary="All"></div>    
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="DishId" />
+                <input type="hidden" asp-for="IngredientId" />
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">DishId</th>
+                            <th scope="col">IngredientId</th>
+                            <th scope="col">Current Amount</th>
+                            <th scope="col">Measurement</th>
+                            <th scope="col">New Amount</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="3%">
+                                @Model.Id
+                            </td>
+                            <td width="17%">
+                                @dish.Name
+                            </td>
+                            <td width="20%">
+                                @ingredient.Name
+                            </td>
+                            <td width="5%">
+                                @Model.Amount
+                            </td>
+                            <td width="20%">
+                                @ingredient.Measur
+                            </td>
+                            <td width="15%">
+                                <div class="form-group">
+                                    <input type="number" class="form-control mb-3" asp-for="Amount" placeholder="Enter Amount">
                                     <span asp-validation-for="Amount" class=" alert-danger"></span>
-                            </div>
-                        </td>
+                                </div>
+                            </td>
 
-                    <td width="5%">
-                        @Html.ActionLink("Delete",
-                        "Delete", new { id = @Model.Id },
-                        new { onclick = "return confirm('Do you really want to delete the tag " + @Model.Id + "?')" , @class ="btn btn-sm btn-danger"})
-                    </td>
+                            <td width="5%">
+                                @Html.ActionLink("Delete",
+                            "Delete", new { id = @Model.Id },
+                            new { onclick = "return confirm('Do you really want to delete the tag " + @Model.Id + "?')" , @class ="btn btn-sm btn-danger"})
+                            </td>
 
-            <tr>
-            </tbody>
-        </table>
+                            <tr>
+                    </tbody>
+                </table>
 
-        <div class="form-group d-flex justify-content-center">
-            <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Save</button>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <a asp-controller="DishComposition" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <a asp-controller="Dish" asp-action="Details" class="btn btn-lg btn-info p-2">Back To Dish</a>
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Save</button>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <a asp-controller="DishComposition" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <a asp-controller="Dish" asp-action="Details" class="btn btn-lg btn-info p-2">Back To Dish</a>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+}
 
-
+else{
+    <div>
+        <h4 class="text-center">Oops, dish composition was not found :'(</h4>
+    </div>
+}
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>

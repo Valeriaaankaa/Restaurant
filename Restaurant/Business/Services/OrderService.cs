@@ -20,7 +20,7 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Order model is null");
             }
             if (model.OrderDate < DateTime.Now)
             {
@@ -28,7 +28,7 @@ namespace Business.Services
             }
             if (String.IsNullOrEmpty(model.Address))
             {
-                throw new RestaurantException("Address is empty");
+                throw new RestaurantException("Order Address is empty");
             }
 
             await _unitOfWork.OrderRepository.AddAsync(model);
@@ -57,9 +57,14 @@ namespace Business.Services
 
         public async Task DeleteAsync(int modelId)
         {
-            await _unitOfWork.OrderRepository.DeleteByIdAsync(modelId);
+            var order = await _unitOfWork.OrderRepository.GetByIdAsync(modelId);
 
-            await _unitOfWork.SaveAsync();
+            if (order != null)
+            {
+                await _unitOfWork.OrderRepository.DeleteByIdAsync(modelId);
+
+                await _unitOfWork.SaveAsync();
+            }
         }
 
         public async Task<IEnumerable<Order>> GetAllAsync()
@@ -78,11 +83,11 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Order Model is null");
             }
             if (String.IsNullOrEmpty(model.Address))
             {
-                throw new RestaurantException("Address is empty");
+                throw new RestaurantException("Address in order is empty");
             }
 
             var dish = model;

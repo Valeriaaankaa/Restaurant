@@ -55,15 +55,18 @@
                     <td width="3%">
                         @item.Id
                     </td>
-                    <td width="25%">
+                    <td width="20%">
                         @dishService.GetByIdAsync(item.DishId).Result.Name
                     </td>  
-                    <td width="25%">
+                    <td width="20%">
                         @ingredientService.GetByIdAsync(item.IngredientId).Result.Name
                     </td> 
-                    <td width="22%">
+                    <td width="20%">
                         @item.Amount
                     </td>   
+                    <td width="15%">
+                        @ingredientService.GetByIdAsync(item.IngredientId).Result.IngredientMeasurement
+                    </td>  
                     <td>
                         <div role="group" class="w-60 btn-group">
                             <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            

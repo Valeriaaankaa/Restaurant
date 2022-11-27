@@ -20,24 +20,29 @@ namespace Business.Services
 
         public async Task AddAsync(Ingredient model)
         {
-           /* if (model == null)
+            if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Ingredient model is null");
             }
             if (String.IsNullOrEmpty(model.Name))
             {
-                throw new RestaurantException("Name is empty");
+                throw new RestaurantException("Ingredient Name is empty");
             }
-           */
+          
             await _unitOfWork.IngredientRepository.AddAsync(model);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task DeleteAsync(int modelId)
         {
-            await _unitOfWork.IngredientRepository.DeleteByIdAsync(modelId);
+            var ingredient = await _unitOfWork.IngredientRepository.GetByIdAsync(modelId);
 
-            await _unitOfWork.SaveAsync();
+            if (ingredient != null)
+            {
+                await _unitOfWork.IngredientRepository.DeleteByIdAsync(modelId);
+
+                await _unitOfWork.SaveAsync();
+            }
         }
 
         public async Task<IEnumerable<Ingredient>> GetAllAsync()
@@ -56,11 +61,11 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("Ingredient Model is null");
             }
             if (String.IsNullOrEmpty(model.Name))
             {
-                throw new RestaurantException("Name is empty");
+                throw new RestaurantException("Ingredient Name is empty");
             }
 
             var ingredient = model;
