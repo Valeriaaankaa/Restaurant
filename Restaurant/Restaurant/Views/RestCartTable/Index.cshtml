@@ -1,0 +1,11 @@
+﻿@model RestCartViewModel
+<div class="container">
+    @foreach(var el in Model.restCart.listCartTables)
+    {
+        <div class="alert alert-warning mt-3">
+            <b>@el.restaurantTable.Name</b><br/>
+        </div>
+    }
+    <hr/>
+    <div clas="btn btn-danger" asp-controller="Reservation">Reservate</div>
+</div>

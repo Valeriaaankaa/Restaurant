@@ -32,18 +32,18 @@ namespace Restaurant.Controllers
             {
                 foreach (var item in cart.Lines)
                 {
-                    //order.DishesOrder?.Add(_mapper.Map<DishOrder>(item));
                     order.DishesOrder.Add(new DishOrder() { Id = item.CartLineID, Amount = item.Quantity, Dish = _mapper.Map<Dish>(item.Dish), DishId = item.Dish.Id, Order = order, OrderId = order.Id });
                 }
                 order.Address = orderViewModel.Address;
                 order.OrderDate = DateTime.Now;
                 order.OrderStatus = OrderStatus.Confirmed;
-                //ApplicationUser user = userManager.FindByNameAsync(User.Identity?.Name).Result;
+                ApplicationUser user = userManager.FindByNameAsync(User.Identity?.Name).Result;
+                // * Connect user & order
                 orderRepository.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));
             }
-            //else
-            return View(orderViewModel);
+            else
+                return View(orderViewModel);
         }
         public ViewResult Completed()
         {
