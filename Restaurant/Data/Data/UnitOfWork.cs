@@ -13,17 +13,13 @@ namespace Data.Data
     {
         private RestaurantDbContext _context;
         private UserDbContext _identitycontext;
-
-        private AdminRepository _admins;
         private DishCompositionRepository _dishCompositions;
         private DishOrderRepository _dishOrders;
         private DishRepository _dishes;
         private IngredientRepository _ingredients;
         private OrderRepository _orders;
         private RestaurantTableRepository _restaurantTables;
-        private RestaurantUserRepository _restaurantUsers;
         private TableOrderRepository _tableOrders;
-        private PersonRepository _people;
         private UserRepository _users;
         private RoleRepository _roles;
 
@@ -55,21 +51,6 @@ namespace Data.Data
 
 
 
-        public IPersonRepository PersonRepository
-        {
-            get
-            {
-                return _people ??= new PersonRepository(_context);
-            }
-        }
-
-        public IAdminRepository AdminRepository
-        {
-            get
-            {
-                return _admins ??= new AdminRepository(_context);
-            }
-        }
 
         public IDishCompositionRepository DishCompositionRepository
         {
@@ -117,13 +98,7 @@ namespace Data.Data
             }
         }
 
-        public IRestaurantUserRepository RestaurantUserRepository
-        {
-            get
-            {
-                return _restaurantUsers ??= new RestaurantUserRepository(_context);
-            }
-        }
+        
         public ITableOrderRepository TableOrderRepository
         {
             get
@@ -131,15 +106,6 @@ namespace Data.Data
                 return _tableOrders ??= new TableOrderRepository(_context);
             }
         }
-
-
-
-
-
-
-
-
-
 
 
         public async Task SaveAsync()
