@@ -17,15 +17,12 @@ namespace Data.Data
 
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Dish> Dishes { get; set; }
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<DishComposition> DishCompositions { get; set; }
         public DbSet<DishOrder> DishOrders { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<RestaurantTable> RestaurantTables { get; set; }
-        public DbSet<Customer> RestaurantUsers { get; set; }
         public DbSet<TableOrder> TableOrders { get; set; }
         public DbSet<RestCartTable> RestCartTables { get; set; }
-        public DbSet<Person> People { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -1439,15 +1436,7 @@ namespace Data.Data
             tableorder.HasOne(c => c.RestaurantTable)
                     .WithOne();
 
-            var customer = modelBuilder.Entity<Customer>();
-            customer.HasOne(c => c.CustomerOrder)
-                    .WithOne();
-            customer.HasOne(c => c.Person)
-                    .WithOne();
-
-            var admin = modelBuilder.Entity<Customer>();
-            admin.HasOne(c => c.Person)
-                    .WithOne();
+            
 
             //modelBuilder.Entity<Order>().HasOne<ApplicationUser>().WithOne().HasForeignKey<Order>(x => x.Id);
 
