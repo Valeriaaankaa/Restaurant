@@ -12,14 +12,14 @@ namespace Data.Repositories
 {
     public class RestaurantTableRepository : IRestaurantTableRepository
     {
-        public IRestaurantDbContext _context { get; set; }
+        public RestaurantDbContext _context { get; set; }
 
-
-
-        public RestaurantTableRepository(IRestaurantDbContext context)
+        public RestaurantTableRepository(RestaurantDbContext context)
         {
             _context = context;
         }
+
+        public IEnumerable<RestaurantTable> Tables => _context.RestaurantTables.Include(c => c.Zone);
         public Task AddAsync(RestaurantTable entity)
         {
             var res = _context.RestaurantTables.AddAsync(entity);
@@ -52,5 +52,6 @@ namespace Data.Repositories
         {
             _context.RestaurantTables.Update(entity);
         }
+
     }
 }

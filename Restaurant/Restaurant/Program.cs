@@ -54,15 +54,15 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(sp => SessionCart.GetCart(sp));
+builder.Services.AddScoped(sp=>RestCart.GetCart(sp));
 
 builder.Services.AddTransient<IIndentityService, IndentityService>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
 builder.Services.AddTransient<IDishCompositionService, DishCompositionService>();
 builder.Services.AddTransient<IDishService, DishService>();
 builder.Services.AddTransient<IRestaurantTableService, RestaurantTableService>();
+builder.Services.AddTransient<IRestaurantTableRepository, RestaurantTableRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
-
-
 
 
 var app = builder.Build();

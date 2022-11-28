@@ -4,6 +4,7 @@ using Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221127194650_RestTableCart")]
+    partial class RestTableCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2358,12 +2360,12 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("restaurantTableId")
+                    b.Property<int>("restaurantId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("restaurantTableId");
+                    b.HasIndex("restaurantId");
 
                     b.ToTable("RestCartTables");
                 });
@@ -2468,13 +2470,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Entities.RestCartTable", b =>
                 {
-                    b.HasOne("Data.Entities.RestaurantTable", "restaurantTable")
+                    b.HasOne("Data.Entities.RestaurantTable", "restaurant")
                         .WithMany()
-                        .HasForeignKey("restaurantTableId")
+                        .HasForeignKey("restaurantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("restaurantTable");
+                    b.Navigation("restaurant");
                 });
 
             modelBuilder.Entity("Data.Entities.TableOrder", b =>
