@@ -122,7 +122,8 @@ namespace Data.Data
                 new RestaurantTable { Id = 15, Name = "Table 15", Zone = TableZone.GoldenPalace },
                 new RestaurantTable { Id = 16, Name = "Table 16", Zone = TableZone.GoldenPalace },
                 new RestaurantTable { Id = 17, Name = "Table 17", Zone = TableZone.GoldenPalace },
-                new RestaurantTable { Id = 18, Name = "Table 18", Zone = TableZone.GoldenPalace }
+                new RestaurantTable { Id = 18, Name = "Table 18", Zone = TableZone.GoldenPalace },
+                new RestaurantTable { Id = 19, Name = "Table 19", Zone = TableZone.GoldenPalace }
 
                 );
 
