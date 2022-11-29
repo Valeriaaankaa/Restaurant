@@ -63,6 +63,7 @@ builder.Services.AddTransient<IDishService, DishService>();
 builder.Services.AddTransient<IRestaurantTableService, RestaurantTableService>();
 builder.Services.AddTransient<IRestaurantTableRepository, RestaurantTableRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<IReservationRepository, ReservationRepository>();
 
 
 var app = builder.Build();

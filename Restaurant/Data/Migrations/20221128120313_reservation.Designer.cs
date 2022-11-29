@@ -4,6 +4,7 @@ using Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221128120313_reservation")]
+    partial class reservation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2224,26 +2226,43 @@ namespace Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RestaurantTableId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("TimeBegin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("TimeEnd")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Reservations");
+                });
+
+            modelBuilder.Entity("Data.Entities.ReservationDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestaurantTableId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReservationId");
+
+                    b.HasIndex("RestaurantTableId");
+
+                    b.ToTable("ReservationsDetails");
                 });
 
             modelBuilder.Entity("Data.Entities.RestaurantTable", b =>
@@ -2497,6 +2516,25 @@ namespace Data.Migrations
                     b.Navigation("TableOrder");
                 });
 
+            modelBuilder.Entity("Data.Entities.ReservationDetails", b =>
+                {
+                    b.HasOne("Data.Entities.Reservation", "Reservation")
+                        .WithMany("reservationDetails")
+                        .HasForeignKey("ReservationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Data.Entities.RestaurantTable", "RestaurantTable")
+                        .WithMany()
+                        .HasForeignKey("RestaurantTableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Reservation");
+
+                    b.Navigation("RestaurantTable");
+                });
+
             modelBuilder.Entity("Data.Entities.RestCartTable", b =>
                 {
                     b.HasOne("Data.Entities.RestaurantTable", "restaurantTable")
@@ -2532,6 +2570,11 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Entities.Order", b =>
                 {
                     b.Navigation("DishesOrder");
+                });
+
+            modelBuilder.Entity("Data.Entities.Reservation", b =>
+                {
+                    b.Navigation("reservationDetails");
                 });
 #pragma warning restore 612, 618
         }

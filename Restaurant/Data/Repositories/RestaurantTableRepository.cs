@@ -19,7 +19,7 @@ namespace Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<RestaurantTable> Tables => _context.RestaurantTables.Include(c => c.Zone);
+        public IEnumerable<RestaurantTable> Tables => _context.RestaurantTables;
         public Task AddAsync(RestaurantTable entity)
         {
             var res = _context.RestaurantTables.AddAsync(entity);

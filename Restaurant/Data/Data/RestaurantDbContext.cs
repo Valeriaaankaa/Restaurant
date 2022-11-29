@@ -26,6 +26,7 @@ namespace Data.Data
         public DbSet<TableOrder> TableOrders { get; set; }
         public DbSet<RestCartTable> RestCartTables { get; set; }
         public DbSet<Person> People { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

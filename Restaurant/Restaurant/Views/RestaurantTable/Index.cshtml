@@ -14,6 +14,7 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
              <th scope="col">Zone</th>
+             <th scope="col">Reservate</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +24,7 @@
                 <td>@table.Id</td>
                 <td>@table.Name</td>
                 <td>@table.Zone</td>
-               
+               <td><a class="btn btn-warning" asp-controller="RestCartTable" asp-action="addToCart" asp-route-id="@table.Id">Add</a></td>
             </tr>
         }
     </tbody>

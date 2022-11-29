@@ -4,6 +4,7 @@ using Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(RestaurantDbContext))]
-    partial class RestaurantDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221129014908_changedreserve")]
+    partial class changedreserve
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2243,6 +2245,8 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RestaurantTableId");
+
                     b.ToTable("Reservations");
                 });
 
@@ -2495,6 +2499,17 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("TableOrder");
+                });
+
+            modelBuilder.Entity("Data.Entities.Reservation", b =>
+                {
+                    b.HasOne("Data.Entities.RestaurantTable", "TableReserve")
+                        .WithMany()
+                        .HasForeignKey("RestaurantTableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TableReserve");
                 });
 
             modelBuilder.Entity("Data.Entities.RestCartTable", b =>
