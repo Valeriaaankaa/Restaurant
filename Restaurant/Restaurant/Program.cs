@@ -39,13 +39,10 @@ AddAuthorizationPolicies();
 #endregion
 
 
-var mapperConfig = new MapperConfiguration(mc =>
-{
-    mc.AddProfile(new AutomapperProfile());
-});
 
-IMapper mapper = mapperConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddHttpContextAccessor();
