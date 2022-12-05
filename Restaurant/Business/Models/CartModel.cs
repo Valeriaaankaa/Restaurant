@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Data.Entities;
 
 namespace Business.Models
 {
@@ -28,11 +29,11 @@ namespace Business.Models
         public virtual IEnumerable<CartLine> Lines => lineCollection;
 
     }
-
     public class CartLine
     {
         public int CartLineID { get; set; }
         public DishModel Dish { get; set; }
         public int Quantity { get; set; }
     }
+
 }

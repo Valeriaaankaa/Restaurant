@@ -1,30 +1,68 @@
 ﻿@using System.Collections;
 @using Data.Entities;
 @using Business.Models;
+@using Business.Interfaces;
+@using System.Linq;
 
-@model DishCompositionModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@model DishCompositionViewModel
+
+
+@inject IIngredientService ingredientService
+@inject IDishService dishService
+
+@{
+    var ingr_names = (await ingredientService.GetAllAsync()).ToList().Select(o => o.Name);
+    var dish_names = (await dishService.GetAllAsync()).ToList().Select(o => o.Name);
+            ViewData["Title"] = "Create Dish Composition";
+}
+
 
 <div class="container shadow p-5">
     <div class="form-group d-flex justify-content-center">
-        <h2>Add Dish</h2>
+        <h2>Add Dish Composition</h2>
     </div>
 
-    <form method="post">
-        <div asp-validation-summary="All"></div>
 
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label asp-for="Amount">Amount</label>
-                <input type="text" class="form-control mb-3" asp-for="Amount" placeholder="Amount">
-                <span asp-validation-for="Amount" class=" alert-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label asp-for="IngredientId">IngredientId</label>
-                <input type="text" class="form-control mb-3" asp-for="IngredientId" placeholder="Enter IngredientId">
-                <span asp-validation-for="IngredientId" class=" alert-danger"></span>
-            </div>
-        </div>
-        
+
+    <form method="post">
+        <div asp-validation-summary="All"></div>        
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Choose Dish:</th>
+                    <th scope="col">Choose Ingredient:</th>
+                    <th scope="col">Amount </th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                        <td width="33%">
+                            <div class="form-row">                                                              
+                                    @Html.DropDownList("SelectDishId", new SelectList(dish_names), new { @class="dropdown" })
+                                
+                            </div>
+                        </td>
+                    <td width="33%">
+                        <div class="form-row">
+                            @Html.DropDownList("SelectIngredientId", new SelectList(ingr_names), new { @class="dropdown" })
+
+                        </div>
+                    </td>
+                        <td width="33%">
+                            <div class="form-row">                                                                    
+                                    <input type="text" class="form-control mb-3" asp-for="Amount" placeholder="Amount">
+                                    <span asp-validation-for="Amount" class=" alert-danger"></span>                                           
+                            </div>
+                        </td>
+                        
+            <tr>
+            </tbody>
+        </table>
 
 
         <div class="form-group d-flex justify-content-center">            
@@ -32,8 +70,21 @@
             <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <a asp-controller="Dish" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
+            <a asp-controller="DishComposition" asp-action="Details" class="btn btn-lg btn-warning p-2">Back To List</a>
         </div>         
         
     </form>
+
+
+
+
+
+
 </div>
+
+
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

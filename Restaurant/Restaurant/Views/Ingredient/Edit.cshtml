@@ -7,23 +7,27 @@
 @{
     ViewData["Title"] = "Update Ingredient";
 }
+
+
+@if (@Model != null)
+{
 <div class="container shadow p-5">
     <div class="form-group d-flex justify-content-center">
-        <h2>Edit @Model.Name</h2>
+        <h2>Edit Ingredient</h2>
     </div>
 
     <form method="post">
-        <div asp-validation-summary="All"></div>      
-        
+               <!--<div asp-validation-summary="All"></div>-->
+
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label asp-for="Name">Ingredient Name</label>
-                <input type="text" class="form-control mb-3" asp-for="Name" placeholder="Enter Name">
+                <input type="text" class="form-control mb-3" asp-for="Name" required placeholder="Enter Name">
                 <span asp-validation-for="Name" class=" alert-danger"></span>
             </div>      
             <div class="form-group col-md-6">
                 <label asp-for="Price">Price</label>
-                <input type="number" class="form-control mb-3" asp-for="Price" placeholder="Enter Price">
+                <input type="number" class="form-control mb-3" asp-for="Price" required placeholder="Enter Price">
                 <span asp-validation-for="Price" class=" alert-danger"></span>
             </div>
 
@@ -51,6 +55,16 @@
                     </select>
                     <span asp-validation-for="IngredientGroup" class="text-danger"></span>
                 </div>
+
+                 <div class="form-group col-md-6">
+                    <label asp-for="IngredientMeasurement" class="control-label"></label>
+                    <select asp-for="IngredientMeasurement" 
+                            class="form-control" 
+                            asp-items="Html.GetEnumSelectList<IngredientMeasurement>()">
+                        <option>Select type ...</option>
+                    </select>
+                    <span asp-validation-for="IngredientMeasurement" class="text-danger"></span>
+                </div>
         </div>
 
         <div class="form-group d-flex justify-content-center">
@@ -63,5 +77,13 @@
             <a asp-controller="Ingredient" asp-action="Index" class="btn btn-lg btn-warning p-2">Back To List</a>
         </div>
     </form>
-
 </div>
+}
+else
+{
+    <div>
+        <h4 class="text-center">Oops, ingredient was not found :'(</h4>
+    </div>
+}
+
+

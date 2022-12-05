@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="./css/scroll.css">      
     <link rel="shortcut icon" href="~/img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -27,31 +31,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>                    
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")">Basket</a>
-                    <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
-                    <partial name="_LoginPartial"/>
-                    @if (SignInManager.IsSignedIn(User))
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Main</a>
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "Dish")">Menu</a>            
+                    <a class="nav-item nav-link" href="@Url.Action("Index", "RestaurantTable")">Reservation</a>   
+
+                    @if (User.IsInRole("Administrator"))
                         {
-                            <li class="nav-item dropdown text-secondary">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Role Access 
-                                </a>
-                                <ul class="dropdown-menu text-secondary" aria-labelledby="navbarDropdown">
-                                    <li class="nav-item text-secondary">
-                                        <a class="dropdown-item text-secondary" asp-area="" asp-controller="RoleViews" asp-action="Index">Roles</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-secondary" asp-area="" asp-controller="RoleViews" asp-action="Manager">Manager</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-secondary" asp-area="" asp-controller="RoleViews" asp-action="Admin">Admin</a>
-                                    </li>
-                                </ul>
-                            </li>
+                        <a class="nav-item nav-link" href="@Url.Action("Details", "Dish")">Dish Details</a>
+                        <a class="nav-item nav-link" href="@Url.Action("Details", "DishComposition")">Dish Composition</a>
+                        <a class="nav-item nav-link" href="@Url.Action("", "User")">Users</a>
+                        }
+
+                    @if (User.IsInRole("Administrator") || (User.IsInRole("Manager")))
+                        {
+                            <a class="nav-item nav-link" href="@Url.Action("Index", "Ingredient")">Ingredients</a>
                         }
                 </div>
             </div>
+            <partial name="_LoginPartial" />
+            <a class="nav-item nav-link" href="@Url.Action("Index", "Cart")"><img src="~/img/basket.png" alt="Basket"/></a>
         </nav>        
     </header>
     <div>

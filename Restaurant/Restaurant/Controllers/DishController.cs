@@ -1,9 +1,11 @@
 ﻿using Business.Interfaces;
 using Business.Models;
 using Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Restaurant.Models;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Restaurant.Controllers
 {
@@ -12,58 +14,75 @@ namespace Restaurant.Controllers
         private readonly ILogger<DishController> _logger;
         private readonly IIngredientService _ingredientService;
         private readonly IDishService _dishService;
+        private readonly IDishCompositionService _dishCompositionService;
 
-        public DishController(ILogger<DishController> logger, IIngredientService ingredientService, IDishService dishService)
+        public DishController(ILogger<DishController> logger, 
+                            IIngredientService ingredientService, 
+                            IDishService dishService,
+                            IDishCompositionService dishCompositionService)
         {
             _logger = logger;
             _ingredientService = ingredientService;
             _dishService = dishService;
-
+            _dishCompositionService = dishCompositionService;
         }
 
-        public async Task<IActionResult> DetailsAsync(int id)
+        [Authorize(Policy = "RequireAdmin")]
+        public async Task<IActionResult> DetailsAsync(string searchString)
         {
-            var dishes = await _dishService.GetAllAsync();       
-            return View(dishes);
+            var ingredients = await _dishService.GetAllAsync();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ingredients = ingredients.Where(s => s.Name!.Contains(searchString));
+            }
+            return View(ingredients.ToList());
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(DishModel dish)
+        [Authorize(Policy = "RequireAdmin")]
+        public async Task<IActionResult> CreateAsync(DishViewModel dvm)
         {
+
+            var dc = await _dishCompositionService.GetAllAsync();
+
             if (ModelState.IsValid)
             {
-                await _dishService.AddAsync(dish);
-                 RedirectToAction("Details");
+                TempData["successmessage"] = "DISH WAS ADDED SUCCESSFULLY";     
+                await _dishService.AddAsync(dvm.DishModel);
             }
-            return View(dish);
+
+            return View(dvm);
         }
-        public ActionResult Create()
-        {
+
+        [Authorize(Policy = "RequireAdmin")]
+        public async Task<ActionResult> CreateAsync()
+        {           
             return View();
         }
-        
-         
-
+               
         [HttpGet]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<ActionResult> EditAsync(int id)
-        {
-            var dish = await _dishService.GetByIdAsync(id);
-
+        {           
+            var dish = await _dishService.GetByIdAsync(id);      
             return View(dish);
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditAsync(DishModel model)
-        {
+        [Authorize(Policy = "RequireAdmin")]
+        public async Task<ActionResult> EditAsync(DishModel dvm)
+        {            
             if (ModelState.IsValid)
             {
-                await _dishService.UpdateAsync(model);           
-                return RedirectToAction("Details");
+                TempData["successmessage"] = "DISH WAS UPDATED SUCCESSFULLY";
+
+                await _dishService.UpdateAsync(dvm);           
             }
-            return View(model);
+
+            return View(dvm);
         }
 
-
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             await _dishService.DeleteAsync(id);
@@ -81,6 +100,8 @@ namespace Restaurant.Controllers
 
         public async Task<IActionResult> IndexAsync(MenuViewModel model)
         {
+            
+
             if (model.FilterSearchModel == null)
             {
                 model.Dishes = await _dishService.GetAllAsync();
@@ -90,14 +111,21 @@ namespace Restaurant.Controllers
                 model.Dishes = await _dishService.GetByFilterAsync(model.FilterSearchModel);
             }
 
-            model.Categories = (await _dishService.GetDishCategoriesAsync()).ToList();
-             
+            if (model.Dishes != null)
+            {
+                model.Categories = (await _dishService.GetDishCategoriesAsync()).ToList();
 
-            model.Dishes = _dishService.Sort(model.Dishes, model.Category, model.SelectSortType);
+                model.Dishes = _dishService.Sort(model.Dishes, model.Category, model.SelectSortType);
 
-            var count = model.Dishes.Count();
-            model.Dishes = model.Dishes.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
-            model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);         
+                var count = model.Dishes.Count();
+                model.Dishes = model.Dishes.Skip(model.Page * model.PageSize).Take(model.PageSize).ToList();
+                model.MaxPage = (count / model.PageSize) - (count % model.PageSize == 0 ? 1 : 0);
+            }
+            else
+            {
+                model.MaxPage = 0;
+            }
+
 
             return this.View(model);
         }

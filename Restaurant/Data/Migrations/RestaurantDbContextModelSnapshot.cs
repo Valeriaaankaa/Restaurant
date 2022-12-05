@@ -22,73 +22,6 @@ namespace Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Data.Entities.Admin", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("Data.Entities.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId")
-                        .IsUnique();
-
-                    b.HasIndex("PersonId")
-                        .IsUnique();
-
-                    b.ToTable("RestaurantUsers");
-                });
-
             modelBuilder.Entity("Data.Entities.Dish", b =>
                 {
                     b.Property<int>("Id")
@@ -341,7 +274,7 @@ namespace Data.Migrations
                             Description = "The Botanist gin, Campari, Vermouth Di Torino",
                             DishGroup = 6,
                             ImgPath = "/img/menu/NEGRONI.jpg",
-                            Name = "NEGRONI",
+                            Name = "Vodka",
                             Price = 25m
                         },
                         new
@@ -350,7 +283,7 @@ namespace Data.Migrations
                             Description = "Tanqueray London Dry gin, Noilly Prat dry vermouth",
                             DishGroup = 6,
                             ImgPath = "/img/menu/martini.jpg",
-                            Name = "MARTINI",
+                            Name = "Gin",
                             Price = 26m
                         },
                         new
@@ -359,7 +292,7 @@ namespace Data.Migrations
                             Description = "Sazerac Rye whiskey, Cocchi Vermouth Di Torino",
                             DishGroup = 6,
                             ImgPath = "/img/menu/manhattan.jpg",
-                            Name = "MANHATTAN",
+                            Name = "Baijiu",
                             Price = 27m
                         },
                         new
@@ -368,7 +301,7 @@ namespace Data.Migrations
                             Description = "Four Roses Yellow Label bourbon, lemon",
                             DishGroup = 6,
                             ImgPath = "/img/menu/whiskey_sour.jpg",
-                            Name = "WHISKEY SOUR",
+                            Name = "Soju",
                             Price = 28m
                         },
                         new
@@ -377,7 +310,7 @@ namespace Data.Migrations
                             Description = "Buffalo Trace bourbon, demerara, Angostura Bitters",
                             DishGroup = 6,
                             ImgPath = "/img/menu/OLD_FASHIONED.jpg",
-                            Name = "OLD FASHIONED",
+                            Name = "Tequila",
                             Price = 29m
                         },
                         new
@@ -386,7 +319,7 @@ namespace Data.Migrations
                             Description = "Grey Goose vodka, tomato juice, lemon, celery, olives, Fridays® seasoning. Served with the usual accompaniments.",
                             DishGroup = 6,
                             ImgPath = "/img/menu/BLOODY_MARY.jpg",
-                            Name = "BLOODY MARY",
+                            Name = "Rum",
                             Price = 30m
                         },
                         new
@@ -395,7 +328,7 @@ namespace Data.Migrations
                             Description = "The microwave is a great way to reheat stuffed mushrooms because it's gentle and it doesn't dry them out. Plus, it's a quick and easy way to heat them up without having to use the oven or the stovetop.",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
-                            Name = "Roasted stuffed mushrooms",
+                            Name = "Beetroot with herby tzatziki",
                             Price = 31m
                         },
                         new
@@ -404,7 +337,7 @@ namespace Data.Migrations
                             Description = "Roll each wrapper on the diagonal to enclose filling, folding in sides after first complete turn. Place spring rolls on prepared trays, seam-side down; brush",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                            Name = "Baked spring rolls",
+                            Name = "Prawn cocktail",
                             Price = 32m
                         },
                         new
@@ -413,7 +346,7 @@ namespace Data.Migrations
                             Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                            Name = "Baked spring rolls",
+                            Name = "Charred leek and goat's cheese tartlets",
                             Price = 33m
                         },
                         new
@@ -422,7 +355,7 @@ namespace Data.Migrations
                             Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                            Name = "Sweet fried saganaki",
+                            Name = "Prawn tom yum soup",
                             Price = 34m
                         },
                         new
@@ -431,7 +364,7 @@ namespace Data.Migrations
                             Description = "If you fancy making yourself a little treat, try these tasty bacon wrapped onion rings. We replaced the traditional breadcrumbs with streaky bacon",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Bacon_rings.jpg",
-                            Name = "Bacon rings",
+                            Name = "Chilli and lime whitebait",
                             Price = 35m
                         },
                         new
@@ -440,7 +373,7 @@ namespace Data.Migrations
                             Description = "A blooming onion, also called onion bloom, onion blossom, onion flower, bloomin' onion, or onion mum, is a dish consisting of one large onion",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Blooming_onion.jpg",
-                            Name = "Blooming onion",
+                            Name = "Pint of prawns",
                             Price = 36m
                         },
                         new
@@ -449,7 +382,7 @@ namespace Data.Migrations
                             Description = "Calzones are Italian turnovers that are stuffed with an array of ingredients. Pretty much anything that goes on a pizza can go into a calzone",
                             DishGroup = 9,
                             ImgPath = "/img/menu/CALZONES.jpg",
-                            Name = "CALZONES",
+                            Name = "Deep-Fried turley",
                             Price = 37m
                         },
                         new
@@ -458,7 +391,7 @@ namespace Data.Migrations
                             Description = "Deep Fried Main Dishes. Fried chicken. Fish Tacos. Corn dogs. Finger Steaks. When you're in the mood for crispy fried food, these 5-star recipes do it right",
                             DishGroup = 9,
                             ImgPath = "/img/menu/DEEP_FRIED_MAIN_DISHES.jpg",
-                            Name = "Deep Fried Main Dishes",
+                            Name = "Easy rib eye roast",
                             Price = 38m
                         },
                         new
@@ -467,7 +400,7 @@ namespace Data.Migrations
                             Description = "Ground beef or a mix of ground beef, pork and sometimes veal or venison, finely chopped (fried) onions, some broth, often with cream and sometimes with breadcrumbs soaked in milk",
                             DishGroup = 9,
                             ImgPath = "/img/menu/MEATBALLS.jpg",
-                            Name = "MEATBALLS",
+                            Name = "Pesto pasta with chicken",
                             Price = 39m
                         },
                         new
@@ -476,7 +409,7 @@ namespace Data.Migrations
                             Description = "A pielike dish consisting of an unsweetened pastry shell filled with a custard and usually containing cheese and other ingredients, as vegetables, seafood",
                             DishGroup = 9,
                             ImgPath = "/img/menu/QUICHE.jpg",
-                            Name = "QUICHE",
+                            Name = "Oxtails with Gravy",
                             Price = 40m
                         },
                         new
@@ -485,7 +418,7 @@ namespace Data.Migrations
                             Description = "We've rounded up our 60 best chicken breast recipes, all of which are pretty easy, ... An easy, cheesy chicken breast supper that's as basic as they come",
                             DishGroup = 9,
                             ImgPath = "/img/menu/CHICKEN_MAIN_DISHES.jpg",
-                            Name = "CHICKEN MAIN DISHES",
+                            Name = "Stuffed green peppers",
                             Price = 41m
                         },
                         new
@@ -494,7 +427,7 @@ namespace Data.Migrations
                             Description = "From seafood pastas and paellas, to creamy chowders and curries, our seafood recipes celebrate prawns, crab, clams, mussels and more.",
                             DishGroup = 9,
                             ImgPath = "/img/menu/SEAFOOD_MAIN_DISHES.jpg",
-                            Name = "SEAFOOD MAIN DISHES",
+                            Name = "Down Home Chitterlings",
                             Price = 42m
                         },
                         new
@@ -611,7 +544,7 @@ namespace Data.Migrations
                             Description = "The microwave is a great way to reheat stuffed mushrooms because it's gentle and it doesn't dry them out. Plus, it's a quick and easy way to heat them up without having to use the oven or the stovetop.",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Roasted_stuffed_mushrooms.jpg",
-                            Name = "Roasted stuffed mushrooms",
+                            Name = "Bacon wrapped turkey",
                             Price = 55m
                         },
                         new
@@ -620,7 +553,7 @@ namespace Data.Migrations
                             Description = "Roll each wrapper on the diagonal to enclose filling, folding in sides after first complete turn. Place spring rolls on prepared trays, seam-side down; brush",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                            Name = "Baked spring rolls",
+                            Name = "Stuffing meatloaf",
                             Price = 56m
                         },
                         new
@@ -629,7 +562,7 @@ namespace Data.Migrations
                             Description = "This contemporary take on beef Wellington reimagines pastry-wrapped tenderloin as a tart, showcasing flavors both comforting and complex.",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Baked_spring_rolls.jpg",
-                            Name = "Baked spring rolls",
+                            Name = "Baked lemon butter chicken thighs",
                             Price = 57m
                         },
                         new
@@ -638,7 +571,7 @@ namespace Data.Migrations
                             Description = "Creamy pan-fried feta cheese with a golden crust is a delicious ... With the salty feta and sweet honey on top, this feta saganaki ",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Sweet_fried_saganaki.jpg",
-                            Name = "Sweet fried saganaki",
+                            Name = "Easter ham",
                             Price = 58m
                         },
                         new
@@ -647,7 +580,7 @@ namespace Data.Migrations
                             Description = "If you fancy making yourself a little treat, try these tasty bacon wrapped onion rings. We replaced the traditional breadcrumbs with streaky bacon",
                             DishGroup = 8,
                             ImgPath = "/img/menu/Bacon_rings.jpg",
-                            Name = "Bacon rings",
+                            Name = "pork L",
                             Price = 59m
                         },
                         new
@@ -719,7 +652,7 @@ namespace Data.Migrations
                             Description = "Tiramisu cake is made of moist and fluffy vanilla layers soaked with a mixture of brandy, coffee liqueur and espresso",
                             DishGroup = 2,
                             ImgPath = "/img/menu/TIRAMISU_LAYER_CAKE.jpg",
-                            Name = "TIRAMISU LAYER CAKE",
+                            Name = "Coconut Kheer",
                             Price = 67m
                         },
                         new
@@ -728,7 +661,7 @@ namespace Data.Migrations
                             Description = "Devil's Food Cake is a variety of chocolate cake that uses cocoa powder instead of melted chocolate which is found in many chocolate cake recipes.",
                             DishGroup = 2,
                             ImgPath = "/img/menu/DEVIL'S_FOOD_CAKE.jpg",
-                            Name = "DEVIL'S FOOD CAKE",
+                            Name = "Low Fat Tiramisu",
                             Price = 68m
                         },
                         new
@@ -737,7 +670,7 @@ namespace Data.Migrations
                             Description = "Lemon Soufflés are made with only three ingredients: lemons, sugar, and eggs. They are so simple but so delicous and make a big impact when served in lemon juice",
                             DishGroup = 2,
                             ImgPath = "/img/menu/LEMON_SOUFFLES.jpg ",
-                            Name = "LEMON SOUFFLES",
+                            Name = "Fudgy Chewy Brownies",
                             Price = 69m
                         },
                         new
@@ -755,7 +688,7 @@ namespace Data.Migrations
                             Description = "Our classic 8'' doberge cakes boast six layers of rich buttermilk cake sandwiching our handmade custard, frosted with our creamy buttercream, ",
                             DishGroup = 2,
                             ImgPath = "/img/menu/LEMON_CAKE_DOBERGE.jpg ",
-                            Name = "LEMON CAKE DOBERGE",
+                            Name = "Pistachio Phirni",
                             Price = 71m
                         },
                         new
@@ -764,7 +697,7 @@ namespace Data.Migrations
                             Description = "In a saucepan, combine the chocolate, milk and cream and heat on low, stirring often, until the chocolate is completely melted and the mixture ",
                             DishGroup = 2,
                             ImgPath = "/img/menu/CHOCOLATE_FONDUE.jpg ",
-                            Name = "CHOCOLATE FONDUE",
+                            Name = "Almond Malai Kulfi",
                             Price = 72m
                         });
                 });
@@ -798,504 +731,504 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 1,
                             IngredientId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 1,
                             IngredientId = 2
                         },
                         new
                         {
                             Id = 3,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 3,
                             IngredientId = 3
                         },
                         new
                         {
                             Id = 4,
-                            Amount = 0m,
+                            Amount = 2m,
                             DishId = 4,
                             IngredientId = 4
                         },
                         new
                         {
                             Id = 5,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 5,
                             IngredientId = 5
                         },
                         new
                         {
                             Id = 6,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 6,
                             IngredientId = 6
                         },
                         new
                         {
                             Id = 7,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 7,
                             IngredientId = 7
                         },
                         new
                         {
                             Id = 8,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 8,
                             IngredientId = 8
                         },
                         new
                         {
                             Id = 9,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 9,
                             IngredientId = 9
                         },
                         new
                         {
                             Id = 10,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 10,
                             IngredientId = 10
                         },
                         new
                         {
                             Id = 11,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 11,
                             IngredientId = 11
                         },
                         new
                         {
                             Id = 12,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 12,
                             IngredientId = 12
                         },
                         new
                         {
                             Id = 13,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 13,
                             IngredientId = 13
                         },
                         new
                         {
                             Id = 14,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 14,
                             IngredientId = 14
                         },
                         new
                         {
                             Id = 15,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 15,
                             IngredientId = 15
                         },
                         new
                         {
                             Id = 16,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 16,
                             IngredientId = 16
                         },
                         new
                         {
                             Id = 17,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 17,
                             IngredientId = 17
                         },
                         new
                         {
                             Id = 18,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 18,
                             IngredientId = 18
                         },
                         new
                         {
                             Id = 19,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 19,
                             IngredientId = 19
                         },
                         new
                         {
                             Id = 20,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 20,
                             IngredientId = 20
                         },
                         new
                         {
                             Id = 21,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 21,
                             IngredientId = 21
                         },
                         new
                         {
                             Id = 22,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 22,
                             IngredientId = 22
                         },
                         new
                         {
                             Id = 23,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 23,
                             IngredientId = 23
                         },
                         new
                         {
                             Id = 24,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 24,
                             IngredientId = 24
                         },
                         new
                         {
                             Id = 25,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 25,
                             IngredientId = 25
                         },
                         new
                         {
                             Id = 26,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 26,
                             IngredientId = 26
                         },
                         new
                         {
                             Id = 27,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 27,
                             IngredientId = 27
                         },
                         new
                         {
                             Id = 28,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 28,
                             IngredientId = 28
                         },
                         new
                         {
                             Id = 29,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 29,
                             IngredientId = 29
                         },
                         new
                         {
                             Id = 30,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 30,
                             IngredientId = 30
                         },
                         new
                         {
                             Id = 31,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 31,
                             IngredientId = 31
                         },
                         new
                         {
                             Id = 32,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 32,
                             IngredientId = 32
                         },
                         new
                         {
                             Id = 33,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 33,
                             IngredientId = 33
                         },
                         new
                         {
                             Id = 34,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 34,
                             IngredientId = 34
                         },
                         new
                         {
                             Id = 35,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 35,
                             IngredientId = 35
                         },
                         new
                         {
                             Id = 36,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 36,
                             IngredientId = 36
                         },
                         new
                         {
                             Id = 37,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 37,
                             IngredientId = 37
                         },
                         new
                         {
                             Id = 38,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 38,
                             IngredientId = 38
                         },
                         new
                         {
                             Id = 39,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 39,
                             IngredientId = 39
                         },
                         new
                         {
                             Id = 40,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 40,
                             IngredientId = 40
                         },
                         new
                         {
                             Id = 41,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 41,
                             IngredientId = 41
                         },
                         new
                         {
                             Id = 42,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 42,
                             IngredientId = 42
                         },
                         new
                         {
                             Id = 43,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 43,
                             IngredientId = 43
                         },
                         new
                         {
                             Id = 44,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 44,
                             IngredientId = 44
                         },
                         new
                         {
                             Id = 45,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 45,
                             IngredientId = 45
                         },
                         new
                         {
                             Id = 46,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 46,
                             IngredientId = 46
                         },
                         new
                         {
                             Id = 47,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 47,
                             IngredientId = 47
                         },
                         new
                         {
                             Id = 48,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 48,
                             IngredientId = 48
                         },
                         new
                         {
                             Id = 49,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 49,
                             IngredientId = 49
                         },
                         new
                         {
                             Id = 50,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 50,
                             IngredientId = 50
                         },
                         new
                         {
                             Id = 51,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 51,
                             IngredientId = 51
                         },
                         new
                         {
                             Id = 52,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 52,
                             IngredientId = 52
                         },
                         new
                         {
                             Id = 53,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 53,
                             IngredientId = 53
                         },
                         new
                         {
                             Id = 54,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 54,
                             IngredientId = 54
                         },
                         new
                         {
                             Id = 55,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 55,
                             IngredientId = 55
                         },
                         new
                         {
                             Id = 56,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 56,
                             IngredientId = 56
                         },
                         new
                         {
                             Id = 57,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 57,
                             IngredientId = 57
                         },
                         new
                         {
                             Id = 58,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 58,
                             IngredientId = 58
                         },
                         new
                         {
                             Id = 59,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 59,
                             IngredientId = 59
                         },
                         new
                         {
                             Id = 60,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 60,
                             IngredientId = 60
                         },
                         new
                         {
                             Id = 61,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 61,
                             IngredientId = 61
                         },
                         new
                         {
                             Id = 62,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 62,
                             IngredientId = 62
                         },
                         new
                         {
                             Id = 63,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 63,
                             IngredientId = 63
                         },
                         new
                         {
                             Id = 64,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 64,
                             IngredientId = 64
                         },
                         new
                         {
                             Id = 65,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 65,
                             IngredientId = 65
                         },
                         new
                         {
                             Id = 66,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 66,
                             IngredientId = 66
                         },
                         new
                         {
                             Id = 67,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 67,
                             IngredientId = 67
                         },
                         new
                         {
                             Id = 68,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 68,
                             IngredientId = 68
                         },
                         new
                         {
                             Id = 69,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 69,
                             IngredientId = 69
                         },
                         new
                         {
                             Id = 70,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 70,
                             IngredientId = 70
                         },
                         new
                         {
                             Id = 71,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 71,
                             IngredientId = 71
                         },
                         new
                         {
                             Id = 72,
-                            Amount = 0m,
+                            Amount = 1m,
                             DishId = 72,
                             IngredientId = 72
                         });
@@ -1348,6 +1281,9 @@ namespace Data.Migrations
                     b.Property<int>("IngredientGroup")
                         .HasColumnType("int");
 
+                    b.Property<int>("IngredientMeasurement")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1363,51 +1299,56 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            Amount = 23m,
+                            Amount = 100m,
                             ExpirationDate = new DateTime(2021, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2022, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 0,
+                            IngredientMeasurement = 1,
                             Name = "Water",
                             Price = 5m
                         },
                         new
                         {
                             Id = 2,
-                            Amount = 10m,
+                            Amount = 7m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 0,
+                            IngredientMeasurement = 1,
+                            Name = "Milk",
                             Price = 150m
                         },
                         new
                         {
                             Id = 3,
-                            Amount = 10m,
+                            Amount = 4m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 0,
+                            IngredientMeasurement = 1,
+                            Name = "Yoghurt",
                             Price = 150m
                         },
                         new
                         {
                             Id = 4,
-                            Amount = 10m,
+                            Amount = 4m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 7,
+                            IngredientMeasurement = 2,
+                            Name = "Cream",
                             Price = 150m
                         },
                         new
                         {
                             Id = 5,
-                            Amount = 10m,
+                            Amount = 30m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Egg",
                             Price = 150m
                         },
                         new
@@ -1416,48 +1357,53 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Orange",
                             Price = 150m
                         },
                         new
                         {
                             Id = 7,
-                            Amount = 10m,
+                            Amount = 3m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Lemon",
                             Price = 150m
                         },
                         new
                         {
                             Id = 8,
-                            Amount = 10m,
+                            Amount = 1m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Mango",
                             Price = 150m
                         },
                         new
                         {
                             Id = 9,
-                            Amount = 10m,
+                            Amount = 4m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Blueberry",
                             Price = 150m
                         },
                         new
                         {
                             Id = 10,
-                            Amount = 10m,
+                            Amount = 13m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 1,
+                            Name = "Raspberry",
                             Price = 150m
                         },
                         new
@@ -1466,8 +1412,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Strawberry",
                             Price = 150m
                         },
                         new
@@ -1477,7 +1424,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Oil",
                             Price = 150m
                         },
                         new
@@ -1487,7 +1435,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Chicken breast",
                             Price = 150m
                         },
                         new
@@ -1497,7 +1446,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Beef",
                             Price = 150m
                         },
                         new
@@ -1507,7 +1457,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Minced meat",
                             Price = 150m
                         },
                         new
@@ -1517,7 +1468,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Salmon",
                             Price = 150m
                         },
                         new
@@ -1526,8 +1478,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 0,
+                            IngredientMeasurement = 2,
+                            Name = "Cacao",
                             Price = 150m
                         },
                         new
@@ -1537,7 +1490,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Sugar",
                             Price = 150m
                         },
                         new
@@ -1547,7 +1501,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Almonds",
                             Price = 150m
                         },
                         new
@@ -1556,8 +1511,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 10,
+                            IngredientMeasurement = 2,
+                            Name = "Cashew nuts",
                             Price = 150m
                         },
                         new
@@ -1567,7 +1523,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Kidney beans",
                             Price = 150m
                         },
                         new
@@ -1577,7 +1534,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "White beans",
                             Price = 150m
                         },
                         new
@@ -1587,7 +1545,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Lentils",
                             Price = 150m
                         },
                         new
@@ -1596,8 +1555,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 9,
+                            IngredientMeasurement = 2,
+                            Name = "Pasta",
                             Price = 150m
                         },
                         new
@@ -1606,8 +1566,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 9,
+                            IngredientMeasurement = 2,
+                            Name = "Rice",
                             Price = 150m
                         },
                         new
@@ -1616,8 +1577,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 10,
+                            IngredientMeasurement = 2,
+                            Name = "Chili",
                             Price = 150m
                         },
                         new
@@ -1626,8 +1588,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 9,
+                            IngredientMeasurement = 2,
+                            Name = "Ginger",
                             Price = 150m
                         },
                         new
@@ -1636,8 +1599,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Mushroom",
                             Price = 150m
                         },
                         new
@@ -1646,8 +1610,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Potato",
                             Price = 150m
                         },
                         new
@@ -1656,8 +1621,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Peas",
                             Price = 150m
                         },
                         new
@@ -1666,8 +1632,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Root celery",
                             Price = 150m
                         },
                         new
@@ -1676,8 +1643,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Carrot",
                             Price = 150m
                         },
                         new
@@ -1686,8 +1654,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Zucchini",
                             Price = 150m
                         },
                         new
@@ -1696,8 +1665,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Tomato",
                             Price = 150m
                         },
                         new
@@ -1706,8 +1676,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 8,
+                            IngredientMeasurement = 2,
+                            Name = "Bell Pepper",
                             Price = 150m
                         },
                         new
@@ -1717,7 +1688,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Cucumber",
                             Price = 150m
                         },
                         new
@@ -1727,7 +1699,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Eggplant",
                             Price = 150m
                         },
                         new
@@ -1737,7 +1710,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Garlic",
                             Price = 150m
                         },
                         new
@@ -1747,7 +1721,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Onion",
                             Price = 150m
                         },
                         new
@@ -1757,7 +1732,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Leek",
                             Price = 150m
                         },
                         new
@@ -1767,7 +1743,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Cabbage",
                             Price = 150m
                         },
                         new
@@ -1777,7 +1754,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Kohlrabi",
                             Price = 150m
                         },
                         new
@@ -1787,7 +1765,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Celery",
                             Price = 150m
                         },
                         new
@@ -1797,7 +1776,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Spinach",
                             Price = 150m
                         },
                         new
@@ -1807,7 +1787,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Avocado",
                             Price = 150m
                         },
                         new
@@ -1817,7 +1798,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Flour",
                             Price = 150m
                         },
                         new
@@ -1827,7 +1809,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Dough",
                             Price = 150m
                         },
                         new
@@ -1837,7 +1820,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Rice paper",
                             Price = 150m
                         },
                         new
@@ -1847,7 +1831,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Plant milk",
                             Price = 150m
                         },
                         new
@@ -1857,7 +1842,8 @@ namespace Data.Migrations
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientMeasurement = 2,
+                            Name = "Joney",
                             Price = 150m
                         },
                         new
@@ -1866,8 +1852,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 7,
+                            IngredientMeasurement = 2,
+                            Name = "Chocolate",
                             Price = 150m
                         },
                         new
@@ -1876,8 +1863,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 7,
+                            IngredientMeasurement = 2,
+                            Name = "Bread",
                             Price = 150m
                         },
                         new
@@ -1886,8 +1874,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 7,
+                            IngredientMeasurement = 2,
+                            Name = "Candy",
                             Price = 150m
                         },
                         new
@@ -1896,8 +1885,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 7,
+                            IngredientMeasurement = 2,
+                            Name = "Cookie",
                             Price = 150m
                         },
                         new
@@ -1906,8 +1896,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 0,
+                            IngredientMeasurement = 1,
+                            Name = "Juice",
                             Price = 150m
                         },
                         new
@@ -1916,8 +1907,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Tuna fish",
                             Price = 150m
                         },
                         new
@@ -1926,8 +1918,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Shark",
                             Price = 150m
                         },
                         new
@@ -1936,8 +1929,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Sardines",
                             Price = 150m
                         },
                         new
@@ -1946,8 +1940,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Salmon",
                             Price = 150m
                         },
                         new
@@ -1956,8 +1951,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Prawn",
                             Price = 150m
                         },
                         new
@@ -1966,8 +1962,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Perch",
                             Price = 150m
                         },
                         new
@@ -1976,8 +1973,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Mussels",
                             Price = 150m
                         },
                         new
@@ -1986,8 +1984,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Squid",
                             Price = 150m
                         },
                         new
@@ -1996,8 +1995,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Kiwi",
                             Price = 150m
                         },
                         new
@@ -2006,8 +2006,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Cranberry",
                             Price = 150m
                         },
                         new
@@ -2016,8 +2017,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Tomato",
                             Price = 150m
                         },
                         new
@@ -2026,8 +2028,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Papaya",
                             Price = 150m
                         },
                         new
@@ -2036,8 +2039,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Olives",
                             Price = 150m
                         },
                         new
@@ -2046,8 +2050,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 4,
+                            IngredientMeasurement = 2,
+                            Name = "Pear",
                             Price = 150m
                         },
                         new
@@ -2056,8 +2061,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 2,
+                            IngredientMeasurement = 2,
+                            Name = "Sultana",
                             Price = 150m
                         },
                         new
@@ -2066,8 +2072,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 0,
+                            IngredientMeasurement = 1,
+                            Name = "Lemon Juice",
                             Price = 150m
                         },
                         new
@@ -2076,8 +2083,9 @@ namespace Data.Migrations
                             Amount = 10m,
                             ExpirationDate = new DateTime(2022, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImportDate = new DateTime(2011, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IngredientGroup = 1,
-                            Name = "Pork",
+                            IngredientGroup = 0,
+                            IngredientMeasurement = 1,
+                            Name = "Lemon rind",
                             Price = 150m
                         });
                 });
@@ -2092,7 +2100,8 @@ namespace Data.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -2111,7 +2120,7 @@ namespace Data.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Data.Entities.Person", b =>
+            modelBuilder.Entity("Data.Entities.Reservation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2119,24 +2128,30 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("BirthDay")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RestaurantTableId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TimeBegin")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("TimeEnd")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("People");
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("Data.Entities.RestaurantTable", b =>
@@ -2149,7 +2164,8 @@ namespace Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Zone")
                         .HasColumnType("int");
@@ -2157,6 +2173,144 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RestaurantTables");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Table 1",
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Table 2",
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Table 3",
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Table 4",
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Table 5",
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Table 6",
+                            Zone = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Table 7",
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Table 8",
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Table 9",
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Table 10",
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Table 11",
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Table 12",
+                            Zone = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Table 13",
+                            Zone = 0
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Table 14",
+                            Zone = 0
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Table 15",
+                            Zone = 0
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Table 16",
+                            Zone = 0
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Table 17",
+                            Zone = 0
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Table 18",
+                            Zone = 0
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Table 19",
+                            Zone = 0
+                        });
+                });
+
+            modelBuilder.Entity("Data.Entities.RestCartTable", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("RestCartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("restaurantTableId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("restaurantTableId");
+
+                    b.ToTable("RestCartTables");
                 });
 
             modelBuilder.Entity("Data.Entities.TableOrder", b =>
@@ -2170,48 +2324,12 @@ namespace Data.Migrations
                     b.Property<int>("RestaurantTableId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("TimeBegin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("TimeEnd")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.HasIndex("RestaurantTableId")
                         .IsUnique();
 
                     b.ToTable("TableOrders");
-                });
-
-            modelBuilder.Entity("Data.Entities.Admin", b =>
-                {
-                    b.HasOne("Data.Entities.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("Data.Entities.Customer", b =>
-                {
-                    b.HasOne("Data.Entities.Order", "CustomerOrder")
-                        .WithOne()
-                        .HasForeignKey("Data.Entities.Customer", "OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Data.Entities.Person", "Person")
-                        .WithOne()
-                        .HasForeignKey("Data.Entities.Customer", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CustomerOrder");
-
-                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Data.Entities.DishComposition", b =>
@@ -2261,6 +2379,17 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("TableOrder");
+                });
+
+            modelBuilder.Entity("Data.Entities.RestCartTable", b =>
+                {
+                    b.HasOne("Data.Entities.RestaurantTable", "restaurantTable")
+                        .WithMany()
+                        .HasForeignKey("restaurantTableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("restaurantTable");
                 });
 
             modelBuilder.Entity("Data.Entities.TableOrder", b =>

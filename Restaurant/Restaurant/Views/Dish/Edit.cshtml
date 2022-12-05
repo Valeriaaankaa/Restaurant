@@ -4,6 +4,13 @@
 
 @model DishModel
 
+
+@{
+var message = TempData["successmessage"] ?? string.Empty;
+}
+
+
+
 @if(@Model != null)
 {
     <div class="container shadow p-5">
@@ -12,12 +19,17 @@
                     <div class="form-group d-flex justify-content-center">        
                             <h2>Edit @Model.Name</h2>
                     </div>
+
+                    <div class="form-group d-flex justify-content-center">                
+                         <h2 class="text-success" >@message</h2>      
+                    </div>
                 }
 
         <form method="post">
             <div asp-validation-summary="All"></div>      
         
             <div class="form-row">
+                <input type="hidden" asp-for="Id" />
                 <div class="form-group col-md-6">
                     <label asp-for="Name">Dish Name</label>
                     <input type="text" class="form-control mb-3" asp-for="Name" placeholder="Enter Name">
@@ -31,23 +43,17 @@
             </div>
 
              <div class="form-row"> 
-                    if(@Model.ImgPath != null)
-                      {                               
-                        <div class="form-group col-md-9 mb-3">
-                            <div class="form-row">
-                                <label asp-for="DishCompositions" hidden>DishComposition</label>
-                                <input type="text" class="form-control" asp-for="DishCompositions" hidden>
-                                <span asp-validation-for="DishCompositions" class=" alert-danger" CausesValidation="False"></span>
-                            </div>   
-                
-                            <div class="form-row">
+                                               
+                        <div class="form-group col-md-9 mb-3">                            
+
+                        <div class="form-row">
                                 <label asp-for="ImgPath">ImgPath</label>
                                 <input type="text" class="form-control" asp-for="ImgPath">
                                 <span asp-validation-for="ImgPath" class=" alert-danger"></span>
                             </div> 
                             <div class="form-row">                   
                                 <label asp-for="Description">Description</label>
-                                <textarea class="form-control mb-3" rows="3" placeholder="Enter Description">@Model.Description</textarea>                    
+                                <input type="text" class="form-control" asp-for="Description">   
                                 <span asp-validation-for="Description" class=" alert-danger"></span>
                             </div>  
                             <div class="form-group">
@@ -59,17 +65,26 @@
                                 </select>
                                 <span asp-validation-for="DishGroup" class="text-danger"></span>
                             </div>
-                </div>
-                }
+
+                       </div>
                 
-                @if(@Model.ImgPath != null)
-                {
+               
+                  
+                
+               
                     <div class="form-group col-md-3 mb-3">
                         <div class="text-center">
+                             @if(@Model.ImgPath != null)
+                              {
                               <img src="@Model.ImgPath.ToString()" class="img-fluid mb-3" alt="@Model.Name">
+                              }
+                              else
+                              {
+                                <img src="" class="img-fluid mb-3" alt="No image">
+                              }
                         </div>
                     </div>
-                }
+                
             </div>
 
             <div class="form-group d-flex justify-content-center">
@@ -83,5 +98,11 @@
             </div>
         </form>
 
+    </div>
+}
+else
+{
+    <div>
+        <h4 class="text-center">Oops, dish was not found :'(</h4>
     </div>
 }

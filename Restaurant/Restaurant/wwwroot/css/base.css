@@ -30,6 +30,10 @@ img {
     background-color: white;
     font-size: 18px;
     min-width: 150px;
+    padding: 7px;
+    border-radius: 10px;
+    border-color: gray;
+    
 }
 
     .dropdown:hover .dropdown-content {
@@ -37,7 +41,7 @@ img {
     }
 
     .dropdown:hover {
-        background-color: #FFC107;
+        background-color: #f1f1f1
     }
 
 

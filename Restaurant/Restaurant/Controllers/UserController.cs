@@ -2,6 +2,7 @@
 using Business.Services;
 using Data.Entities;
 using Data.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,17 +21,18 @@ namespace Restaurant.ControllersControllers
             _signInManager = signInManager;
         }
 
+        [Authorize(Policy = "RequireAdmin")]
         public IActionResult Index()
         {
             var users = _identityservice.GetAll();
             return View(users);
         }
-
+        [Authorize(Policy = "RequireAdmin")]
         public IActionResult ChangeInfo()
         {
             return View();
         }
-
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> Edit(string id)
         {
             var user = _identityservice.GetById(id);
@@ -54,6 +56,7 @@ namespace Restaurant.ControllersControllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "RequireAdmin")]
         public async Task<IActionResult> OnPostAsync(EditUserViewModel data)
         {
             var user = _identityservice.GetById(data.User.Id);

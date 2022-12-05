@@ -1,0 +1,14 @@
+﻿@using System.Collections;
+@using Data.Entities;
+@using Business.Models;
+
+
+@model RestaurantTable
+
+<div class="col-lg-4" id="container">
+                     <h3> @Model.Id</h3>
+                    <h3> @Model.Name</h3>
+                    <h3>@Model.Zone</h3>
+                    <p>
+<a class="btn btn-warning" asp-controller="RestCart" asp-action="addToCard" asp-route-id="@Model.Id">Добавить в корзину</a></p>
+                </div>

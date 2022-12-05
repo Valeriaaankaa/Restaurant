@@ -1,27 +1,50 @@
 ﻿@using System.Collections;
 @using Data.Entities;
 @using Business.Models;
+@using Business.Interfaces;
+@using System.Linq;
+
+
 
 @model IEnumerable<DishCompositionModel>
+    
+@inject IIngredientService ingredientService
+@inject IDishService dishService
 
 @{
-    ViewData["Title"] = "DishComposition";
+    var ingredients = (await ingredientService.GetAllAsync()).ToList().Select(ingr => new
+    {
+        Name = ingr.Name,
+        Id = ingr.Id
+    }); 
+        
+    var dishes = (await dishService.GetAllAsync()).ToList().Select(o => o.Name);
+
+        ViewData["Title"] = "Dish Composition";
+
+
+
 }
 
+<link rel="stylesheet" href="~/css/ingredient.css">      
+<h1 align="center">Dish Composition</h1>
 
 <div class="container shadow p-5">
-
-    <h1 class="text-center mb-3">DishComposition </h1>
-
-    <div class="col mb-3">
-        <a asp-controller="DishComposition" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add DishComposition</a>
-    </div>
+<div class="wrapper">
+    <div id="formContent">
+        <form asp-controller="DishComposition" asp-action="Create">
+        <input type="submit" class="fadeIn" value="Add Dish Composition" />
+</form>
+</div>
+</div>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th scope="col">Id</th>
+                <th scope="col">Dish Name</th>
+                <th scope="col">Ingredient Name</th>
                 <th scope="col">Amount</th>
-                <th scope="col">IngredientId</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,12 +55,18 @@
                     <td width="3%">
                         @item.Id
                     </td>
-                    <td width="17%">
-                        @item.Amount
-                    </td>
                     <td width="20%">
-                        @item.IngredientId
-                    </td>         
+                        @dishService.GetByIdAsync(item.DishId).Result.Name
+                    </td>  
+                    <td width="20%">
+                        @ingredientService.GetByIdAsync(item.IngredientId).Result.Name
+                    </td> 
+                    <td width="20%">
+                        @item.Amount
+                    </td>   
+                    <td width="15%">
+                        @ingredientService.GetByIdAsync(item.IngredientId).Result.IngredientMeasurement
+                    </td>  
                     <td>
                         <div role="group" class="w-60 btn-group">
                             <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            

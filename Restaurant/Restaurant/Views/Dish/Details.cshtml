@@ -11,15 +11,21 @@
 @if (TempData["ResultOk"] != null)
 {
     <h1 class="alert-success">@TempData["ResultOk"]</h1>
-}
 
+}
+<link rel="stylesheet" href="~/css/ingredient.css">      
+<h1 align="center">Dishes info</h1>
 <div class="container shadow p-5">
 
-    <h1 class="text-center mb-3">DISHES </h1>
-
-    <div class="col mb-3">
-        <a asp-controller="Dish" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add Dish</a>
-    </div>
+<div class="wrapper">
+    <div id="formContent">
+        <form asp-controller="Dish" asp-action="Details">
+        Name: <input type="text" name="SearchString" />
+        <input type="submit" class="fadeIn" value="Filter" />
+</form>
+ <a asp-controller="Dish" asp-action="Create" class="btn btn-outline-info">Create Dish</a>
+</div>
+</div>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -39,7 +45,7 @@
                     <td width="3%">
                         @item.Id
                     </td>
-                    <td width="17%">
+                    <td width="12%">
                         @item.Name
                     </td>
                     <td width="20%">
@@ -48,13 +54,22 @@
                     <td width="5%">
                         @item.Price
                     </td>
-                    <td width="25%">
+                    <td width="35%">
                         @foreach (var item_ingr in item.DishCompositions)
                         {
-                            <p>@item_ingr.Ingredient.Name</p>
+                           
+
+                            <div  class="d-flex justify-content-between">
+                                         <p>@item_ingr.Ingredient.Name @item_ingr.Amount @item_ingr.Ingredient.IngredientMeasurement</p>
+                                <div role="group" class="w-60 btn-group">
+                                    <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item_ingr.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                                    <a asp-controller="DishComposition" asp-action="Edit" asp-route-id="@item_ingr.Id" class=" btn btn-sm btn-danger"><i class="bi bi-pencil-square"></i>Delete</a>&nbsp;
+                                </div>
+                            </div>
+
                         }
                     </td>
-                    <td width="30%">
+                    <td width="35%">
                         <img src="@item.ImgPath.ToString()" class="img-fluid mb-3" alt="@item.Name">
                     </td>
                     <td>
@@ -62,7 +77,7 @@
                             <a asp-controller="Dish" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;                            
                             @Html.ActionLink("Delete",
                                 "Delete", new { id = item.Id },
-                                    new { onclick = "return confirm('Do you really want to delete the tag " + @item.Name + "?')" , @class ="btn btn-sm btn-danger"})
+                                    new { onclick = "return confirm('Do you really want to delete the tag " + @item.Name + "?')" , @class ="btn btn-sm btn-danger"})                
                         </div>
                     </td>
                     

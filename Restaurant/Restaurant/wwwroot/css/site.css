@@ -1,6 +1,7 @@
 html {
     font-size: 16px;
     margin-bottom: 60px;
+    
 }
 
 body {
@@ -19,4 +20,29 @@ body {
 table {
     border: 3px solid grey;
     text-align:center;
+}
+
+.p-intro {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    text-align: center;
+}
+
+.p-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    text-align: center;
+}
+
+.apply-button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 5px 40px;
+    background: white;
+}
+.apply-button:hover{
+    background: #FFB107;
+
+
 }

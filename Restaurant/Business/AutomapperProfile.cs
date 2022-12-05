@@ -22,11 +22,15 @@ namespace Business
                 .ForMember(r => r.DishCompositions, r => r.MapFrom(x => x.DishCompositions))
                 .ReverseMap();
 
+
             CreateMap<DishComposition, DishCompositionModel>()
-                .ForMember(r => r.Amount, r => r.MapFrom(x => x.Amount))
-                .ForMember(r => r.IngredientId, r => r.MapFrom(x => x.IngredientId))
                 .ReverseMap();
 
+            CreateMap<DishOrder, CartLine>()
+                .ForMember(r => r.Dish, r => r.MapFrom(x => x.Dish))
+                .ForMember(r => r.Quantity, r => r.MapFrom(x => x.Amount))
+                .ForMember(r => r.CartLineID, r => r.MapFrom(x => x.OrderId))
+                .ReverseMap();
         }
     }        
 }

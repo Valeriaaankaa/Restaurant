@@ -1,0 +1,47 @@
+﻿@using System.Collections;
+@using Data.Entities;
+@using Business.Models;
+
+@model Reservation
+<h3>Reservation</h3>
+<div>
+    <form asp-action="Checkout" method="post" class="form-horizontal">
+                <div asp-validation-summary="All"></div>       
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <div>
+                <input asp-for="FirstName" class="form-control"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+          <div class="form-group">
+            <label asp-for="LastName"></label>
+            <div>
+                <input asp-for="LastName" class="form-control"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+          <div class="form-group">
+            <label asp-for="Phone"></label>
+            <div>
+                <input asp-for="Phone" class="form-control"/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+          <div class="form-group">
+            <label asp-for="TimeBegin"></label>
+            <div>
+                <input asp-for="TimeBegin" class="form-control"/>
+                <span asp-validation-for="TimeBegin" class="text-danger"></span>
+            </div>
+        </div>
+         <div class="form-group">
+            <label asp-for="TimeEnd"></label>
+            <div>
+                <input asp-for="TimeEnd" class="form-control"/>
+                <span asp-validation-for="TimeEnd" class="text-danger"></span>
+            </div>
+        </div>
+        <input class="btn btn-succeess" type="submit" value="End reservation"/>
+    </form>
+</div>

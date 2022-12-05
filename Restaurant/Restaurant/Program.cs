@@ -10,6 +10,7 @@ using Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Restaurant;
+using Business.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("Restaurant");
 
-var userDBconnectionString = builder.Configuration.GetConnectionString("UserDb");
+var userDBconnectionString = builder.Configuration.GetConnectionString("UserDB");
 
 builder.Services.AddDbContext<RestaurantDbContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddDbContext<UserDbContext>(options => options.UseSqlServer(userDBconnectionString));
@@ -38,13 +39,10 @@ AddAuthorizationPolicies();
 #endregion
 
 
-var mapperConfig = new MapperConfiguration(mc =>
-{
-    mc.AddProfile(new AutomapperProfile());
-});
 
-IMapper mapper = mapperConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
+builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddHttpContextAccessor();
@@ -52,16 +50,17 @@ builder.Services.AddSession();
 builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IUserRepository, UserRepository>();
-//builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped(sp => SessionCart.GetCart(sp));
+builder.Services.AddScoped(sp=>RestCart.GetCart(sp));
 
 builder.Services.AddTransient<IIndentityService, IndentityService>();
 builder.Services.AddTransient<IIngredientService, IngredientService>();
 builder.Services.AddTransient<IDishCompositionService, DishCompositionService>();
 builder.Services.AddTransient<IDishService, DishService>();
-
-
+builder.Services.AddTransient<IRestaurantTableService, RestaurantTableService>();
+builder.Services.AddTransient<IRestaurantTableRepository, RestaurantTableRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
+builder.Services.AddTransient<IReservationRepository, ReservationRepository>();
 
 
 var app = builder.Build();
@@ -85,6 +84,10 @@ app.MapRazorPages(); // to solve /?area=Identity&page=2FAccount%2FRegister probl
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// global error handler
+app.UseMiddleware<ErrorHandlerMiddleware>();
+
 
 app.MapControllerRoute(
     name: "default",

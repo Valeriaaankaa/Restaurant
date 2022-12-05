@@ -24,24 +24,43 @@ namespace Business.Services
 
         public async Task AddAsync(DishCompositionModel model)
         {
-            if (model == null)
-            {
-                throw new RestaurantException("Model is null");
-            }
-            if (model.Amount < 1)
-            {
-                throw new RestaurantException("You cannot add Amount < 0");
-            }
+             if (model == null)
+             {
+                 throw new RestaurantException("DishCompositionModel is null");
+             }
+             if (model.Amount < 1)
+             {
+                 throw new RestaurantException("You cannot add Amount <= 0");
+             }
 
-            await _unitOfWork.DishCompositionRepository.AddAsync(_mapper.Map<DishComposition>(model));
+            var ingredient = await _unitOfWork.IngredientRepository.GetByIdAsync(model.IngredientId);
+            var dish = await _unitOfWork.DishRepository.GetByIdAsync(model.DishId);
+
+            DishComposition ddc = new()
+            {
+                Amount = model.Amount,
+                Dish = dish,
+                Ingredient = ingredient,
+                DishId = model.DishId,
+                IngredientId = model.IngredientId
+            };
+
+            await _unitOfWork.DishCompositionRepository.AddAsync(ddc);            
             await _unitOfWork.SaveAsync();
         }
 
         public async Task DeleteAsync(int modelId)
         {
-            await _unitOfWork.DishCompositionRepository.DeleteByIdAsync(modelId);
+            var composition = await _unitOfWork.DishCompositionRepository.GetByIdAsync(modelId);
 
-            await _unitOfWork.SaveAsync();
+            if (composition != null)
+            {
+                await _unitOfWork.DishCompositionRepository.DeleteByIdAsync(modelId);
+
+                await _unitOfWork.SaveAsync();
+            }
+
+
         }
 
         public async Task<IEnumerable<DishCompositionModel>> GetAllAsync()
@@ -60,14 +79,22 @@ namespace Business.Services
         {
             if (model == null)
             {
-                throw new RestaurantException("Model is null");
+                throw new RestaurantException("DishCompositionModel is null");
             }
             if (model.Amount < 1)
             {
-                throw new RestaurantException("You cannot set Amount < 0");
+                throw new RestaurantException("You cannot set Amount <= 0");
             }
 
+
+
             var dc = _mapper.Map<DishComposition>(model);
+
+            var dish = await _unitOfWork.DishRepository.GetByIdAsync(model.DishId);
+            var ingredient = await _unitOfWork.IngredientRepository.GetByIdAsync(model.IngredientId);
+
+            dc.Dish = dish;
+            dc.Ingredient = ingredient;
 
             _unitOfWork.DishCompositionRepository.Update(dc);
 

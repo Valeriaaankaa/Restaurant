@@ -1,9 +1,10 @@
-﻿html {
+﻿/*html {
     background-color: #56baed;
-}
+}*/
 
 body {
     height: 100vh;
+    overflow-y: hidden; 
 }
 
 a {
@@ -23,6 +24,9 @@ h2 {
     color: #cccccc;
 }
 
+h6 {
+    margin: 40px 8px 10px 8px;
+}
 
 
 /* STRUCTURE */
@@ -51,26 +55,16 @@ h2 {
     text-align: center;
 }
 
-#formFooter {
-    background-color: #f6f6f6;
-    border-top: 1px solid #dce8f1;
-    padding: 25px;
-    text-align: center;
-    -webkit-border-radius: 0 0 10px 10px;
-    border-radius: 0 0 10px 10px;
-}
-
-
-
 /* TABS */
 
 h2.inactive {
-    color: #cccccc;
+    color: black;
 }
 
 h2.active {
-    color: #0d0d0d;
+    color: #cccccc;
     border-bottom: 2px solid #5fbae9;
+    display: inline-block;
 }
 
 
@@ -253,7 +247,7 @@ input[type=text], input[type=password] {
     bottom: -10px;
     width: 0;
     height: 2px;
-    background-color: #56baed;
+  /*  background-color: #56baed;*/
     content: "";
     transition: width 0.2s;
 }
@@ -277,4 +271,15 @@ input[type=text], input[type=password] {
 
 * {
     box-sizing: border-box;
+}
+
+
+
+
+a {
+    text-decoration: none;
+}
+
+.parent {
+    margin: 1rem;
 }
